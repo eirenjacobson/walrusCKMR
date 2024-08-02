@@ -1,9 +1,5 @@
-fit_walrus_ckmR.R runs the CKMR code on a file of simulated data and saves the results.
-
-The package purrr must be installed from CRAN.
-
-The following packages must be installed from Mark's repo:
-
+# not run -- here for reference in case installation needed
+if(FALSE){
 options( repos=unique(
   c('https://markbravington.github.io/Rmvb-repo',
     getOption('repos'))))
@@ -14,3 +10,4 @@ options( repos=unique(
   install.packages( 'debug', type = "source")
   install.packages('kinsimmer', type = "source")
   install.packages( 'fastmatch', type = "source")
+}  
