@@ -21,7 +21,7 @@ denv <- environment( lglk_with_data) # where stuff lives
 
 ## These come from Eiren's sim notes
 ptru <- c(
-  log_Nfad_y0 = log( 69053), # in AD2000
+  log_Nfad_y0 = log( 77812), # in AD2000
   RoI= 0, # bugger all (3% over 80years =...)
   lgt_fadsurv= logit( 0.9622), # FWIW that's 3.237
   diff_lgt_fjusurv=  logit( 0.9) - logit( 0.9622), # 0 => same as adult
