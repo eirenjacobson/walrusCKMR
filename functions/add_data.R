@@ -1,19 +1,21 @@
-"add_data" <- function( lglk= NULL,
-                        indiv= NULL,
-                        qk= NULL,
-                        simfile= "WalrusSamples.RData",
-                        simdir= "./simulation",
-                        AMAX= 37, # and then you die
-                        FIRST_PDYEAR= 2000,
-                        SYEARS= if( missing( simfile)) 2010:2028,
-                        AMAT= 6,
-                        AMIN= 1, # calves not modelled 
-                        MAX_WEANAGE= AMAT-1,
-                        MAX_BGAP_HSPS= 2*AMAT + 2, # GGPs unlikely within this
-                        FEC_ASYMP_AGE= 15,
-                        MAXAGERR= 0, # bold!
-                        Nursingness_fudge_ppn= 0.26, # ppn_breedy (this from ptru)
-                        ... # just to allow ending all previous arglines with commas
+"add_data" <- 
+function( 
+  lglk= NULL,
+  indiv= NULL,
+  qk= NULL,
+  simfile= "WalrusSamples.RData",
+  simdir= "./simulation",
+  AMAX= 37, # and then you die
+  FIRST_PDYEAR= 2000,
+  SYEARS= if( missing( simfile)) 2010:2028,
+  AMAT= 6,
+  AMIN= 1, # calves not modelled 
+  MAX_WEANAGE= AMAT-1,
+  MAX_BGAP_HSPS= 2*AMAT + 2, # GGPs unlikely within this
+  FEC_ASYMP_AGE= 15,
+  MAXAGERR= 0, # bold!
+  Nursingness_fudge_ppn= 0.26, # ppn_breedy (this from ptru)
+  ... # just to allow ending all previous arglines with commas
 ){
   # Auto-trimming is good (remove calves)
   op <- options( offarray_table_warn_trim=FALSE)
@@ -129,11 +131,9 @@
     
     # find *indices* of matching pairs
     
-    MOPs <- matrix( match( qk$POP, Me), 
-                    nrow( qk$POP), 2)
+    MOPs <- matrix( match( qk$POP, Me), nrow( qk$POP), 2)
     
-    XmHSPs <- matrix( match( qk$MatHSP, Me), 
-                      nrow( qk$MatHSP), 2)
+    XmHSPs <- matrix( match( qk$MatHSP, Me), nrow( qk$MatHSP), 2)
     
     
     # Make sure in order. Even if DNAge imperfect, can prolly tell
@@ -237,8 +237,9 @@
     # 'dimseq' arg in case ends-of-ranges don't have any samples
     
 
-    m_SYANL <- offarray( table( S=Sex, Y, A, N=Nursy, L), 
-                             dimseq=list( SEXES, SYEARS, AGES, NURSINGNESS, LETHALITY))
+    m_SYANL <- offarray( table( 
+        S=Sex, Y, A, N=Nursy, L), 
+        dimseq=list( SEXES, SYEARS, AGES, NURSINGNESS, LETHALITY))
     
     m_F_YANL <- m_SYANL[ SLICE='F',,,,]
     
@@ -303,8 +304,8 @@
   ), template = n_comp_MOP_AYNL) # use these dims 
   
   # Zero-out unusable cases, even if they exist
-  n_MOP_AYNL[ MATSUB = whichoff( n_comp_MOP_AYNL, .==0)] <- 0
-  n_MOP_AYNL[ MATSUB = whichoff( n_comp_MOP_AYNL, .==0)] <- 0
+  # MVB 8/11: whichoff syntax has changed (slightly)
+  n_MOP_AYNL[ MATSUB = whichoff( n_comp_MOP_AYNL==0)] <- 0
   n_MOP_AYL <- sumover( n_MOP_AYNL, 'nc')
 
   ## HSPs... make it compatible with offposs etc
@@ -316,23 +317,24 @@
   ), template = n_comp_XmHSP_AY) # use these dims
   
   # Zero-out unusable cases, even if they exist
-  n_XmHSP_AY[ MATSUB = whichoff( n_comp_XmHSP_AY, .==0)] <- 0
+  n_XmHSP_AY[ MATSUB = whichoff( n_comp_XmHSP_AY==0)] <- 0
   
   ## selfPs: comps first.
   # Indices are different here
   
   # number of self-recaps. 
   # MUST use A etc from allsamples NOT general A! 
+# MVB 8/11: "NOOFF" must now be called "nooff", for some reason
   n_selfP_YADY <- with( allsamples,  # CRUCIAL!
-                          offarray(table(
-                            y1 = Y[selfPs[,1]],
-                            aself1 = pmin( A[selfPs[,1]], AMAT),
-                            d2 = Devstage_A[ A[ selfPs[,2]], NOOFF=TRUE], # NOOFF stops warnings
-                            y2 = Y[selfPs[,2]]
-                          ), template = n_comp_selfP_YADY)) # use these dims
+      offarray(table(
+        y1 = Y[selfPs[,1]],
+        aself1 = pmin( A[selfPs[,1]], AMAT),
+        d2 = Devstage_A[ A[ selfPs[,2]], nooff=TRUE], # nooff stops warnings
+        y2 = Y[selfPs[,2]]
+      ), template = n_comp_selfP_YADY)) # use these dims
   
   # Zero-out unusable cases, even if they exist
-  n_selfP_YADY[ MATSUB = whichoff( n_comp_selfP_YADY, .==0)] <- 0
+  n_selfP_YADY[ MATSUB = whichoff( n_comp_selfP_YADY==0)] <- 0
   
   ## Ageing error "data"--- assumed exact for now,
   # but (unfinished) code allows generality
@@ -416,7 +418,4 @@
   } else {
     return( e)
   }
-  
-  
-  
 } # end function add_data

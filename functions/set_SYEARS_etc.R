@@ -6,8 +6,8 @@
   
   DEVSTAGES <- cq( JuveF, AdF)
   Devstage_A <- autoloop( A=AGES,
-                          ifelse( AGES < AMAT, 'JuveF', 'AdF')
-  )
+      ifelse( AGES < AMAT, 'JuveF', 'AdF')
+    )
   
   # PCOHORTS: Only need to consider pot-parents born within this
   # Earlier-born have same prob as first one, for all pot offs 

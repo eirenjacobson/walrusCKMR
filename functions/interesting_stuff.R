@@ -11,11 +11,11 @@
   e <- new.env( parent=list2env( raw_stuff)) 
   evalq( envir=e, {
     # Well, these are not *that* interesting, really...  
-    Nfad_2005 <- Nfad_y[ 2005]
-    Nfad_2015 <- Nfad_y[ 2015]
-    Nfad_2025 <- Nfad_y[ 2025]
-    Nfju_2025 <- Nfju_y[ 2025]
-    rel_ad_15_25 <- Nfad_y[ 2025]/Nfad_y[ 2015] - 1
+
+# MVB 8/11: offarray now keeps identity even for scalar extractions
+# so either need to wrap the output in c(), or use [SLICE=blah]
+# otherwise you get "incomparables" problem at the rel_ad_15_25 stage
+    rel_ad_15_25 <- Nfad_y[ SLICE=2025]/Nfad_y[ SLICE=2015] - 1
     extract.named( real_params[ cq( fadsurv, fjusurv)])
     ppn_breedy <- ppn_breedy
   })
