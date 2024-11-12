@@ -17,7 +17,7 @@ map(functionfiles, source)
 # The "generic" lglk function needs to be told what the data are
 # You will need to set 'simfile=...' arg; default is for MVB
 lglk_with_data <- add_data( lglk_walrus, 
-                            simfile = "WalrusSamples_10xNoLethality.RData") 
+                            simfile = "WalrusSamples_RealisticNoLethality.RData") 
 denv <- environment( lglk_with_data) # where stuff lives
 
 ## These come from Eiren's sim notes
