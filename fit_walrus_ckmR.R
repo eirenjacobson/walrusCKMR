@@ -17,13 +17,13 @@ map(functionfiles, source)
 # The "generic" lglk function needs to be told what the data are
 # You will need to set 'simfile=...' arg; default is for MVB
 lglk_with_data <- add_data( lglk_walrus, 
-                            simfile = "WalrusSamples.RData") 
+                            simfile = "WalrusSamples_10xNoLethality.RData") 
 denv <- environment( lglk_with_data) # where stuff lives
 
 ## These come from Eiren's sim notes
 ptru <- c(
   log_Nfad_y0 = log( 69053), # in AD2000
-  RoI= -0.005, # bugger all (3% over 80years =...)
+  RoI= -0.0059, # bugger all (3% over 80years =...)
   lgt_fadsurv= logit( 0.9622), # FWIW that's 3.237
   diff_lgt_fjusurv=  logit( 0.9) - logit( 0.9622), # 0 => same as adult
   lpsi= logit( c( 0.1, 0.5)), # Pr[preg in 2nd year], Pr[preg from y>2]
@@ -120,8 +120,8 @@ H_comp[["DSP_MOP_EYEYNL"]] <- finfo_onetype(Hbits$DSP[["DSP_MOP_EYEYNL"]], ncomp
 E_comp[["MOP_EYEYNL"]] <- ncomp * Hbits$Prkin[["Pr_MOP_EYEYNL"]]
 
 # check expected versus observed number of kin pairs
-sum(E_comp$MOP_EYEYNL) #630
-sum(denv$n_MOP_AYL) #664
+sum(E_comp$MOP_EYEYNL)
+sum(denv$n_MOP_AYL)
 
 # half sibs
 ncomp <- denv[["n_comp_XmHSP_AY"]]
@@ -129,16 +129,16 @@ H_comp[["DSP_XmHSP_EY"]] <- finfo_onetype( Hbits$DSP[[ "DSP_XmHSP_EY"]], ncomp)
 E_comp[["XmHSP_EY"]] <- ncomp * Hbits$Prkin[["Pr_XmHSP_EY"]]
 
 # check expected versus observed number of kin pairs
-sum(E_comp$XmHSP_EY) # 380
-sum(denv$n_XmHSP_AY) # 387
+sum(E_comp$XmHSP_EY) 
+sum(denv$n_XmHSP_AY) 
 
 # self
 ncomp <- denv[["n_comp_selfP_YADY"]]
 H_comp[["DSP_selfP_YADY"]] <- finfo_onetype( Hbits$DSP[[ "DSP_selfP_YADY"]], ncomp)
 E_comp[["selfP_YADY"]] <- ncomp * Hbits$Prkin[["Pr_selfP_YADY"]]
 
-sum(E_comp$selfP_YADY) #395
-sum(denv$n_selfP_YADY) # 256
+sum(E_comp$selfP_YADY) 
+sum(denv$n_selfP_YADY) 
 
 # EKJ did this bit manually (above) bc names not consistent re. AY or EY 
 # for( comptype in names( Hbits$DSP)){
@@ -148,26 +148,13 @@ sum(denv$n_selfP_YADY) # 256
 #       Hbits$Prkin[[ sub( 'DSP', 'Pr', comptype)]]
 # }
 
-# Totals check
-sumbo <- do.on( names( E_comp), 
-    c( sum( E_comp[[ .]]), sum( denv[[ 'n_' %&% .]]))
-  )
-# ... in the ballpark, but 2SD away from Exp...
-# all exp are above obs
-sumbo[1,] / sumbo[2,]
-
-# We do have some mismatch between model & sim, though it's not drastic
-
-# # Birth-gap check: EKJ hasn't fixed/updated this
-# onn <- as.data.frame( denv$n_XmHSP_REY[SLICE=1,,,SLICE=1,,])
-# onn$bgap <- with( onn, (y2-a2) - (y1-a1))
-# obs_mean_bgap <- with( onn, sum( bgap * response)) / sum( onn$response)
-# enn <- as.data.frame( E_comp$XmHSP_REY[SLICE=1,,,SLICE=1,,])
-# enn$bgap <- with( enn, (y2-a2) - (y1-a1))
-# exp_mean_bgap <- with( enn, sum( bgap * response)) / sum( enn$response)
-# # ... mean bgaps are close
-
-# Proceed...
+ # Birth-gap check: 
+ onn <- as.data.frame( denv$n_XmHSP_AY)
+ onn$bgap <- with( onn, (y2-a2) - (y1-a1))
+ obs_mean_bgap <- with( onn, sum( bgap * response)) / sum( onn$response)
+ enn <- as.data.frame( E_comp$XmHSP_EY)
+ enn$bgap <- with( enn, (y2-a2) - (y1-a1))
+ exp_mean_bgap <- with( enn, sum( bgap * response)) / sum( enn$response)
 
 # Add up Hessian bits:
 H <- 0*H_comp[[1]]
@@ -189,17 +176,32 @@ lglk_minus_shift <- lglk_with_data( ptru - parshift)
 lglk0
 
 # ... plus shift is definitly better! "Only" by 10 units so not tooo drastic...
-# popdyn_shift <- lglk_with_data( ptru + parshift, want='popdyn')
-# sumEshift <- numeric()
-# forEshift <- lglk_with_data( ptru + parshift, want='probs')
-# for( comptype in names( Hbits$DSP)){
-#   ncomp <- denv[[ sub( 'DSP', 'n_comp', comptype)]]
-#   sumEshift[ sub( 'DSP_', '', comptype)] <- sum( 
-#       ncomp * forEshift[[ sub( 'DSP', 'Pr', comptype)]]
-#     )
-# }
-# rbind( sumEshift, sumbo)
+ popdyn_shift <- lglk_with_data( ptru + parshift, want='popdyn')
+ sumEshift <- numeric()
+ forEshift <- lglk_with_data( ptru + parshift, want='probs')
+ for( comptype in names( Hbits$DSP)){
+   ncomp <- denv[[ sub( 'DSP', 'n_comp', comptype)]]
+   sumEshift[ sub( 'DSP_', '', comptype)] <- sum( 
+       ncomp * forEshift[[ sub( 'DSP', 'Pr', comptype)]]
+     )
+ }
+ rbind( sumEshift, sumbo)
+ 
+ 
+ # mops
+ ncomp <- denv[["n_comp_MOP_AYL"]] 
+ # H_comp contains inverse covariance between parameters
+ sumEshift[["DSP_MOP_EYEYNL"]] <- sum(ncomp * forEshift$Pr_MOP_EYEYL)
 
+ ncomp <- denv[["n_comp_XmHSP_AY"]] 
+ # H_comp contains inverse covariance between parameters
+ sumEshift[["DSP_XmHSP_EY"]] <- sum(ncomp * forEshift$Pr_XmHSP_EY)
+ 
+ ncomp <- denv[["n_comp_selfP_YADY"]] 
+ # H_comp contains inverse covariance between parameters
+ sumEshift[["n_comp_selfP_YADY"]] <- sum(ncomp * forEshift$Pr_selfP_YADY)
+ 
+ 
 # sumEshift is now quite reasonable cf obs kinpair tots
 # and params have not changed that much (juve surv mainly)
 # 
