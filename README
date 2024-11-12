@@ -2,15 +2,12 @@ fit_walrus_ckmR.R runs the CKMR code on a file of simulated data and saves the r
 
 The package purrr must be installed from CRAN.
 
-The following packages must be installed from Mark's repo:
+The following packages must be installed from Mark's repo at https://markbravington.r-universe.dev/builds
 
-options( repos=unique(
-  c('https://markbravington.github.io/Rmvb-repo',
-    getOption('repos'))))
-  install.packages( 'mvbutils', type = "source")
-  install.packages( 'offarray', type = "source")
-  install.packages( 'despack', type = "source")
-  install.packages( 'TMBO', type = "source")
-  install.packages( 'debug', type = "source")
-  install.packages('kinsimmer', type = "source")
-  install.packages( 'fastmatch', type = "source")
+mvbutils
+offarray
+despack
+TMBO
+debug
+kinsimmer
+fastmatch
