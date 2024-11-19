@@ -22,8 +22,8 @@ denv <- environment( lglk_with_data) # where stuff lives
 
 ## These come from Eiren's sim notes
 ptru <- c(
-  log_Nfad_y0 = log( 69053), # in AD2000
-  RoI= -0.0059, # bugger all (3% over 80years =...)
+  log_Nfad_y0 = log(68418), # in AD2000
+  RoI= -0.006515221, # bugger all (3% over 80years =...)
   lgt_fadsurv= logit( 0.9622), # FWIW that's 3.237
   diff_lgt_fjusurv=  logit( 0.9) - logit( 0.9622), # 0 => same as adult
   lpsi= logit( c( 0.1, 0.5)), # Pr[preg in 2nd year], Pr[preg from y>2]
@@ -169,6 +169,11 @@ parshift <- Hinv %**% Hbits$Dnonprob$lglk
 parshift / sqrt( diag( Vpar)) # in SDs
 # actually not that bad... all well within 2SD
 # Should this be +shift or -shift? "Yes" ;)
+
+# Would like Hbits$Dnonprob$lglk on average should be zero (across sims)
+# relative to the actual Hessian (expect to have high variances)
+# SAVE THESE AS OUTPUT so they can be compared across simulations
+# can tell us which parameters might be biased
 
 # Well, we can try it empirically:
 lglk_plus_shift <- lglk_with_data( ptru + parshift)
