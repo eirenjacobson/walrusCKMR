@@ -8,6 +8,21 @@ library( doParallel)
 
 library(purrr)
 
+# simulation identifier
+suffixes <- c("Sc00_Sd20241023", "Sc00_Sd20241121", "Sc00_Sd20839572", 
+              "Sc00_Sd29571492", "Sc00_Sd76937593", "Sc00_Sd92759173",
+              "Sc00_Sd41850183", "Sc00_Sd38519472", "Sc00_Sd35719375",
+              "Sc00_Sd57394720") 
+
+ 
+#19276639)
+
+for (i in 1:length(suffixes)){
+  
+  suffix <- suffixes[i]
+  
+  load(paste0("./simulation/Nfad_RoI_", suffix, ".RData"))
+
 # load all of the functions in the functions folder
 functionfiles <- paste0("./functions/", list.files("./functions"))
 map(functionfiles, source)
@@ -17,13 +32,13 @@ map(functionfiles, source)
 # The "generic" lglk function needs to be told what the data are
 # You will need to set 'simfile=...' arg; default is for MVB
 lglk_with_data <- add_data( lglk_walrus, 
-                            simfile = "WalrusSamples_RealisticNoLethality.RData") 
+                            simfile = paste0("WalrusSamples_", suffix, ".RData")) 
 denv <- environment( lglk_with_data) # where stuff lives
 
 ## These come from Eiren's sim notes
 ptru <- c(
-  log_Nfad_y0 = log(68418), # in AD2000
-  RoI= -0.006515221, # bugger all (3% over 80years =...)
+  log_Nfad_y0 = log(out[["Nfad_2000"]]), # in AD2000
+  RoI= out[["RoI"]], # bugger all (3% over 80years =...)
   lgt_fadsurv= logit( 0.9622), # FWIW that's 3.237
   diff_lgt_fjusurv=  logit( 0.9) - logit( 0.9622), # 0 => same as adult
   lpsi= logit( c( 0.1, 0.5)), # Pr[preg in 2nd year], Pr[preg from y>2]
@@ -112,6 +127,11 @@ rm( CLUSTO)
 
 E_comp <- H_comp <- list()
 
+compcheck <- data.frame("Type" = c("MOPs", "HSPs", "Self"), 
+                        "Obs" = rep(NA, 3),
+                        "Exp" = rep(NA, 3), 
+                        "P" = rep(NA, 3))
+
 # mops
 ncomp <- denv[["n_comp_MOP_AYNL"]] 
 # H_comp contains inverse covariance between parameters
@@ -120,33 +140,30 @@ H_comp[["DSP_MOP_EYEYNL"]] <- finfo_onetype(Hbits$DSP[["DSP_MOP_EYEYNL"]], ncomp
 E_comp[["MOP_EYEYNL"]] <- ncomp * Hbits$Prkin[["Pr_MOP_EYEYNL"]]
 
 # check expected versus observed number of kin pairs
-sum(E_comp$MOP_EYEYNL)
-sum(denv$n_MOP_AYL)
+compcheck[1,]$Exp <- sum(E_comp$MOP_EYEYNL)
+compcheck[1,]$Obs <- sum(denv$n_MOP_AYL)
+compcheck[1,]$P <- ppois(compcheck[1,]$Obs, compcheck[1,]$Exp)
 
 # half sibs
 ncomp <- denv[["n_comp_XmHSP_AY"]]
 H_comp[["DSP_XmHSP_EY"]] <- finfo_onetype( Hbits$DSP[[ "DSP_XmHSP_EY"]], ncomp)
 E_comp[["XmHSP_EY"]] <- ncomp * Hbits$Prkin[["Pr_XmHSP_EY"]]
 
-# check expected versus observed number of kin pairs
-sum(E_comp$XmHSP_EY) 
-sum(denv$n_XmHSP_AY) 
+compcheck[2,]$Exp <- sum(E_comp$XmHSP_EY)
+compcheck[2,]$Obs <- sum(denv$n_XmHSP_AY)
+compcheck[2,]$P <- ppois(compcheck[2,]$Obs, compcheck[2,]$Exp)
 
+ 
 # self
 ncomp <- denv[["n_comp_selfP_YADY"]]
 H_comp[["DSP_selfP_YADY"]] <- finfo_onetype( Hbits$DSP[[ "DSP_selfP_YADY"]], ncomp)
 E_comp[["selfP_YADY"]] <- ncomp * Hbits$Prkin[["Pr_selfP_YADY"]]
 
-sum(E_comp$selfP_YADY) 
-sum(denv$n_selfP_YADY) 
+compcheck[3,]$Exp <- sum(E_comp$selfP_YADY) 
+compcheck[3,]$Obs <- sum(denv$n_selfP_YADY) 
+compcheck[3,]$P <- ppois(compcheck[3,]$Obs, compcheck[3,]$Exp)
 
-# EKJ did this bit manually (above) bc names not consistent re. AY or EY 
-# for( comptype in names( Hbits$DSP)){
-#   ncomp <- denv[[ sub( 'DSP', 'n_comp', comptype)]]
-#   H_comp[[ comptype]] <- finfo_onetype( Hbits$DSP[[ comptype]], ncomp)
-#   E_comp[[ sub( 'DSP_', '', comptype)]] <- ncomp * 
-#       Hbits$Prkin[[ sub( 'DSP', 'Pr', comptype)]]
-# }
+save(compcheck, file = paste0("./results/compcheck_", suffix, ".RData"))
 
  # Birth-gap check: 
  onn <- as.data.frame( denv$n_XmHSP_AY)
@@ -170,10 +187,13 @@ parshift / sqrt( diag( Vpar)) # in SDs
 # actually not that bad... all well within 2SD
 # Should this be +shift or -shift? "Yes" ;)
 
+Dnonprob_lglk <- Hbits$Dnonprob$lglk
 # Would like Hbits$Dnonprob$lglk on average should be zero (across sims)
-# relative to the actual Hessian (expect to have high variances)
-# SAVE THESE AS OUTPUT so they can be compared across simulations
-# can tell us which parameters might be biased
+save(Dnonprob_lglk, file = paste0("./results/Dnonprob_lglk_", suffix, ".RData"))
+
+} # end for i in suffixes
+#######
+
 
 # Well, we can try it empirically:
 lglk_plus_shift <- lglk_with_data( ptru + parshift)
