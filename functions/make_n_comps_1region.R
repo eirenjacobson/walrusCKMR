@@ -1,4 +1,5 @@
-"make_n_comps_1region" <- function( 
+"make_n_comps_1region" <-
+function( 
     m_YA,
     m_FLive_YAN,
     m_FLive_YAself,
@@ -25,7 +26,7 @@
   sole_samp_region <- REGIONS[1]
   
   # Cheekily, I am really using A (exact age) but calling it E
-  n_comp_MOP_REYN <- autoloop(
+  n_comp_MOP_REYREYN <- autoloop(
     rj = REGIONS, aj= AGES, yj = SYEARS,
     rc = REGIONS, ac = AGES, yc = SYEARS, nc=NURSINGNESS, {
       bad <- yc - ac
@@ -37,12 +38,12 @@
         (yj != yc) * # should only apply to pre-max-weanage, but...
         m_YA[yj, aj] * m_FLive_YAN[yc, ac, nc] 
     })
-  n_comp_MOP_REY <- sumover( n_comp_MOP_REYN, 'nc')
+  n_comp_MOP_REYREYN <- sumover( n_comp_MOP_REYN, 'nc')
   
   # At least for now, nursy means not spatial
-  n_comp_MOP_EYN <- sumover( n_comp_MOP_REYN, cq( rj, rc))
+  n_comp_MOP_EYEYN <- sumover( n_comp_MOP_REYN, cq( rj, rc))
   
-  n_comp_XmHSP_REY <- autoloop(
+  n_comp_XmHSP_REYREY <- autoloop(
     r1 = REGIONS, a1= AGES, y1 = SYEARS,
     r2 = REGIONS, a2 = AGES, y2 = SYEARS, {
       b1 <- y1 - a1

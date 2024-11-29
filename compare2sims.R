@@ -17,20 +17,21 @@ for( i in seq_along( suffixes)){
   # Lglk fun for *this* dataset:
   # ... and a place to keep the data summary
   sim_lglks[[i]] <- add_data( lglk_walrus,
-      simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[1]))
+      simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[i]),
+      YSTART = denv$YSTART) # presumably 2015
   denvi <- environment( sim_lglks[[ i]]) # where stuff lives
 
-  compcheck[ 'MOP', 'Obs', i] <- sum(denvi$n_MOP_AYL)
-  compcheck[ 'XmHSP', 'Obs', i] <- sum(denvi$n_XmHSP_AY)
-  compcheck[ 'SelfP', 'Obs', i] <- sum(denvi$n_selfP_YADY) 
+  compcheck[ 'MOP', 'Obs', i] <- sum(denvi$n_MOP_EYEYL)
+  compcheck[ 'XmHSP', 'Obs', i] <- sum(denvi$n_XmHSP_EYEY)
+  compcheck[ 'SelfP', 'Obs', i] <- sum(denvi$n_selfP_EYDY) 
 } # for suffix (ie sim dataset)
 
 save( sim_lglks, file='sim_lglks.RData')
 
 # Expecteds:
-compcheck[ 'MOP', 'Exp', ] <- sum(E$n_MOP_EYEYNL) # same per sim
-compcheck[ 'XmHSP', 'Exp', ] <- sum(E$n_XmHSP_EY)
-compcheck[ 'SelfP', 'Exp', ] <- sum(E$n_selfP_YADY) 
+compcheck[ 'MOP', 'Exp', ] <- sum(E$n_MOP_EYEYL) # same per sim
+compcheck[ 'XmHSP', 'Exp', ] <- sum(E$n_XmHSP_EYEY)
+compcheck[ 'SelfP', 'Exp', ] <- sum(E$n_selfP_EYDY) 
 
 # All probs at once:
 compcheck[ , 'P', ] <- ppois( compcheck[,'Obs',], compcheck[,'Exp',])
@@ -39,10 +40,7 @@ compcheck[ , 'P', ] <- ppois( compcheck[,'Obs',], compcheck[,'Exp',])
 Dlglk0 <- matrix( 0, length( suffixes), length( ptru))
 
 for( i in seq_along( suffixes)){
-  # A bit awkward, coz lglk_walrus() always returns a *list* 
-  # and we need a number (the $lglk component)
-  simli <- function( p) sim_lglks[[i]]( p, want='lglk')$lglk
-  Dlglk0[ i,] <- numvbderiv( simli, ptru)
+  Dlglk0[ i,] <- numvbderiv( sim_lglks[[i]], ptru, want='just_lglk')
 }
 
 ### Birth gap example--- dont' wanna lose this code
@@ -50,10 +48,10 @@ for( i in seq_along( suffixes)){
 # but best is prolly to average the obs across sims
 if( FALSE){
   # Birth-gap check: 
-  onn <- as.data.frame( denv$n_XmHSP_AY)
+  onn <- as.data.frame( denv$n_XmHSP_EYEY)
   onn$bgap <- with( onn, (y2-a2) - (y1-a1))
   obs_mean_bgap <- with( onn, sum( bgap * response)) / sum( onn$response)
-  enn <- as.data.frame( E_comp$XmHSP_EY)
+  enn <- as.data.frame( E$n_XmHSP_EYEY)
   enn$bgap <- with( enn, (y2-a2) - (y1-a1))
   exp_mean_bgap <- with( enn, sum( bgap * response)) / sum( enn$response)
 }

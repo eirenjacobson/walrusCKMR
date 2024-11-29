@@ -1,4 +1,5 @@
-"ideal_selfP_walrus" <- function( nlocal=sys.parent()) mlocal({
+"ideal_selfP_walrus" <-
+function( nlocal=sys.parent()) mlocal({
   r"---{  
 Condition on *1st* sample's age, only; and on Development-stage (d) of 2nd sample (Juve or Ad). Assume unselective sampling *within* Devstage, but not across Devstages.
 
@@ -10,15 +11,17 @@ Also, assume first sample is taken before second, and non-lethally..! (Data org 
   # DEVSTAGES is (JuveF, AdF)
   # Devstage_A maps a true age into DEVSTAGE
   
-  yady_12 <- list( 
-    y1= SYEARS, a1= SELF1AGES,
+  aydy_12 <- list( 
+    a1= SELF1AGES, y1= SYEARS,
     d2= DEVSTAGES, y2= SYEARS)
   
   # abs( y2-y1) below since prob may as well be computed for impossibles---
   # but gotta avoid OOB---
   # easier than deciding which are possible!
-  Pr_selfP_YADY <- autoloop( 
-    indices= yady_12,
+  
+  # NB this version is TRUE age, hence A not E
+  Pr_selfP_AYDY <- autoloop( 
+    indices= aydy_12,
     (y2 > y1) * # no same-year (also must censor in data)
      # Pr_rr_t[ r1, r2, abs( y2-y1)] * # movement
      # recip_Pr_r[ r1] * recip_Pr_r[ r2] *
@@ -29,3 +32,4 @@ Also, assume first sample is taken before second, and non-lethally..! (Data org 
   )
   
 })
+<bytecode: 0x000002212e38d370>

@@ -1,13 +1,14 @@
-"make_precision_table" <- function( stuff, SE, Ekin){
+"make_precision_table" <-
+function( stuff, SE, Ekin){
   is_CVable <- grepl( '^N', names( stuff)) # abunds only (?!)
   
-  EMOP_df <- as.data.frame( Ekin$MOP_EYEYNL)
+  EMOP_df <- as.data.frame( Ekin$MOP_EYEYL)
   EMOP_df$bj <- with( EMOP_df, yj-aj)
   
-  EHSP_df <- as.data.frame( Ekin$XmHSP_EY)
+  EHSP_df <- as.data.frame( Ekin$XmHSP_EYEY)
   EHSP_df$b2 <- with( EHSP_df, y2-a2)
   
-  ESelfP_df <- as.data.frame( Ekin$selfP_YADY)
+  ESelfP_df <- as.data.frame( Ekin$selfP_EYDY)
   ESelfP_df$b1 <- with( ESelfP_df, y1-a1)
   
   SE_or_CV <- SE
