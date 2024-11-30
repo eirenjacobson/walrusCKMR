@@ -36,24 +36,37 @@ compcheck[ 'SelfP', 'Exp', ] <- sum(E$n_selfP_EYDY)
 # All probs at once:
 compcheck[ , 'P', ] <- ppois( compcheck[,'Obs',], compcheck[,'Exp',])
 
+## 29/11: HSPs & Selfs look OK, but not MOPs
+# Look at birth-gaps for XmHSPs:
+
+birthgap_check( E)
+birthgap_check( environment( sim_lglks[[1]])) # same as denv
+# All sims (the t() means sims are rows, which compares better
+bgsims <- t( do.on( sim_lglks, birthgap_check( environment( .))))
+colMeans( bgsims)
+birthgap_check( E)
+# ... Those look pretty good to me. The smallest & largest @gap 3 are
+# P~=0.03, 0.97. The largest @gap 2 is 0.9998... but it's waaay higher
+# than the next biggest.
+
+
+
+# MOPs: Look at distro by adult age-at-offspring-birth
+sum( fec_check( E)) # matches compcheck
+sum( fec_check( E)[1,]) # no Lethals expected
+sum( fec_check( denv)[2,]) # ditto in simulatin
+plot( 1:37, fec_check(E)[SLICE=2,], ylim=c( 0, 20), col='blue')
+points( 1:37, fec_check(denv)[SLICE=2,], col='orange')
+# NB _no_ sim parents at age 6..?
+# Fec in E swings heavily over early years of adulthood.
+
+
+
 #### Now check lglk derivs at true pars:
 Dlglk0 <- matrix( 0, length( suffixes), length( ptru))
 
 for( i in seq_along( suffixes)){
   Dlglk0[ i,] <- numvbderiv( sim_lglks[[i]], ptru, want='just_lglk')
-}
-
-### Birth gap example--- dont' wanna lose this code
-# NB it's also OK to compare vs _one_ sim dataset, like so
-# but best is prolly to average the obs across sims
-if( FALSE){
-  # Birth-gap check: 
-  onn <- as.data.frame( denv$n_XmHSP_EYEY)
-  onn$bgap <- with( onn, (y2-a2) - (y1-a1))
-  obs_mean_bgap <- with( onn, sum( bgap * response)) / sum( onn$response)
-  enn <- as.data.frame( E$n_XmHSP_EYEY)
-  enn$bgap <- with( enn, (y2-a2) - (y1-a1))
-  exp_mean_bgap <- with( enn, sum( bgap * response)) / sum( enn$response)
 }
 
 

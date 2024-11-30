@@ -73,7 +73,7 @@ function( nlocal=sys.parent()) mlocal({
   )
   
   r"---{    
-  Age-specific version (ie from given starting age). Only needed for starting ages up to AMAT; for animals known to be adult (eg parents), it's the same as Pr_fadsurv_t. Allows different survs for JUVEF and ADF. Currently used in ideal_selfP; should be used in ideal_MOP too.
+  Age-specific version (ie from given starting age, not necessarily adult). Only needed for starting ages up to AMAT; for animals known to be adult (eg parents), it's the same as Pr_fadsurv_t. Allows different survs for JUVEF and ADF. Currently used in ideal_selfP; should be used in ideal_MOP too.
   }---"
   
   # Create then loop is easiest here...  
@@ -88,4 +88,3 @@ function( nlocal=sys.parent()) mlocal({
   ## (assuming it does not depend on pop dyn--- OK in this case)  
   ## Movement stuff done separately
 })
-<bytecode: 0x000002212e31c730>

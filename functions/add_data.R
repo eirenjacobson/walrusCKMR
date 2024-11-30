@@ -138,6 +138,9 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   MOPs <- MOPs[parposs[MOPs[,1]] & offposs[MOPs[,2]],]
   XmHSPs <- XmHSPs[offposs[ XmHSPs[,1]] & offposs[ XmHSPs[,2]],]
 
+  # Oh yeah--- the parent in a MOP had better be a Mother not a Father!!!
+  MOPs <- MOPs[ samples$Sex[ MOPs[,1]]=='F',]
+
   ## SAMPLE SIZES: 
   # m_subset_xyz is samp size of subset-type samples with covars x,y,z
   # if subset omitted, it's all samples.
@@ -340,4 +343,4 @@ warning( "Pairs found but ignored cozza zero usable comps: " %&%
     return( e)
   }
 }
-<bytecode: 0x0000022131160318>
+<bytecode: 0x000002212ed2a6f8>

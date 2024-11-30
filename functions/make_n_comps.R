@@ -17,12 +17,12 @@ function(
   # Create these things (and ONLY these things):
   extract.named( mlist[ cq( m_YE, mF_YEL, mliveF_YE,  mF_YD)])
   
-  SYEARS <- dimseq( m_YE)[[1]]
-  AGES <- dimseq( m_YE)[[2]]
-  LETHALITY <- dimseq(mF_YEL)[[3]] 
+  SYEARS <- dimseq( m_YE, 1) # slightly more efficient than dimseq()[[1]]
+  AGES <- dimseq( m_YE, 2)
+  LETHALITY <- dimseq(mF_YEL, 3) 
   
-  SELF1AGES <- dimseq( mliveF_YE)[[2]]
-  DEVSTAGES <- dimseq( mF_YD)[[2]]
+  SELF1AGES <- dimseq( mliveF_YE, 2)
+  DEVSTAGES <- dimseq( mF_YD, 2)
   
   # _Could_ do consistency checks on all input dimensions
   # but leave that to R (it's really up to the caller!!!)
@@ -70,4 +70,4 @@ function(
   # Return all n_comp_<blah>
   returnList( mget( ls( environment(), pattern='^n_comp_')))
 }
-<bytecode: 0x0000022134d93820>
+<bytecode: 0x000002212eb658b8>

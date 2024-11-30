@@ -1,8 +1,11 @@
 "ideal_XmHSP_walrus" <-
 function( nlocal=sys.parent()) mlocal({
 ## Non-spatial only here.
-# Spatial version has the extra complexity that juve will stay with mum
-# until weaning (by defn) so the two sibs are not moving independently
+  r"--{ 
+  Spatial version has the extra complexity that juve will stay with mum until weaning (by defn) so the two sibs are not moving independently. Code is quite a lot more complicated.
+  
+  This HSP code incorporates ppn_breedy explicitly, rather than computing a TRO
+  }--"
   
   Pr_XmHSP_bb <- autoloop(
       b1= PDYEARS, b2= PDYEARS,
@@ -13,4 +16,3 @@ function( nlocal=sys.parent()) mlocal({
       recip_ppn_breedy
     )
 })
-<bytecode: 0x000002212e385488>
