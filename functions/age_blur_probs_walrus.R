@@ -1,5 +1,4 @@
-"age_blur_probs_walrus" <-
-function( nlocal=sys.parent()) mlocal({
+"age_blur_probs_walrus" <- function( nlocal=sys.parent()) mlocal({
   r"---{
   "A" is true age: unknown, but that's what affects probs
   "E" stands for Estimated age (now forced to have same range as actual ages).
@@ -102,4 +101,3 @@ function( nlocal=sys.parent()) mlocal({
     })
   }  
 })
-<bytecode: 0x000002212e45c1b0>

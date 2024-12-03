@@ -1,5 +1,4 @@
-"prepare_H_E" <-
-function( denv, Hbits){
+"prepare_H_E" <- function( denv, Hbits){
   E <- list() # by pairwise comp type, eg MOP
 
   # H contains expected Hessian (d^2 lglk / dparams^2)
@@ -25,4 +24,3 @@ function( denv, Hbits){
 
 return( list( H=H, E=E))
 }
-<bytecode: 0x000002212e312998>

@@ -1,5 +1,4 @@
-"birthgap_check" <-
-function( EO, max_db=9){
+"birthgap_check" <- function( EO, max_db=9){
 ## Either supply n_XmHSP_EYEY directly, or extract it...
   if( !is.numeric( EO)){
     EO <- EO$n_XmHSP_EYEY
@@ -24,4 +23,3 @@ function( EO, max_db=9){
     
 return( n_HSP_Db)
 }
-<bytecode: 0x000002211b446c10>

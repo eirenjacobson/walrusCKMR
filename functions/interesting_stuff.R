@@ -1,8 +1,5 @@
-"interesting_stuff" <-
-function( pars, ..., data_env=denv){
-  lglk <- lglk_walrus 
-  environment( lglk) <- data_env # no copy penalty on envirs
-  raw_stuff <- lglk( pars, ..., want='popdyn')
+"interesting_stuff" <- function( pars, lglk, ...){
+  raw_stuff <- lglk( pars, want='popdyn', ...)
   
   # Only *scalar* interesting things are allowed
   # Vectors are not interesting. End of.
@@ -28,5 +25,5 @@ function( pars, ..., data_env=denv){
   iscap <- substring( names( stuff), 1, 1) %in% LETTERS
   o <- order( !iscap, names( stuff))
   stuff <- stuff[ o]
-  return( stuff)  
+return( stuff)  
 }

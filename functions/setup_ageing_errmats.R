@@ -1,5 +1,4 @@
-"setup_ageing_errmats" <-
-function( nlocal=sys.parent()) mlocal({
+"setup_ageing_errmats" <- function( nlocal=sys.parent()) mlocal({
 ## Callable only from add_data()
   r"--{
   Assumes PRE-KNOWN matrix of ageing "error" (uncertainty):
@@ -74,4 +73,3 @@ warning( "Skipping deconvolution--- forgiveable for Design..?")
   That's technically valid, but slightly inconsistent with the (invalid) assumption that Devstage is always right even in the presence of ageing error, which is assumed for the 2nd sample. Getting the latter right is too horrible to contemplate; will wait for full age-structured model
   }--"
 })
-<bytecode: 0x000002212e30b958>

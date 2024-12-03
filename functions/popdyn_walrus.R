@@ -1,5 +1,4 @@
-"popdyn_walrus" <-
-function( nlocal=sys.parent()) mlocal({
+"popdyn_walrus" <- function( nlocal=sys.parent()) mlocal({
   ## Population dynamics
   Nfad_y <- autoloop( Y=PDYEARS, {
     Nfad_ystart * exp( RoI * (Y-YSTART))

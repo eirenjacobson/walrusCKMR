@@ -1,5 +1,4 @@
-"make_precision_table" <-
-function( stuff, SE, Ekin){
+"make_precision_table" <- function( stuff, SE, Ekin){
   is_CVable <- grepl( '^N', names( stuff)) # abunds only (?!)
   
   EMOP_df <- as.data.frame( Ekin$MOP_EYEYL)

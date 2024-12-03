@@ -1,5 +1,4 @@
-"fec_check" <-
-function( EO){
+"fec_check" <- function( EO){
 ## Either supply n_MOP_EYEYL directly, or extract it...
   if( !is.numeric( EO)){
     EO <- EO$n_MOP_EYEYL
@@ -23,4 +22,3 @@ function( EO){
     
 return( n_MOP_AL)
 }
-<bytecode: 0x00000221318a8cf8>

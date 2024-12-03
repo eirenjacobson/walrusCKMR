@@ -1,5 +1,4 @@
-"lglk_with_data" <-
-function( 
+"lglk_with_data" <- function( 
   params, 
   want= c( 'just_lglk', 'lglk', 'probs', 'popdyn', 'ALL')
 ){
@@ -141,4 +140,3 @@ return( returnables) # that's all folks
   
 return( returnables)
 }
-<environment: 0x000002212e072568>

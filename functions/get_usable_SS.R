@@ -1,5 +1,4 @@
-"get_usable_SS" <-
-function( m_SYEL, Devstage_A){
+"get_usable_SS" <- function( m_SYEL, Devstage_A){
   r"--{
   Extract usable SS for different types of comp, eg female-only, live, seg-agged, etc. Starts from full array of samps by [Sex, Year, E(stimated age), Lethality]. Returns a list suitable for passing to make_n_comps()
   
@@ -53,4 +52,3 @@ returnList(
     mF_YD   # self 2nd time 
   )
 }
-<bytecode: 0x000002212e635cd8>

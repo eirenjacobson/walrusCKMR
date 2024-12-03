@@ -1,5 +1,4 @@
-"ideal_MOP_walrus" <-
-function( nlocal=sys.parent()) mlocal({
+"ideal_MOP_walrus" <- function( nlocal=sys.parent()) mlocal({
   r"---{
   Standard CK prob. If yc<bj, mother would have to survive post her sampling, and could have been immature then, so Pr_survival needs to take account of her age then.
   
@@ -43,4 +42,3 @@ function( nlocal=sys.parent()) mlocal({
   Pr_MOP_bybyl[,,,,SLICE='LETHAL'] <- Pr_MOP_byby_lethal
   Pr_MOP_bybyl[,,,,SLICE='NONLETHAL'] <- Pr_MOP_byby_nonlethal
 })
-<bytecode: 0x000002212e394f10>

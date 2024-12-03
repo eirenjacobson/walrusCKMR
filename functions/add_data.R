@@ -1,5 +1,4 @@
-"add_data" <-
-function( 
+"add_data" <- function( 
   lglk= NULL,
   indiv= NULL,
   qk= NULL,
@@ -128,7 +127,7 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   offposs <- (A>0) & (B >= FIRST_PDYEAR)
   # Parents: gotta mature by end of sampling
   # (this is just for efficiency)
-  parposs <- (A>0) & (B < (max(PDYEARS) - AMAT))
+  parposs <- (A>0) & (B <= (max(PDYEARS) - AMAT))
 
   # Elim founders... shouldn't be any!!!
   print( sum( offposs & is.na( samples$Dad))) # 0, whew
@@ -343,4 +342,3 @@ warning( "Pairs found but ignored cozza zero usable comps: " %&%
     return( e)
   }
 }
-<bytecode: 0x000002212ed2a6f8>

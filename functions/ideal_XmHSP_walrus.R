@@ -1,5 +1,4 @@
-"ideal_XmHSP_walrus" <-
-function( nlocal=sys.parent()) mlocal({
+"ideal_XmHSP_walrus" <- function( nlocal=sys.parent()) mlocal({
 ## Non-spatial only here.
   r"--{ 
   Spatial version has the extra complexity that juve will stay with mum until weaning (by defn) so the two sibs are not moving independently. Code is quite a lot more complicated.

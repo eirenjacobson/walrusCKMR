@@ -1,5 +1,4 @@
-"ideal_selfP_walrus" <-
-function( nlocal=sys.parent()) mlocal({
+"ideal_selfP_walrus" <- function( nlocal=sys.parent()) mlocal({
   r"---{  
 Condition on *1st* sample's age, only; and on Development-stage (d) of 2nd sample (Juve or Ad). Assume unselective sampling *within* Devstage, but not across Devstages.
 
@@ -32,4 +31,3 @@ Also, assume first sample is taken before second, and non-lethally..! (Data org 
   )
   
 })
-<bytecode: 0x000002212e38d370>

@@ -1,5 +1,4 @@
-"lglk_walrus" <-
-function( 
+"lglk_walrus" <- function( 
   params, 
   want= c( 'just_lglk', 'lglk', 'probs', 'popdyn', 'ALL')
 ){
