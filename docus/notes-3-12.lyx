@@ -1,0 +1,418 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin D:/r2.0/eirenwal/docus/
+\textclass article
+\use_default_options true
+\begin_modules
+InStar
+enumitem
+graphicboxes
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex-natbib
+\cite_engine_type authoryear
+\biblio_options maxbibnames=9, maxcitenames=2,terseinits=true,giveninits=true,uniquename=false, uniquelist=false
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\notefontcolor #cf8a00
+\boxbgcolor #bebebe
+\branch not-used
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\branch child-variance
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\branch greyout
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.5cm
+\topmargin 3cm
+\rightmargin 1.5cm
+\bottommargin 2cm
+\secnumdepth 5
+\tocdepth 5
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes true
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+MVB Notes 3/12/2024
+\end_layout
+
+\begin_layout Standard
+I 
+\emph on
+think
+\emph default
+ I've now provided code that could be adapted (not by me,
+ I'm kina hoping,
+ unless unavoidable!) to produce all the Design results we might want.
+\end_layout
+
+\begin_layout Enumerate
+The first script is now 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+fit_walrus_ckmR_3_12.R
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ I've kept the old ones.
+ The new one is little changed,
+ but it gets the file suffixes directly from whatever is in the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+simulation
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ folder.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The first such file,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+WalrusSamples_D1_L1_S3_Sd20241023.RData
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ only contains samples 2013–2017 (can't remember the first year actually,
+ but last one is 2017).
+ So that one is not so useful for Design testing!
+ (All the scenarios in the XLSX file Sampling sheet,
+ have samples in at least 2023.) Not sure if it's intentional.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+There's a now a single function 
+\family typewriter
+doades()
+\family default
+ to pull together all Design calculations for any combination of:
+ (a) pop-dyn scenario,
+ (b) sampling scheme,
+ (c) things-of-interest.
+ The script "
+\family typewriter
+design
+\family default
+_
+\family typewriter
+eg.r
+\family default
+" has one example of calling it.
+ Highly worth looking at the code in 
+\family typewriter
+doades
+\family default
+!
+ (It should not look 
+\emph on
+completely
+\emph default
+ unfamiliar...)
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+quantities-of- interest
+\begin_inset Quotes erd
+\end_inset
+
+ reported by 
+\family typewriter
+interesting_stuff()
+\family default
+ are perhaps not very interesting...
+ they will need changing (based on discussions).
+\end_layout
+
+\begin_layout Enumerate
+There's one function 
+\family typewriter
+truncsurv()
+\family default
+ to calculate the effective survival of adults (given the "CK model" adults don't have a maximum age,
+ but the "real/simulated" walruses do).
+ And a similar one 
+\family typewriter
+effective_juve_surv()
+\family default
+ for juves.
+ These should be run for each pop-dyn scenario to generate the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ parameter values for the Design calculations,
+ and theri values should go into the 
+\family typewriter
+ptru
+\family default
+ parameter used in those calcs.
+ I have 
+\emph on
+not
+\emph default
+ done for juves in the master script,
+ but it should be done;
+ the values presumably should come out of the XLSX file for whatever pop-dyn scenario is currently being looked at.
+\end_layout
+
+\begin_layout Enumerate
+Each new pop-dyn scenario (increase/decrease etc) needs a new run of all the 
+\family typewriter
+get_Hbits()
+\family default
+ stuff.
+ Note that the call to 
+\family typewriter
+add_data()
+\family default
+ now sets 
+\family typewriter
+SYEARS
+\family default
+ explicitly (even if there are zero samples in some years) which keeps the dimensions consistent.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+There's no need to re-run 
+\family typewriter
+get_Hbits()
+\family default
+ unless the pop-dyn scenario changes—
+ specifically,
+ not just for a change in the sampling scheme.
+ 
+\family typewriter
+doades()
+\family default
+ is fine for the latter.
+\end_layout
+
+\begin_layout Enumerate
+It's important to make sure that each 
+\family typewriter
+lglk
+\family default
+ (after 
+\family typewriter
+add_data
+\family default
+) stays paired with the right 
+\family typewriter
+ptru
+\family default
+ and the right 
+\family typewriter
+Hbits
+\family default
+!
+ Ideally,
+ the name of the 
+\family typewriter
+lglk_
+\family default
+ would reflect the scenario,
+ perhaps...
+ and 
+\family typewriter
+ptru
+\family default
+ and 
+\family typewriter
+Hbits
+\family default
+ could even be stashed in 
+\family typewriter
+environment(this_particular_lglk)
+\family default
+ for safekeeping.
+ There are many ways to go about such things,
+ it's quite individual.
+ In the past I have written elaborate code to organize results (once written,
+ it makes it really simple to churn out results into tables) but I'm 
+\series bold
+not
+\series default
+ planning to do so here,
+ since otherwise only I will be able to understand it and maintain it...
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+I haven't re-checked the checking script 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+compare2sims.r
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ but AFAIK I didn't change anything relevant—
+ all today's tweaks were WRTO Design calcs.
+ That said,
+ I haven't compared to new simulations (but the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ juve surv would probably need attention first,
+ as above).
+\end_layout
+
+\begin_layout Enumerate
+For the 4th simulation (D2 L2 S3) the RoI,
+ as reported in the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+Nfad_RoI
+\family default
+...
+\begin_inset Quotes erd
+\end_inset
+
+ file,
+ is actually about -0.03.
+ That's quite a bit lower than the -0.02 in the XLSX.?
+ -0.03 certainly leads to a big overall decline,
+ the 2027 numbers being about <50% of the 2000 numbers.
+\end_layout
+
+\begin_layout Enumerate
+I've added a paper outline,
+ but as yet I have 
+\emph on
+not
+\emph default
+ created child documents for the sections (to allow independent writing).
+ We should prolly all agree on the structure first!
+ There is also a version exported to DOCX,
+ using my 
+\family typewriter
+lyxport
+\family default
+ R package that I emailed you separately about.
+\end_layout
+
+\end_body
+\end_document

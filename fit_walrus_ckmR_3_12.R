@@ -37,7 +37,10 @@ suffixes <- dir( 'simulation', patt='^WalrusSamples.*RData') |>
 # by which time there will be a LOT of pairs :) !!!
 lglk_with_data <- add_data( lglk_walrus,
     simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[4]),
-    YSTART= 2015) #  more stable parametrization (no math difference)
+    YSTART= 2015,      #  more stable parametrization (no math difference)
+    SYEARS= 2013:2027)
+    # SYEARS explicit, rather than inferred from simfile; make sure 
+    # ... it's the same in all cases
 denv <- environment( lglk_with_data) # where stuff lives
 r"--{
   There will prolly be a warning from add_data() about zapping (ie ignoring) actual observed kin.  Now check eg denv$zap_MOP if that was mentioned in the warning. When I checked, all zappings were sensible; ie, such pairs could reasonably exist, but we have deliberately decided not to use such comparisons, in make_n_comps()
@@ -46,7 +49,7 @@ r"--{
 
 ## True parameter values: mostly from Eiren's sim notes
 # but Nfad2000 and RoI are stored on file
-print( load( sprintf( './simulation/Nfad_RoI_%s.RData', suffixes[ 1])))
+print( load( sprintf( './simulation/Nfad_RoI_%s.RData', suffixes[ 4])))
 # variable called 'out', which has "real" abund & RoI param values
 
 # Adults in simulation all die @~37yo, ie ~30yrs after maturity.
