@@ -20,4 +20,4 @@ function(){
   file.copy( dotR, 'd:/github/eirenj/walrusCKMR', 
     overwrite=TRUE)
 }
-<bytecode: 0x0000027765199548>
+#<bytecode: 0x0000027765199548>
