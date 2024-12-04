@@ -1,7 +1,3 @@
-fit_walrus_ckmR.R runs the CKMR code on a file of simulated data and saves the results.
-
-The package purrr must be installed from CRAN.
-
 The following packages must be installed from Mark's repo at https://markbravington.r-universe.dev/builds
 
 mvbutils
@@ -11,3 +7,13 @@ TMBO
 debug
 kinsimmer
 fastmatch
+
+Order of Operations:
+
+1. fit_walrus_ckmR.R runs the CKMR code on a file of simulated data.
+
+from here, you can either
+
+2a. compare2sims.R compares model expected values to simulated values
+2b. design_eg.R generates expected precision associated with designs
+
