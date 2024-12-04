@@ -1,23 +1,30 @@
 #### Compare *totals* of kin-pairs by type
 # There are more checkables than just totals, but it's a start
 
+
+# what type (suffix) of files do you want to look at?
+TYPE <- "D0_L1_S3" # these are 10 reps of the same simulation
+simids <- substr(suffixes, 1, 8)
+ids <- which(simids == TYPE)
+
+
 compcheck <- array( 0, 
-    c( 3, 3, length( suffixes)),
+    c( 3, 3, length( ids)),
     dimnames=list( 
       cq( MOP, XmHSP, SelfP),
       cq( Exp, Obs, P),
-      suffixes
+      suffixes[ids]
     )
   )
 
 # Loop over sim datasets, loading...
 sim_lglks <- list() # we will keep this for later
 
-for( i in seq_along( suffixes)){
+for( i in seq_along( suffixes[ids])){
   # Lglk fun for *this* dataset:
   # ... and a place to keep the data summary
   sim_lglks[[i]] <- add_data( lglk_walrus,
-      simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[i]),
+      simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[ids][i]),
       YSTART = denv$YSTART) # presumably 2015
   denvi <- environment( sim_lglks[[ i]]) # where stuff lives
 
@@ -26,17 +33,25 @@ for( i in seq_along( suffixes)){
   compcheck[ 'SelfP', 'Obs', i] <- sum(denvi$n_selfP_EYDY) 
 } # for suffix (ie sim dataset)
 
-save( sim_lglks, file='sim_lglks.RData')
+save( sim_lglks, file= paste0('./results/sim_lglks_', TYPE, '.RData'))
 
 # Expecteds:
-compcheck[ 'MOP', 'Exp', ] <- sum(E$n_MOP_EYEYL) # same per sim
-compcheck[ 'XmHSP', 'Exp', ] <- sum(E$n_XmHSP_EYEY)
-compcheck[ 'SelfP', 'Exp', ] <- sum(E$n_selfP_EYDY) 
+compcheck[ 'MOP', 'Exp', ] <- round(sum(E$n_MOP_EYEYL)) # same per sim
+compcheck[ 'XmHSP', 'Exp', ] <- round(sum(E$n_XmHSP_EYEY))
+compcheck[ 'SelfP', 'Exp', ] <- round(sum(E$n_selfP_EYDY)) 
 
 # All probs at once:
-compcheck[ , 'P', ] <- ppois( compcheck[,'Obs',], compcheck[,'Exp',])
+compcheck[ , 'P', ] <- round(ppois( compcheck[,'Obs',], compcheck[,'Exp',]), digits = 2)
 
-## 29/11: HSPs & Selfs look OK, but not MOPs
+# visual checks
+par(mfrow = c(1, 3))
+boxplot(compcheck["MOP","P",], ylim = c(0,1), main = "MOPs")
+boxplot(compcheck["XmHSP","P",], ylim = c(0,1), main = "HSPs")
+boxplot(compcheck["SelfP","P",], ylim = c(0,1), main = "Self")
+
+save(compcheck, file = paste0("./results/compcheck_", TYPE, ".RData"))
+
+## 04/12: MOPs & HSPs look OK, but not Selfs?
 # Look at birth-gaps for XmHSPs:
 
 birthgap_check( E)

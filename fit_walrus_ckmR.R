@@ -28,15 +28,15 @@ suffixes <- dir( 'simulation', patt='^WalrusSamples.*RData') |>
     xsub( 'WalrusSamples_', '') |>
     xsub( '[.]RData', '')
 
+simids <- substr(suffixes, 1, 8)
+ids <- which(simids == TYPE)
+
 # The "generic" lglk function needs to be told what the data are
 # You will need to set 'simfile=...' arg; default is for MVB
 
-# For some reason, suffixes[1] only has sampling thru 2017 (I guess it is
-# all the _known_ extant data) so I am running with suffixes[4] here
-# coz it goes thru 2027
-# by which time there will be a LOT of pairs :) !!!
+
 lglk_with_data <- add_data( lglk_walrus,
-    simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[4]),
+    simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[i]),
     YSTART= 2015,      #  more stable parametrization (no math difference)
     SYEARS= 2013:2027)
     # SYEARS explicit, rather than inferred from simfile; make sure 
@@ -49,7 +49,7 @@ r"--{
 
 ## True parameter values: mostly from Eiren's sim notes
 # but Nfad2000 and RoI are stored on file
-print( load( sprintf( './simulation/Nfad_RoI_%s.RData', suffixes[ 4])))
+print( load( sprintf( './simulation/Nfad_RoI_%s.RData', suffixes[i])))
 # variable called 'out', which has "real" abund & RoI param values
 
 # Adults in simulation all die @~37yo, ie ~30yrs after maturity.
