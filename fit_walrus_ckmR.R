@@ -6,51 +6,75 @@ library( kinsimmer)
 library( despack)
 library( doParallel)
 
-library(purrr)
-
-# simulation identifier
-suffixes <- c("Sc00_Sd20241023", "Sc00_Sd20241121", "Sc00_Sd20839572", 
-              "Sc00_Sd29571492", "Sc00_Sd76937593", "Sc00_Sd92759173",
-              "Sc00_Sd41850183", "Sc00_Sd38519472", "Sc00_Sd35719375",
-              "Sc00_Sd57394720") 
-
- 
-#19276639)
-
-for (i in 1:length(suffixes)){
+r"--{
+  MVB: only calc the Hessian ingredients (Hbits) once, unless popdyn changes. We don't actually need _data_ for that, just "true" params (or working guess), number of comps, and lglk function. The _expected_ Hessian, which is what finfo_onetype() and so on calculate, does not depend on observed numbers of kin-pairs.
   
-  suffix <- suffixes[i]
-  
-  load(paste0("./simulation/Nfad_RoI_", suffix, ".RData"))
+  Comparisons with "actual" simulated MOPs etc come later, in a separate script. However, we do need _one_ simulated dataset here, coz it has sample size info (n_comp_<BLAH>)
+}--"
 
 # load all of the functions in the functions folder
-functionfiles <- paste0("./functions/", list.files("./functions"))
-map(functionfiles, source)
+functionfiles <- list.files( './functions', full=TRUE) # with path
+# Probably MVB only: don't accidentally overwrite!
+if( any( sub( '[.][Rr]$', '', basename( functionfiles)) %in% 
+    lsall( .GlobalEnv) )){ 
+  KABOOM <- yes.no( 'Reload & overwrite functions..?')
+  if( KABOOM){
+    lapply( functionfiles, source) 
+  }
+}
 
-# Use the simulations as a guide to future samp size etc
-# also set up for actual testing on data1
+# Suffixes from simulation folder:
+suffixes <- dir( 'simulation', patt='^WalrusSamples.*RData') |>
+    xsub( 'WalrusSamples_', '') |>
+    xsub( '[.]RData', '')
+
 # The "generic" lglk function needs to be told what the data are
 # You will need to set 'simfile=...' arg; default is for MVB
-lglk_with_data <- add_data( lglk_walrus, 
-                            simfile = paste0("WalrusSamples_", suffix, ".RData")) 
-denv <- environment( lglk_with_data) # where stuff lives
 
-## These come from Eiren's sim notes
+# For some reason, suffixes[1] only has sampling thru 2017 (I guess it is
+# all the _known_ extant data) so I am running with suffixes[4] here
+# coz it goes thru 2027
+# by which time there will be a LOT of pairs :) !!!
+lglk_with_data <- add_data( lglk_walrus,
+    simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[4]),
+    YSTART= 2015,      #  more stable parametrization (no math difference)
+    SYEARS= 2013:2027)
+    # SYEARS explicit, rather than inferred from simfile; make sure 
+    # ... it's the same in all cases
+denv <- environment( lglk_with_data) # where stuff lives
+r"--{
+  There will prolly be a warning from add_data() about zapping (ie ignoring) actual observed kin.  Now check eg denv$zap_MOP if that was mentioned in the warning. When I checked, all zappings were sensible; ie, such pairs could reasonably exist, but we have deliberately decided not to use such comparisons, in make_n_comps()
+}--"
+
+
+## True parameter values: mostly from Eiren's sim notes
+# but Nfad2000 and RoI are stored on file
+print( load( sprintf( './simulation/Nfad_RoI_%s.RData', suffixes[ 4])))
+# variable called 'out', which has "real" abund & RoI param values
+
+# Adults in simulation all die @~37yo, ie ~30yrs after maturity.
+# Survival before that is 0.9622, so average adult survival is lower:
+effective_adult_surv <- truncsurv( 30, 0.9622) # 0.9458
+
+# NB NB: CHANGED this 
+Nfad_2015 <- out[ 'Nfad_2000'] * exp( 15*out['RoI'])
 ptru <- c(
-  log_Nfad_y0 = log(out[["Nfad_2000"]]), # in AD2000
-  RoI= out[["RoI"]], # bugger all (3% over 80years =...)
-  lgt_fadsurv= logit( 0.9622), # FWIW that's 3.237
+  log_Nfad_y0 = log( Nfad_2015), # NB add_data( ... YSTART=2015)
+  RoI= out[ 'RoI'], # bugger-all
+  lgt_fadsurv= logit( effective_adult_surv),
   diff_lgt_fjusurv=  logit( 0.9) - logit( 0.9622), # 0 => same as adult
   lpsi= logit( c( 0.1, 0.5)), # Pr[preg in 2nd year], Pr[preg from y>2]
   # No spatial params now
   NULL # so all previous lines can end with comma
 )
 
-lglk0 <- lglk_with_data( ptru)
+lglk0 <- lglk_with_data( ptru, want='just_lglk')
+# Dlglk0 <- numvbderiv( lglk_with_data, ptru, want='just_lglk')
+
 # For list of prob arrays:
 # probars <- lglk_with_data( ptru, want='probs')
 # For popdyn goodies:
-popdyn0 <- lglk_with_data( ptru, want='popdyn_only')
+popdyn0 <- lglk_with_data( ptru, want='popdyn')
 probs0 <- lglk_with_data( ptru, want='probs')
 
 # Set up for parallel numderiv
@@ -61,16 +85,14 @@ CLUSTO <- makeCluster( ncores)
 # and then is OK 2nd time..?
 registerDoParallel( CLUSTO, ncores, nocompile=TRUE)
 
-# Cluster may need explicit exports, unless 
-# ... all funs are in current env
-#findo <- find( 'lglk_walrus')
-#if(  findo != '.GlobalEnv'){
-  export_funs <- rownames( 
-      mvbutils::foodweb( where='.GlobalEnv', prune='lglk_walrus', 
-          ancestors=FALSE, descendents=TRUE)$funmat)
-#} else export_funs <- character()
-
-#export_funs <- "lglk_walrus"
+# Cluster may need explicit exports--- might not if all functions
+# are in .GlobalEnv, but I'm not sure. Maybe it needs them anyway.
+# I'm not sure. I don't care! Just export them explicitly anyway!
+# mvbutils::fo
+export_funs <- rownames( mvbutils::foodweb( 
+    where='.GlobalEnv', prune='lglk_walrus', 
+    plotting=FALSE, ancestors=FALSE, descendents=TRUE)$funmat
+  )
 
 # For parallel, need a new copy of lglk_with_data
 # that can find all the data, using list not envir
@@ -90,239 +112,34 @@ checko <- parallel_get_probs( ptru, parallel_data_list)
 
 # Get bits needed to compute Hessian
 Hbits <- get_Hbits( 
-  ptru, parallel_get_probs,
-  numderiv_fun= numvbderiv_parallel,
-  Pargs=list( DATALIST=parallel_data_list, USE_NURSY_ONLY=FALSE),
-  Dargs=list( 
-      eps=1e-5, 
-      FOREACH_ARGS=list( 
-          .packages= c( 'mvbutils', 'offarray')
-        ),
-      PARALLEL=TRUE
-    )
+    ptru, parallel_get_probs,
+    numderiv_fun= numvbderiv_parallel,
+    Pargs=list( DATALIST=parallel_data_list),
+    Dargs=list( 
+        eps=1e-5, 
+        FOREACH_ARGS=list( 
+            .packages= c( 'mvbutils', 'offarray')
+          ),
+        PARALLEL=TRUE
+      )
 )    
-
-# Hbits_Nursy <- get_Hbits( 
-#   ptru, parallel_get_probs,
-#   numderiv_fun= numvbderiv_parallel,
-#   Pargs=list( DATALIST=parallel_data_list, USE_NURSY_ONLY=TRUE),
-#   Dargs=list( 
-#       eps=1e-5, 
-#       FOREACH_ARGS=list( 
-#           .packages= c( 'mvbutils', 'offarray')
-#         ),
-#       PARALLEL=TRUE
-#     )
-# )    
 
 stopImplicitCluster()
 stopCluster( CLUSTO)
 rm( CLUSTO)
 
-# Want this for all comp-types:
-# H$MOP <- finfo_onetype( Hbits$DSP$DSP_MOP_REY, denv$n_comp_MOP_REY)
-# fisher info gives you the informational value of a single comparison of type X
-# also Ekin
-# Via loop below
+## Now get expected Hessian and numbers of kin-pairs
+# Those shouldn't vary between simulations (unless samp sizes change)
+# but we need the "ncomps" from *one* simulated dataset
+extract.named( prepare_H_E( denv, Hbits)) 
+# ... now H & E exist
+Vpar <- solve( H) # Param covariance matrix
 
-E_comp <- H_comp <- list()
-
-compcheck <- data.frame("Type" = c("MOPs", "HSPs", "Self"), 
-                        "Obs" = rep(NA, 3),
-                        "Exp" = rep(NA, 3), 
-                        "P" = rep(NA, 3))
-
-# mops
-ncomp <- denv[["n_comp_MOP_AYNL"]] 
-# H_comp contains inverse covariance between parameters
-H_comp[["DSP_MOP_EYEYNL"]] <- finfo_onetype(Hbits$DSP[["DSP_MOP_EYEYNL"]], ncomp)
-# E_comp is expected number of kin pairs 
-E_comp[["MOP_EYEYNL"]] <- ncomp * Hbits$Prkin[["Pr_MOP_EYEYNL"]]
-
-# check expected versus observed number of kin pairs
-compcheck[1,]$Exp <- sum(E_comp$MOP_EYEYNL)
-compcheck[1,]$Obs <- sum(denv$n_MOP_AYL)
-compcheck[1,]$P <- ppois(compcheck[1,]$Obs, compcheck[1,]$Exp)
-
-# half sibs
-ncomp <- denv[["n_comp_XmHSP_AY"]]
-H_comp[["DSP_XmHSP_EY"]] <- finfo_onetype( Hbits$DSP[[ "DSP_XmHSP_EY"]], ncomp)
-E_comp[["XmHSP_EY"]] <- ncomp * Hbits$Prkin[["Pr_XmHSP_EY"]]
-
-compcheck[2,]$Exp <- sum(E_comp$XmHSP_EY)
-compcheck[2,]$Obs <- sum(denv$n_XmHSP_AY)
-compcheck[2,]$P <- ppois(compcheck[2,]$Obs, compcheck[2,]$Exp)
-
- 
-# self
-ncomp <- denv[["n_comp_selfP_YADY"]]
-H_comp[["DSP_selfP_YADY"]] <- finfo_onetype( Hbits$DSP[[ "DSP_selfP_YADY"]], ncomp)
-E_comp[["selfP_YADY"]] <- ncomp * Hbits$Prkin[["Pr_selfP_YADY"]]
-
-compcheck[3,]$Exp <- sum(E_comp$selfP_YADY) 
-compcheck[3,]$Obs <- sum(denv$n_selfP_YADY) 
-compcheck[3,]$P <- ppois(compcheck[3,]$Obs, compcheck[3,]$Exp)
-
-save(compcheck, file = paste0("./results/compcheck_", suffix, ".RData"))
-
- # Birth-gap check: 
- onn <- as.data.frame( denv$n_XmHSP_AY)
- onn$bgap <- with( onn, (y2-a2) - (y1-a1))
- obs_mean_bgap <- with( onn, sum( bgap * response)) / sum( onn$response)
- enn <- as.data.frame( E_comp$XmHSP_EY)
- enn$bgap <- with( enn, (y2-a2) - (y1-a1))
- exp_mean_bgap <- with( enn, sum( bgap * response)) / sum( enn$response)
-
-# Add up Hessian bits:
-H <- 0*H_comp[[1]]
-for( comptype in names( Hbits$DSP)[2:4]){
-  H <- H + H_comp[[ comptype]]
-}
-
-# What would the approx MLE be?
-# Shift is Dlglk (score) "times" inv(Hess) ; plus/minus!
-Vpar <- Hinv <- solve( H)
-parshift <- Hinv %**% Hbits$Dnonprob$lglk
-parshift / sqrt( diag( Vpar)) # in SDs
-# actually not that bad... all well within 2SD
-# Should this be +shift or -shift? "Yes" ;)
-
-Dnonprob_lglk <- Hbits$Dnonprob$lglk
-# Would like Hbits$Dnonprob$lglk on average should be zero (across sims)
-save(Dnonprob_lglk, file = paste0("./results/Dnonprob_lglk_", suffix, ".RData"))
-
-} # end for i in suffixes
-#######
+## MVB: OK that's the "do it once" stuff 
+# Now there's two separate paths: 
+# 1. Compare obs & exp etc in simulations:  in "compare2sims.R"
+# 2. Design calculations: in "design_eg.R"
 
 
-# Well, we can try it empirically:
-lglk_plus_shift <- lglk_with_data( ptru + parshift)
-lglk_minus_shift <- lglk_with_data( ptru - parshift)
-lglk0
-
-# ... plus shift is definitly better! "Only" by 10 units so not tooo drastic...
- popdyn_shift <- lglk_with_data( ptru + parshift, want='popdyn')
- sumEshift <- numeric()
- forEshift <- lglk_with_data( ptru + parshift, want='probs')
- for( comptype in names( Hbits$DSP)){
-   ncomp <- denv[[ sub( 'DSP', 'n_comp', comptype)]]
-   sumEshift[ sub( 'DSP_', '', comptype)] <- sum( 
-       ncomp * forEshift[[ sub( 'DSP', 'Pr', comptype)]]
-     )
- }
- rbind( sumEshift, sumbo)
- 
- 
- # mops
- ncomp <- denv[["n_comp_MOP_AYL"]] 
- # H_comp contains inverse covariance between parameters
- sumEshift[["DSP_MOP_EYEYNL"]] <- sum(ncomp * forEshift$Pr_MOP_EYEYL)
-
- ncomp <- denv[["n_comp_XmHSP_AY"]] 
- # H_comp contains inverse covariance between parameters
- sumEshift[["DSP_XmHSP_EY"]] <- sum(ncomp * forEshift$Pr_XmHSP_EY)
- 
- ncomp <- denv[["n_comp_selfP_YADY"]] 
- # H_comp contains inverse covariance between parameters
- sumEshift[["n_comp_selfP_YADY"]] <- sum(ncomp * forEshift$Pr_selfP_YADY)
- 
- 
-# sumEshift is now quite reasonable cf obs kinpair tots
-# and params have not changed that much (juve surv mainly)
-# 
-# # Using Nursy status:
-# Hbits_Nursy <- get_Hbits( 
-#   ptru, parallel_get_probs,
-#   numderiv_fun= numvbderiv_parallel,
-#   Pargs=list( DATALIST=parallel_data_list, USE_NURSY_ONLY=TRUE),
-#   Dargs=list( 
-#       eps=1e-5, 
-#       FOREACH_ARGS=list( 
-#           .packages= c( 'mvbutils', 'offarray')
-#         ),
-#       PARALLEL=TRUE
-#     )
-# )    
-# 
-# H_comp_Nursy <- list()
-# for( comptype in names( Hbits_Nursy$DSP)){
-#   ncomp <- denv[[ sub( 'DSP', 'n_comp', comptype)]]
-#   H_comp_Nursy[[ comptype]] <- finfo_onetype( 
-#       Hbits_Nursy$DSP[[ comptype]], ncomp)
-# }
-# 
-# # Add up Hessian bits:
-# H_Nursy <- 0*H_comp_Nursy[[1]]
-# for( comptype in names( Hbits_Nursy$DSP)){
-#   H_Nursy <- H_Nursy + H_comp_Nursy[[ comptype]]
-# }
-
-
-# Quantities of interest:
-stuff0 <- interesting_stuff( ptru)
-
-# Just popdyn is quick (probs are slow) so don't parallel this
-Dstuff0 <- numvbderiv( interesting_stuff, ptru, eps=1e-5)
-Vstuff0 <- Dstuff0 %**% Vpar %**% t( Dstuff0)
-SEstuff0 <- sqrt( diag( Vstuff0))
-mpt0 <- make_precision_table( stuff0, SEstuff0, E_comp)
-
-# Ready for import into Lyx--- which works pretty well
-if( !dir.exists( 'results')){
-  mkdir( results) # MVB 8/11--- tho might wanna put elsewhere anyway
-}
-write.csv( mpt0, file='results/out.csv')
-
-# MVB 8/11: I have turned the block below into "unexecuted" rather than
-# hashed-out, so that I can test it (even if we don't want it yet)
-if( FALSE){
-  ## Investigate contrib of CKMR data
-  # Keep a bit of CKMR for identifiability
-  H_comp_IMR <- list()
-  for( comptype in names( Hbits$DSP)){
-    ncomp <- denv[[ sub( 'DSP', 'n_comp', comptype)]]
-    if( !grepl( '(?i)self', comptype)){
-      ncomp <- ncomp / 100
-    }
-    H_comp_IMR[[ comptype]] <- finfo_onetype( Hbits$DSP[[ comptype]], 
-      ncomp)
-  }
-
-  # ... and combine
-  H_IMR <- 0*H_comp_IMR[[1]]
-  for( comptype in names( Hbits$DSP)){
-    H_IMR <- H_IMR + H_comp_IMR[[ comptype]]
-  }
-
-  # ... with hindsight, I could just have applied the 
-  # downweighting inside the last loop, without recalling finfo_onetype
-  # Never Mind.
-
-  Vnock <- solve( H_IMR)
-  Vstuff_nock <- Dstuff0 %**% Vnock %**% t( Dstuff0)
-  mpt_nock <- make_precision_table( stuff0, sqrt( diag( Vstuff_nock)), E_comp) 
-
-  ## Historical & future samp sizes match the sims (I hope...)
-
-  ## Let's tweak juve vs ad samp sizes in future...
-  # More juves...
-  mpt_mj <- make_precision_table_completely( 
-      stuff0, Dstuff0, Hbits, denv, 
-      adjust_future_sample_sel( denv, 2))
-  Vmj <- attr( mpt_mj, 'Vpar')
-  # sqrt( diag( Vmj)) is mostly _slightly_ worse than for Vpar
-  # except juve surv, unsurprisingly! but improvement is small there
-
-  # Less juves...
-  mpt_lj <- make_precision_table_completely( 
-      stuff0, Dstuff0, Hbits, denv, 
-      adjust_future_sample_sel( denv, 0.5))
-  Vlj <- attr( mpt_lj, 'Vpar')
-
-  # Splunge the mpt's together...
-  mpt_all <- rbind( mpt0[2,], mpt_mj[2,], mpt_lj[2,])
-  Ecols <- which( startsWith( colnames( mpt0), 'E')) 
-  mpt_all[ , Ecols] <- rbind( mpt0[1,Ecols], mpt_mj[1,Ecols], mpt_lj[1,Ecols])
-}  
 
 
