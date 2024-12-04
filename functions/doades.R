@@ -1,4 +1,4 @@
-"doades" <- function( 
+"doades" <- structure( function( 
   m_SYEL,     # samp sizes
   Hbits,      # from get_Hbits
   reporteez,  # function that returns quants-of-interest
@@ -74,4 +74,27 @@ stopifnot( my.all.equal( # dimensions had better match...
   SEstuff@V <- Vstuff
   
 return( SEstuff)
-}
+},
+"doc" =
+structure(c("doades    package:not-yet-a-package", "", "", "Design calculation for walrus", 
+"", "", "DESCRIPTION", "", "This computes a set of SEs for user-specified quantities-of-interest, based on one specified sampling scheme, using pre-computed results ('Hbits') for one pop-dyn scenario. For Walrus.", 
+"", "There's \"really\" three nested steps to CK Design: ", "", 
+" - getting 'Hbits' (the magic derivatives), for one pop-dyn case;", 
+" - turning that into a parameter covar mat, for one sampling-scheme;", 
+" - getting \"interesting\" covar mat, for one particular set", 
+" ", "'doades' combines the last two. This theoretically leads to slight inefficiency if computing different quants-of-int for the same pop-dyn and samp-scheme, coz the middle step gets done twice, but actually it is pretty quick.", 
+"", "", "USAGE", "", "doades( m_SYEL, Hbits, reporteez, lglk, eps = 0.00001, comp_wts=NULL) ", 
+"", "", "ARGUMENTS", "", " m_SYEL: 4D offarray of sample sizes by Sex, Year, E(stimated age), Lethality. These had better match the ranges already used in computing...", 
+" ", " Hbits: ... which comes from 'despack::get_Hbits()', for one specific pop dyn scenario and (maximum) ranges of things like Age, Sampling-year, etc.", 
+" ", " reporteez: Function taking \"true\" params and 'lglk' (see next), and returning a vector of \"interesting\" pop dyn summaries, eg abundance in some particular year-of-interest. There's an example in the (non-runnable) EXAMPLES section.", 
+" ", " lglk: You generated this long ago, from 'lglk_this_dataset <- add_data( lglk_walrus, <simfile>)'. Its environment contains useful constants, and you can run it with 'want=\"popdyn\"' to get just the pop-dyn summaries (which is presumably the first thing that your 'reporteez' function will do).", 
+" ", " eps: for 'numvbderiv' numerical differentation. Not too big, not too small, is my advice. The anxious can try changing the default by a factor of 10 either way; it should make little difference.", 
+" ", " comp_wts: How to weight the various lglk components, basically to explore the effect of (almost) turning off CKMR and/or IMR data. If non-NULL, it should be a numeric vector with names such as 'MOP\" or \"XmHSP\" or \"selfP\" (as seen inside names of 'Hbits$DSP'--- ie, the different types of pairwise comparison.  A value of '1' means \"treat this comp-type as-is\", and you only need to supply non-1 values, since 1 is the default. So, to explore eg turning off IMR, just set eg 'comp_wts=c( selfP=0.01)'--- which will leave the MOP and XmHSP weights at 1.", 
+"", "", "VALUE", "", "A vector of standard errors, corresponding to the vector of things returned by 'reporteez()'. It will have an attribute 'V' containing the entire covariance matrix; usually just the SE's, ie 'ssqrt(diag(.))', are what's wanted, but You Never Do Know.", 
+"", "", "SEE.ALSO", "", "'despack::get_Hbits'", "", "", "EXAMPLES", 
+"", "## Don't run", "thingz_of_int <- function( p, L){", "  popd <- L( p)", 
+"  Nfad_2015 <- popd$Nfad_y[ 2015]", "  Deaths_2025 <- popd$Nfad_y[ 2025] * ", 
+"      (1-inv_logit( popd$lgt_fadsurv))", "  thingz <- unlist( returnList( # a handy way to name-and-get", 
+"    Nfad_2015, Deaths_2025)", "return( thingz)", "}", "", "# ... now pass that into doades()", 
+"", "## End don't run"), class = "docattr")
+)

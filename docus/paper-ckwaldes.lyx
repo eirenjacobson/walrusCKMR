@@ -814,54 +814,14 @@ Results
 \end_layout
 
 \begin_layout Standard
-obvs the checks passed (eventually...).
- Not much more to say!
- (I suspect it's not worth reporting the checks—
- where do you stop with that?
- but perhaps they should be avilable online,
- eg obs & exp kin-totals?
- mebbe report the deriv checks for bias,
- dunno)
-\end_layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "results.lyx"
+literal "false"
 
-\begin_layout Standard
-Present some scenarios and results together (do NOT put 
-\begin_inset Quotes eld
 \end_inset
 
-scenarios
-\begin_inset Quotes erd
-\end_inset
 
- into separate ealier section,
- it just confuses the hell out of readers).
-\end_layout
-
-\begin_layout Subsection
-Sample sizes and duration
-\end_layout
-
-\begin_layout Standard
-Sample size investigations (main thing)
-\end_layout
-
-\begin_layout Subsection
-Sensitivity analyses
-\end_layout
-
-\begin_layout Itemize
-pop-dyn stable/inc/dec (presumably,
- minimal diff from a Design PoV,
- ITO how much CKIMR adds rel to IMR—
- which is the key Design Q)
-\end_layout
-
-\begin_layout Itemize
-turning off CKMR (or IMR)
-\end_layout
-
-\begin_layout Itemize
-value of Lethal
 \end_layout
 
 \begin_layout Section

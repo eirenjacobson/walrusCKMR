@@ -1,6 +1,6 @@
-"set_SYEARS_etc" <- function( new_SYEARS, nlocal=sys.parent()) mlocal({
+"set_SYEARS_etc" <- function( nlocal=sys.parent()) mlocal({
   # mlocal so that it creates vars
-  SYEARS <- min( new_SYEARS) %upto% max( new_SYEARS)
+  
   PDYEARS <- FIRST_PDYEAR %upto% max( SYEARS)
   MAX_Dsyears <- length( SYEARS) # 0 up to last one
   
@@ -13,6 +13,6 @@
   # Earlier-born have same prob as first one, for all pot offs 
   # later-born can't be parents of any sample
   PCOHORTS <- (FIRST_PDYEAR - FEC_ASYMP_AGE) %upto%
-    (max( SYEARS) - AMAT) 
+      (max( SYEARS) - AMAT) 
   
 })

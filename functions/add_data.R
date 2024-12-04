@@ -6,7 +6,7 @@
   simdir= "./simulation",
   AMAX= 37, # and then you die
   FIRST_PDYEAR= 2000,
-  SYEARS= if( missing( simfile)) 2010:2028,
+  SYEARS, # REMOVE DEFAULT
   YSTART= 2015, # could use median PDYEARS but clarity is best
   AMAT= 6,
   AMIN= 1, # calves not modelled 
@@ -70,7 +70,19 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   })
 
   samples <- indiv[!is.na(indiv$SampY),]
-  set_SYEARS_etc( range( samples$SampY))
+
+  # SYEARS: make sure there's no gaps
+  syrange <- if( missing( SYEARS)){
+    range( samples$SampY)
+    } else {
+      range( SYEARS)
+    }
+  SYEARS <- syrange[1] %upto% syrange[2]
+  
+  # Confusingly, the next function does _not_ actually create
+  # SYEARS: we've just done that. But it used to... 
+  # ... and it still does create other things ("etc")...
+  set_SYEARS_etc()
 
   if( is.null( qk)){
     recaps <- which( duplicated( samples$Me)) # EKJ NOTE:...
