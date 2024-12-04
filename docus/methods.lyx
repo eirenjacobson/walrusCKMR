@@ -1,0 +1,223 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass elsarticle
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-std
+InStar
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Section*
+
+\series bold
+METHODS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+MOPs
+\end_layout
+
+\begin_layout Subsection
+XmHSPs
+\end_layout
+
+\begin_layout Subsubsection
+The breeding cycle
+\end_layout
+
+\begin_layout Subsection
+SelfPs:
+ IMR in a CKMR setting
+\end_layout
+
+\begin_layout Subsection
+Simulations and model checking
+\end_layout
+
+\begin_layout Itemize
+To test the CKMR model,
+ we developed an individual-based simulation with the life history and population dynamics of Pacific walrus.
+ The simulation was modified from the package fishSim by Shane Baylis.
+\end_layout
+
+\begin_layout Itemize
+We generated 10 replicate simulated datasets with the following properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Starting population size of 250,000 with simulation run from 1950 to 2030
+\end_layout
+
+\begin_layout Itemize
+Calf survival (age 0-1) 0.67,
+ juvenile survival (age 1-5) 0.9,
+ adult survival (6+) 0.9622,
+ fecundity 0.33 (0.13 per adult female per year).
+ Maximum age was 37,
+ with no senescence.
+ This resulted in a rate of increase of –6.63E-3 per year.
+\end_layout
+
+\begin_layout Itemize
+Sampling was simulated between 2013 and 2017 according to the age and sex composition of existing samples
+\end_layout
+
+\begin_layout Itemize
+Sampling was simulated between 2023 and 2027 assuming that 800 juveniles and 600 adults would be sampled each year
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+To evaluate agreement between the simulation and model,
+ we checked each of these 10 replicate simulated datasets against the CKMR model for:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Observed versus expected numbers of kin pairs in different categories (MOPs,
+ XmHSPs,
+ and SelfPs).
+\end_layout
+
+\begin_layout Itemize
+Observed versus expected gaps between half-siblings
+\end_layout
+
+\begin_layout Itemize
+Log-likelihood derivatives at true parameter values
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Survey design
+\end_layout
+
+\begin_layout Itemize
+We were interested in evaluating the performance of CKMR under different demographic and sampling scenarios.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Demography:
+ slightly decreasing,
+ stable,
+ and slightly increasing population 
+\end_layout
+
+\begin_layout Itemize
+Lethality:
+ with or without incorporation of lethal samples
+\end_layout
+
+\begin_layout Itemize
+Sampling:
+ reduce future sampling effort from five years to three years,
+ or reduce sampling effort in individual years
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Sensitivity analyses
+\end_layout
+
+\end_body
+\end_document
