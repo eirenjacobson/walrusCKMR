@@ -414,5 +414,38 @@ lyxport
  R package that I emailed you separately about.
 \end_layout
 
+\begin_layout Section
+TO DO
+\end_layout
+
+\begin_layout Standard
+set_SYEARS:
+ use real SYEARS
+\end_layout
+
+\begin_layout Standard
+SelfP still not right...
+\end_layout
+
+\begin_layout Standard
+names onto doades
+\end_layout
+
+\begin_layout Subsection
+Sampling notes
+\end_layout
+
+\begin_layout Standard
+2023 all 1 
+\end_layout
+
+\begin_layout Standard
+2024 all 0
+\end_layout
+
+\begin_layout Standard
+add 2028
+\end_layout
+
 \end_body
 \end_document

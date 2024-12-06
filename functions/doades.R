@@ -71,6 +71,11 @@ stopifnot( my.all.equal( # dimensions had better match...
   Vstuff <- Dstuff %**% Vpar %**% t( Dstuff)
   SEstuff <- sqrt( diag( Vstuff))
 
+  # Up to the user to make sure reporteez() puts names on its results
+  # but you don't absolutely HAVE to...
+  names( SEstuff) <- names( stuff)
+  dimnames( Vstuff) <- list( names( stuff), names( stuff))
+
   SEstuff@V <- Vstuff
   
 return( SEstuff)
@@ -86,7 +91,7 @@ structure(c("doades    package:not-yet-a-package", "", "", "Design calculation f
 "", "", "USAGE", "", "doades( m_SYEL, Hbits, reporteez, lglk, eps = 0.00001, comp_wts=NULL) ", 
 "", "", "ARGUMENTS", "", " m_SYEL: 4D offarray of sample sizes by Sex, Year, E(stimated age), Lethality. These had better match the ranges already used in computing...", 
 " ", " Hbits: ... which comes from 'despack::get_Hbits()', for one specific pop dyn scenario and (maximum) ranges of things like Age, Sampling-year, etc.", 
-" ", " reporteez: Function taking \"true\" params and 'lglk' (see next), and returning a vector of \"interesting\" pop dyn summaries, eg abundance in some particular year-of-interest. There's an example in the (non-runnable) EXAMPLES section.", 
+" ", " reporteez: Function taking \"true\" params and 'lglk' (see next), and returning a vector of \"interesting\" pop dyn summaries, eg abundance in some particular year-of-interest. The 'names()' of the result will be applied to the output of 'doades'. There's an example in the (non-runnable) EXAMPLES section.", 
 " ", " lglk: You generated this long ago, from 'lglk_this_dataset <- add_data( lglk_walrus, <simfile>)'. Its environment contains useful constants, and you can run it with 'want=\"popdyn\"' to get just the pop-dyn summaries (which is presumably the first thing that your 'reporteez' function will do).", 
 " ", " eps: for 'numvbderiv' numerical differentation. Not too big, not too small, is my advice. The anxious can try changing the default by a factor of 10 either way; it should make little difference.", 
 " ", " comp_wts: How to weight the various lglk components, basically to explore the effect of (almost) turning off CKMR and/or IMR data. If non-NULL, it should be a numeric vector with names such as 'MOP\" or \"XmHSP\" or \"selfP\" (as seen inside names of 'Hbits$DSP'--- ie, the different types of pairwise comparison.  A value of '1' means \"treat this comp-type as-is\", and you only need to supply non-1 values, since 1 is the default. So, to explore eg turning off IMR, just set eg 'comp_wts=c( selfP=0.01)'--- which will leave the MOP and XmHSP weights at 1.", 
