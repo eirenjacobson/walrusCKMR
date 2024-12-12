@@ -5,16 +5,9 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\begin_preamble
-
-\end_preamble
-\use_default_options false
-\begin_modules
-theorems-std
-InStar
-\end_modules
+\use_default_options true
 \maintain_unincluded_children no
-\language english
+\language american
 \language_package default
 \inputencoding utf8
 \fontencoding auto
@@ -31,16 +24,15 @@ InStar
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
-\use_dash_ligatures false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command bibtex
+\bibtex_command default
 \index_command default
 \float_placement class
 \float_alignment class
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -54,15 +46,14 @@ InStar
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type authoryear
-\biblio_style plainnat
+\cite_engine basic
+\cite_engine_type default
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
@@ -79,13 +70,13 @@ InStar
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 2
-\paperpagestyle headings
+\papersides 1
+\paperpagestyle default
 \tablestyle default
 \tracking_changes false
 \output_changes false
 \change_bars false
-\postpone_fragile_content false
+\postpone_fragile_content true
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -99,8 +90,8 @@ InStar
 \begin_inset Note Note
 status open
 
-\begin_layout Section
-RESULTS
+\begin_layout Section*
+Discussion
 \end_layout
 
 \end_inset
@@ -109,59 +100,40 @@ RESULTS
 \end_layout
 
 \begin_layout Standard
-obvs the checks passed (eventually...).
- Not much more to say!
- (I suspect it's not worth reporting the checks—
- where do you stop with that?
- but perhaps they should be avilable online,
- eg obs & exp kin-totals?
- mebbe report the deriv checks for bias,
- dunno)
+
+\lang english
+We didn't bother doing X coz IJAD
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+It's Just A Design
+\end_layout
+
+\end_inset
+
+.
+ For real data analysis,
+ we might do Y instead.
 \end_layout
 
 \begin_layout Standard
-Present some scenarios and results together (do NOT put 
-\begin_inset Quotes eld
-\end_inset
 
-scenarios
-\begin_inset Quotes erd
-\end_inset
-
- into separate ealier section,
- it just confuses the hell out of readers).
-\end_layout
-
-\begin_layout Subsection
-Sample sizes and duration
+\lang english
+Ways to extend the model...
+ impact of DNAge
 \end_layout
 
 \begin_layout Standard
-Sample size investigations (main thing).
- Really,
- the story we want is that adding CKMR lets you get better CVs with less sampling,
- than if you were just doing IMR.
- (It's true,
- but might be embarrassingly good!)
-\end_layout
 
-\begin_layout Subsection
-Sensitivity analyses
-\end_layout
-
-\begin_layout Itemize
-pop-dyn stable/inc/dec (presumably,
- minimal diff from a Design PoV,
- ITO how much CKIMR adds rel to IMR—
- which is the key Design Q)
-\end_layout
-
-\begin_layout Itemize
-turning off CKMR (or IMR)
-\end_layout
-
-\begin_layout Itemize
-value of Lethal
+\lang english
+Future utility of lethal samples (although my guess is:
+ there won't be enough.
+ Glass-half-full,
+ or glass-half-empty,
+ if you're a walrus?)
 \end_layout
 
 \end_body
