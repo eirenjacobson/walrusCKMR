@@ -1,5 +1,6 @@
 #methods.lyx#
 #results.lyx#
-methods.lyx~
+*.lyx~
 paper-ckwaldes.lyx~
 results.lyx~
+#*.lyx#

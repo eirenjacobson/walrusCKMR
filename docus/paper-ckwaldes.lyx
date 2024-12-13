@@ -10,8 +10,8 @@
 % specify here the journal
 %\journal{Methods in Ecology and Evolution}
 % use this if you need line numbers
-\usepackage{lineno}  %%% PROBABLY DON'T in LyX 2.4 where line nums are easier
-\linenumbers
+%\usepackage{lineno}  %%% PROBABLY DON'T in LyX 2.4 where line nums are easier
+%\linenumbers
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata,positioning}
 \end_preamble
@@ -19,7 +19,6 @@
 \begin_modules
 theorems-std
 InStar
-natbibapa
 \end_modules
 \maintain_unincluded_children no
 \language english
@@ -43,7 +42,7 @@ natbibapa
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command bibtex
+\bibtex_command biber
 \index_command default
 \float_placement class
 \float_alignment class
@@ -62,9 +61,11 @@ natbibapa
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
+\cite_engine biblatex-natbib
 \cite_engine_type authoryear
 \biblio_style plainnat
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -73,7 +74,7 @@ natbibapa
 \use_refstyle 0
 \use_formatted_ref 0
 \use_minted 0
-\use_lineno 0
+\use_lineno 1
 \index Index
 \shortcut idx
 \color #008000
@@ -91,8 +92,8 @@ natbibapa
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 2
-\paperpagestyle headings
+\papersides 1
+\paperpagestyle plain
 \tablestyle default
 \tracking_changes false
 \output_changes false
@@ -139,7 +140,7 @@ http://www.ctan.org/get/macros/latex/contrib/elsarticle/elsdoc.pdf
 \end_layout
 
 \begin_layout Title
-Combining close-kin- and self-mark-recapture to improve walrus abundance monitoring
+Combining close-kin and self-mark-recapture to design an effective survey for Pacific walrus 
 \end_layout
 
 \begin_layout Author
@@ -174,8 +175,8 @@ Eiren K.
 \end_inset
 
 ,
- David L.
- Miller
+ Rebecca L.
+ Taylor
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -189,7 +190,8 @@ Eiren K.
 \begin_inset Newline newline
 \end_inset
 
-Irina Trukhanova
+Irina S.
+ Trukhanova
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -199,8 +201,8 @@ Irina Trukhanova
 \end_inset
 
 ,
- Rebecca L.
- Taylor
+ David L.
+ Miller
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -215,7 +217,7 @@ Irina Trukhanova
 \begin_inset script superscript
 
 \begin_layout Plain Layout
-6,7
+3,7
 \end_layout
 
 \end_inset
@@ -243,18 +245,6 @@ Irina Trukhanova
 \begin_inset script superscript
 
 \begin_layout Plain Layout
-*
-\end_layout
-
-\end_inset
-
-ej45@st-andrews.ac.uk
-\end_layout
-
-\begin_layout Address
-\begin_inset script superscript
-
-\begin_layout Plain Layout
 2
 \end_layout
 
@@ -274,8 +264,10 @@ ej45@st-andrews.ac.uk
 
 \end_inset
 
- Dundee,
- Scotland
+ US Geological Survey,
+ Alaska Science Center,
+ Anchorage,
+ Alaska
 \end_layout
 
 \begin_layout Address
@@ -317,10 +309,8 @@ ej45@st-andrews.ac.uk
 
 \end_inset
 
- US Geological Survey,
- Alaska Science Center,
- Anchorage,
- Alaska
+ Dundee,
+ Scotland
 \end_layout
 
 \begin_layout Address
@@ -338,12 +328,25 @@ ej45@st-andrews.ac.uk
  Wisconsin 
 \end_layout
 
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
+Corresponding author email:
+ ej45@st-andrews.ac.uk
+\end_layout
+
 \begin_layout Abstract
 Abstract,
  should normally be not longer than 200 words.
 \end_layout
 
-\begin_layout Keywords
+\begin_layout Standard
 Keywords:
 \end_layout
 
@@ -356,6 +359,13 @@ Keywords:
 
 \begin_layout Section
 Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Introduction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -408,6 +418,19 @@ Discussion
 LatexCommand input
 filename "discussion.lyx"
 literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "walrusbib"
+options "plainnat"
+encoding "default"
 
 \end_inset
 

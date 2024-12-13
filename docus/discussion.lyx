@@ -33,6 +33,7 @@
 \float_placement class
 \float_alignment class
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -46,8 +47,10 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine biblatex-natbib
+\cite_engine_type authoryear
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -134,6 +137,21 @@ Future utility of lethal samples (although my guess is:
  Glass-half-full,
  or glass-half-empty,
  if you're a walrus?)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The full ramifications of opting for a stage-structured quasi-equilibrium model,
+ which avoids having to model age composition but does entail an 
+\emph on
+assumption
+\emph default
+ about selectivity,
+ are not at all obvious,
+ but the model seems to us fairly reasonable;
+ it might be worth revisiting when large numbers of DNAge samples become available.
+ At that point it would be possible to compare the actual age compositions with the predicted compositions assuming partly-unselective sampling and quasi-equilibrium.
 \end_layout
 
 \end_body

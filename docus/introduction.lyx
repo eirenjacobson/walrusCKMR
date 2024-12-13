@@ -7,6 +7,10 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
+\begin_local_layout
+Format 104
+Provides natbib 1
+\end_local_layout
 \language american
 \language_package default
 \inputencoding utf8
@@ -33,6 +37,7 @@
 \float_placement class
 \float_alignment class
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -46,8 +51,9 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -100,9 +106,52 @@ INTRODUCTION
 \end_layout
 
 \begin_layout Itemize
+Estimating population abundance and demographics is very hard.
+ There are lots of ways to do it but its important.
+ 
+\end_layout
+
+\begin_layout Itemize
 Background on “traditional” CKMR,
  requires knowledge of age,
  note that lethal and non-lethal samples can be incorporated
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+CKMR is still unfamiliar to many,
+ but there are quite a few published applications by now,
+ mostly on fish and sharks but some on mammals.
+ We will not give an exhaustive list here,
+ but see 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+ for a general (albeit mathematical) framework,
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "conn_robustness_2020"
+literal "false"
+
+\end_inset
+
+for a CKMR design exercise on bearded seals,
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "lloyd-jones_close-kin_2023"
+literal "false"
+
+\end_inset
+
+for a real-life application to flying-foxes (fruit bats) which includes IMR results,
+ although not integrated into a single model as we attempt to do here.
 \end_layout
 
 \begin_layout Itemize
@@ -116,21 +165,157 @@ CKMR has mostly been used on very large populations and with lethal samples,
 \begin_layout Itemize
 As a case study,
  we focus on Pacific walrus.
- Walrus have been in a bad way,
- climate is changing,
- they need to be monitored,
- life-history,
- background etc.
+ 
 \end_layout
 
-\begin_layout Itemize
-Aerial surveys or other distance sampling not possible due to large spatial scale and patchy distribution (driven by sea ice),
- so monitoring entails expensive shipboard surveys using biopsy mark-recapture.
+\begin_layout Standard
+The Pacific walrus (
+\emph on
+Odobenus rosmarus divergens
+\emph default
+,
+ hereafter,
+ walrus) is a gregarious,
+ ice-associated pinniped inhabiting continental shelf waters of the Bering and Chukchi seas.
+ During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea (Fay 1982).
+ In summer (when sea ice is absent from the Bering Sea) almost all juvenile and adult female walruses,
+ and some adult male walruses,
+ occupy the Chukchi Sea.
+ When walruses rest offshore on sea ice floes,
+ their distribution is dynamic,
+ because it generally follows the marginal ice zone (a moving,
+ changing habitat which contains a mix of ice floes and water) but also concentrates in regions of high benthic productivity.
+ This allows walruses to forage for benthic invertebrates while simultaneously having access to a nearby substrate for hauling out.
+ 
 \end_layout
 
-\begin_layout Itemize
-Describe existing IMR sampling and modelling.
- Biopsies also contain info about close-kin in the samples,
+\begin_layout Standard
+Sea ice has declined for decades (Perovich and Richter-Menge 2009,
+ Stroeve et al.,
+ 2012,
+ Stroeve and Notz 2018),
+ and coupled global atmospheric-ocean general circulation models predict its continued decline through century’s end (Arthun et al.
+ 2021).
+ When sea ice recedes from the continental shelf,
+ walruses come on shore to rest in large herds at sites termed haulouts,
+ and they make long trips to foraging hotspots (Jay et al.
+ 2012).
+ This change in their activity budgets (Jay et al.
+ 2017) may ultimately lead to a decline in body condition and an increase in mortality or a decrease in reproduction (Udevitz et al.
+ 2017).
+ Furthermore,
+ disturbance at haulouts can cause stampedes,
+ resulting in mass calf and juvenile mortality.
+ Continued sea ice decline and a concomitant increase in the intensity and expansion of industrial and shipping activities in Pacific Arctic waters (Silber & Adams,
+ 2019) are expected to drive a substantial population decline (Garlich-Miller et al.
+ 2011,
+ MacCracken et al.
+ 2017,
+ Johnson et al.
+ 2023,
+ 2024).
+ 
+\end_layout
+
+\begin_layout Standard
+Range-wide abundance and demographic rate estimates are crucial for understanding population status,
+ as well as for developing and implementing harvest management plans.
+ In particular,
+ subsistence walrus harvests in Alaska and Chukotka exceed 4000 animals annually (USFWS,
+ 2016),
+ and indigenous peoples need information on the status of the walrus population in order to manage these harvests sustainably.
+ Furthermore,
+ in the United States,
+ the Marine Mammal Protection Act (MMPA) requires a determination of potential biological removal for walrus,
+ which in turn,
+ requires a precise abundance estimate (Gilbert 1999,
+ Wade and DeMaster 1999).
+ Finally,
+ the walrus was an endangered species candidate until the 2017 decision not to list—
+a decision which is currently being litigated (citation?—
+when will new SSA be out?).
+ 
+\end_layout
+
+\begin_layout Standard
+Scientists have attempted to ascertain walrus population size since at least 1880 (Fay et al.
+ 1989),
+ and until very recently,
+ unsuccessfully.
+ The most concerted effort was the 1975-2006 range-wide airplane-based surveys conducted collaboratively with the Soviet Union.
+ However,
+ resulting estimates were biased and imprecise,
+ and count-based methods were abandoned after the 2006 survey which,
+ despite a rigorous design,
+ innovative field methods,
+ and sophisticated analyses,
+ yielded a 95% CI on the population size estimate of 55,000–507,000 animals (CV = 0.93).
+ The extensive imprecision in the estimate resulted from the walrus population being widely dispersed with unpredictable local clumping (Speckman et al.
+ 2011,
+ Jay et al.
+ 2012),
+ which is,
+ in turn,
+ due to the large area of arctic and subarctic continental shelf over which they forage,
+ their gregarious nature,
+ and the dynamic nature of the marginal ice zone.
+ 
+\end_layout
+
+\begin_layout Standard
+The first rigorous walrus survival rate estimates were obtained within the past decade via Bayesian integrated population models (IPMs),
+ which combined multiple data sources to estimate demographic rates and population trend over multiple decades (Taylor and Udevitz 2015,
+ Taylor et al.
+ 2018).
+ However,
+ the original problems with the aerial survey data continued to preclude conclusions about population abundance in the IPMs (Taylor and Udevitz 2015).
+ 
+\end_layout
+
+\begin_layout Standard
+In 2013,
+ the U.S.
+ Fish and Wildlife Service (USFWS) initiated a genetic mark-recapture (GMR) project to estimate walrus abundance and demographic rates.
+ Under this approach,
+ genetic ‘marking’ via skin biopsy samples (Palsboll et al.
+ 1997) provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
+ Biologists attempted to completely sample walruses in the accessible portion of the marginal ice zone in each year a research cruise was conducted,
+ although Russian waters were not accessible in all years.
+ Sampling focused on groups of adult females and juveniles,
+ as these classes are the demographically important population segments of this polygynous species (Fay 1982).
+ Further methods for this “self-recapture” study are detailed by Beatty et al.
+ (2020,
+ 2022).
+ 
+\end_layout
+
+\begin_layout Standard
+Data analysis from the first generation of walrus research cruises (2013– 2017) used a Cormack-Jolly-Seber multievent model to estimate survival rates,
+ and a Horvitz-Thompson ratio estimator to obtain population size.
+ The total abundance of 257,000 had a 95% credible interval of 171,000–366,000 (CV=0.19;
+ Beatty et al.
+ 2022).
+ Although the precision of the abundance estimate from the GMR was much improved over the final aerial survey,
+ the GMR required extensive investment of human and financial resources (i.e,
+ $5,000,000.) Thus,
+ a more cost-effective approach is needed to assess the walrus population on a regular interval.
+ Notably,
+ biopsy samples also contain information about close kin,
+ which can substantially augment the information content of “self-mark-recaptures” without increasing sampling effort.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+[Is one or the other of the following terms of standard:
+ “self-mark-recapture” or “individual Mark-recapture”?] 
+\end_layout
+
+\begin_layout Standard
+Biopsies also contain info about close-kin in the samples,
  which can substantially augment the information content of a given amount of sampling effort.
 \end_layout
 

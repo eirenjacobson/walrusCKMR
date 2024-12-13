@@ -111,15 +111,91 @@ METHODS
 \end_layout
 
 \begin_layout Subsection
-CKMR for Walrus
+Model Framework
 \end_layout
 
 \begin_layout Subsubsection
-MOPs
+Life-history considerations
+\end_layout
+
+\begin_layout Standard
+Walrus are long-lived post maturity and give birth to one calf at a time.
+ Walrus experience long gestation times (~14 months,
+ CITE),
+ therefore,
+ females cannot give birth to calves in consecutive years,
+ and are unlikely to give birth to calves every second year.
+ Individuals are unlikely to re-mate with the same partner (therefore there will be few,
+ if any,
+ full sibling or full thiatic pairs;
+ FSPs or FTPs).
+ While males form leks and compete for breeding access to females,
+ we do not expect females to vary in terms of individual fecundity.
+ The population of Pacific walrus is well-mixed across the range,
+ with no evidence of site fidelity within or between years,
+ and with no genetic substructure expected.
+ 
+\end_layout
+
+\begin_layout Standard
+Adult males are inaccessible to this study given season sex-segregation and the geographical coverage of sampling effort (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Introduction"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Adult males are also likely to have persistent individual variability in breeding success.
+ Therefore,
+ we focus on female-only dynamics and do not include paternal father-offspring or half-sibling pairs (FOPs or XpHSPs) in the model.
+ However,
+ we do use sampled males as potential offspring whose mothers might also be captured and potential half-siblings of other individuals.
+ 
 \end_layout
 
 \begin_layout Subsubsection
-XmHSPs
+Stage-structured quasi-equilibrium dynamics
+\end_layout
+
+\begin_layout Standard
+For the purposes of the CKMR model,
+ we assume that female adult walrus have constant survival over age and time,
+ and that the total number of female adults is increasing or decreasing exponentially over the period covered by the population dynamics (2000–2027;
+ the lower limit of 2000 is set because there were fairly drastic changes in the population prior to that).
+ We also assume that the age composition is fairly stable over that period ("quasi-equilibrium" or "quasi-stable"),
+ so that it should follow a geometric distribution.
+ The parameter of that distribution is determined by the simple relations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+N_{y+1,a+1}=N_{ya}\phi_{\text{ad}}\nonumber \\
+N_{y+1,a}=e^{\text{RoI}}N_{y,a}\nonumber \\
+\implies N_{y+1,,a+1}=N_{y+1,a}\times\phi_{\text{ad}}e^{-\text{RoI}}\label{eq:age-distro-slope}
+\end{gather}
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi_{\text{ad}}$
+\end_inset
+
+is female adult annual survival.
+ From this,
+ the adult numbers-at-age (and at year) can be inferred.
+ Juvenile females age 1–5 have a different survival rate,
+ again assumed constant within (juvenile) ages and over time.
+ We assume that the juvenile age composition is stable over time.
+ Our formulation of IMR does assume that sampling is unselective within juveniles,
+ and also within adults (but not between the two),
+ and the age composition enters indirectly because of the way that juvenile abundance is calculated.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -370,8 +446,962 @@ name "fig:Breeding-cycle"
 \end_layout
 
 \begin_layout Subsubsection
-SelfPs:
- IMR in a CKMR setting
+Mother-offspring pairs (MOPs)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mark:
+ should we include the lethal probabilities here as well,
+ or as a separate subsection?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose we are about to compare a potential mother individual 
+\emph on
+i
+\emph default
+,
+ sampled at age 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ in year 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+,
+ to a potential offspring 
+\emph on
+j
+\emph default
+,
+ sampled at age 
+\begin_inset Formula $a_{j}$
+\end_inset
+
+ in year 
+\begin_inset Formula $y_{j}$
+\end_inset
+
+,
+ and therefore born in year 
+\begin_inset Formula $b_{j}\triangleq y_{j}-a_{j}$
+\end_inset
+
+.
+ We specifically restrict attention to comparisons that satisfy the following criteria:
+\end_layout
+
+\begin_layout Itemize
+Individual 
+\emph on
+i
+\emph default
+ is female (though individual 
+\emph on
+j
+\emph default
+ need not be);
+ only female adult dynamics are being modelled.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{j}=y_{i}$
+\end_inset
+
+ because there is some possibility that 
+\emph on
+j
+\emph default
+ and her mother are still physically associated,
+ so within a single year their chances of being sampled are positively correlated;
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mark:
+ y_j may or may not equal y_i,
+ right?
+ I think this restriction can come out entirely ...
+ in the code we have y_i > b_i and b_i + AMAT <= b_j 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{j}\geqslant1$
+\end_inset
+
+ because calves are not being used in the current model.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{j}\geqslant2000$
+\end_inset
+
+ because we are only modelling population dynamics post 2000.
+\end_layout
+
+\begin_layout Standard
+We set the number of comparisons and the number of MOPs for excluded cases to zero.
+ With those restrictions in mind,
+ we can distinguish two cases:
+ 
+\begin_inset Formula $y_{i}<b_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{i}\geqslant b_{j}$
+\end_inset
+
+.
+ In the former,
+ individual 
+\emph on
+i
+\emph default
+ still has to survive several years in order to be individual 
+\emph on
+j
+\emph default
+'s mother (note that 
+\emph on
+i
+\emph default
+ may be immature when sampled,
+ but mature by the time of 
+\emph on
+j
+\emph default
+'s birth).
+ The MOP probability is 
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{ij}=\text{MOP}|a_{i},y_{i},b_{j},\text{nonlethal}_{i}\right]=\nonumber \\
+\frac{\text{\emph{i}'s Expected Reproductive Output in \ensuremath{b_{j}}|\emph{i} alive and age \ensuremath{a_{i}} in \ensuremath{y_{i}}}}{\text{Total Reproductive Output (of females) in \ensuremath{b_{j}}}}\label{eq:MOP1}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Expected reproductive output (ERO) and total reproductive output (TRO) are in units of "number of calves",
+ so the TRO is 
+\begin_inset Formula $\bar{\beta_{2}}N\left(b_{j}\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\bar{\beta_{2}}$
+\end_inset
+
+ is the proportion of females with calves at any one time.
+\end_layout
+
+\begin_layout Standard
+There are two components to 
+\emph on
+i
+\emph default
+'s ERO:
+ first,
+ she has to survive;
+ second,
+ she has to be calving in 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+.
+ This can be written as
+\begin_inset Formula 
+\begin{gather}
+\text{ERO}_{i}\left(b_{j}|y_{i},a_{i}\right)=\Phi\left(y_{i}-b_{j}a_{i}\right)\times\mathbb{P}\left[\text{Br}\left(\text{age}=a_{i}+\left(b_{j}-y_{i}\right)\right)=2\right]\label{eq:MOP-RO}
+\end{gather}
+
+\end_inset
+
+where 
+\begin_inset Formula $\text{Br}\left(\cdot\right)$
+\end_inset
+
+ is an individual's breeding state,
+ 
+\begin_inset Formula $\Phi\left(\Delta t,a\right)\triangleq\text{survival probability for \ensuremath{\Delta t} years starting from age \ensuremath{a}}$
+\end_inset
+
+,
+ obtained by multiplying together the right number of annual juvenile and adult survival probabilities.
+ The term on the right involves individual 
+\emph on
+i
+\emph default
+'s age at 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+ (assuming she survives).
+\end_layout
+
+\begin_layout Standard
+For convenience,
+ define fecundity via
+\begin_inset Formula 
+\begin{gather}
+\text{fec}\left(a\right)\triangleq\frac{\mathbb{P}\left[\text{Br}\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
+\end{gather}
+
+\end_inset
+
+so that immature animals have fecundity 0,
+ and an average adult has fecundity 1.
+ Thus
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{cj}=\text{MOP}|a_{i},y_{i},b_{j},\text{nonlethal}_{i},y_{i}<b_{j}\right]=\nonumber \\
+\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)\times\text{fec}\left(a_{i}+\left(b_{j}-y_{i}\right)\right)}{N\left(b_{j}\right)}.\label{eq:MOP-future}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second case is if 
+\emph on
+i
+\emph default
+ is sampled after Jenny's birth.
+ In that case,
+ we know 
+\emph on
+i
+\emph default
+ was "alive" (or not born yet),
+ so there is no survival term to worry about,
+ but she may not have been mature.
+ Defining 
+\begin_inset Formula $\text{fec}\left(a\leqslant0\right)=0$
+\end_inset
+
+ (walruses cannot breed before birth) for convenience,
+ we can write
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{ij}=\text{MOP}|a_{i},y_{i},b_{j},\text{nonlethal}_{i},b_{j}<y_{i}\right]=\nonumber \\
+\frac{\text{fec}\left(a_{i}-\left(y_{i}-b_{j}\right)\right)}{N\left(b_{j}\right)}.\label{eq:MOP-past}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Maternal half-sibling pairs (XmHSPs)
+\end_layout
+
+\begin_layout Standard
+Suppose we are now about to compare individual 
+\emph on
+k
+\emph default
+,
+ born in year 
+\begin_inset Formula $b_{k}$
+\end_inset
+
+ (which can be calculated based on her age at sampling) to individual 
+\emph on
+l
+\emph default
+,
+ born in 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+,
+ to check whether they have the same mother.
+ This time,
+ we impose the following criteria:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{l}>b_{k}$
+\end_inset
+
+ to avoid double-counting.
+ Also,
+ 
+\begin_inset Formula $b_{k}\neq b_{k}$
+\end_inset
+
+ since walrus give birth to a single offspring.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{k}\geqslant2000$
+\end_inset
+
+ since the population dynamics model does not go any further back.
+\end_layout
+
+\begin_layout Standard
+Imagine that individual 
+\emph on
+m
+\emph default
+ is the mother of 
+\emph on
+k
+\emph default
+.
+ Individual 
+\emph on
+l
+\emph default
+ must have had 
+\emph on
+some
+\emph default
+ mother;
+ what is the probability she was 
+\emph on
+m
+\emph default
+,
+ given what we know about 
+\emph on
+m
+\emph default
+?
+ The latter amounts to two things:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+m
+\emph default
+ was alive,
+ mature,
+ and in "calving phase" at 
+\emph on
+k
+\emph default
+'s birth;
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+m
+\emph default
+ survived at least one more year after
+\emph on
+ k
+\emph default
+'s birth,
+ otherwise 
+\emph on
+k
+\emph default
+ would not have lived long enough to be sampled.
+\end_layout
+
+\begin_layout Standard
+In order for 
+\emph on
+m
+\emph default
+ to be 
+\emph on
+l
+\emph default
+'s mother,
+ three things have to happen:
+\end_layout
+
+\begin_layout Itemize
+she survives until 
+\begin_inset Formula $b_{\text{\emph{l}}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+she is in the right breeding state in 
+\begin_inset Formula $b_{\text{\emph{l}}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+she has to be the one lucky female amongst all the females that are in the right breeding state in year 
+\begin_inset Formula $b_{\text{l}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Phi\left(\Delta t\right)$
+\end_inset
+
+ be the probability that a female adult survives at least 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ more years from "now";
+ and let 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ be the breeding-cycle transition matrix,
+ so that if the probability vector of an animal being in state (1,2,3) at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is 
+\begin_inset Formula $p^{\left[t\right]}$
+\end_inset
+
+,
+ then her probability vector at time 
+\begin_inset Formula $t+1$
+\end_inset
+
+ is 
+\begin_inset Formula $p^{\left[t+1\right]}=\Psi p^{\left[t\right]}$
+\end_inset
+
+.
+ Now define 
+\begin_inset Formula $p^{\left[0\right]}=\left(0,1,0\right)^{\top}$
+\end_inset
+
+which is the probability vector of 
+\emph on
+m
+\emph default
+'s breeding state at 
+\emph on
+k
+\emph default
+'s birth (i.e.,
+ certain to be in calving phase),
+ and recall that 
+\begin_inset Formula $\bar{\beta}_{2}$
+\end_inset
+
+ is the proportion of adult females in "calving phase",
+ i.e.,
+ breeding state 2.
+ Then:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mark:
+ what is theta in these equations?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[\text{\emph{k} and \emph{l} are XmHSP}|b_{\text{\emph{k}}}b_{\text{\emph{l}}}\theta\right]\nonumber \\
+=\mathbb{P}\left[\text{\emph{k}'s mum was also \emph{l}'s mum}|b_{\text{\emph{k}}}b_{l}\theta\right]\nonumber \\
+=\frac{\Phi\left(b_{\text{B}}-b_{\text{A}}-1\right)\times\left[\Psi^{b_{\text{B}}-b_{\text{A}}}p^{\left[0\right]}\right]_{2}}{N_{\text{ad}\female}\left(b_{\text{B}}\right)\times\bar{\beta}_{2}}\label{eq:xmhsp}
+\end{gather}
+
+\end_inset
+
+where the subscript "2" means that we need the second element of the vector inside the square-brackets,
+ i.e.
+ the probability that m (given she was alive) was in calving phase at l's birth.
+ (This could also have been written in a more POP-like way using probabilities-of-breeding state,
+ i.e.
+ 
+\begin_inset Formula $\mathbb{P}\left[\text{Br}\left(\text{Mary},b_{\text{B}}=2\right)|\text{Br}\left(\text{Mary},b_{\text{A}}\right)=1\right]$
+\end_inset
+
+,
+ but with no particular benefit.)
+\end_layout
+
+\begin_layout Standard
+The walrus setting (or our assumptions about it) has actually made this probability rather simpler than it can be in other cases.
+ In particular,
+ all adult female walruses are assumed to have equal survival probabilities,
+ regardless of age and breeding phase;
+ and the breeding cycle is Markovian,
+ so that once a walrus has reached calving-phase (like Mary at Anna's birth) her age does not affect her subsequent breeding phases nor her survival.
+ In a "fish-like" situation,
+ Mary's age (and size) at Anna's birth would also be important,
+ because it affects both her subsequent future survival probabilities,
+ and her fecundity if she reaches Barry's birthdate.
+ Thus for "fish" it is necessary to sum across all the possible ages that Mary might have had,
+ weighted by the probability that she was that age given that she was Anna's mother
+\end_layout
+
+\begin_layout Standard
+The importance or otherwise of allowing for skip-breeding in HSP probabilities is not immediately obvious.
+ Clearly,
+ if Mary breeds only every 3rd year,
+ then her lifetime-average reproductive output is only 1/3 of a hypothetical breed-every-year female.
+ However,
+ if everybody breeds only every 3rd year,
+ then Mary is only competing against 1/3 of the population every time,
+ so those factors broadly cancel out;
+ is lifetime-average reproductive output largely unaffected?
+ To a very coarse approximation the answer is yes;
+ but a more detailed calculation using geometric progressions shows that there is in fact an appreciable bias which depends on the skip-interval and the survival rate (see subsection
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:HSPs-and-skip-breeding"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ below).
+ For walrus,
+ the "naive" no-skip-breeding HSP bias might be of the order of 10%,
+ based on 
+\begin_inset Formula $\sim95\%$
+\end_inset
+
+ annual adult survival and an average 4-year gap between successful breedings,
+ which is enough to justify avoiding it by the more elaborate calculation in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:HSP-prob"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Self-recaptures (SelfPs)
+\end_layout
+
+\begin_layout Standard
+As noted previously,
+ we only consider female samples for self-recapture,
+ since juvenile males are prone to "permanent emigration" as well as true mortality,
+ so do not yield readily-interpretable inferences.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Beatty2022walrusMR"
+literal "false"
+
+\end_inset
+
+ used a fairly complex IMR formulation to cope with historically-very-imprecise estimates of age (or,
+ more realistically,
+ of "stage") estimates.
+ However,
+ when accurate age data are available,
+ the pairwise comparison probabilities for self-recapture are remarkably simple.
+ Suppose two female samples are available with 
+\begin_inset Formula $y_{1},a_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{2},a_{2}$
+\end_inset
+
+ in obvious notation,
+ where 
+\begin_inset Formula $y_{1}<y_{2}$
+\end_inset
+
+ for definiteness.
+ Then the probability that the first one (#1) is the same as the second is just
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{12}=\text{SP}|y_{1}a_{1}y_{2}a_{2}\right]=\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)/N_{\female}\left(y_{1},a_{1}\right)\label{eq:SP}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The indicator 
+\begin_inset Formula $\mathbf{I}\left(\cdot\right)$
+\end_inset
+
+ is 1 if the two samples were born in the same year,
+ or 0 if not;
+ clearly,
+ they can only be from the same animal if they were both born in the same year!
+ If they were,
+ then there is precisely one female alive at 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ with age 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ who later became the second sample;
+ and the chance that the first sample is that very female is the reciprocal of all such females,
+ 
+\begin_inset Formula $N_{\female}(y_{1},a_{1})$
+\end_inset
+
+.
+ The implicit assumption here is simply that all females of the same age have the same survival and sampling probabilities.
+\end_layout
+
+\begin_layout Standard
+This equation can also be formulated "the other way round",
+ i.e.,
+ considering whether the second sample is the same as the first.
+ The answer turns out the same,
+ but the derivation is slightly different and 
+\emph on
+appears
+\emph default
+ to involve an explicit survival term.
+ Specifically,
+ we write 
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{12}=\text{SP}|y_{1}a_{1}y_{2}a_{2}\right]\nonumber \\
+=\mathbb{P}\left[\text{Sample 2 turns out to be the same animal as sample 1}|y_{1}a_{1}y_{2}a_{2}\right]\nonumber \\
+=\frac{\mathbb{P}\left[\text{Sample 1 survived until Sample 2 was taken}\right]\times\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N_{\female}\left(y_{2},a_{2}\right)}\nonumber \\
+=\frac{\Phi\left(y_{2}-y_{1};a_{1}\right)\times\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N_{\female}\left(y_{2},a_{2}\right)}\label{eq:other-way-round-self}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However,
+ the results are readily seen to be identical because,
+ by definition of "survival",
+ we have
+\begin_inset Formula 
+\begin{gather}
+N\left(y+t,a+t\right)\equiv N\left(y,a\right)\times\Phi\left(t,a\right)\label{eq:cons-of-nums}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In principle,
+ given limitless data,
+ we could separately apply eqn
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SP"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) to each combination of 
+\begin_inset Formula $\left(y,a\right)$
+\end_inset
+
+-consistent pairs,
+ to empirically estimate from all numbers-at-age-and-year from the reciprocal of the observed rates.
+ Then we could apply eqn
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cons-of-nums"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) to estimate year-and-age-specific survivals.
+ In practice,
+ that would be ridiculous,
+ since it would require an enormous number of recaptures and would lead to noisy abundance estimates,
+ estimated survivals greater than one,
+ and so on.
+ However,
+ the principle does illustrate the great power of 
+\emph on
+known-age
+\emph default
+ mark-recapture data.
+ Note also that there are no assumptions about equiprobable sampling across ages,
+ etc;
+ all probabilities are simply conditioned on observed ages,
+ and it does not particularly matter 
+\emph on
+why
+\emph default
+ there are more samples of one age than another.
+\end_layout
+
+\begin_layout Standard
+The big problem with applying eqn
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SP"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) in an ICKMR setting,
+ i.e.,
+ with conditioning on age explicitly,
+ is that it requires explicit calculation of all 
+\begin_inset Formula $N\left(y,a\right)$
+\end_inset
+
+ within the model.
+ This is normally unnecessary with mammalesque CKMR,
+ where the main information is 
+\emph on
+only
+\emph default
+ connected with aggregate adult abundance (via TRO).
+ It is extremely convenient to work just with a "homogenous block" of adults,
+ and there is in any case no direct information on population age composition unless extra data are used.
+ One option is "just" to work with a fully-age-structured population dynamics framework—
+ but that is a lot of work to develop (from experience in fisheries work) and requires modeling extra data.
+\end_layout
+
+\begin_layout Standard
+In this project we have gone for a different option,
+ which only uses "stage-structured" dynamics (adults and juveniles).
+ This keeps the population dynamics simple,
+ but to handle the IMR data,
+ we do have to make extra assumptions about sampling selectivity.
+ We assume that (
+\shape italic
+i
+\shape default
+) all (female) adults are equally likely to be sampled in a given year (i.e.,
+ that probability does not depend on age,
+ provided the animal is adult),
+ and (
+\shape italic
+ii
+\shape default
+) that all juveniles age 1–6 are also equally likely—
+ although juveniles overall may have different sampling probabilities to adults.
+ That assumption may turn out to be unreasonable for juveniles especially;
+ but it will only be possible to check once enough sample-age-composition data become available.
+ However,
+ if it does turn out to be the case that (say) 2yo are disproportionately likely to be sampled (given their estimated abundance from the fitted model),
+ then it would not be hard to adjust the stage-structured IMR equations to incorporate sample-composition-data and (estimated) selectivity.
+ Sample sizes in this project are large enough that selectivity (i.e.,
+ the ratio of age-specific sample compositions to model-estimated pouplation age compositions) should be estimated with respectable precision and without "propagating" a lot of uncertainty into other parameter estimates.
+ We therefore think that our current somewhat crude IMR sub-model should give a reasonable guide to ultimate precision,
+ even if it gets adjusted somewhat in the cold light of real data.
+ Note that similar assumptions appear to be made in 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Beatty2022walrusMR"
+literal "false"
+
+\end_inset
+
+ (to be confirmed).
+\end_layout
+
+\begin_layout Standard
+To compute stage-structured self-recapture probabilities,
+ we condition on the age of the first sample but 
+\emph on
+not
+\emph default
+ explicitly on the age of the second sample.
+ However,
+ we do condition on whether the second sample was juvenile (1–6) or adult (7+) at sampling,
+ i.e.,
+ its "Devstage".
+ If the age of the first,
+ plus the intervening time between samples,
+ would place the first sample in a different Devstage to the second sample,
+ then the two cannot be the same animal.
+ If the first sample would have reached the right Devstage,
+ then we assume it is equally likely to be 
+\emph on
+any
+\emph default
+ of the females in that Devstage at that year (i.e.,
+ sampling is unselective within Devstage) and thus the chance it is the same as the second sample is the reciprocal of the Devstage abundance.
+ The other consideration,
+ of course,
+ is that the first sample may not have survived the intervening years.
+ This leads to the quite-simple code shown in Listing
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Self-prob"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ The corresponding equation is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[\text{Sandy (sampled second) turns out to be the same animal as Freya (sampled first)}|a_{\text{F}}y_{\text{F}}d_{\text{S}}y_{\text{S}}\right]\nonumber \\
+=\frac{\mathbf{I}\left[d\left(a_{\text{F}}+\left(y_{\text{S}}-y_{\text{F}}\right)\right)=d_{\text{S}}\right]\times\Phi\left(y_{\text{S}}-y_{\text{F}};a_{\text{F}}\right)}{N_{\female}\left(y_{\text{S}},d_{\text{S}}\right)}\label{eq:self-staged}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where:
+ 
+\begin_inset Formula $a/y/d_{\text{F/S}}$
+\end_inset
+
+ is the age,
+ sampling year,
+ or Devstage of Freya or Sandy as appropriate;
+ 
+\begin_inset Formula $d\left(a\right)$
+\end_inset
+
+ is the function that maps age to Devstage,
+ with 
+\begin_inset Formula $d\left(a<7\right)=\text{"Juvenile"}$
+\end_inset
+
+ and 
+\begin_inset Formula $d\left(a\geqslant7\right)=\text{"Adult"}$
+\end_inset
+
+;
+ and 
+\begin_inset Formula $N_{\female}\left(y,d\right)=\sum_{a}\mathbf{I}\left[d\left(a\right)=d\right]N_{\female}\left(y,a\right)$
+\end_inset
+
+.
+ For devstage "Adult ,
+ the abundance is just 
+\begin_inset Formula $N_{\text{ad}\female}\left(y\right)$
+\end_inset
+
+ which is explicitly a variable in the population dynamics but,
+ since the latters is not formulated with explicit age structure,
+ some more work is required to deduce 
+\begin_inset Formula $N_{\female}\left(y,\text{Juvenile}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The key is the quasi-equilibrium assumption,
+ i.e.
+ that the age composition is (except perhaps for the oldest adults) stable over time,
+ even if abundance as a whole is increasing or decreasing.
+ The basic idea is that the number of juveniles leaving that Devstage should,
+ after mortality,
+ match the number of adults entering the Adult devstage in the next year;
+ and the basic tool is the Geometric Progression.
+ Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the first age of adulthood,
+ and assume that survival continues "forever" so that we can use infinite sums (and so we can avoid several other inconveniences in the CKMR equations that would require an explicit representation of age structure).
+ Dropping the female subscript for brevity,
+ and writing 
+\begin_inset Formula $\phi_{a}=\Phi\left(1,a\right)$
+\end_inset
+
+ for one-year survival,
+ we have
+\begin_inset Formula 
+\begin{gather}
+N\left(y+1,a+1\right)=\phi_{a}N\left(y,a\right)\,\,\forall\,y,a\text{ [survival]}\nonumber \\
+N\left(y+1,a\right)=\rho N\left(y,a\right)\,\,\forall\,y,a\text{ [increase/decrease at rate \ensuremath{\rho}]}\nonumber \\
+\implies N\left(y,a+1\right)=\phi_{a}N\left(y-1,a\right)=\frac{\phi_{a}}{\rho}N\left(y,a\right)\nonumber \\
+\implies N\left(y,a+t\right)=\left(\frac{\phi_{a}}{\rho}\right)^{t}N\left(y,a\right)\text{ if \ensuremath{\phi}is constant between \ensuremath{a} and \ensuremath{a+t-1} }\nonumber \\
+\implies N_{\text{ad}}\left(y\right)=\sum_{a\geqslant\alpha}N\left(y,\alpha\right)\left(\frac{\phi_{\text{ad}}}{\rho}\right)^{a-\alpha}=\frac{N\left(y,\alpha\right)}{1-\phi_{\text{ad}}/\rho}\text{ [total adult abundance relative to new incoming adults] }\nonumber \\
+\implies N\left(y,\alpha\right)=\left(1-\phi_{\text{ad}}/\rho\right)\times N_{\text{ad}}\left(y\right)\nonumber \\
+\implies N\left(y-1,\alpha-1\right)\text{\ensuremath{\phi_{\text{ju}}=}}\left(1-\phi_{\text{ad}}/\rho\right)\times N_{\text{ad}}\left(y\right)\text{ [same cohort one year earlier]}\nonumber \\
+\implies N\left(y,\alpha-1\right)=\phi_{\text{ju}}^{-1}\left(1-\phi_{\text{ad}}/\rho\right)N_{\text{ad}}\left(y+1\right)\nonumber \\
+=\left(\rho\phi_{\text{ju}}\right)^{-1}\left(1-\phi_{\text{ad}}/\rho\right)N_{\text{ad}}\left(y\right)\nonumber \\
+\implies N\left(y,1\right)=\left(\frac{\phi_{\text{ju}}}{\rho}\right)^{-\left(\left(\alpha-1\right)-1\right)}\left(\rho\phi_{\text{ju}}\right)^{-1}\left(1-\phi_{\text{ad}}/\rho\right)N_{\text{ad}}\left(y\right)\text{ in terms of new post-calves}\nonumber \\
+\implies N\left(\text{ju},y\right)=\sum_{a=1}^{\alpha-1}N\left(y,1\right)\left(\frac{\text{\ensuremath{\phi_{\text{ju}}}}}{\rho}\right)^{a-1}\nonumber \\
+=\frac{N\left(y,1\right)}{1-\phi_{\text{ju}}/\rho}\left(1-\left(\frac{\phi_{\text{ju}}}{\rho}\right)^{\alpha-1}\right)\text{ [finite geometric progression]}\nonumber \\
+\implies N\left(\text{ju},y\right)=N_{\text{ad}}\left(y\right)\times\nonumber \\
+\left(1-\frac{\phi_{\text{ju}}}{\rho}\right)^{-1}\left(1-\left(\frac{\phi_{\text{ju}}}{\rho}\right)^{\alpha-1}\right)\left(\frac{\phi_{\text{ju}}}{\rho}\right)^{2-\alpha}\left(\rho\phi_{\text{ju}}\right)^{-1}\left(1-\frac{\phi_{\text{ad}}}{\rho}\right)\label{eq:gp-phew}
+\end{gather}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -875,7 +1905,7 @@ Young-of-the-year (Age 0 calf) survival
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.68
+0.66
 \end_layout
 
 \end_inset
@@ -1130,7 +2160,7 @@ Probability of breeding at 3-yr+ interval
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rate of Increase (RoI)
+Resulting rate of increase (RoI)
 \end_layout
 
 \end_inset
