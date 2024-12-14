@@ -132,7 +132,7 @@ literal "false"
 
 \end_inset
 
- for a general (albeit mathematical) framework,
+for a general (albeit mathematical) framework,
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -177,7 +177,15 @@ Odobenus rosmarus divergens
  hereafter,
  walrus) is a gregarious,
  ice-associated pinniped inhabiting continental shelf waters of the Bering and Chukchi seas.
- During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea (Fay 1982).
+ During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "fay_ecology_1982"
+literal "false"
+
+\end_inset
+
+).
  In summer (when sea ice is absent from the Bering Sea) almost all juvenile and adult female walruses,
  and some adult male walruses,
  occupy the Chukchi Sea.
@@ -190,30 +198,108 @@ Odobenus rosmarus divergens
 \end_layout
 
 \begin_layout Standard
-Sea ice has declined for decades (Perovich and Richter-Menge 2009,
- Stroeve et al.,
- 2012,
- Stroeve and Notz 2018),
- and coupled global atmospheric-ocean general circulation models predict its continued decline through century’s end (Arthun et al.
- 2021).
+Sea ice has declined for decades (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "perovich_loss_2009"
+literal "false"
+
+\end_inset
+
+;
+ 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "stroeve_trends_2012"
+literal "false"
+
+\end_inset
+
+;
+ 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "stroeve_changing_2018"
+literal "false"
+
+\end_inset
+
+),
+ and coupled global atmospheric-ocean general circulation models predict its continued decline (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "arthun_seasonal_2021"
+literal "false"
+
+\end_inset
+
+).
  When sea ice recedes from the continental shelf,
  walruses come on shore to rest in large herds at sites termed haulouts,
- and they make long trips to foraging hotspots (Jay et al.
- 2012).
- This change in their activity budgets (Jay et al.
- 2017) may ultimately lead to a decline in body condition and an increase in mortality or a decrease in reproduction (Udevitz et al.
- 2017).
+ from which they make long trips to foraging hotspots (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "jay_walrus_2012"
+literal "false"
+
+\end_inset
+
+).
+ This change in their activity budgets (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "jay_walrus_2017"
+literal "false"
+
+\end_inset
+
+) may ultimately lead to a decline in body condition and an increase in mortality or a decrease in reproduction (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "udevitz_forecasting_2017"
+literal "false"
+
+\end_inset
+
+).
  Furthermore,
  disturbance at haulouts can cause stampedes,
  resulting in mass calf and juvenile mortality.
- Continued sea ice decline and a concomitant increase in the intensity and expansion of industrial and shipping activities in Pacific Arctic waters (Silber & Adams,
- 2019) are expected to drive a substantial population decline (Garlich-Miller et al.
- 2011,
- MacCracken et al.
- 2017,
- Johnson et al.
- 2023,
- 2024).
+ Continued sea ice decline and a concomitant increase in the intensity and expansion of industrial and shipping activities in Pacific Arctic waters (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "silber_vessel_2019"
+literal "false"
+
+\end_inset
+
+) are expected to drive a substantial population decline (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "garlich-miller_status_2011"
+literal "false"
+
+\end_inset
+
+;
+ 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "maccracken_final_2017"
+literal "false"
+
+\end_inset
+
+;
+ 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "johnson_assessing_2023,johnson_assessing_2024"
+literal "false"
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -221,15 +307,22 @@ Sea ice has declined for decades (Perovich and Richter-Menge 2009,
 Range-wide abundance and demographic rate estimates are crucial for understanding population status,
  as well as for developing and implementing harvest management plans.
  In particular,
- subsistence walrus harvests in Alaska and Chukotka exceed 4000 animals annually (USFWS,
- 2016),
+ subsistence walrus harvests in Alaska and Chukotka exceed 4,000 animals annually (USFWS,
+ 2023),
  and indigenous peoples need information on the status of the walrus population in order to manage these harvests sustainably.
  Furthermore,
  in the United States,
  the Marine Mammal Protection Act (MMPA) requires a determination of potential biological removal for walrus,
  which in turn,
- requires a precise abundance estimate (Gilbert 1999,
- Wade and DeMaster 1999).
+ requires a precise abundance estimate (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "gilbert_review_1999,wade_determining_1999"
+literal "false"
+
+\end_inset
+
+).
  Finally,
  the walrus was an endangered species candidate until the 2017 decision not to list—
 a decision which is currently being litigated (citation?—
@@ -238,8 +331,15 @@ when will new SSA be out?).
 \end_layout
 
 \begin_layout Standard
-Scientists have attempted to ascertain walrus population size since at least 1880 (Fay et al.
- 1989),
+Scientists have attempted to ascertain walrus population size since at least 1,880 (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "fay_managing_1989"
+literal "false"
+
+\end_inset
+
+),
  and until very recently,
  unsuccessfully.
  The most concerted effort was the 1975-2006 range-wide airplane-based surveys conducted collaboratively with the Soviet Union.
@@ -250,10 +350,15 @@ Scientists have attempted to ascertain walrus population size since at least 188
  innovative field methods,
  and sophisticated analyses,
  yielded a 95% CI on the population size estimate of 55,000–507,000 animals (CV = 0.93).
- The extensive imprecision in the estimate resulted from the walrus population being widely dispersed with unpredictable local clumping (Speckman et al.
- 2011,
- Jay et al.
- 2012),
+ The extensive imprecision in the estimate resulted from the walrus population being widely dispersed with unpredictable local clumping (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "speckman_results_2011,jay_walrus_2012"
+literal "false"
+
+\end_inset
+
+),
  which is,
  in turn,
  due to the large area of arctic and subarctic continental shelf over which they forage,
@@ -264,11 +369,25 @@ Scientists have attempted to ascertain walrus population size since at least 188
 
 \begin_layout Standard
 The first rigorous walrus survival rate estimates were obtained within the past decade via Bayesian integrated population models (IPMs),
- which combined multiple data sources to estimate demographic rates and population trend over multiple decades (Taylor and Udevitz 2015,
- Taylor et al.
- 2018).
+ which combined multiple data sources to estimate demographic rates and population trend over multiple decades (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "taylor_demography_2015,taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+).
  However,
- the original problems with the aerial survey data continued to preclude conclusions about population abundance in the IPMs (Taylor and Udevitz 2015).
+ the original problems with the aerial survey data continued to preclude conclusions about population abundance in the IPMs (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "taylor_demography_2015"
+literal "false"
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -277,15 +396,41 @@ In 2013,
  the U.S.
  Fish and Wildlife Service (USFWS) initiated a genetic mark-recapture (GMR) project to estimate walrus abundance and demographic rates.
  Under this approach,
- genetic ‘marking’ via skin biopsy samples (Palsboll et al.
- 1997) provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
- Biologists attempted to completely sample walruses in the accessible portion of the marginal ice zone in each year a research cruise was conducted,
+ genetic ‘marking’ via skin biopsy samples (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "palsboll_genetic_1997"
+literal "false"
+
+\end_inset
+
+) provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
+ Biologists attempted to completely sample walruses in the accessible portion of the 
+\end_layout
+
+\begin_layout Standard
+marginal ice zone in each year a research cruise was conducted,
  although Russian waters were not accessible in all years.
  Sampling focused on groups of adult females and juveniles,
- as these classes are the demographically important population segments of this polygynous species (Fay 1982).
+ as these classes are the demographically important population segments of this polygynous species (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "fay_ecology_1982"
+literal "false"
+
+\end_inset
+
+).
  Further methods for this “self-recapture” study are detailed by Beatty et al.
- (2020,
- 2022).
+ (
+\begin_inset CommandInset citation
+LatexCommand citeyear
+key "beatty_panmixia_2020,beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -293,11 +438,18 @@ In 2013,
 Data analysis from the first generation of walrus research cruises (2013– 2017) used a Cormack-Jolly-Seber multievent model to estimate survival rates,
  and a Horvitz-Thompson ratio estimator to obtain population size.
  The total abundance of 257,000 had a 95% credible interval of 171,000–366,000 (CV=0.19;
- Beatty et al.
- 2022).
+ 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+).
  Although the precision of the abundance estimate from the GMR was much improved over the final aerial survey,
  the GMR required extensive investment of human and financial resources (i.e,
- $5,000,000.) Thus,
+ USD $5,000,000.) Thus,
  a more cost-effective approach is needed to assess the walrus population on a regular interval.
  Notably,
  biopsy samples also contain information about close kin,

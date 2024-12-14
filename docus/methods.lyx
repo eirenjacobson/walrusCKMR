@@ -743,7 +743,7 @@ l
  to avoid double-counting.
  Also,
  
-\begin_inset Formula $b_{k}\neq b_{k}$
+\begin_inset Formula $b_{k}\neq b_{l}$
 \end_inset
 
  since walrus give birth to a single offspring.
@@ -1020,13 +1020,13 @@ As noted previously,
 
 \begin_layout Standard
 \begin_inset CommandInset citation
-LatexCommand citealp
-key "Beatty2022walrusMR"
+LatexCommand citet
+key "beatty_estimating_2022"
 literal "false"
 
 \end_inset
 
- used a fairly complex IMR formulation to cope with historically-very-imprecise estimates of age (or,
+used a fairly complex IMR formulation to cope with historically-very-imprecise estimates of age (or,
  more realistically,
  of "stage") estimates.
  However,
@@ -1411,7 +1411,15 @@ Simulations and model checking
 \begin_layout Standard
 To test the CKMR model,
  we developed an individual-based simulation with the life history and population dynamics of Pacific walrus.
- The simulation was modified from the package fishSim [Baylis].
+ The simulation was modified from the package fishSim (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "baylis_fishsim_2019"
+literal "false"
+
+\end_inset
+
+).
  The individual-based simulation is stochastic and operates on an annual basis.
  Individuals are tracked through the use of unique identifiers so that kinship pairs can be identified in simulated samples.
  We initialized the simulation in 1950 with a population of 250,000 animals.
