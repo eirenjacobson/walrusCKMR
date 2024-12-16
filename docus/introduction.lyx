@@ -105,16 +105,152 @@ INTRODUCTION
 
 \end_layout
 
-\begin_layout Itemize
-Estimating population abundance and demographics is very hard.
- There are lots of ways to do it but its important.
+\begin_layout Standard
+Estimation of both abundance and demographic parameters are key parts of the management of wild populations.
+ Obtaining these estimates with minimal bias and low uncertainty is critical for conservation.
+ Mark-recapture (CITE) provides both estimates of abundance and demographic parameters simultaneously,
+ at the cost of having to be able to identify individuals.
+ Marks are can be natural (callosity patterns on the heads of right whales;
+ CITE),
+ artificial (bird ringing;
+ CITE) or genetic (walrus crossbow shenanigans;
+ CITE),
+ but in all cases the method relies on the recapture of individuals to give information for estimation of survival,
+ fecundity and abundance.
+ Aside from changes in field methods,
+ there is little difference in how models are constructed for these differing marks.
+ Various models have been proposed over the last XXX years (CITE a bunch of Richard Cormack's papers?
+ Or Ruth's textbook??),
+ taking into account many common situations (e.g.,
+ open vs.
+ closed populations (CITE Richard Barker,
+ Matt thingy from Otago etc).
+ We can decompose our model parameters so that they depend on time,
+ space and other environmental covariates (CITE Otis et al).
+ Part of mark-recapture's success is surely down to its adaptability to new technologies for marking:
+ from rings/bands to DNA.
+\end_layout
+
+\begin_layout Standard
+If we use genetic marks to identify individuals,
+ it seems that we are throwing away some of the extra information that exists in these samples.
+ The DNA extracted from an individual will tell us about its relatives as well as the individual itself.
+ Close-kin mark-recapture (CKMR) was developed to exploit the additional information which we obtain when taking genetic samples.
+ So,
+ as well as confirming that an individual as been 
+\begin_inset Quotes eld
+\end_inset
+
+recaptured
+\begin_inset Quotes erd
+\end_inset
+
+ we can also assess the probability that an individual has a given kin relationship with another (e.g.,
+ making statements like 
+\begin_inset Quotes eld
+\end_inset
+
+individual A is the mother of individual B with probability 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+ CKMR also has the advantage that both non-lethal and lethal (from sampling,
+ hunting,
+ natural mortality etc) samples can be used to gain kin information.
+ By harnessing this extra information and putting kinship into a probabilistic framework,
+ we can gain more accurate estimates of demographic parameters and abundance.
  
 \end_layout
 
-\begin_layout Itemize
-Background on “traditional” CKMR,
- requires knowledge of age,
- note that lethal and non-lethal samples can be incorporated
+\begin_layout Standard
+The kinds of kin relationships that can be inferred from DNA samples has increased over time,
+ with advances in sequencing technology.
+ Parent-offspring pairs provide the most basic level of information (though in some cases we may only be interested in one parent,
+ as in the case study we present here,
+ where mother-offspring pairs are of interest),
+ but we can go further than that.
+ We might also want to find full sibling pairs or half-sibling pairs too.
+ Going back to parent-offspring pairs,
+ how do we know which individual is the offspring and which is the parent?
+ If we know the age of the individuals with complete accuracy then this problem is solved (the older one has to be the parent).
+ We can't always determine the exact age,
+ but may be able to get it to a reasonable range (or at least life stage).
+ With the addition of age information we can include further kin relationships:
+ even though genetically grandparent-grandchild pairs are not distinguishable from thiatic (niece/nephew-uncle/aunt) relationship,
+ with age information (and some information about the life history of the organism) we can include these relationships in our analysis.
+ It's also worth noting that despite the fact we never sample an individual,
+ we still use information about them to estimate our parameters:
+ e.g.,
+ we might never sample a father,
+ but if we sample his children they will show-up as half-siblings and so we will know about him.
+\end_layout
+
+\begin_layout Standard
+The non-monetary cost of doing CKMR is that we must understand the life cycle and genetics of the organism in question in some depth.
+ For example,
+ CKMR will not work on species that reproduce via parthenogenesis (as offspring are genetically identical to parents,
+ such as aphids) or species that give birth to clones (armadillos).
+ CKMR would also be fairly ineffective for species that observe monogamous relationships,
+ as the information from each additional capture is minimal.
+ Knowing about reproductive strategy is obviously very important not just for sampling logistics:
+ does the animal in question breed in one place?
+ Does it observe a hareem structure?
+ Does it do whatever fish do?
+ etc 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[someone who is a biologist can think of better examples here]
+\end_layout
+
+\end_inset
+
+ The advent of epigenetic age determination gives us a probabilistic quantification of age which is already being used in conjunction with CKMR (CITE some fish paper of Mark's).
+\end_layout
+
+\begin_layout Standard
+The monetary cost of doing CKMR is dropping in terms of sequencing,
+ as new technology comes online.
+ The non-lab costs remain as they ever were for mark-recapture (or any other observational study):
+ person-hours in the field.
+ As is the case with all field work,
+ we want to get the maximum information for the minimum cost whilst also keeping people safe.
+ So,
+ we face the question every statistician dreads:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+how many samples do I need?
+\begin_inset Quotes erd
+\end_inset
+
+ Fortunately,
+ in the case of CKMR this is relatively easy to calculate,
+ and that is the subject of this paper.
+ Given a target coefficient of variation and information on demographics and abundance (from existing genetic surveys,
+ pilot studies,
+ or the literature),
+ we can calculate how many kin pairs one is likely to obtain from a given number of samples.
+ In this paper we show how to perform these calculations (and the information needed to do so) using a case study on walrus in the North Pacific.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -177,15 +313,15 @@ Odobenus rosmarus divergens
  hereafter,
  walrus) is a gregarious,
  ice-associated pinniped inhabiting continental shelf waters of the Bering and Chukchi seas.
- During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea (
+ During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "fay_ecology_1982"
 literal "false"
 
 \end_inset
 
-).
+.
  In summer (when sea ice is absent from the Bering Sea) almost all juvenile and adult female walruses,
  and some adult male walruses,
  occupy the Chukchi Sea.
@@ -198,108 +334,72 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Sea ice has declined for decades (
+Sea ice has declined for decades 
 \begin_inset CommandInset citation
-LatexCommand citealt
-key "perovich_loss_2009"
+LatexCommand citep
+key "perovich_loss_2009,stroeve_trends_2012,stroeve_changing_2018"
 literal "false"
 
 \end_inset
 
-;
- 
+,
+ and coupled global atmospheric-ocean general circulation models predict its continued decline 
 \begin_inset CommandInset citation
-LatexCommand citealt
-key "stroeve_trends_2012"
-literal "false"
-
-\end_inset
-
-;
- 
-\begin_inset CommandInset citation
-LatexCommand citealt
-key "stroeve_changing_2018"
-literal "false"
-
-\end_inset
-
-),
- and coupled global atmospheric-ocean general circulation models predict its continued decline (
-\begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "arthun_seasonal_2021"
 literal "false"
 
 \end_inset
 
-).
+.
  When sea ice recedes from the continental shelf,
  walruses come on shore to rest in large herds at sites termed haulouts,
- from which they make long trips to foraging hotspots (
+ from which they make long trips to foraging hotspots 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "jay_walrus_2012"
 literal "false"
 
 \end_inset
 
-).
- This change in their activity budgets (
+.
+ This change in their activity budgets 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "jay_walrus_2017"
 literal "false"
 
 \end_inset
 
-) may ultimately lead to a decline in body condition and an increase in mortality or a decrease in reproduction (
+ may ultimately lead to a decline in body condition and an increase in mortality or a decrease in reproduction 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "udevitz_forecasting_2017"
 literal "false"
 
 \end_inset
 
-).
+.
  Furthermore,
  disturbance at haulouts can cause stampedes,
  resulting in mass calf and juvenile mortality.
- Continued sea ice decline and a concomitant increase in the intensity and expansion of industrial and shipping activities in Pacific Arctic waters (
+ Continued sea ice decline and a concomitant increase in the intensity and expansion of industrial and shipping activities in Pacific Arctic waters 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "silber_vessel_2019"
 literal "false"
 
 \end_inset
 
-) are expected to drive a substantial population decline (
+ are expected to drive a substantial population decline 
 \begin_inset CommandInset citation
-LatexCommand citealt
-key "garlich-miller_status_2011"
+LatexCommand citep
+key "garlich-miller_status_2011,maccracken_final_2017,johnson_assessing_2023,johnson_assessing_2024"
 literal "false"
 
 \end_inset
 
-;
- 
-\begin_inset CommandInset citation
-LatexCommand citealt
-key "maccracken_final_2017"
-literal "false"
-
-\end_inset
-
-;
- 
-\begin_inset CommandInset citation
-LatexCommand citealt
-key "johnson_assessing_2023,johnson_assessing_2024"
-literal "false"
-
-\end_inset
-
-).
+.
  
 \end_layout
 
@@ -314,15 +414,15 @@ Range-wide abundance and demographic rate estimates are crucial for understandin
  in the United States,
  the Marine Mammal Protection Act (MMPA) requires a determination of potential biological removal for walrus,
  which in turn,
- requires a precise abundance estimate (
+ requires a precise abundance estimate 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "gilbert_review_1999,wade_determining_1999"
 literal "false"
 
 \end_inset
 
-).
+.
  Finally,
  the walrus was an endangered species candidate until the 2017 decision not to list—
 a decision which is currently being litigated (citation?—
@@ -331,18 +431,18 @@ when will new SSA be out?).
 \end_layout
 
 \begin_layout Standard
-Scientists have attempted to ascertain walrus population size since at least 1,880 (
+Scientists have attempted to ascertain walrus population size since at least 1,880 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "fay_managing_1989"
 literal "false"
 
 \end_inset
 
-),
+,
  and until very recently,
  unsuccessfully.
- The most concerted effort was the 1975-2006 range-wide airplane-based surveys conducted collaboratively with the Soviet Union.
+ The most concerted effort was the 1975-2006 range-wide airplane-based surveys conducted collaboratively with the Soviet Union and then Russian Federation.
  However,
  resulting estimates were biased and imprecise,
  and count-based methods were abandoned after the 2006 survey which,
@@ -350,15 +450,15 @@ literal "false"
  innovative field methods,
  and sophisticated analyses,
  yielded a 95% CI on the population size estimate of 55,000–507,000 animals (CV = 0.93).
- The extensive imprecision in the estimate resulted from the walrus population being widely dispersed with unpredictable local clumping (
+ The extensive imprecision in the estimate resulted from the walrus population being widely dispersed with unpredictable local clumping 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "speckman_results_2011,jay_walrus_2012"
 literal "false"
 
 \end_inset
 
-),
+,
  which is,
  in turn,
  due to the large area of arctic and subarctic continental shelf over which they forage,
@@ -369,25 +469,25 @@ literal "false"
 
 \begin_layout Standard
 The first rigorous walrus survival rate estimates were obtained within the past decade via Bayesian integrated population models (IPMs),
- which combined multiple data sources to estimate demographic rates and population trend over multiple decades (
+ which combined multiple data sources to estimate demographic rates and population trend over multiple decades 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "taylor_demography_2015,taylor_demography_2018"
 literal "false"
 
 \end_inset
 
-).
+.
  However,
- the original problems with the aerial survey data continued to preclude conclusions about population abundance in the IPMs (
+ the original problems with the aerial survey data continued to preclude conclusions about population abundance in the IPMs 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "taylor_demography_2015"
 literal "false"
 
 \end_inset
 
-).
+.
  
 \end_layout
 
@@ -396,15 +496,23 @@ In 2013,
  the U.S.
  Fish and Wildlife Service (USFWS) initiated a genetic mark-recapture (GMR) project to estimate walrus abundance and demographic rates.
  Under this approach,
- genetic ‘marking’ via skin biopsy samples (
+ genetic 
+\begin_inset Quotes eld
+\end_inset
+
+marking
+\begin_inset Quotes erd
+\end_inset
+
+ via skin biopsy samples 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "palsboll_genetic_1997"
 literal "false"
 
 \end_inset
 
-) provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
+ provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
  Biologists attempted to completely sample walruses in the accessible portion of the 
 \end_layout
 
@@ -412,15 +520,15 @@ literal "false"
 marginal ice zone in each year a research cruise was conducted,
  although Russian waters were not accessible in all years.
  Sampling focused on groups of adult females and juveniles,
- as these classes are the demographically important population segments of this polygynous species (
+ as these classes are the demographically important population segments of this polygynous species 
 \begin_inset CommandInset citation
-LatexCommand citealt
+LatexCommand citep
 key "fay_ecology_1982"
 literal "false"
 
 \end_inset
 
-).
+.
  Further methods for this “self-recapture” study are detailed by Beatty et al.
  (
 \begin_inset CommandInset citation
@@ -449,10 +557,26 @@ literal "false"
 ).
  Although the precision of the abundance estimate from the GMR was much improved over the final aerial survey,
  the GMR required extensive investment of human and financial resources (i.e,
- USD $5,000,000.) Thus,
- a more cost-effective approach is needed to assess the walrus population on a regular interval.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+in our case
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+ USD $5,000,000).
+ A more cost-effective approach is needed to assess the walrus population on a regular interval.
  Notably,
- biopsy samples also contain information about close kin,
+ biopsy samples also contain information about kin relationships,
  which can substantially augment the information content of “self-mark-recaptures” without increasing sampling effort.
  
 \end_layout
