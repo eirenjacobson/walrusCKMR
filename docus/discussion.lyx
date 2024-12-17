@@ -102,6 +102,10 @@ Discussion
 
 \end_layout
 
+\begin_layout Itemize
+We show how sample collection plans could be modified to achieve desired monitoring goals with less sampling effort.
+\end_layout
+
 \begin_layout Standard
 
 \lang english
@@ -161,6 +165,13 @@ As should be evident from the preceding text and number of authors on this paper
  building a close-kin model involves a high level of collaboration between statisticians,
  biologists and geneticists.
  CKMR is very much a multidisciplinary methodology and each discipline has a great deal to input into the process of model building.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Would be great to mention that CKMR was motivated by fisheries and is an example of a shared tool between fisheries scientists and ecologists,
+ maybe cite Schaub et al 2024
 \end_layout
 
 \end_body

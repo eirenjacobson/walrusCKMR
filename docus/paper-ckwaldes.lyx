@@ -109,7 +109,7 @@ InStar
 \begin_body
 
 \begin_layout Title
-Combining close-kin and self-mark-recapture to design an effective survey for Pacific walrus 
+Combining individual and close-kin mark-recapture to design an effective survey for Pacific walrus 
 \end_layout
 
 \begin_layout Author
@@ -310,13 +310,88 @@ Corresponding author email:
  ej45@st-andrews.ac.uk
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Acknowledgments
+\end_layout
+
+\begin_layout Subsection*
+Data availability
+\end_layout
+
+\begin_layout Subsection*
+Conflict of Interest statement
+\end_layout
+
+\begin_layout Subsection*
+Author contribution statements
+\end_layout
+
+\begin_layout Subsection*
+Statement on inclusion (optional)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Abstract
-Abstract,
- should normally be not longer than 200 words.
+The Pacific walrus 
+\emph on
+(Odobenus rosmarus divergens) 
+\emph default
+is an ice-associated marine mammal found in the Bering and Chukchi Seas,
+ where they have been hunted for subsistence for time immemorial.
+ In the late 20th century,
+ the population declined,
+ likely because it had reached carrying capacity and was subject to high harvests.
+ Currently,
+ Pacific walrus is species of conservation concern due to the potential impacts of climate change,
+ particularly related to loss of sea ice.
+ To reduce uncertainty in estimates of population size and trend,
+ researchers undertook an individual genetic mark-recapture (IMR) sampling campaign from 2013-2017 and collected tissue samples from over 8,000 individuals.
+ Another campaign of a similar scale is ongoing (2023-2027).
+ While sample collection was designed for IMR,
+ methodological advances in close-kin mark-recapture (CKMR) and associated molecular methods mean these samples could also be suitable for CKMR.
+ The advantages of CKMR over IMR include increased effective sample size (since each individual tags not only itself,
+ but also its parents,
+ siblings,
+ and offspring) and additional insights into demographic quantities of interest.
+ Here,
+ we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and investigate whether different sampling strategies can increase precision in estimates of abundance and trend.
+ Our modelling approach includes special considerations for walrus life-history,
+ including a multi-year inter-birth interval.
+ We implement our model in R and use an individual-based simulation to test performance of the ICKMR model when assumptions are violated.
+ We find that the expected precision of the ICKMR estimates of abundance are higher than those expected from IMR alone.
+ This result suggests that ICKMR is a promising approach for assessing population size and trend of species which have been difficult to survey using more traditional methods.
+ [285/350]
 \end_layout
 
 \begin_layout Standard
 Keywords:
+ Close-kin mark-recapture,
+ individual genetic mark-recapture,
+ survey design,
+ walrus 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A list in alphabetical order not exceeding eight words or short phrases.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
