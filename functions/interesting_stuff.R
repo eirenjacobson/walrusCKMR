@@ -13,6 +13,9 @@
 # MVB 8/11: offarray now keeps identity even for scalar extractions
 # so either need to wrap the output in c(), or use [SLICE=blah]
 # otherwise you get "incomparables" problem at the rel_ad_15_25 stage
+    Nfad_2015 <- Nfad_y[ SLICE=2015] 
+    Nfad_2020 <- Nfad_y[SLICE = 2020]
+    Nfad_2025 <- Nfad_y[ SLICE=2025] 
     rel_ad_15_25 <- Nfad_y[ SLICE=2025]/Nfad_y[ SLICE=2015] - 1
     extract.named( real_params[ cq( fadsurv, fjusurv)])
     ppn_breedy <- ppn_breedy
