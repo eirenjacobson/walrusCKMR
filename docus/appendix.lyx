@@ -6,13 +6,10 @@
 \origin unavailable
 \textclass article
 \use_default_options true
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto-legacy
+\inputencoding utf8
 \fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -33,6 +30,8 @@ knitr
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
