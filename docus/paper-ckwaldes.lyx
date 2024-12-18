@@ -486,5 +486,20 @@ encoding "default"
 
 \end_layout
 
+\begin_layout Section*
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "appendix.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
