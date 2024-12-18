@@ -210,33 +210,33 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-We use a (partly-)Hidden Markov Model to describe the walrus breeding cycle.
- We assume that female adult walrus exist in one of three breeding states:
+We use a Hidden Markov Model to describe the walrus breeding cycle.
+ We assume that female adult walrus exist in one of three breeding States:
  1) pregnant,
  2) with calf,
  3) neither of the above,
- and that next year's state depends only on this year's.
- From state 1,
- next year's state must be 2.
- From state 2,
- a female may next year either return to state 1,
+ and that next year's State depends only on this year's.
+ From State 1,
+ next year's State must be 2.
+ From State 2,
+ a female may next year either return to State 1,
  with probability 
 \begin_inset Formula $\psi_{2}$
 \end_inset
 
 ,
- or move to state 3 with probability 
+ or move to State 3 with probability 
 \begin_inset Formula $1-\psi_{2}$
 \end_inset
 
 .
- From state 3,
- she will next year either move to state 1 with probability 
+ From State 3,
+ she will next year either move to State 1 with probability 
 \begin_inset Formula $\psi_{3}$
 \end_inset
 
 ,
- or remain in state 3 with probability 
+ or remain in State 3 with probability 
 \begin_inset Formula $1-\psi_{3}$
 \end_inset
 
@@ -260,8 +260,8 @@ nolink "false"
 \end_inset
 
 .
- Female survival probability is assumed to be independent of breeding state.
- Females enter state 3 on reaching age 4,
+ Female survival probability is assumed to be independent of breeding State.
+ Females enter State 3 on reaching age 4,
  and therefore can become pregnant at age 5 and give birth at age 6.
  Depending on the values of 
 \begin_inset Formula $\psi_{2}$
@@ -273,7 +273,7 @@ nolink "false"
 
 ,
  this leads to a ramping-up in effective fecundity (i.e.,
- probability of being in state 2) over the first few years of adult life.
+ probability of being in State 2) over the first few years of adult life.
  Both 
 \begin_inset Formula $\psi_{2}$
 \end_inset
@@ -634,7 +634,7 @@ where
 \begin_inset Formula $\text{Br}\left(\cdot\right)$
 \end_inset
 
- is an individual's breeding state,
+ is an individual's breeding State,
  
 \begin_inset Formula $\Phi\left(\Delta t,a\right)\triangleq\text{survival probability for \ensuremath{\Delta t} years starting from age \ensuremath{a}}$
 \end_inset
@@ -681,7 +681,11 @@ The second case is if
 \emph on
 i
 \emph default
- is sampled after Jenny's birth.
+ is sampled after 
+\emph on
+j
+\emph default
+'s birth.
  In that case,
  we know 
 \emph on
@@ -795,7 +799,7 @@ m
 \emph default
  was alive,
  mature,
- and in "calving phase" at 
+ and in breeding State 2 at 
 \emph on
 k
 \emph default
@@ -841,7 +845,7 @@ she survives until
 \end_layout
 
 \begin_layout Itemize
-she is in the right breeding state in 
+she is in the right breeding State in 
 \begin_inset Formula $b_{\text{\emph{l}}}$
 \end_inset
 
@@ -849,7 +853,7 @@ she is in the right breeding state in
 \end_layout
 
 \begin_layout Itemize
-she has to be the one lucky female amongst all the females that are in the right breeding state in year 
+she has to be the one lucky female amongst all the females that are in the right breeding State in year 
 \begin_inset Formula $b_{\text{l}}$
 \end_inset
 
@@ -871,7 +875,7 @@ Let
 \end_inset
 
  be the breeding-cycle transition matrix,
- so that if the probability vector of an animal being in state (1,2,3) at time 
+ so that if the probability vector of an animal being in State (1,2,3) at time 
 \begin_inset Formula $t$
 \end_inset
 
@@ -897,19 +901,17 @@ which is the probability vector of
 \emph on
 m
 \emph default
-'s breeding state at 
+'s breeding State at 
 \emph on
 k
 \emph default
 's birth (i.e.,
- certain to be in calving phase),
+ certain to be in State 2),
  and recall that 
 \begin_inset Formula $\bar{\beta}_{2}$
 \end_inset
 
- is the proportion of adult females in "calving phase",
- i.e.,
- breeding state 2.
+ is the proportion of adult females in breeding State 2.
  Then:
 \begin_inset Note Note
 status open
@@ -933,30 +935,35 @@ Mark:
 
 where the subscript "2" means that we need the second element of the vector inside the square-brackets,
  i.e.
- the probability that m (given she was alive) was in calving phase at l's birth.
- (This could also have been written in a more POP-like way using probabilities-of-breeding state,
- i.e.
+ the probability that m (given she was alive) was in breeding State 2 at l's birth.
  
-\begin_inset Formula $\mathbb{P}\left[\text{Br}\left(\text{Mary},b_{\text{B}}=2\right)|\text{Br}\left(\text{Mary},b_{\text{A}}\right)=1\right]$
-\end_inset
-
-,
- but with no particular benefit.)
 \end_layout
 
 \begin_layout Standard
-The walrus setting (or our assumptions about it) has actually made this probability rather simpler than it can be in other cases.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mark:
+ put this paragraph and the next,
+ plus further details on skip breeding,
+ into SI?
+\end_layout
+
+\end_inset
+
+Walrus life-history (or our assumptions about it) has actually made this probability rather simpler than it can be in other cases.
  In particular,
  all adult female walruses are assumed to have equal survival probabilities,
  regardless of age and breeding phase;
  and the breeding cycle is Markovian,
- so that once a walrus has reached calving-phase (like Mary at Anna's birth) her age does not affect her subsequent breeding phases nor her survival.
+ so that once a walrus has reached calving-phase (like m at k's birth) her age does not affect her subsequent breeding phases nor her survival.
  In a "fish-like" situation,
- Mary's age (and size) at Anna's birth would also be important,
+ m's age (and size) at k's birth would also be important,
  because it affects both her subsequent future survival probabilities,
- and her fecundity if she reaches Barry's birthdate.
- Thus for "fish" it is necessary to sum across all the possible ages that Mary might have had,
- weighted by the probability that she was that age given that she was Anna's mother
+ and her fecundity if she reaches l's birthdate.
+ Thus for "fish" it is necessary to sum across all the possible ages that m might have had,
+ weighted by the probability that she was that age given that she was k's mother.
 \end_layout
 
 \begin_layout Standard
@@ -1276,15 +1283,8 @@ That assumption may turn out to be unreasonable for juveniles especially;
  the ratio of age-specific sample compositions to model-estimated pouplation age compositions) should be estimated with respectable precision and without "propagating" a lot of uncertainty into other parameter estimates.
  We therefore think that our current somewhat crude IMR sub-model should give a reasonable guide to ultimate precision,
  even if it gets adjusted somewhat in the cold light of real data.
- Note that similar assumptions appear to be made in 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "Beatty2022walrusMR"
-literal "false"
-
-\end_inset
-
- (to be confirmed).
+ Note that similar assumptions appear to be made in Beatty et al.
+ 202 (to be confirmed).
 \end_layout
 
 \begin_layout Standard
@@ -1374,9 +1374,9 @@ The key is the quasi-equilibrium assumption,
  i.e.
  that the age composition is (except perhaps for the oldest adults) stable over time,
  even if abundance as a whole is increasing or decreasing.
- The basic idea is that the number of juveniles leaving that Devstage should,
+ The basic idea is that the number of Juveniles leaving that developmental stage should,
  after mortality,
- match the number of adults entering the Adult devstage in the next year;
+ match the number of adults entering the Adult developmental stage in the next year;
  and the basic tool is the Geometric Progression.
  Let 
 \begin_inset Formula $\alpha$
@@ -1433,15 +1433,7 @@ Simulations and model checking
 \begin_layout Standard
 To test the CKMR model,
  we developed an individual-based simulation with the life history and population dynamics of Pacific walrus.
- The simulation was modified from the package fishSim (
-\begin_inset CommandInset citation
-LatexCommand citealt
-key "baylis_fishsim_2019"
-literal "false"
-
-\end_inset
-
-).
+ The simulation was modified from the package fishSim by Shane Baylis (https://github.com/SMBaylis/fishSim).
  The individual-based simulation is stochastic and operates on an annual basis.
  Individuals are tracked through the use of unique identifiers so that kinship pairs can be identified in simulated samples.
  We initialized the simulation in 1950 with a population of 250,000 animals.
@@ -1475,7 +1467,7 @@ nolink "false"
  Individuals that are at or beyond the age of first reproduction mate randomly and males are not exhausted;
  i.e.,
  a male could potentially father more than one calf.
- Females reproduction follows a Markov process with three states,
+ Females reproduction follows a Markov process with three States,
  as described in Section
 \begin_inset space ~
 \end_inset
@@ -1492,7 +1484,7 @@ nolink "false"
 \end_inset
 
 .
- Females that are in the right state of the breeding cycle give birth to a single offspring with 1:1 sex ratio.
+ Females that are in State 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio.
  There is no systematic age-effect on female reproductive dynamics,
  except that they are guaranteed not-pregnant in the year immediately prior to maturity (again as per Section
 \begin_inset space ~
@@ -1514,8 +1506,6 @@ nolink "false"
  Although,
  there is an option to induce senescence (end of reproduction) beyond some chosen age,
  this was not used for the test dataset.
- The simulation tracks whether offspring are still associated with their mother,
- although this is not used at present.
  The parameters in Table
 \begin_inset space ~
 \end_inset
@@ -1580,12 +1570,12 @@ nolink "false"
 \end_inset
 
 .
- Females enter Stage 3 of the cycle (not pregnant) when they turn 4 (since age of first reproduction is 6,
+ Females enter State 3 of the cycle (not pregnant) when they turn 4 (since age of first reproduction is 6,
  they may get pregnant at 5).
- From Stage 3,
+ From State 3 3,
  they can either move to Stage 1 (pregnant) or stay in Stage 3 according to the probability of breeding at a 3-yr+ interval.
- From Stage 1,
- females must move to Stage 2:
+ From State 1,
+ females must move to State 2:
  with dependent calf.
  Although we nominally assume in the simulation that 100% of pregnancies result in live births,
  this rate is aliased with the nominal calf-survival probability,
@@ -1596,10 +1586,10 @@ nolink "false"
 
  nominal calf survival) affects the simulated samples,
  not the two constituent parameters.
- From Stage 2,
- females can either move back to Stage 1:
+ From State 2,
+ females can either move back to State 1:
  pregnant according to the probability of breeding at 2-yr interval,
- or move to Stage 3.
+ or move to State 3.
  Males and non-breeding females are exempt from this cycle.
  The simulation then proceeds to the following year.
 \end_layout

@@ -14,6 +14,9 @@
 %\linenumbers
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata,positioning}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{202A}{!!!FIX ME!!!}
+\DeclareUnicodeCharacter{202C}{!!!FIX ME!!!}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -64,6 +67,7 @@ InStar
 \cite_engine biblatex-natbib
 \cite_engine_type authoryear
 \biblio_style plainnat
+\biblio_options maxcitenames=2, mincitenames=1,uniquelist=false
 \biblatex_bibstyle authoryear
 \biblatex_citestyle authoryear
 \use_bibtopic false
@@ -361,7 +365,7 @@ is an ice-associated marine mammal found in the Bering and Chukchi Seas,
  researchers undertook an individual genetic mark-recapture (IMR) sampling campaign from 2013-2017 and collected tissue samples from over 8,000 individuals.
  Another campaign of a similar scale is ongoing (2023-2027).
  While sample collection was designed for IMR,
- methodological advances in close-kin mark-recapture (CKMR) and associated molecular methods mean these samples could also be suitable for CKMR.
+ advances in close-kin mark-recapture (CKMR) methodology and associated molecular techniques mean these samples could also be suitable for CKMR.
  The advantages of CKMR over IMR include increased effective sample size (since each individual tags not only itself,
  but also its parents,
  siblings,
@@ -370,7 +374,8 @@ is an ice-associated marine mammal found in the Bering and Chukchi Seas,
  we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and investigate whether different sampling strategies can increase precision in estimates of abundance and trend.
  Our modelling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We implement our model in R and use an individual-based simulation to test performance of the ICKMR model when assumptions are violated.
+ We implement our model in R and use an individual-based simulation to test performance of the ICKMR model.
+ Something here about survey design.
  We find that the expected precision of the ICKMR estimates of abundance are higher than those expected from IMR alone.
  This result suggests that ICKMR is a promising approach for assessing population size and trend of species which have been difficult to survey using more traditional methods.
  [285/350]

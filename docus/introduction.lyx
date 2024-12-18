@@ -180,7 +180,7 @@ literal "false"
 
 \end_inset
 
-for a general (albeit mathematical) framework,
+ for a general (albeit mathematical) framework,
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -189,7 +189,7 @@ literal "false"
 
 \end_inset
 
-for a CKMR design exercise on bearded seals,
+ for a CKMR design exercise on bearded seals,
  and 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -198,13 +198,13 @@ literal "false"
 
 \end_inset
 
-for a real-life application to flying-foxes (fruit bats).
+ for a real-life application to flying-foxes (fruit bats).
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 If we need to save space,
@@ -250,8 +250,7 @@ Calculating kinship probabilities also requires in-depth consideration on the li
 \end_layout
 
 \begin_layout Standard
-The monetary cost of doing CKMR is dropping in terms of sequencing,
- as new technology comes online.
+The monetary cost of doing CKMR is decreasing in terms of sequencing as new technology comes online.
  The non-lab costs remain as they ever were for mark-recapture (or any other observational study):
  person-hours in the field.
  As is the case with all fieldwork,
@@ -487,11 +486,7 @@ literal "false"
 \end_inset
 
  provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
- Biologists attempted to completely sample walruses in the accessible portion of the 
-\end_layout
-
-\begin_layout Standard
-marginal ice zone in each year a research cruise was conducted,
+ Biologists attempted to completely sample walruses in the accessible portion of the marginal ice zone in each year a research cruise was conducted,
  although Russian waters were not accessible in all years.
  Sampling focused on groups of adult females and juveniles,
  as these classes are the demographically important population segments of this polygynous species 
@@ -518,7 +513,7 @@ literal "false"
 
 \begin_layout Standard
 Data analysis from the first generation of walrus research cruises (2013– 2017) used a Cormack-Jolly-Seber multievent model to estimate survival rates,
- and a Horvitz-Thompson ratio estimator to obtain population size.
+ and a Horvitz-Thompson-like estimator to obtain population size.
  The total abundance of 257,000 had a 95% credible interval of 171,000–366,000 (CV=0.19;
  
 \begin_inset CommandInset citation
@@ -575,14 +570,14 @@ literal "false"
  We then explore different demographic and design scenarios for Pacific walrus using IMR,
  CKMR,
  and CKMR + IMR and demonstrate how the latter can be used to substantially reduce the overall amount of survey effort required for adequate monitoring.
- [1875 words] [
+ [1875 words] 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 we should be consistent re.
  terminology,
- genetic mark recapture or individual mark recapture?
+ genetic mark recapture or individual mark recapture or individual genetic mark recapture?
 \end_layout
 
 \end_inset
