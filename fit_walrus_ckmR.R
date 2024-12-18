@@ -25,7 +25,7 @@ if( any( sub( '[.][Rr]$', '', basename( functionfiles)) %in%
 }
 
 # Suffixes from simulation folder:
-suffixes <- dir( 'simulation', patt='^WalrusSamples.*RData') |>
+suffixes <- dir( 'simulation/test', patt='^WalrusSamples.*RData') |>
     xsub( 'WalrusSamples_', '') |>
     xsub( '[.]RData', '')
 
@@ -37,10 +37,10 @@ suffixes <- dir( 'simulation', patt='^WalrusSamples.*RData') |>
 # coz it goes thru 2027
 # by which time there will be a LOT of pairs :) !!!
 
-TEST_SUFFIX <- 4 # choose a "scenario" that works nicely...
+TEST_SUFFIX <- 1 # choose a "scenario" that works nicely...
 
 lglk_with_data <- add_data( lglk_walrus,
-    simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[ TEST_SUFFIX]),
+    simfile = sprintf( 'test/WalrusSamples_%s.RData', suffixes[ TEST_SUFFIX]),
     YSTART= 2015,      #  more stable parametrization (no math difference)
     SYEARS= 2013:2027)
     # SYEARS explicit, rather than inferred from simfile; make sure 
@@ -53,7 +53,7 @@ r"--{
 
 ## True parameter values: mostly from Eiren's sim notes
 # but Nfad2000 and RoI are stored on file
-print( load( sprintf( './simulation/Nfad_RoI_%s.RData', 
+print( load( sprintf( './simulation/test/Nfad_RoI_%s.RData', 
     suffixes[ TEST_SUFFIX])))
 # variable called 'out', which has "real" abund & RoI param values
 
