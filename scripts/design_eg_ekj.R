@@ -36,9 +36,9 @@ tout <- round(compdesign[d,l,s,,"Yes",,"SE"], digits = 2)
 
 write.csv( tout, file=paste0("results/compdesign_D", d, "_L", l, "_S", s, ".csv"))
 
-cvs <- compdesign[1, 2, 1, "Yes", "Yes",, "SE"]/compdesign[1, 2, 3, "Yes", "Yes",, "Est"]
-design_df[which(design_df$ID == suffixes[TEST_SUFFIX] & design_df$CKMR == "Yes" & design_df$Value == "CV"),7:13] <- compdesign[1, 2, 1, "Yes", "Yes",, "SE"]/compdesign[1, 2, 3, "Yes", "Yes",, "Est"]
+cvs_yes <- compdesign[d, l, s, "Yes", "Yes",, "SE"]/compdesign[d, l, s, "Yes", "Yes",, "Est"]
+cvs_no <- compdesign[d, l, s, "No", "Yes",, "SE"]/compdesign[d, l, s, "Yes", "Yes",, "Est"]
+design_df[which(design_df$ID == suffixes[TEST_SUFFIX] & design_df$CKMR == "Yes" & design_df$Value == "CV"),7:13] <- cvs_yes
+design_df[which(design_df$ID == suffixes[TEST_SUFFIX] & design_df$CKMR == "No" & design_df$Value == "CV"),7:13] <- cvs_no
 
-
-write.csv( cvs, file=paste0("results/cvs_D", d, "_L", l, "_S", s, ".csv"))
 

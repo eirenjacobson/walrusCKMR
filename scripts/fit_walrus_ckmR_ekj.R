@@ -160,6 +160,6 @@ for (i in 1:length(design_sc)){
 }
 
 save(compdesign, file = "./results/compdesign.RData")
-
+save(design_df, file = "./results/design_df.RData")
 
 

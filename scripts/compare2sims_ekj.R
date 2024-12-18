@@ -17,7 +17,7 @@ for( i in seq_along( suffixes)){
   # Lglk fun for *this* dataset:
   # ... and a place to keep the data summary
   sim_lglks[[i]] <- add_data( lglk_walrus,
-      simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[i]),
+      simfile = sprintf( 'test/WalrusSamples_%s.RData', suffixes[i]),
       YSTART = denv$YSTART) # presumably 2015
   denvi <- environment( sim_lglks[[ i]]) # where stuff lives
 
@@ -55,7 +55,7 @@ birthgap_check( E)
 sum( fec_check( E)) # matches compcheck
 sum( fec_check( E)[1,]) # no Lethals expected
 sum( fec_check( denv)[2,]) # ditto in simulatin
-plot( 1:37, fec_check(E)[SLICE=2,], ylim=c( 0, 20), col='blue')
+plot( 1:37, fec_check(E)[SLICE=2,], col='blue')
 points( 1:37, fec_check(denv)[SLICE=2,], col='orange')
 # NB _no_ sim parents at age 6..?
 # Fec in E swings heavily over early years of adulthood.
@@ -75,7 +75,7 @@ for( i in seq_along( suffixes)){
 sim_summ <- NULL
 etemp <- new.env()
 for (i in seq_along(suffixes)){
-  load( sprintf( './simulation/Nfad_RoI_%s.RData', suffixes[ i]), 
+  load( sprintf( './simulation/test/Nfad_RoI_%s.RData', suffixes[ i]), 
       envir=etemp)
   # I happen to know it's called 'out'
   
@@ -84,7 +84,7 @@ for (i in seq_along(suffixes)){
     dimnames( sim_summ) <- list( suffixes, names( etemp$out))
   }
   
-  sim_summ[i,] <- e$out
+  sim_summ[i,] <- etemp$out
   
   #  suffix <- suffixes[i]
   #  load(paste0("./simulation/Nfad_RoI_", suffix, ".RData"))
