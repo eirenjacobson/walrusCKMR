@@ -13,7 +13,7 @@
 %\usepackage{lineno}  %%% PROBABLY DON'T in LyX 2.4 where line nums are easier
 %\linenumbers
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata,positioning}
+\usetikzlibrary{arrows,automata,positioning,arrows.meta}
 \usepackage[utf8]{inputenc}
 \DeclareUnicodeCharacter{202A}{!!!FIX ME!!!}
 \DeclareUnicodeCharacter{202C}{!!!FIX ME!!!}

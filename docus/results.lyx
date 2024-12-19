@@ -163,7 +163,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Users/ej45/Documents/walrusCKMR/figures/EffortVCV.png
+	filename ../figures/EffortVCV.png
 	scale 70
 
 \end_inset
@@ -222,7 +222,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Users/ej45/Documents/walrusCKMR/figures/MegaResults.png
+	filename ../figures/MegaResults.png
 	scale 70
 
 \end_inset

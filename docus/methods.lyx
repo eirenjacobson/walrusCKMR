@@ -405,7 +405,7 @@ status open
 
 
 \backslash
-begin{tikzpicture}[>=stealth',
+begin{tikzpicture}[
 \end_layout
 
 \begin_layout Plain Layout
@@ -415,26 +415,23 @@ begin{tikzpicture}[>=stealth',
 
 \begin_layout Plain Layout
 
-node distance = 3cm and 4cm,
+node distance = 1cm and 4cm,
 \end_layout
 
 \begin_layout Plain Layout
 
     el/.style = {inner sep=2pt,
  align=left,
- sloped},
-\end_layout
-
-\begin_layout Plain Layout
-
-every label/.append style = {font=
-\backslash
-tiny}
+ sloped}
 \end_layout
 
 \begin_layout Plain Layout
 
                     ]
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -475,16 +472,13 @@ node (q2) [state,right=of q1,
 
 \begin_layout Plain Layout
 
-
-\backslash
-path[->] 
 \end_layout
 
 \begin_layout Plain Layout
 
-    (q2)  edge [in=45,out=0,loop] node[el,above,rotate=0] {$(1-
+
 \backslash
-psi_3)$}   (q2)
+path[arrows=-{Stealth[length=3mm]}] 
 \end_layout
 
 \begin_layout Plain Layout
@@ -516,7 +510,49 @@ psi_2$}  (q0)
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
     ;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,>= {Stealth[length=3mm]}]      (q2)  edge [loop below] node[el,below] {$(1-
+\backslash
+psi_3)$}   (q2);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (e1)  [above=of q0] {State 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node  (e2) [above=of q1] {State 2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (e3) [above=of q2] {State 3};
 \end_layout
 
 \begin_layout Plain Layout
