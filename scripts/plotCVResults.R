@@ -10,7 +10,9 @@ estdf <- filter(design_df, Value == "Est", CKMR == "Yes") %>%
 cvdf <- na.omit(filter(design_df, Value == "CV")) %>%
   select(ID, CKMR, Value, D, L, S, Nfad_2015, Nfad_2020, Nfad_2025) %>%
   pivot_longer(cols = c(Nfad_2015, Nfad_2020, Nfad_2025), names_to = "Year", values_to = "CV") %>%
-  mutate(Year = substr(Year, 6, 9))
+  mutate(Year = substr(Year, 6, 9)) %>%
+  mutate(CKMR = factor(CKMR, ordered = TRUE, levels = c("No", "Yes"))) %>%
+  mutate(L = ordered(L, ordered = TRUE, levels = c("No", "Yes")))
 
 sedf <- na.omit(filter(design_df, Value == "SE")) %>%
   select(ID, CKMR, Value, D, L, S, Nfad_2015, Nfad_2020, Nfad_2025) %>%
@@ -52,6 +54,8 @@ ggplot() +
       return(demo_names[value])
     }
   }
+  
+  
 
 ggplot() +
   geom_point(data = cvdf, aes(x=Year, y = CV, color = as.factor(L), shape = as.factor(CKMR)))+
@@ -61,7 +65,8 @@ ggplot() +
   scale_shape_discrete(name = "CKMR", labels = c("Yes", "No")) +
   geom_hline(yintercept = 0.15, linetype = "dashed", color = "grey") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = -70,vjust = 0.3, hjust=0))
+  theme(axis.text.x = element_text(angle = -70,vjust = 0.3, hjust=0)) +
+  theme(legend.position = "bottom")
 
 ggsave(plot = last_plot(), file = "./figures/MegaResults.png", 
        width = 10, height = 6, units = "in")
