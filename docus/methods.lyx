@@ -272,8 +272,10 @@ name "subsec:The-breeding-cycle"
 We use a Markov model to describe the walrus breeding cycle.
  We assume that female adult walrus exist in one of three breeding states:
  (1) pregnant,
- (2) with calf or,
- (3) neither of the above
+ (2) with young-of-the-year (YOTY) calf or,
+ (3) non-breeding;
+ i.e.,
+ neither of the above
 \begin_inset Note Note
 status open
 
@@ -439,21 +441,36 @@ tiny}
 
 
 \backslash
-node (q0) [state]             {Pregnant};
+node (q0) [state,
+ align = center]             {Pregnant 
+\backslash
+
+\backslash
+ Adult Female};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (q1) [state,right=of q0] {With calf};
+node (q1) [state,right=of q0,
+ align = center] {Adult Female 
+\backslash
+
+\backslash
+with YOTY Calf};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (q2) [state,right=of q1] {Neither};
+node (q2) [state,right=of q1,
+ align = center] {Non-breeding
+\backslash
+
+\backslash
+ Female};
 \end_layout
 
 \begin_layout Plain Layout
@@ -524,18 +541,10 @@ end{tikzpicture}
 \begin_layout Plain Layout
 Directed cyclic graph showing the breeding cycle for walrus as represented in our Markov model.
  Nodes in the graph show the states (pregnant,
- with calf,
- or neither) and edges give the probabilities of transition between those states.
+ with young-of-the-year (YOTY) calf,
+ or non-breeding) and edges give the probabilities of transition between those states.
  Walrus reach sexual maturity at age 4,
- so enter the graph at node 
-\begin_inset Quotes eld
-\end_inset
-
-neither
-\begin_inset Quotes erd
-\end_inset
-
-.
+ so enter the graph at node non-breeding.
  
 \begin_inset CommandInset label
 LatexCommand label
