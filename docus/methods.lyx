@@ -275,20 +275,10 @@ We use a Markov model to describe the walrus breeding cycle.
  (2) with young-of-the-year (YOTY) calf or,
  (3) non-breeding;
  i.e.,
- neither of the above
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-more biological term here?
-\end_layout
-
-\end_inset
-
-,
+ neither of the above,
  and that next year's state depends only on this year's.
  From state 1 (pregnant),
- next year's state must be 2 (with calf).
+ next year's state must be 2 (with YOTY calf).
  From state 2,
  a female may next year either return to state 1 (become pregnant again),
  with probability 
@@ -296,34 +286,7 @@ more biological term here?
 \end_inset
 
 ,
- or move to state 3 (neither pregnant nor with calf
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-can we call 
-\begin_inset Quotes eld
-\end_inset
-
-with calf
-\begin_inset Quotes erd
-\end_inset
-
- something else?
- It's almost synonymous with 
-\begin_inset Quotes eld
-\end_inset
-
-pregnant
-\begin_inset Quotes erd
-\end_inset
-
- for me and it's confusing me
-\end_layout
-
-\end_inset
-
-) with probability 
+ or move to state 3 (neither pregnant nor with calf) with probability 
 \begin_inset Formula $1-\psi_{2}$
 \end_inset
 
@@ -339,7 +302,7 @@ pregnant
 \end_inset
 
 .
- Note that due to long gestation times (14 months),
+ Note that due to long gestation times (~14 months),
  walrus cannot give birth to calves in two consecutive years.
  We also allow 
 \begin_inset Formula $\psi_{2}\neq\psi_{3}$
@@ -443,7 +406,7 @@ node (q0) [state,
 \backslash
 
 \backslash
- Adult Female};
+ Female};
 \end_layout
 
 \begin_layout Plain Layout
@@ -1191,7 +1154,7 @@ Mark:
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right]\nonumber \\
-=\mathbb{P}\left[\text{\emph{k}'s mum was also \emph{l}'s mum}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
+=\mathbb{P}\left[\text{\emph{k}'s mother was also \emph{l}'s mother}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
 =\frac{\Phi\left(b_{\text{B}}-b_{\text{A}}-1\right)\left[\Psi^{b_{\text{B}}-b_{\text{A}}}p^{\left[0\right]}\right]_{2}}{N_{\text{ad}\female}\left(b_{\text{B}}\right)\bar{\beta}_{2}},\label{eq:xmhsp}
 \end{gather}
 
@@ -1590,7 +1553,7 @@ any
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[\text{Sample 2 turns out to be the same animal as sample 1}|a_{\text{1}}y_{\text{1}}d_{\text{2}}y_{\text{2}}\right]\nonumber \\
+\mathbb{P}\left[\text{Sample 2 is the same animal as sample 1}|a_{\text{1}}y_{\text{1}}d_{\text{2}}y_{\text{2}}\right]\nonumber \\
 =\frac{\mathbf{I}\left[d\left(a_{\text{1}}+\left(y_{\text{2}}-y_{\text{1}}\right)\right)=d_{\text{2}}\right]\times\Phi\left(y_{\text{2}}-y_{\text{1}};a_{\text{1}}\right)}{N_{\female}\left(y_{\text{2}},d_{\text{2}}\right)}\label{eq:self-staged}
 \end{gather}
 
@@ -1718,7 +1681,7 @@ founders
 \end_inset
 
  and do not have mothers or fathers.
- The age and sex-structure of the initial population is determined by the survival rates used in the simulation (Table
+ The age and sex structure of the initial population is determined by the survival rates used in the simulation (Table
 \begin_inset space ~
 \end_inset
 
@@ -1756,7 +1719,7 @@ nolink "false"
 \end_inset
 
 .
- Females that are in State 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio.
+ Females that are in state 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio.
  There is no systematic age-effect on female reproductive dynamics,
  except that they are guaranteed not-pregnant in the year immediately prior to maturity (again as per Section
 \begin_inset space ~
@@ -1842,13 +1805,13 @@ nolink "false"
 \end_inset
 
 .
- Females enter State 3 of the cycle (not pregnant) when they turn 4 (since age of first reproduction is 6,
+ Females enter state 3 of the cycle (not pregnant) when they turn 4 (since age of first reproduction is 6,
  they may get pregnant at 5).
- From State 3 3,
- they can either move to Stage 1 (pregnant) or stay in Stage 3 according to the probability of breeding at a 3-yr+ interval.
- From State 1,
- females must move to State 2:
- with dependent calf.
+ From state 3,
+ they can either move to state 1 (pregnant) or stay in state 3 according to the probability of breeding at a 3-yr+ interval.
+ From state 1,
+ females must move to state 2:
+ with YOTY calf.
  Although we nominally assume in the simulation that 100% of pregnancies result in live births,
  this rate is aliased with the nominal calf-survival probability,
  since (at least for now) only samples from 1yo onwards are considered;
@@ -1858,18 +1821,19 @@ nolink "false"
 
  nominal calf survival) affects the simulated samples,
  not the two constituent parameters.
- From State 2,
- females can either move back to State 1:
+ From state 2,
+ adult females can either move back to state 1:
  pregnant according to the probability of breeding at 2-yr interval,
- or move to State 3.
- Males and non-breeding females are exempt from this cycle.
+ or move to state 3.
+ Males and females < 4yo (or > the age of last reproduction;
+ ALR) are exempt from this cycle.
  The simulation then proceeds to the following year.
 \end_layout
 
 \begin_layout Standard
 All simulations had a starting population size of 250,000 and were run from 1950 to 2030.
  To evaluate agreement between the simulation and CKMR model,
- we generated 10 replicate simulated datasets with demographic parameters as in Table 
+ we generated 10 replicate simulated datasets with demographic parameters under a null scenario as in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:demo-pars"
@@ -2461,7 +2425,20 @@ NA
 \begin_inset Text
 
 \begin_layout Plain Layout
-Probability of breeding at 2-yr interval
+Probability of breeding at 2-yr interval (
+\emph on
+ψ
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -2508,7 +2485,20 @@ Probability of breeding at 2-yr interval
 \begin_inset Text
 
 \begin_layout Plain Layout
-Probability of breeding at 3-yr+ interval
+Probability of breeding at 3-yr+ interval (
+\emph on
+ψ
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -2555,7 +2545,11 @@ Probability of breeding at 3-yr+ interval
 \begin_inset Text
 
 \begin_layout Plain Layout
-Resulting rate of increase (RoI)
+Resulting rate of increase (
+\emph on
+r
+\emph default
+)
 \end_layout
 
 \end_inset
@@ -4230,7 +4224,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-We used the simulated samples from each simulated dataset to...
+We used the simulated samples from each simulated dataset to...not sure whether this should be explained here or after design calcs.
 \end_layout
 
 \begin_layout Subsection

@@ -142,15 +142,63 @@ OK will plan to put checks in SI
 
 \end_layout
 
-\begin_layout Subsection
-Sample sizes and duration
-\end_layout
-
 \begin_layout Standard
 TO ADD:
  Figure of # samples versus # kin pairs observed for each type (MOPS,
  XmHSPs,
  Self)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../figures/MegaResults.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different demographic (panel rows) and sampling (panel column) scenarios.
+ Triangular points represent expected CVs from IMR alone,
+ while circular points show expected CVs with ICKMR.
+ The inclusion of lethal samples is indicated by red (lethal samples included) or blue (no lethal samples included in sampling years) points.
+ The horizontal dashed line at CV = 0.15 represents an arbitrary threshold for decision making.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Megafigure:
+ all sampling and demo scenarios,
+ lethal/non,
+ ckmr yes/no
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -189,10 +237,6 @@ Sampling effort (in number of years,
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -208,10 +252,6 @@ Effort v CV
 
 \end_layout
 
-\begin_layout Subsection
-Sensitivity analyses
-\end_layout
-
 \begin_layout Standard
 \begin_inset Float figure
 placement document
@@ -222,7 +262,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../figures/MegaResults.png
+	filename ../figures/CVsSameEffort.png
 	scale 70
 
 \end_inset
@@ -234,11 +274,20 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different demographic (panel rows) and sampling (panel column) scenarios.
- Triangular points represent expected CVs from IMR alone,
- while circular points show expected CVs with ICKMR.
- The inclusion of lethal samples is indicated by red (no lethal samples included) or blue (lethal samples included in sampling years) points.
- The horizontal dashed line at CV = 0.15 represents an arbitrary threshold for decision making.
+Expected CV on the number of adult females with three years of sampling (top panels) and four years of sampling (bottom panel).
+ In the top panel,
+ the horizontal axis shows expected CVs under sampling scenario 1 and the vertical axis shows expected CVs under sampling scenario 7.
+ In the bottom panels,
+ the horizontal axis shows expected CVs under sampling scenario 2 and the vertical axis shows expected CVs under sampling scenario 7.
+ From left to right,
+ panels indicate expected CVs in 2015,
+ 2020,
+ and 2025.
+ Individual points represent expected CVs under different possible demographic scenarios,
+ with (red) and without (blue) the inclusion of lethal samples,
+ and with (round points) and without (triangular points) the use of CKMR (versus IMR alone).
+ The solid grey line is 1:1.
+ The horizontal dashed grey line represents an arbitrary threshold CV of 0.15.
 \end_layout
 
 \end_inset
@@ -249,6 +298,25 @@ Expected CV of adult female abundance (vertical axis) in different years (horizo
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+CV w/ same effort,
+ different sampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sample sizes and duration
+\end_layout
+
+\begin_layout Subsection
+Sensitivity analyses
 \end_layout
 
 \begin_layout Itemize

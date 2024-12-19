@@ -18,14 +18,14 @@
   ## at which point it's 0: what would the equiv surv of
   ## a population that had no cut-off death rate?
   
-#  AMAX <- 30
-#  ASEN <- 24
+#  AMAX <- 30 # yrs post maturity
+#  ASEN <- 24 # yrs post maturity
 #  phi1 <- 0.99
 #  phi2 <- 0.55
   N <- rep(0, AMAX+1)
   N[1:(ASEN+1)] <- phi1 ^ (0:ASEN)
   N[(ASEN+2) : (AMAX+1)] <- phi1^ASEN * phi2^(1:(AMAX-ASEN))
-  surv <- phi + 0*N
+  surv <- c(rep(phi1, ASEN), rep(phi2, (AMAX - ASEN + 1)))
   surv[ length( surv)] <- 0
   N %**% surv / sum(N)
 }

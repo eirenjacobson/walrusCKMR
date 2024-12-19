@@ -1,8 +1,9 @@
 library(tidyr)
 library(dplyr)
 library(ggplot2)
+library(ggpubr)
 
-load("../results/design_df.RData")
+load("./results/design_df.RData")
 
 estdf <- filter(design_df, Value == "Est", CKMR == "Yes") %>%
   select(ID, CKMR, Value, D, L, S, Nfad_2015, Nfad_2020, Nfad_2025) %>%
@@ -88,13 +89,54 @@ plot_labeller <- function(variable,value){
 ggplot(filter(cveffort, Year == 2025)) + 
   geom_point(aes(x=Effort, y = CV, color = as.factor(L), shape = as.factor(CKMR))) +
   facet_wrap(~D, nrow = 3, labeller = plot_labeller) +
-  scale_color_discrete(name = "Lethal Samples", labels = c("No", "Yes"))+
-  scale_shape_discrete(name = "CKMR", labels = c("Yes", "No")) +
+  labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
   geom_hline(yintercept = 0.15, linetype = "dashed", color = "grey") +
   ylab("Expected CV for #Adult Females in 2025")+
   xlab("Sampling Effort (Years)")+
-  theme_bw()
-
+  theme_bw() +
+  theme(legend.position = "bottom")
 
 ggsave(plot = last_plot(), file = "./figures/EffortVCV.png", 
        width = 8, height = 6, units = "in")
+
+
+# compare equal effort scenarios
+
+p1 <- cveffort[which(cveffort$Effort==3),] %>%
+  group_by(CKMR, D, L, Year) %>%
+  select(CKMR, Value, D, L, S, Year, CV) %>%
+  pivot_wider(values_from = CV, names_from = S) %>%
+  ggplot() +
+  geom_abline(intercept = 0, slope = 1, color = "grey") +
+  geom_hline(yintercept = 0.15, linetype = "dashed", color = "grey") +
+  geom_point(aes(x=`1`, y=`7`,color = as.factor(L), shape = as.factor(CKMR))) +
+  labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
+  facet_wrap(~Year)+
+  theme_bw()+
+  labs(x = "Expected CV on # Adult Females under Sampling Scenario 1",
+       y = "Expected CV on # Adult Females under Sampling Scenario 7",
+       title = "Three Years of Sampling Effort") +
+  theme(legend.position = "none")
+
+
+
+p2 <- cveffort[which(cveffort$Effort==4),] %>%
+  group_by(CKMR, D, L, Year) %>%
+  select(CKMR, Value, D, L, S, Year, CV) %>%
+  pivot_wider(values_from = CV, names_from = S) %>%
+  ggplot() +
+  geom_abline(intercept = 0, slope = 1, color = "grey") +
+  geom_hline(yintercept = 0.15, linetype = "dashed", color = "grey") +
+  geom_point(aes(x=`2`, y=`6`, color = as.factor(L), shape = as.factor(CKMR))) +
+  labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
+  facet_wrap(~Year)+
+  theme_bw()+
+  labs(x = "Expected CV on # Adult Females under Sampling Scenario 2",
+       y = "Expected CV on # Adult Females under Sampling Scenario 6",
+       title = "Four Years of Sampling Effort") +
+  theme(legend.position = "bottom")
+
+p <- ggarrange(p1, p2, nrow = 2)
+
+ggsave(plot = p, file = "./figures/CVsSameEffort.png", 
+       width = 8, height = 10, units = "in")

@@ -44,10 +44,14 @@ design_df <- cbind.data.frame(design_df, "D" = NA, "L" = NA, "S" = NA,
                               "Nfad_2015" = NA, "Nfad_2020" = NA, "Nfad_2025" = NA, 
                               "fadsurv" = NA, "fjusurv" = NA,
                               "ppn_breedy" = NA, "rel_ad_15_25" = NA)
+samplesizes <- data.frame(ID = suffixes[design_sc], "Samples" = NA, "AllSamples" = NA, 
+                          "MOPs" = NA, "XmHSPs" = NA, "SelfP" = NA)
  
 for (i in 1:length(design_sc)){
 
   TEST_SUFFIX <- design_sc[i] # choose a "scenario" 
+  
+  # load data to check sample sizes
   
   # current values
   
@@ -72,11 +76,18 @@ for (i in 1:length(design_sc)){
   lglk_with_data <- add_data( lglk_walrus,
                               simfile = sprintf( 'WalrusSamples_%s.RData', suffixes[ TEST_SUFFIX]),
                               YSTART= 2015,      #  more stable parametrization (no math difference)
-                              SYEARS= 2013:2027)
+                              SYEARS= 2013:2028)
   # SYEARS explicit, rather than inferred from simfile; make sure 
   # ... it's the same in all cases
   denv <- environment( lglk_with_data) # where stuff lives
-
+  
+  # keep track of sample sizes
+  samplesizes[i,]$Samples <- denv$nsamples
+  samplesizes[i,]$AllSamples <- denv$nallsamples
+  samplesizes[i,]$MOPs <- sum(denv$n_MOP_EYEYL)
+  samplesizes[i,]$XmHSPs <- sum(denv$n_XmHSP_EYEY)
+  samplesizes[i,]$SelfP <- sum(denv$n_selfP_EYDY)
+  
   # NB NB: CHANGED this 
   Nfad_2015 <- out[ 'Nfad_2000'] * exp( 15*out['RoI'])
   ptru <- c(
@@ -161,5 +172,5 @@ for (i in 1:length(design_sc)){
 
 save(compdesign, file = "./results/compdesign.RData")
 save(design_df, file = "./results/design_df.RData")
-
+save(samplesizes, file = "./results/samplesizes.RData")
 

@@ -343,7 +343,9 @@ warning( "Pairs found but ignored cozza zero usable comps: " %&%
     FIRST_PCOHORT= PCOHORTS[1],
     LAST_PCOHORT= tail( PCOHORTS, 1),
     
-    MAX_Tsep= 100 # excessive, but too hard to precalc for now..!
+    MAX_Tsep= 100, # excessive, but too hard to precalc for now..!
+    nsamples = nrow(samples),
+    nallsamples = nrow(allsamples)
   ))
   
   if( !is.null( lglk)){
