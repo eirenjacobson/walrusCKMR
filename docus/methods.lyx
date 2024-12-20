@@ -115,63 +115,47 @@ Model Framework
 \end_layout
 
 \begin_layout Standard
+In order to evaluate the proposed survey designs,
+ we must first construct our CKMR model for walrus.
+ To build the model,
+ we must encode our knowledge about walrus life history to (
+\shape italic
+i
+\shape default
+) build a model of walrus population dynamics (including a model of the walrus breeding cycle) and (
+\shape italic
+ii
+\shape default
+) formulate kinship probabilities between pairs of individuals.
+ Once we have these components,
+ we can...
+\end_layout
+
+\begin_layout Standard
+There are a number of life-history features of walrus to consider.
+ Walrus are long-lived post maturity and give birth to one calf at a time.
+ Gestation times are around 14 months (CITE),
+ therefore females cannot give birth to calves in consecutive years,
+ and are unlikely to give birth to calves every second year.
+ Individuals are unlikely to re-mate with the same partner (therefore there will be few,
+ if any,
+ full sibling or full thiatic pairs).
+ While males form leks and compete for breeding access to females,
+ we do not expect 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-needs to be some chat here about the overall framework,
- why we want to calculate probabilities and how they fit together.
- That would probably integrate the first two sections here too?
- Define 
-\begin_inset Formula $K_{ab}$
-\end_inset
-
- as the kin relationship between 
-\begin_inset Formula $a$
-\end_inset
-
- and 
-\begin_inset Formula $b$
-\end_inset
-
- .
- Need to clearly define whether/when we use 
-\begin_inset Formula $N$
-\end_inset
-
- or 
-\begin_inset Formula $N_{\female}$
-\end_inset
-
-.
+if we don't expect this we need a citation,
+ else we're just assuming it
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsubsection
-Life-history considerations
-\end_layout
-
-\begin_layout Standard
-Walrus are long-lived post maturity and give birth to one calf at a time.
- Walrus experience long gestation times (~14 months,
- CITE),
- therefore,
- females cannot give birth to calves in consecutive years,
- and are unlikely to give birth to calves every second year.
- Individuals are unlikely to re-mate with the same partner (therefore there will be few,
- if any,
- full sibling or full thiatic pairs;
- FSPs or FTPs).
- While males form leks and compete for breeding access to females,
- we do not expect females to vary in terms of individual fecundity.
- The population of Pacific walrus is well-mixed across the range,
+females to vary in terms of individual fecundity.
+ The population of Pacific walrus is well-mixed across its range,
  with no evidence of site fidelity within or between years,
- and with no genetic substructure expected.
- 
+ and with no genetic substructure expected (CITE).
 \end_layout
 
 \begin_layout Standard
@@ -189,7 +173,7 @@ nolink "false"
 ).
  Adult males are also likely to have persistent individual variability in breeding success.
  Therefore,
- we focus on female-only dynamics and do not include paternal father-offspring or half-sibling pairs (FOPs or XpHSPs) in the model.
+ we focus on female-only dynamics and do not include paternal father-offspring or half-sibling pairs in the model.
  However,
  we do use sampled males as potential offspring whose mothers might also be captured and potential half-siblings of other individuals.
  
@@ -201,7 +185,11 @@ Stage-structured quasi-equilibrium dynamics
 
 \begin_layout Standard
 For the purposes of the CKMR model,
- we assume that female adult walrus have constant survival over age and time,
+ we assume that female adult walrus have constant survival over age and time (
+\begin_inset Formula $\phi_{\text{A}}$
+\end_inset
+
+),
  and that the total number of female adults is increasing or decreasing exponentially over the period covered by the population dynamics (2000–2027;
  the lower limit of 2000 is set because there were fairly drastic changes in the population prior to that).
  We also assume that the age composition is fairly stable over that period ("quasi-equilibrium" or "quasi-stable"),
@@ -212,32 +200,30 @@ For the purposes of the CKMR model,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-N_{y+1,a+1}=N_{y,a}\phi_{\text{A}}\nonumber \\
-N_{y+1,a}=e^{r}N_{y,a}\nonumber \\
-\implies N_{y+1,a+1}=N_{y+1,a}\times\phi_{\text{A}}e^{-r},\label{eq:age-distro-slope}
+N_{y+1,a+1}=N_{y,a}\phi_{\text{A}}\quad\text{and}\quad N_{y+1,a}=e^{r}N_{y,a}\nonumber \\
+\implies N_{y+1,a+1}=N_{y+1,a}\phi_{\text{A}}e^{-r},\label{eq:age-distro-slope}
 \end{gather}
 
 \end_inset
 
 where 
-\begin_inset Formula $\phi_{\text{A}}$
+\begin_inset Formula $N_{y,a}$
 \end_inset
 
-is female adult annual survival,
- 
-\begin_inset Formula $N_{i,j}$
+ is the abundance of female walrus of age 
+\begin_inset Formula $a$
 \end_inset
 
- is the abundance in year 
-\begin_inset Formula $i$
-\end_inset
-
- for animals of age 
-\begin_inset Formula $j$
+ in year 
+\begin_inset Formula $y$
 \end_inset
 
 ,
  
+\begin_inset Formula $\phi_{\text{A}}$
+\end_inset
+
+ is female adult annual survival and 
 \begin_inset Formula $r$
 \end_inset
 
@@ -255,6 +241,16 @@ is female adult annual survival,
  and also within adults (but not between the two),
  and the age composition enters indirectly because of the way that juvenile abundance is calculated.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+does there need to be more stuff here?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -302,7 +298,7 @@ We use a Markov model to describe the walrus breeding cycle.
 \end_inset
 
 .
- Note that due to long gestation times (~14 months),
+ Due to long gestation times (~14 months),
  walrus cannot give birth to calves in two consecutive years.
  We also allow 
 \begin_inset Formula $\psi_{2}\neq\psi_{3}$
@@ -349,7 +345,18 @@ nolink "false"
  We do not use any data on whether females were with\SpecialChar breakableslash
 without calf when sampled,
  so the information on those parameters comes indirectly,
- through the distribution of birth-gaps between mHSPs.
+ through the distribution of birth-gaps between maternal half-sibling pairs (XmHSPs).
+ For the construction of kinship probabilities below,
+ we define a function 
+\begin_inset Formula $B(a)$
+\end_inset
+
+,
+ which gives the breeding state at age 
+\begin_inset Formula $a$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -565,6 +572,82 @@ name "fig:Breeding-cycle"
 \end_layout
 
 \begin_layout Subsubsection
+Formulating kinship probabilities
+\end_layout
+
+\begin_layout Standard
+We now need to formulate the probabilities that two individuals have a given kinship.
+ We write the kinship for individuals 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ as 
+\begin_inset Formula $K_{ij}$
+\end_inset
+
+,
+ which in our case may be one of:
+ mother-offspring pair (MOP),
+ maternal half-sibling pairs (XmHSP) or self-recapture (SP).
+ In each case the general formulation is the same:
+ the probability simply comes down to the ratio of number of individuals which match the characteristics needed for that kinship to hold (e.g.,
+ that 
+\begin_inset Formula $i$
+\end_inset
+
+ is born in a particular year,
+ is old enough to be 
+\begin_inset Formula $j$
+\end_inset
+
+'s mother,
+ etc) and the total number of females which could be considered (e.g.,
+ the expected number of juveniles born in a particular year).
+ In each case we need to carefully consider how to count both of these quantities,
+ given our knowledge of walrus.
+ In the following three subsubsections,
+ we list these exclusions and show how to formulate these probabilities.
+\end_layout
+
+\begin_layout Standard
+Throughout we use the following notation:
+ for individual 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+,
+ sampled at age 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ in year 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ with birth year 
+\begin_inset Formula $b_{j}\triangleq y_{j}-a_{j}$
+\end_inset
+
+.
+ As noted above,
+ we only consider female abundance,
+ so throughout,
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ refers to females only.
+\end_layout
+
+\begin_layout Subsubsection
 Mother-offspring pairs (MOPs)
 \begin_inset Note Note
 status open
@@ -634,7 +717,7 @@ j
 \begin_inset Formula $y_{j}=y_{i}$
 \end_inset
 
- because there is some possibility that 
+ since there is some possibility that 
 \emph on
 j
 \emph default
@@ -660,14 +743,14 @@ Mark:
 \begin_inset Formula $a_{j}\geqslant1$
 \end_inset
 
- because calves are not being used in the current model.
+ as calf samples are not being used.
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $b_{j}\geqslant2000$
 \end_inset
 
- because we are only modelling population dynamics from the year 2000 onwards.
+ as we are only modelling population dynamics from the year 2000 onwards.
 \end_layout
 
 \begin_layout Standard
@@ -774,7 +857,7 @@ i
  This can be written as
 \begin_inset Formula 
 \begin{gather}
-\text{ERO}_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(y_{i}-b_{j},a_{i}\right)\mathbb{P}\left[\text{Br}\left(\text{age}=a_{i}+\left(b_{j}-y_{i}\right)\right)=2\right],\label{eq:MOP-RO}
+\text{ERO}_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(y_{i}-b_{j},a_{i}\right)\mathbb{P}\left[\text{B}\left(\text{age}=a_{i}+\left(b_{j}-y_{i}\right)\right)=2\right],\label{eq:MOP-RO}
 \end{gather}
 
 \end_inset
@@ -822,25 +905,7 @@ where
 \color inherit
  corresponding annual juvenile and adult survival probabilities).
  
-\begin_inset Formula $\text{Br}\left(\cdot\right)$
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-so 
-\begin_inset Formula $\text{Br}(a)$
-\end_inset
-
- is the state at age 
-\begin_inset Formula $a$
-\end_inset
-
-?
-\end_layout
-
+\begin_inset Formula $\text{B}\left(\cdot\right)$
 \end_inset
 
  is an individual's breeding state and involves individual 
@@ -868,7 +933,7 @@ why do we need to say this?
 Define fecundity as a function of age
 \begin_inset Formula 
 \begin{gather}
-F\left(a\right)\triangleq\frac{\mathbb{P}\left[\text{Br}\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
+F\left(a\right)\triangleq\frac{\mathbb{P}\left[\text{B}\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
 \end{gather}
 
 \end_inset
@@ -1153,9 +1218,8 @@ Mark:
 
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right]\nonumber \\
-=\mathbb{P}\left[\text{\emph{k}'s mother was also \emph{l}'s mother}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
-=\frac{\Phi\left(b_{\text{B}}-b_{\text{A}}-1\right)\left[\Psi^{b_{\text{B}}-b_{\text{A}}}p^{\left[0\right]}\right]_{2}}{N_{\text{ad}\female}\left(b_{\text{B}}\right)\bar{\beta}_{2}},\label{eq:xmhsp}
+\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right]=\mathbb{P}\left[K_{km}=\text{MOP}\&K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
+=\frac{\Phi\left(b_{\text{B}}-b_{\text{A}}-1\right)\left[\Psi^{b_{\text{B}}-b_{\text{A}}}p^{\left[0\right]}\right]_{2}}{N\left(b_{\text{B}}\right)\bar{\beta}_{2}},\label{eq:xmhsp}
 \end{gather}
 
 \end_inset
@@ -1174,119 +1238,8 @@ l
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mark:
- put this paragraph and the next,
- plus further details on skip breeding,
- into SI?
-\end_layout
-
-\end_inset
-
-Walrus life-history (or our assumptions about it) has actually made this probability rather simpler than it can be in other cases.
- In particular,
- all adult female walruses are assumed to have equal survival probabilities,
- regardless of age and breeding phase;
- and the breeding cycle is Markovian,
- so that once a walrus has reached calving-phase (like 
-\shape italic
-m
-\shape default
- at 
-\shape italic
-k
-\shape default
-'s birth) her age does not affect her subsequent breeding phases nor her survival.
- In a "fish-like" situation,
- 
-\shape italic
-m
-\shape default
-'s age (and size) at 
-\shape italic
-k
-\shape default
-'s birth would also be important,
- because it affects both her subsequent future survival probabilities,
- and her fecundity if she reaches 
-\shape italic
-l
-\shape default
-'s birthdate.
- Thus for "fish" it is necessary to sum across all the possible ages that 
-\shape italic
-m
-\shape default
- might have had,
- weighted by the probability that she was that age given that she was 
-\shape italic
-k
-\shape default
-'s mother.
-\end_layout
-
-\begin_layout Standard
-The importance or otherwise of allowing for skip-breeding in HSP probabilities is not immediately obvious.
- Clearly,
- if 
-\shape italic
-m
-\shape default
- breeds only every 3rd year,
- then her lifetime-average reproductive output is only 1/3 of a hypothetical breed-every-year female.
- However,
- if everybody breeds only every 3rd year,
- then 
-\shape italic
-m
-\shape default
- is only competing against 1/3 of the population every time,
- so those factors broadly cancel out;
- is lifetime-average reproductive output largely unaffected?
- To a very coarse approximation the answer is yes;
- but a more detailed calculation using geometric progressions shows that there is in fact an appreciable bias which depends on the skip-interval and the survival rate (see subsection
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:HSPs-and-skip-breeding"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- below).
- For walrus,
- the "naive" no-skip-breeding HSP bias might be of the order of 10%,
- based on 
-\begin_inset Formula $\sim95\%$
-\end_inset
-
- annual adult survival and an average 4-year gap between successful breedings,
- which is enough to justify avoiding it by the more elaborate calculation in Listing 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:HSP-prob"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsubsection
-Self-recaptures (SelfPs)
+Self-recaptures (SPs)
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:selfPs"
@@ -1334,7 +1287,7 @@ literal "false"
  Then the probability that the first one is the same as the second is just
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{12}=\text{SP}\vert y_{1},a_{1},y_{2},a_{2}\right]=\frac{\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N_{\female}\left(y_{1},a_{1}\right)}.\label{eq:SP}
+\mathbb{P}\left[K_{12}=\text{SP}\vert y_{1},a_{1},y_{2},a_{2}\right]=\frac{\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N\left(y_{1},a_{1}\right)}.\label{eq:SP}
 \end{gather}
 
 \end_inset
@@ -1358,7 +1311,7 @@ The indicator
 
 ,
  
-\begin_inset Formula $N_{\female}(y_{1},a_{1})$
+\begin_inset Formula $N(y_{1},a_{1})$
 \end_inset
 
 .
@@ -1554,7 +1507,7 @@ any
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[\text{Sample 2 is the same animal as sample 1}|a_{\text{1}}y_{\text{1}}d_{\text{2}}y_{\text{2}}\right]\nonumber \\
-=\frac{\mathbf{I}\left[d\left(a_{\text{1}}+\left(y_{\text{2}}-y_{\text{1}}\right)\right)=d_{\text{2}}\right]\times\Phi\left(y_{\text{2}}-y_{\text{1}};a_{\text{1}}\right)}{N_{\female}\left(y_{\text{2}},d_{\text{2}}\right)}\label{eq:self-staged}
+=\frac{\mathbf{I}\left[d\left(a_{\text{1}}+\left(y_{\text{2}}-y_{\text{1}}\right)\right)=d_{\text{2}}\right]\times\Phi\left(y_{\text{2}}-y_{\text{1}};a_{\text{1}}\right)}{N\left(y_{\text{2}},d_{\text{2}}\right)}\label{eq:self-staged}
 \end{gather}
 
 \end_inset
@@ -1586,19 +1539,19 @@ where:
 
 ;
  and 
-\begin_inset Formula $N_{\female}\left(y,d\right)=\sum_{a}\mathbf{I}\left[d\left(a\right)=d\right]N_{\female}\left(y,a\right)$
+\begin_inset Formula $N\left(y,d\right)=\sum_{a}\mathbf{I}\left[d\left(a\right)=d\right]N\left(y,a\right)$
 \end_inset
 
 .
  For the developmental stage "Adult ,
  the abundance is just 
-\begin_inset Formula $N_{\text{ad}\female}\left(y\right)$
+\begin_inset Formula $N\left(y\right)$
 \end_inset
 
  which is explicitly a variable in the population dynamics but,
  since the latter is not formulated with explicit age structure,
  some more work is required to deduce 
-\begin_inset Formula $N_{\female}\left(y,\text{Juvenile}\right)$
+\begin_inset Formula $N\left(y,\text{Juvenile}\right)$
 \end_inset
 
 .
@@ -1668,7 +1621,22 @@ Simulations and model checking
 \begin_layout Standard
 To test the CKMR model,
  we developed an individual-based simulation with the life history and population dynamics of Pacific walrus.
- The simulation was modified from the package fishSim by Shane Baylis (https://github.com/SMBaylis/fishSim).
+ The simulation was modified from the package 
+\family typewriter
+fishSim
+\family default
+ by Shane Baylis (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/SMBaylis/fishSim
+\end_layout
+
+\end_inset
+
+).
  The individual-based simulation is stochastic and operates on an annual basis.
  Individuals are tracked through the use of unique identifiers so that kinship pairs can be identified in simulated samples.
  We initialized the simulation in 1950 with a population of 250,000 animals.
@@ -1859,7 +1827,7 @@ nolink "false"
 ).
  We checked each of these 10 replicate simulated datasets against the CKMR model for observed versus expected numbers of kin pairs in different categories (MOPs,
  XmHSPs,
- and SelfPs),
+ and SPs),
  observed versus expected gaps between half-sibling pairs,
  and the log-likelihood derivatives at the true parameter values.
 \end_layout
@@ -4233,6 +4201,14 @@ Sensitivity analyses
 
 \begin_layout Subsection
 Design Calculations for CKMR + IMR
+\end_layout
+
+\begin_layout Standard
+Our goal is to evaluate potential survey designs for a CKMR survey of walrus.
+ In most other abundance estimation frameworks we would need to create a series of simulations for the differing survey designs,
+ then use the results from these to conclude which design is best.
+ CKMR circumvents the need for simulations in this situation:
+ we can simply ...
 \end_layout
 
 \begin_layout Standard
