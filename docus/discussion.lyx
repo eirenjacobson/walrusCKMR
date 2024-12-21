@@ -7,7 +7,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
-\language american
+\language british
 \language_package default
 \inputencoding utf8
 \fontencoding auto
@@ -70,7 +70,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style british
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -106,16 +106,12 @@ Discussion
 We show how sample collection plans could be modified to achieve desired monitoring goals with less sampling effort.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
+\begin_layout Itemize
 We didn't bother doing X coz IJAD
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 It's Just A Design
 \end_layout
 
@@ -126,16 +122,12 @@ It's Just A Design
  we might do Y instead.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
+\begin_layout Itemize
 Ways to extend the model...
  impact of DNAge
 \end_layout
 
-\begin_layout Standard
-
-\lang english
+\begin_layout Itemize
 Future utility of lethal samples (although my guess is:
  there won't be enough.
  Glass-half-full,
@@ -143,9 +135,7 @@ Future utility of lethal samples (although my guess is:
  if you're a walrus?)
 \end_layout
 
-\begin_layout Standard
-
-\lang english
+\begin_layout Itemize
 The full ramifications of opting for a stage-structured quasi-equilibrium model,
  which avoids having to model age composition but does entail an 
 \emph on
@@ -158,20 +148,44 @@ assumption
  At that point it would be possible to compare the actual age compositions with the predicted compositions assuming partly-unselective sampling and quasi-equilibrium.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
+\begin_layout Itemize
 As should be evident from the preceding text and number of authors on this paper,
  building a close-kin model involves a high level of collaboration between statisticians,
  biologists and geneticists.
  CKMR is very much a multidisciplinary methodology and each discipline has a great deal to input into the process of model building.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
+\begin_layout Itemize
 Would be great to mention that CKMR was motivated by fisheries and is an example of a shared tool between fisheries scientists and ecologists,
  maybe cite Schaub et al 2024
+\end_layout
+
+\begin_layout Itemize
+on stage-structured dynamics:
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Mark:
+ delete this paragraph?
+\end_layout
+
+\end_inset
+
+That assumption may turn out to be unreasonable for juveniles especially;
+ but it will only be possible to check once enough sample-age-composition data become available.
+ However,
+ if it does turn out to be the case that (say) 2yo are disproportionately likely to be sampled (given their estimated abundance from the fitted model),
+ then it would not be hard to adjust the stage-structured IMR equations to incorporate sample-composition-data and (estimated) selectivity.
+ Sample sizes in this project are large enough that selectivity (i.e.,
+ the ratio of age-specific sample compositions to model-estimated population age compositions) should be estimated with respectable precision and without "propagating" a lot of uncertainty into other parameter estimates.
+ We therefore think that our current somewhat crude IMR sub-model should give a reasonable guide to ultimate precision,
+ even if it gets adjusted somewhat in the cold light of real data.
+ Note that similar assumptions appear to be made in Beatty et al.
+ 202 (to be confirmed).
 \end_layout
 
 \end_body
