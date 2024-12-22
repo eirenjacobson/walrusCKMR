@@ -486,7 +486,14 @@ encoding "default"
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
 Appendix
 \end_layout
 

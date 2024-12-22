@@ -106,11 +106,34 @@ Appendix
 
 \end_layout
 
-\begin_layout Subsection*
-Appendix to methods section
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+thesection}{
+\backslash
+Alph{section}}
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Plain Layout
+
+
+\backslash
+numberwithin{equation}{section}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Derivation of self-recapture 
 \begin_inset Quotes eld
 \end_inset
@@ -174,9 +197,8 @@ appears
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{21}=\text{SP}\vert y_{1},a_{1},y_{2},a_{2}\right]\nonumber \\
-=\mathbb{P}\left[\text{Sample 2 turns out to be the same animal as sample 1}\vert y_{1},a_{1},y_{2},a_{2}\right]\nonumber \\
-=\frac{\mathbb{P}\left[\text{Sample 1 survived until Sample 2 was taken}\right]\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N_{\female}\left(y_{2},a_{2}\right)}\nonumber \\
-=\frac{\Phi\left(y_{2}-y_{1},a_{1}\right)\mathbf{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N_{\female}\left(y_{2},a_{2}\right)}.\label{eq:other-way-round-self}
+=\frac{\mathbb{P}\left[\text{Sample 1 survived until Sample 2 was taken}\right]\mathbb{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N\left(y_{2},a_{2}\right)}\nonumber \\
+=\frac{\Phi\left(y_{2}-y_{1},a_{1}\right)\mathbb{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N\left(y_{2},a_{2}\right)}.\label{eq:other-way-round-self}
 \end{gather}
 
 \end_inset
@@ -199,7 +221,14 @@ N\left(y+t,a+t\right)\equiv N\left(y,a\right)\Phi\left(t,a\right).\label{eq:cons
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Skip breeding
 \begin_inset Note Note
 status open
@@ -310,6 +339,231 @@ nolink "false"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Self-recapture when exact age is known
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:selfP-exact-age"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+ used a fairly complex IMR formulation to cope with historically-very-imprecise estimates of age (or,
+ more realistically,
+ of "stage") estimates.
+ However,
+ when accurate age data are available,
+ the pairwise comparison probabilities for self-recapture are remarkably simple.
+ Suppose two female samples (
+\begin_inset Formula $y_{1},a_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{2},a_{2}$
+\end_inset
+
+ ,
+ where 
+\begin_inset Formula $y_{1}<y_{2}$
+\end_inset
+
+).
+ Then the probability that the first one is the same as the second is just
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{12}=\text{SP}\vert y_{1},a_{1},y_{2},a_{2}\right]=\frac{\mathbb{I}\left(y_{2}-a_{2}=y_{1}-a_{1}\right)}{N\left(y_{1},a_{1}\right)}.\label{eq:SP}
+\end{gather}
+
+\end_inset
+
+The indicator 
+\begin_inset Formula $\mathbb{I}\left(\cdot\right)$
+\end_inset
+
+ is 1 if the two samples were born in the same year,
+ or 0 if not,
+ The samples can only be from the same animal if they were both born in the same year and if they were,
+ we then need to know how many females of age 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ were alive at 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $N(y_{1},a_{1})$
+\end_inset
+
+.
+ This implicitly assumes that all females of the same age have the same survival and sampling probabilities.
+ (See appendix for the equivalent derivation of 
+\begin_inset Formula $\mathbb{P}\left[K_{21}=\text{SP}\vert y_{1},a_{1},y_{2},a_{2}\right]$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In principle,
+ given unlimited data,
+ we could separately apply 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SP"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ to each combination of 
+\begin_inset Formula $\left(y,a\right)$
+\end_inset
+
+-consistent pairs,
+ to empirically estimate from all numbers-at-age-and-year from the reciprocal of the observed rates.
+ Then we could apply 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:cons-of-nums"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ to estimate year-and-age-specific survivals.
+ In practice,
+ that would be ridiculous,
+ since it would require an enormous number of recaptures and would lead to noisy abundance estimates,
+ estimated survivals greater than one,
+ and so on.
+ However,
+ the principle does illustrate the great power of 
+\emph on
+known-age
+\emph default
+ mark-recapture data.
+ Note also that there are no assumptions about equiprobable sampling across ages,
+ etc;
+ all probabilities are simply conditioned on observed ages,
+ and it does not particularly matter 
+\emph on
+why
+\emph default
+ there are more samples of one age than another.
+\end_layout
+
+\begin_layout Standard
+The big problem with applying 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SP"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ in an ICKMR setting,
+ i.e.,
+ with conditioning on age explicitly,
+ is that it requires explicit calculation of all 
+\begin_inset Formula $N\left(y,a\right)$
+\end_inset
+
+ within the model.
+ This is normally unnecessary with CKMR for mammal-like species,
+ where the main information is 
+\emph on
+only
+\emph default
+ connected with aggregate adult abundance (via TRO).
+ It is extremely convenient to work just with a "homogenous block" of adults,
+ and there is in any case no direct information on population age composition unless extra data are used.
+ One option is "just" to work with a fully-age-structured population dynamics framework—
+ but that is a lot of work to develop (from experience in fisheries work) and requires modelling extra data.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Derivation of 
+\begin_inset Formula $N(J,y)$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Deriv-Njy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+;
+ and the basic tool is the Geometric Progression.
+ Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the first age of adulthood,
+ and assume that survival continues "forever" so that we can use infinite sums (and so we can avoid several other inconveniences in the CKMR equations that would require an explicit representation of age structure).
+ Writing 
+\begin_inset Formula $\phi_{a}=\Phi\left(1,a\right)$
+\end_inset
+
+ for one-year survival,
+ we have
+\begin_inset Formula 
+\begin{gather}
+N\left(y+1,a+1\right)=\phi_{a}N\left(y,a\right)\,\,\forall\,y,a\text{ [survival]}\nonumber \\
+N\left(y+1,a\right)=\rho N\left(y,a\right)\,\,\forall\,y,a\text{ [increase/decrease at rate \ensuremath{\rho}]}\nonumber \\
+\implies N\left(y,a+1\right)=\phi_{a}N\left(y-1,a\right)=\frac{\phi_{a}}{\rho}N\left(y,a\right)\nonumber \\
+\implies N\left(y,a+t\right)=\left(\frac{\phi_{a}}{\rho}\right)^{t}N\left(y,a\right)\text{ if \ensuremath{\phi}is constant between \ensuremath{a} and \ensuremath{a+t-1} }\nonumber \\
+\implies N\left(y\right)=\sum_{a\geqslant\alpha}N\left(y,\alpha\right)\left(\frac{\phi_{A}}{\rho}\right)^{a-\alpha}=\frac{N\left(y,\alpha\right)}{1-\phi_{A}/\rho}\text{ [total adult abundance relative to new incoming adults] }\nonumber \\
+\implies N\left(y,\alpha\right)=\left(1-\phi_{A}/\rho\right)\times N\left(y\right)\nonumber \\
+\implies N\left(y-1,\alpha-1\right)\ensuremath{\phi_{J}=}\left(1-\phi_{A}/\rho\right)\times N\left(y\right)\text{ [same cohort one year earlier]}\nonumber \\
+\implies N\left(y,\alpha-1\right)=\phi_{J}^{-1}\left(1-\phi_{A}/\rho\right)N\left(y+1\right)\nonumber \\
+=\left(\rho\phi_{J}\right)^{-1}\left(1-\phi_{A}/\rho\right)N\left(y\right)\nonumber \\
+\implies N\left(y,1\right)=\left(\frac{\phi_{J}}{\rho}\right)^{-\left(\left(\alpha-1\right)-1\right)}\left(\rho\phi_{J}\right)^{-1}\left(1-\phi_{A}/\rho\right)N\left(y\right)\text{ in terms of new post-calves}\nonumber \\
+\implies N\left(J,y\right)=\sum_{a=1}^{\alpha-1}N\left(y,1\right)\left(\frac{\phi_{J}}{\rho}\right)^{a-1}\nonumber \\
+=\frac{N\left(y,1\right)}{1-\phi_{J}/\rho}\left(1-\left(\frac{\phi_{J}}{\rho}\right)^{\alpha-1}\right)\text{ [finite geometric progression]}\nonumber \\
+\implies N\left(J,y\right)=N_{A}\left(y\right)\times\nonumber \\
+\left(1-\frac{\phi_{J}}{\rho}\right)^{-1}\left(1-\left(\frac{\phi_{J}}{\rho}\right)^{\alpha-1}\right)\left(\frac{\phi_{J}}{\rho}\right)^{2-\alpha}\left(\rho\phi_{J}\right)^{-1}\left(1-\frac{\phi_{A}}{\rho}\right)\label{eq:gp-phew}
+\end{gather}
+
+\end_inset
+
+
 \end_layout
 
 \end_body
