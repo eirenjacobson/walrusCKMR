@@ -123,7 +123,7 @@ ii
 \shape default
 ) formulate kinship probabilities between pairs of individuals.
  The likelihood is then formed by taking each comparison between pairs individuals and assuming that the likelihood contribution of that pair is a Bernoulli trial.
- For computational efficiency we approximated these trails with a Poisson distribution.
+ For computational efficiency we approximated these trials with a Poisson distribution.
  The population dynamics model is coupled to the likelihood via the demographic parameters required to calculate the kinship probabilities.
  
 \end_layout
