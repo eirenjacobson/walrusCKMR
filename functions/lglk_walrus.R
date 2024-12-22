@@ -116,24 +116,32 @@ return( returnables) # that's all folks
 return( returnables) # that's all folks  
   }
   
-  # lglk (if there's any data)
+  # lglk (if there's any data, per kin-type)
+  # Not an "A" to be seen below; 
+  # all now with E(stimated age)
+  # Can turn off any or all kin-types
+  # by setting their n_KINP_subs to NULL
+  # This allows checking Dlglk closeness-to-zero per kin-type
+
   lglk <- 0
-  if( length( n_XmHSP_EYEY)>0){ # use eg NULL for no-data
-    # Not an "A" to be seen below; 
-    # all now with E(stimated age)
-    
+
+  if( length( n_MOP_EYEYL)>0){ # use eg NULL for no-data  
     lglk <- lglk + ldpois( n_MOP_EYEYL, 
         n_comp_MOP_EYEYL * Pr_MOP_EYEYL) 
-
+  }
+  
+  if( length( n_XmHSP_EYEY)>0){ # use eg NULL for no-data
     lglk <- lglk + ldpois( n_XmHSP_EYEY, 
         n_comp_XmHSP_EYEY * Pr_XmHSP_EYEY)
-    
+  }
+  
+  if( length( n_selfP_EYDY)>0){ # use eg NULL for no-data    
     lglk <- lglk + ldpois( n_selfP_EYDY, 
         n_comp_selfP_EYDY * Pr_selfP_EYDY)
   }
 
   if( identical( want, 'just_lglk')){
-     returnables <- c( lglk) # remove 1x1 dimensions, return scalar
+    returnables <- c( lglk) # remove 1x1 dimensions, return scalar
   } else {
     returnables$lglk <- c( lglk) # no dims please
   }

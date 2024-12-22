@@ -137,8 +137,11 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
 
   # Offspring considered: only non-calfs born post 2000
   offposs <- (A>0) & (B >= FIRST_PDYEAR)
-  # Parents: gotta mature by end of sampling
-  # (this is just for efficiency)
+  # Parents: zap calves, and samples taken too late in the study to mature
+  # (latter is optional, they'll get all-zero probs anyway).
+  # In principle, calves too could be used as potential future mothers
+  # (ie A==0 is possible)
+  # but they are not part of the model in general, so zap em  
   parposs <- (A>0) & (B <= (max(PDYEARS) - AMAT))
 
   # Elim founders... shouldn't be any!!!
@@ -148,6 +151,12 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   # Filter MOPs & XmHSPs based only on pop-dyn year-range *for now*
   MOPs <- MOPs[parposs[MOPs[,1]] & offposs[MOPs[,2]],]
   XmHSPs <- XmHSPs[offposs[ XmHSPs[,1]] & offposs[ XmHSPs[,2]],]
+
+  if( FALSE){ # Debugging code to demonstrate lack of 6yo new mums
+    # Parent's age at offspring's birth
+    Ac_Bj <- A[ MOPs[,1]] - (Y[ MOPs[,1]] - B[ MOPs[,2]])
+    table( Ac_Bj)
+  }
 
   # Oh yeah--- the parent in a MOP had better be a Mother not a Father!!!
   MOPs <- MOPs[ samples$Sex[ MOPs[,1]]=='F',]
