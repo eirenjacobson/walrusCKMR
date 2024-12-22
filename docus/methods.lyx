@@ -1385,8 +1385,18 @@ nolink "false"
 \begin_layout Standard
 \begin_inset Formula 
 \[
-N_{y,J}=N_{y,A}\left(1-\frac{\phi_{J}}{\rho}\right)^{-1}\left(1-\left(\frac{\phi_{J}}{\rho}\right)^{\alpha-1}\right)\left(\frac{\phi_{J}}{\rho}\right)^{2-\alpha}\left(\rho\phi_{J}\right)^{-1}\left(1-\frac{\phi_{A}}{\rho}\right),
+N_{y,J}=N_{y,A}\frac{\left(1-\frac{\phi_{A}}{\rho}\right)}{\left(1-\frac{\phi_{J}}{\rho}\right)}\frac{1}{\rho^{2}}\left[\left(\frac{\phi_{J}}{\rho}\right)^{2-\alpha}-1\right],
 \]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+this formula is different from what is in the code!
+\end_layout
 
 \end_inset
 
