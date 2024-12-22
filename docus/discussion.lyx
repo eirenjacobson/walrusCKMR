@@ -162,20 +162,7 @@ Would be great to mention that CKMR was motivated by fisheries and is an example
 
 \begin_layout Itemize
 on stage-structured dynamics:
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-Mark:
- delete this paragraph?
-\end_layout
-
-\end_inset
-
-That assumption may turn out to be unreasonable for juveniles especially;
+ That assumption may turn out to be unreasonable for juveniles especially;
  but it will only be possible to check once enough sample-age-composition data become available.
  However,
  if it does turn out to be the case that (say) 2yo are disproportionately likely to be sampled (given their estimated abundance from the fitted model),
@@ -186,6 +173,33 @@ That assumption may turn out to be unreasonable for juveniles especially;
  even if it gets adjusted somewhat in the cold light of real data.
  Note that similar assumptions appear to be made in Beatty et al.
  202 (to be confirmed).
+\end_layout
+
+\begin_layout Itemize
+appendix 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Skip-breeding"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ discusses skip-breeding
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+While a stable-age-composition between 2000–2027 is probably not valid for the entire range of adult ages—
+since older adults would have experienced long periods of increased mortality from hunting—
+it is perhaps a reasonable assumption for younger adults,
+ and it is only younger adults that matter here because they indirectly determine the number of juveniles.
+ A stable age composition for juveniles seems fairly reasonable,
+ since "recruitment variability" cannot be high for an animal with a litter size of 1,
+ and it only requires a few years for the juvenile distribution to settle down.
 \end_layout
 
 \end_body

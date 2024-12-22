@@ -392,6 +392,7 @@ status open
 
 \begin_layout Plain Layout
 A list in alphabetical order not exceeding eight words or short phrases.
+ (words should be different from the title?)
 \end_layout
 
 \end_inset
@@ -430,6 +431,13 @@ literal "false"
 
 \begin_layout Section
 Methods
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Methods"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
