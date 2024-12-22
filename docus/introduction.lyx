@@ -108,88 +108,32 @@ INTRODUCTION
 \begin_layout Standard
 Estimation of both abundance and demographic parameters are key parts of the management of wildlife populations.
  Obtaining these estimates with minimal bias and low uncertainty is critical for conservation.
- Mark-recapture (CITE) provides both estimates of abundance and demographic parameters simultaneously,
- at the cost of having to be able to identify individuals.
- Marks can be natural (e.g.,
- callosity patterns on the heads of right whales;
- CITE),
- artificial (e.g.,
- bird ringing;
- CITE) or genetic (e.g.,
- non-lethal biopsy sampling of walrus;
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "beatty_estimating_2022"
-literal "false"
-
-\end_inset
-
-),
- but in all cases the method relies on the recapture of individuals to give information for estimation of survival,
- fecundity and abundance.
- Various models have been proposed over the last XXX years (CITE a bunch of Richard Cormack's papers?
- Or Ruth's textbook?),
- taking into account many common situations (e.g.,
- open vs.
- closed populations;
- CITE Richard Barker,
- Matt from Otago etc).
- Model parameters can be decomposed so that they depend on time,
- space and other environmental covariates (CITE Otis et al).
- 
-\end_layout
-
-\begin_layout Standard
-If we use genetic marks to identify individuals,
+ Traditional mark-recapture analysis (CITE) can provide estimates of abundance and demographic parameters,
+ but requires that individual animals i) are naturally,
+ artificially,
+ or genetically “marked” and identifiable and ii) can be recaptured over time.
+ If genotypes are used as genetic marks to identify individuals,
  as in genetic individual mark-recapture (IMR;
  
 \begin_inset CommandInset citation
-LatexCommand citealp
+LatexCommand citet
 key "palsboll_genetic_1997"
 literal "false"
 
 \end_inset
 
 ),
- we can make use of additional genetic information in the collected samples.
- DNA sequenced from an individual will tell us about its relatives as well as the individual itself.
- Close-kin mark-recapture (CKMR) was developed to exploit the additional information which we obtain when taking genetic samples.
- Under CKMR,
- as well as confirming that an individual has been recaptured,
- we can also assess the probability that an individual has a given kin relationship with another (e.g.,
- making statements like 
-\begin_inset Quotes eld
+ we can make use of additional genetic information in the collected samples 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "skaug_allele-sharing_2001"
+literal "false"
+
 \end_inset
 
-individual 
-\emph on
-a
-\emph default
- is the mother of individual 
-\emph on
-b
-\emph default
- with probability 
-\begin_inset Formula $x$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-).
- CKMR provides additional flexibility compared with IMR as both non-lethal and lethal (from sampling,
- hunting,
- natural mortality etc.) samples can be used.
- By harnessing this extra information and putting kinship into a probabilistic framework,
- we can gain more accurate estimates of abundance and demographic parameters.
+.
+ Close-kin mark-recapture (CKMR;
  
-\lang english
-CKMR is still unfamiliar to many,
- but there are now quite a few published applications,
- mostly on fish and sharks but some on mammals.
- We will not give an exhaustive list here,
- but see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bravington_close-kin_2016"
@@ -197,8 +141,15 @@ literal "false"
 
 \end_inset
 
- for a general (albeit mathematical) framework,
- 
+ uses observed relationships between individuals to estimate abundance and demographic parameters.
+\end_layout
+
+\begin_layout Standard
+CKMR is still unfamiliar to many,
+ but there are now quite a few published applications,
+ mostly on fish and sharks but some on mammals.
+ We will not give an exhaustive list here,
+ but see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "conn_robustness_2020"
@@ -208,14 +159,13 @@ literal "false"
 
  for a CKMR design exercise and 
 \begin_inset CommandInset citation
-LatexCommand citealp
+LatexCommand citet
 key "taras_estimating_2024"
 literal "false"
 
 \end_inset
 
- for its implementation on bearded seals,
- and 
+for its implementation on bearded seals and 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "lloyd-jones_close-kin_2023"
@@ -223,60 +173,33 @@ literal "false"
 
 \end_inset
 
- for an application to flying foxes.
+for an application to flying foxes.
+\end_layout
+
+\begin_layout Standard
+The premise of CKMR is that for a given sample size,
+ in a large population there will be few closely related individuals,
+ while in a small population,
+ there will be many.
+ In practice,
+ CKMR models use population dynamics models in conjunction with age information and pairwise formulae for the probabilities of different kinship types to evaluate the likelihood of observed kin pairs.
+ CKMR provides additional flexibility compared with IMR as both non-lethal and lethal (from sampling,
+ hunting,
+ natural mortality etc.) samples can be used.
+ By harnessing this extra information and putting kinship into a probabilistic framework,
+ we can gain more accurate estimates of abundance and demographic parameters.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Maybe a paragraph here briefly explaining the intuition behind CKMR?
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-If we need to save space,
- I think we could cut this paragraph to a sentence or two about age determination/epigenetic aging.
- 
-\end_layout
-
-\end_inset
-
-The kinds of kin relationships that can be inferred from DNA samples have increased with advances in sequencing technology.
- Parent-offspring pairs provide the most basic level of information,
- but we might also be able to identify full- or half-sibling pairs.
- It is also worth noting that even if we never sample an individual,
- we still use information about them to estimate parameters of interest:
- e.g.,
- we might never sample a father,
- but if we sample his children they will show up as half-siblings and so we will know that he existed.
- For parent-offspring pairs,
- how do we know which individual is the offspring and which is the parent?
- If we know the age of the individuals with complete accuracy then this problem is solved (the older one has to be the parent).
- In wild animal populations,
- however,
- we cannot always determine the exact age,
- but may be able to estimate it to a reasonable range (or at least life stage).
- With the addition of age information we can derive further kin relationships:
- even though grandparent-grandchild pairs are not genetically distinguishable from thiatic (niece/nephew-uncle/aunt) relationship,
- with age information (and some knowledge about the life history of the organism) we can include these relationships in our analysis.
- The advent of epigenetic age determination gives us a probabilistic quantification of age which is already being used in conjunction with CKMR (CITE some fish paper of Mark's).
- 
-\end_layout
-
-\begin_layout Standard
-Calculating kinship probabilities also requires in-depth consideration on the life history and genetics of the organism in question.
+Devising the probabilistic formulae of relatedness requires consideration of the life history and genetics of the organism in question.
  For example,
  CKMR will not work on species that reproduce such that offspring are genetically identical to parents;
  for example,
  via parthenogenesis (e.g.,
  aphids) or by giving birth to clones (e.g.,
  armadillos).
- CKMR would also be fairly ineffective for monogamous species,
+ CKMR would also be ineffective for monogamous species,
  as the information from each additional capture is minimal.
  Knowing about reproductive strategy is also important for both sampling and probability of kinship:
  does the animal in question breed in one place and at one time?
@@ -286,8 +209,18 @@ Calculating kinship probabilities also requires in-depth consideration on the li
 \end_layout
 
 \begin_layout Standard
-The monetary cost of doing CKMR is decreasing in terms of sequencing as new technology comes online.
- The non-lab costs remain as they ever were for mark-recapture (or any other observational study):
+The kinds of kin relationships that can be inferred from genetic samples have increased with advances in sequencing technology.
+ Parent-offspring pairs (POPs) provide the most basic level of information,
+ but we might also be able to identify full- or half-sibling pairs (FSPs or HSPs).
+ Grandparent-grandchild pairs (GGPs) are not genetically distinguishable from thiatic (niece/nephew-uncle/aunt) relationships (FTPs),
+ but with age information (and some knowledge about the life history of the organism) we can include these relationships in our analysis.
+ The advent of epigenetic age determination gives us a probabilistic quantification of age which is already being used in conjunction with CKMR (CITE some fish paper of Mark’s).
+ 
+\end_layout
+
+\begin_layout Standard
+The monetary cost of CKMR is decreasing in terms of sequencing as new technology comes online.
+ The non-laboratory costs remain as they ever were for mark-recapture (or any other observational study):
  person-hours in the field.
  As is the case with all fieldwork,
  researchers aim to maximize information gathering while minimizing cost and also keeping people safe.
@@ -295,22 +228,14 @@ The monetary cost of doing CKMR is decreasing in terms of sequencing as new tech
  it is important to consider whether desired monitoring goals can be met given available time,
  money,
  and effort.
- This leads us to the question of 
-\begin_inset Quotes eld
-\end_inset
-
-how many samples?
-\begin_inset Quotes erd
-\end_inset
-
-.
+ This leads us to the question of “how many samples?”.
  In the case of CKMR,
  this is relatively easy to calculate.
- Given a target coefficient of variation (CV) and information on demographics and abundance (from existing genetic surveys,
+ Given a target coefficient of variation (CV) and some information on demographics and abundance (from existing genetic surveys,
  pilot studies,
  or the literature),
  we can calculate how many kin pairs one is likely to obtain from a given number of samples.
- In this paper we show how to perform these calculations (and the information needed to do so) using a case study on the Pacific walrus (
+ In this paper we show how to perform these calculations using a case study on the Pacific walrus (
 \emph on
 Odobenus rosmarus divergens
 \emph default
@@ -432,10 +357,6 @@ literal "false"
 \end_inset
 
 .
- Finally,
- the walrus was an endangered species candidate until the 2017 decision not to list—
-a decision which is currently being litigated (citation?—
-when will new SSA be out?).
  
 \end_layout
 
@@ -563,22 +484,6 @@ literal "false"
 ).
  Although the precision of the abundance estimate from the IMR study was much improved over the final aerial survey,
  the IMR study required extensive investment of human and financial resources (i.e,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-in our case
-\begin_inset Quotes erd
-\end_inset
-
-?
-\end_layout
-
-\end_inset
-
  USD $5,000,000).
  A more cost-effective approach is needed to assess the walrus population on a regular interval.
  As mentioned above,
@@ -604,19 +509,7 @@ literal "false"
  Here,
  we focus on a population where IMR was the original project goal and therefore we extend traditional CKMR to include IMR in the same model as an additional kinship type.
  We then explore different demographic and design scenarios for walrus using IMR alone versus CKMR + IMR = ICKMR and demonstrate how the latter can be used to substantially reduce the overall amount of survey effort required for adequate monitoring.
- [1902 words] 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-we should be consistent re.
- terminology,
- genetic mark recapture or individual mark recapture or individual genetic mark recapture?
-\end_layout
-
-\end_inset
-
-
+ [1665 words] 
 \end_layout
 
 \end_body
