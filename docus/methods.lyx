@@ -219,17 +219,7 @@ where
 \begin_inset Formula $y$
 \end_inset
 
-,
- 
-\begin_inset Formula $\alpha$
-\end_inset
-
- is age at maturity (7 for walrus) and 
-\begin_inset Formula $\alpha^{-}$
-\end_inset
-
- is minimum age considered (1,
- to avoid mother-associated young-of-the-year).
+.
  
 \begin_inset Formula $e^{r}$
 \end_inset
