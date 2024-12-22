@@ -108,7 +108,15 @@ INTRODUCTION
 \begin_layout Standard
 Estimation of both abundance and demographic parameters are key parts of the management of wildlife populations.
  Obtaining these estimates with minimal bias and low uncertainty is critical for conservation.
- Traditional mark-recapture analysis (CITE) can provide estimates of abundance and demographic parameters,
+ Traditional mark-recapture analysis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "williams_analysis_2002"
+literal "false"
+
+\end_inset
+
+ can provide estimates of abundance and demographic parameters,
  but requires that individual animals i) are naturally,
  artificially,
  or genetically “marked” and identifiable and ii) can be recaptured over time.
@@ -142,10 +150,7 @@ literal "false"
 \end_inset
 
  uses observed relationships between individuals to estimate abundance and demographic parameters.
-\end_layout
-
-\begin_layout Standard
-CKMR is still unfamiliar to many,
+ CKMR is still unfamiliar to many,
  but there are now quite a few published applications,
  mostly on fish and sharks but some on mammals.
  We will not give an exhaustive list here,
