@@ -1419,7 +1419,7 @@ where
 \end_layout
 
 \begin_layout Subsection
-Simulations and model checking
+Simulations
 \end_layout
 
 \begin_layout Standard
@@ -3990,35 +3990,33 @@ Sensitivity analyses
 \end_layout
 
 \begin_layout Subsection
+Model checking
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "model_checking.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Design Calculations for CKMR + IMR
 \end_layout
 
 \begin_layout Standard
-Our goal is to evaluate potential survey designs for a CKMR survey of walrus.
- In most other abundance estimation frameworks we would need to create a series of simulations for the differing survey designs,
- then use the results from these to conclude which design is best.
- CKMR circumvents the need for simulations in this situation:
- we can simply ...
-\end_layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "design-calcs.lyx"
+literal "false"
 
-\begin_layout Standard
-great wodge of theory—
- NB 2 MB what about HS..?
-\end_layout
-
-\begin_layout Standard
-\begin_inset Quotes eld
 \end_inset
 
-flowchart
-\begin_inset Quotes erd
-\end_inset
 
- for what you 
-\emph on
-actually
-\emph default
- need
 \end_layout
 
 \end_body
