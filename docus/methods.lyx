@@ -1245,8 +1245,11 @@ which is the probability vector of
 status open
 
 \begin_layout Plain Layout
-Mark:
- what is theta in these equations?
+Theta = all other parameters,
+ big phi,
+ big psi,
+ p,
+ N
 \end_layout
 
 \end_inset
@@ -1293,6 +1296,16 @@ Self-recaptures (SPs)
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:selfPs"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Need to add lethality here too
+\end_layout
 
 \end_inset
 
