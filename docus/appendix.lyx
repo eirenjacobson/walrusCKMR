@@ -835,6 +835,319 @@ name "sec:Deriv-Njy"
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+need to merge this with the following
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The key point here is that we don't need to decompose the adult stage into separate age classes.
+\end_layout
+
+\begin_layout Standard
+Let the number of adults in year 
+\begin_inset Formula $t$
+\end_inset
+
+ be 
+\begin_inset Formula $N_{\text{A}t}$
+\end_inset
+
+ or 
+\begin_inset Formula $N_{\geqslant\alpha,t}$
+\end_inset
+
+ (to clarify that Adulthood means being aged 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ up).
+ The number next year will be 
+\begin_inset Formula $\rho N_{\geqslant\alpha,t+1}$
+\end_inset
+
+ where 
+\begin_inset Formula $\rho=\exp\left(\text{RoI}\right)$
+\end_inset
+
+.
+ That will be made up of survivors from adults at 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ plus survivors from the incoming cohort of oldest juveniles,
+ aged 
+\begin_inset Formula $\alpha-1$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\begin{gather}
+N_{\geqslant\alpha,t+1}=\rho N_{\geqslant\alpha,t}=\phi_{\text{A}}N_{\geqslant\alpha,t}+\phi_{\text{J}}N_{\alpha-1,t}\label{eq:mvb-nj-1}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From now on,
+ the year-subscript will be omitted whenever all variables pertain to the same year.
+ Thus we have
+\begin_inset Formula 
+\begin{gather}
+N_{\alpha-1}=\frac{\rho-\phi_{\text{A}}}{\phi_{\text{J}}}N_{\geqslant\alpha}\label{eq:mvb-nj-final-juve}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now need to infer the numbers in the other juvenile age-classes.
+ Starting with the penultimate juvenile age-class,
+ we have:
+ 
+\begin_inset Formula 
+\begin{gather}
+N_{\alpha-1,t}=\phi_{\text{J}}N_{\alpha-2,t-1}\text{ (survival)}\nonumber \\
+N_{\alpha-1,t}=\rho N_{\alpha-1,t-1}\text{ (population growth)}\nonumber \\
+\implies N_{\alpha-2}=\frac{\rho}{\phi_{\text{J}}}N_{\alpha-1}\label{eq:mvb-nj-recurse}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similar relationships apply to each preceding juvenile age class,
+ down to age 1.
+ The total number of juveniles 
+\begin_inset Formula $N_{\text{J}}$
+\end_inset
+
+ is given by a sum from age 
+\begin_inset Formula $\alpha-1$
+\end_inset
+
+ down to age 1:
+\begin_inset Formula 
+\begin{gather}
+N_{\text{J}}=\sum_{x=1}^{\alpha-1}N_{\alpha-x}=\sum_{x=1}^{\alpha-1}N_{\alpha-1}\left(\frac{\rho}{\phi_{\text{J}}}\right)^{x-1}\nonumber \\
+=N_{\alpha-1}\sum_{x'=0}^{\alpha-2}\left(\frac{\rho}{\phi_{\text{J}}}\right)^{x'}\nonumber \\
+=N_{\alpha-1}\frac{1-\left(\rho/\phi_{\text{J}}\right)^{\alpha-1}}{1-\rho/\phi_{\text{J}}}\label{eq:mvb-nj-totjuve}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+using the standard result for a geometric progression.
+ Substituting for 
+\begin_inset Formula $N_{\alpha-1}$
+\end_inset
+
+ from eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mvb-nj-final-juve"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ we have
+\begin_inset Formula 
+\begin{gather}
+N_{\text{J}}=N_{\text{A}}\frac{\rho-\phi_{\text{A}}}{\phi_{\text{J}}}\frac{1-\left(\rho/\phi_{\text{J}}\right)^{\alpha-1}}{1-\rho/\phi_{\text{J}}}\nonumber \\
+=N_{\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\rho/\phi_{\text{J}}\right)^{\alpha-1}-1\right)\label{eq:mvb-nj-final}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is similar to the code,
+ except that I was playing fast-and-loose with RoI there,
+ which I actually knew about but never fixed (probably just forgot).
+ The code (in 
+\family typewriter
+popdyn_walrus
+\family default
+) is currently this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Nfju_y <- Nfad_y * 
+\end_layout
+
+\begin_layout Plain Layout
+
+    ((1+RoI-fadsurv) / (1-fjusurv)) *
+\end_layout
+
+\begin_layout Plain Layout
+
+    ((fjusurv ^ -(AMAT-AMIN)) - 1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If I change 
+\family typewriter
+(1-fjusurv)
+\family default
+ into 
+\family typewriter
+(1+RoI-fjusurv)
+\family default
+ then AFAICS it matches (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mvb-nj-final"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) up to negligible terms in 
+\begin_inset Formula $O\left(r^{2}\right)$
+\end_inset
+
+,
+ and the match is exact when 
+\begin_inset Formula $r=0$
+\end_inset
+
+ ie 
+\begin_inset Formula $\rho=1$
+\end_inset
+
+.
+ Dave's summary of the code seems to have a sign-error on 
+\begin_inset Formula $\phi_{\text{J}}$
+\end_inset
+
+in the RH paren—
+ phew—
+ 
+\emph on
+that
+\emph default
+ had me scurrying back to the code in alarm,
+ but in fact it seems I did get the code 
+\begin_inset Quotes eld
+\end_inset
+
+right
+\begin_inset Quotes erd
+\end_inset
+
+ or at least consistent with the above eqn,
+ barring 
+\begin_inset Formula $r\&\rho$
+\end_inset
+
+ stuff as noted.
+ 
+\end_layout
+
+\begin_layout Standard
+I have not looked into exactly why Dave's derivation comes up with something different (nor whether there are terms in it which could be cancelled,
+ to end up with eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mvb-nj-final"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)),
+ but I think the key thing is to 
+\emph on
+not
+\emph default
+ decompose the adults into age-classes,
+ because then everything becomes far more complicated and likely to go wrong!
+ ]
+\end_layout
+
+\begin_layout Standard
+[ Really minor notational point:
+ I have used uprights in 
+\begin_inset Formula $N_{\text{A}},\text{\ensuremath{\phi}}_{\text{J}}$
+\end_inset
+
+ etc to signify that these are 
+\begin_inset Quotes eld
+\end_inset
+
+invariables
+\begin_inset Quotes erd
+\end_inset
+
+ rather than subscripts;
+ if I write 
+\begin_inset Formula $N_{A}$
+\end_inset
+
+ then the implication is that 
+\begin_inset Formula $A$
+\end_inset
+
+ could take any of several possible values,
+ but 
+\begin_inset Formula $N_{\text{A}}$
+\end_inset
+
+is 
+\begin_inset Formula $N_{\text{A}},$
+\end_inset
+
+period.
+ Open to discussion...
+ ]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
