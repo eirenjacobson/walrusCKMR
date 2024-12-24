@@ -7,8 +7,10 @@
   
   # Juvenile version, assuming QEQM:
   # "Juves" are things included in Self comps (and probably as potential XHSPs and potential O's in MOPs, though those _could_ be something different I guess, at least if we had exact age)
+  # 24/12: fixed minor (fortunately) bug that omitted one of 
+  # the "+RoI"'s below
   Nfju_y <- Nfad_y * 
-    ((1+RoI-fadsurv) / (1-fjusurv)) *
+    ((1+RoI-fadsurv) / (1+RoI-fjusurv)) *
     ((fjusurv ^ -(AMAT-AMIN)) - 1)
   Nf_yd <- offarray( 0, dimseq=list( PDYEARS, DEVSTAGES))
   Nf_yd[,'JuveF'] <- Nfju_y
