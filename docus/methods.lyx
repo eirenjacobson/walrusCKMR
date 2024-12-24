@@ -184,11 +184,11 @@ nolink "false"
 ).
  Rather,
  we use a stage-structured dynamics model (adults and juveniles) where survival over age and time within each stage is constant (
-\begin_inset Formula $\phi_{A}$
+\begin_inset Formula $\phi_{\text{A}}$
 \end_inset
 
  and 
-\begin_inset Formula $\phi_{J}$
+\begin_inset Formula $\phi_{\text{J}}$
 \end_inset
 
 ).
@@ -202,20 +202,16 @@ nolink "false"
  we have
 \begin_inset Formula 
 \begin{align}
-N_{y,A} & =N_{y_{0},A}e^{r(y-y_{0})}\label{popdyn}
+N_{y,\text{A}} & =N_{y_{0},\text{A}}e^{r(y-y_{0})}\label{popdyn}
 \end{align}
 
 \end_inset
 
 where 
-\begin_inset Formula $N_{y,d}$
+\begin_inset Formula $N_{y,\text{A}}$
 \end_inset
 
- is the abundance of walrus of in stage 
-\begin_inset Formula $d$
-\end_inset
-
- in year 
+ is the abundance of adult females in year 
 \begin_inset Formula $y$
 \end_inset
 
@@ -595,7 +591,7 @@ Throughout we use the following notation:
 \end_inset
 
  with birth year 
-\begin_inset Formula $b_{j}\triangleq y_{j}-a_{j}$
+\begin_inset Formula $b_{i}\triangleq y_{i}-a_{i}$
 \end_inset
 
 .
@@ -607,20 +603,22 @@ Throughout we use the following notation:
 \end_inset
 
  refers to females only.
- When female abundance is considered as a function of both year and age (respectively),
+ When female abundance is considered for a given year and development stage (respectively),
  it is written with two arguments,
  
-\begin_inset Formula $N(y,a)$
+\begin_inset Formula $N_{y,\text{D}}$
 \end_inset
 
-.
- We use a single argument,
- we refer to the abundance of adult females in a given year,
+ (note that we use upright letters for development stages,
  
-\begin_inset Formula $N(y)$
+\begin_inset Formula $\text{A}$
 \end_inset
 
-.
+ or 
+\begin_inset Formula $\text{J}$
+\end_inset
+
+).
  We define the binary variable,
  
 \begin_inset Formula $L$
@@ -812,24 +810,24 @@ Where
 
 .
  ERO and TRO are in units of "number of calves".
- 
-\begin_inset Formula $R^{+}(b_{j})=\bar{\beta_{2}}N_{b_{j},A}$
-\end_inset
-
-,
- the total number of adult females in the population when 
+ TRO is the total number of adult females in the population when 
 \begin_inset Formula $j$
 \end_inset
 
  is born,
  
-\begin_inset Formula $N_{b_{j},A}$
+\begin_inset Formula $N_{b_{j},\text{A}}$
 \end_inset
 
 ,
  multiplied by the proportion of females with calves (breeding state 2),
  
 \begin_inset Formula $\bar{\beta_{2}}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $R^{+}(b_{j})=\bar{\beta_{2}}N_{b_{j},\text{A}}$
 \end_inset
 
 .
@@ -941,7 +939,7 @@ so that immature animals have fecundity 0,
  Thus
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j}\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},A}}.\label{eq:MOP-future}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j}\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
 \end{gather}
 
 \end_inset
@@ -985,7 +983,7 @@ If
  (walruses cannot breed before birth),
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},A}}.\label{eq:MOP-past}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
 \end{gather}
 
 \end_inset
@@ -998,7 +996,11 @@ Maternal half-sibling pairs (XmHSPs)
 \end_layout
 
 \begin_layout Standard
-Now we want to compare individual 
+We now find the probabilities of cross-cohort (X),
+ maternal (m),
+ half-sibling pairs (HSP):
+ XmHSPs.
+ We want to compare individual 
 \emph on
 
 \begin_inset Formula $k$
@@ -1064,20 +1066,11 @@ If
 \end_inset
 
 ,
- 
-\emph on
-
+ what is the probability that 
 \begin_inset Formula $l$
 \end_inset
 
-
-\emph default
- must have had 
-\emph on
-some
-\emph default
- mother;
- what is the probability she was 
+'s mother was 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1258,7 +1251,7 @@ Theta = all other parameters,
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right]=\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
-=\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},A}\bar{\beta}_{2}},\label{eq:xmhsp}
+=\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}},\label{eq:xmhsp}
 \end{gather}
 
 \end_inset
@@ -1278,17 +1271,7 @@ m
 l
 \shape default
 's birth.
- Note that we write 
-\begin_inset Quotes eld
-\end_inset
-
-XmHSP
-\begin_inset Quotes erd
-\end_inset
-
- to indicate cross-cohort (X),
- maternal (m),
- half-sibling pairs (HSP).
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1382,36 +1365,18 @@ nolink "false"
 
 \end_inset
 
- that:
+ that for walrus:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-N_{y,J}=N_{y,A}\frac{\left(1-\frac{\phi_{A}}{\rho}\right)}{\left(1-\frac{\phi_{J}}{\rho}\right)}\frac{1}{\rho^{2}}\left[\left(\frac{\phi_{J}}{\rho}\right)^{2-\alpha}-1\right],
+N_{y,\text{J}},=N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right),
 \]
 
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-this formula is different from what is in the code!
-\end_layout
-
-\end_inset
-
 where 
-\begin_inset Formula $\alpha$
-\end_inset
-
- be the first age of adulthood (
-\begin_inset Formula $\alpha=6$
-\end_inset
-
- for walrus) and 
 \begin_inset Formula $\rho=e^{r}$
 \end_inset
 

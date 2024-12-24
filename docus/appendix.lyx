@@ -977,7 +977,22 @@ nolink "false"
 \begin_inset Formula 
 \begin{align*}
 N_{y,\text{J}} & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\phi_{\text{J}}}\frac{1-\left(\frac{\rho}{\phi_{\text{J}}}\right)^{\alpha-1}}{1-\frac{\rho}{\phi_{\text{J}}}}\\
- & =N_{\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{\alpha-1}-1\right).
+ & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{\alpha-1}-1\right).
+\end{align*}
+
+\end_inset
+
+Now,
+ for the case of walrus,
+ we know that 
+\begin_inset Formula $\alpha=6$
+\end_inset
+
+,
+ so:
+\begin_inset Formula 
+\begin{align*}
+N_{y,\text{J}} & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right).
 \end{align*}
 
 \end_inset
