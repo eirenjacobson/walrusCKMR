@@ -124,7 +124,10 @@ ii
 ) formulate kinship probabilities between pairs of individuals.
  The likelihood is then formed by taking each comparison between pairs individuals and assuming that the likelihood contribution of that pair is a Bernoulli trial.
  For computational efficiency we approximated these trials with a Poisson distribution.
- The population dynamics model is coupled to the likelihood via the demographic parameters required to calculate the kinship probabilities.
+ The population dynamics model is coupled to the likelihood via the demographic parameters required to calculate the kinship probabilities (survival,
+ abundance,
+ breeding cycle,
+ see below).
  
 \end_layout
 
@@ -276,7 +279,11 @@ We use a Markov model to describe the walrus breeding cycle.
 \end_inset
 
  as they are unlikely to give birth to calves every second year (CITE).
- This is shown in Figure 
+ This is shown in Figure
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Breeding-cycle"
@@ -641,10 +648,20 @@ Throughout we use the following notation:
  as an indicator function,
  giving 1 when the condition inside the brackets is true,
  else 0.
+ Kinship probabilities are functions of demographic parameters,
+ throughout we use 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+ as shorthand for this collection of variables,
+ which become explicit in later iterations of the formulae.
 \end_layout
 
 \begin_layout Subsubsection
 Mother-offspring pairs (MOPs)
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -770,7 +787,7 @@ j
  The MOP probability is
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}.\label{eq:MOP1}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}.\label{eq:MOP1}
 \end{gather}
 
 \end_inset
@@ -939,7 +956,7 @@ so that immature animals have fecundity 0,
  Thus
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j}\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j},\boldsymbol{\theta}\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
 \end{gather}
 
 \end_inset
@@ -983,7 +1000,7 @@ If
  (walruses cannot breed before birth),
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i},\boldsymbol{\theta}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
 \end{gather}
 
 \end_inset
@@ -1234,25 +1251,11 @@ which is the probability vector of
 
  is the proportion of adult females in state 2.
  Then:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Theta = all other parameters,
- big phi,
- big psi,
- p,
- N
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
-\begin{gather}
-\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right]=\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
-=\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}},\label{eq:xmhsp}
-\end{gather}
+\begin{align}
+\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\boldsymbol{\theta}\right] & =\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\boldsymbol{\theta}\right]\nonumber \\
+ & =\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
+\end{align}
 
 \end_inset
 
@@ -1327,7 +1330,7 @@ any
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2}\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
+\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2},\boldsymbol{\theta}\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
 \end{gather}
 
 \end_inset
