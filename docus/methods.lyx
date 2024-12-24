@@ -662,21 +662,6 @@ Mother-offspring pairs (MOPs)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mark:
- should we include the lethal probabilities in here as well,
- or as a separate subsection?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Suppose we are about to compare a potential mother individual 
 \emph on
 i
@@ -784,6 +769,11 @@ i
 j
 \emph default
 's birth).
+ In this case the sampling must be non-lethal (
+\begin_inset Formula $L_{i}=0$
+\end_inset
+
+).
  The MOP probability is
 \begin_inset Formula 
 \begin{gather}
@@ -998,6 +988,16 @@ If
 \end_inset
 
  (walruses cannot breed before birth),
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+in this case we don't care if sampling is lethal??
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i},\boldsymbol{\theta}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
@@ -1286,16 +1286,6 @@ name "subsec:selfPs"
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Need to add lethality here too
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1324,13 +1314,13 @@ any
  of the females in that developmental stage at that year (i.e.,
  sampling is unselective within developmental stage) and thus the chance it is the same as the second sample is the reciprocal of the developmental stage abundance.
  We must also include survival for the intervening years.
- The self-recapture kinship probability between samples 1 and 2 is:
+ The self-recapture kinship probability between samples 1 and 2 is (where sample 1 was taken before sample 2):
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2},\boldsymbol{\theta}\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
+\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2},L_{1}=0,\boldsymbol{\theta}\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
 \end{gather}
 
 \end_inset
@@ -1349,6 +1339,7 @@ where
 \end_inset
 
 .
+ We also condition on the first sample being non-lethal (else we'd have nothing to sample a second time).
  To obtain 
 \begin_inset Formula $N_{y_{2},d_{2}}$
 \end_inset
