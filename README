@@ -6,8 +6,12 @@ despack
 TMBO
 debug
 kinsimmer
-fastmatch
 atease
+
+Additional packages required from CRAN:
+
+doParallel
+fastmatch
 
 Order of Operations:
 
