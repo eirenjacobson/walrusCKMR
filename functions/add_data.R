@@ -155,7 +155,7 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   if( FALSE){ # Debugging code to demonstrate lack of 6yo new mums
     # Parent's age at offspring's birth
     Ac_Bj <- A[ MOPs[,1]] - (Y[ MOPs[,1]] - B[ MOPs[,2]])
-    table( Ac_Bj)
+    table( sort(Ac_Bj))
   }
 
   # Oh yeah--- the parent in a MOP had better be a Mother not a Father!!!
