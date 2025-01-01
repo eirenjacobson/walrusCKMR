@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \use_default_options true
 \begin_modules
@@ -133,6 +133,408 @@ flowchart
 actually
 \emph default
  need
+\end_layout
+
+\begin_layout Standard
+****
+\end_layout
+
+\begin_layout Standard
+The discrete (are these two samples the right kind of kin,
+ or not?) and pairwise-comparison formulation of 
+\end_layout
+
+\begin_layout Standard
+The formulation of CKMR+IMR that we use has two key properties:
+\end_layout
+
+\begin_layout Itemize
+it is based only on pairwise comparisons between samples;
+\end_layout
+
+\begin_layout Itemize
+the outcome of each comparison is discrete yes-or-no:
+ do these two samples the 
+\begin_inset Quotes eld
+\end_inset
+
+target
+\begin_inset Quotes erd
+\end_inset
+
+ kinship,
+ or not?
+\end_layout
+
+\begin_layout Standard
+Compared to general mark-recapture frameworks,
+ this leads to some remarkably simple formulae for computations.
+ In particular,
+ the parameter covariance matrix can be predicted,
+ without any simulated data,
+ just from:
+\end_layout
+
+\begin_layout Itemize
+the number of pairwise comparisons with each particular combination of covariates,
+ basically the product of the numbers of relevant samples;
+\end_layout
+
+\begin_layout Itemize
+a (fairly) easy-to-compute function of the kinship probabilities,
+ which determines how much statistical information about the parameters will be obtained,
+ on average,
+ from a single pairwise comparison of samples with those covariates.
+\end_layout
+
+\begin_layout Standard
+The pseudo-log-likelihood which underpins estimation for CKMR+IMR is the sum of log-likelihoods of individual pairwise comparisons amongst all samples\SpecialChar breakableslash
+animals (see elsewhere...).
+ It is generally a good approximation to the full log-likelihood,
+ which is intractable since it involves a sum over all possible depth-2 pedigree trees.
+\end_layout
+
+\begin_layout Standard
+NEEDS TO GO SOMEWHERE.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\Lambda=\sum_{i<j;k\in\mathcal{K};\text{Use}\left(z_{i},z_{j},k\right)=1}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|z_{i},z_{j},\theta\right]\label{eq:plglk}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathbf{1}_{x}\left(Y\right)$
+\end_inset
+
+ is the indicator of random variable 
+\begin_inset Formula $Y$
+\end_inset
+
+ taking the value 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ as opposed to any other value;
+ in this case,
+ the random variable 
+\begin_inset Formula $K_{ij}$
+\end_inset
+
+ is the kinship of 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+,
+ and the question is whether it takes the value 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Thus,
+ if 
+\begin_inset Formula $k=\text{MOP}$
+\end_inset
+
+ say,
+ then the term 
+\begin_inset Formula $\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|\cdots\right]$
+\end_inset
+
+ is the kinship probability from ref** if 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are indeed identified as a MOP,
+ or its complement (one minus the probability) if not.
+ Summation is potentially over all combinations of samples 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+,
+ and over all all kinships-of-interest (here MOP,
+ XmHSP,
+ and SelfP),
+ but sometimes it is useful to exclude certain comparisons 
+\emph on
+a priori 
+\emph default
+based on the individuals' covariates (not on the outcome)—
+ e.g.
+ when a GGP might be confused with an HSP.
+ Thus the function 
+\begin_inset Formula $\text{Use}\left(z_{i},z_{j},k\right)$
+\end_inset
+
+ is predefined to be either 0 or 1 according to whether that comparison-outcome is being used in estimation (ref**).
+\end_layout
+
+\begin_layout Standard
+Standard asymptotic arguments imply that the inverse covariance matrix of parameter estimates can be approximated by the Fisher Information matrix 
+\begin_inset Formula $H$
+\end_inset
+
+,
+ i.e.
+ the expected Hessian or second-derivative matrix of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:plglk"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ This is clearly also a sum of Fisher Information matrices from individual com:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\nabla_{/\theta\theta}^{2}\Lambda=\sum_{i<j;k\in\mathcal{K};\text{Use}\left(z_{i},z_{j},k\right)=1}\nabla_{/\theta\theta}^{2}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|z_{i},z_{j},\theta\right]\label{eq:D2plglk}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It can be shown (BSA2016orS&B**) that the Fisher Information matrix from one single comparison can be written as 
+\begin_inset Formula 
+\begin{gather}
+h_{ijk}\triangleq\mathbb{E}_{K_{ij}}\left[\nabla_{/\theta\theta}^{2}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|z_{i},z_{j},\theta\right]\right]\label{eq:FI}\\
+=4\left[\frac{d\sqrt{p_{k}\left(z_{i},z_{j},\theta\right)}}{d\theta}\right]\left[\frac{d\sqrt{p_{k}\left(z_{i},z_{j},\theta\right)}}{d\theta}\right]^{\top}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since many samples will have identical covariate values,
+ we can condense the sum over all pairs,
+ into a sum over all 
+\emph on
+types
+\emph default
+ of pairwise comparison:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+H=\sum_{z_{1},z_{2},k}c\left(z_{1},z_{2},k\right)m\left(z_{1}\right)m(z_{2})h_{ijk}\label{eq:Hsum}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $m\left(z_{1}\right)$
+\end_inset
+
+ is the number of samples with covariates 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+,
+ etc.
+ The factor 
+\begin_inset Formula $c\left(z_{1},z_{2},k\right)$
+\end_inset
+
+ is usually 1 (i.e.,
+ use all available comparisons of this type) except when 
+\begin_inset Formula $\text{Use}\left(z_{1},z_{2},k\right)=0$
+\end_inset
+
+ or when double-counting must be avoided.
+\end_layout
+
+\begin_layout Subsection
+Small population adjustments
+\end_layout
+
+\begin_layout Standard
+hopefully don't bother,
+ if few triads...
+\end_layout
+
+\begin_layout Standard
+Among SelfPs (already filtered to remove triads),
+ MOPs,
+ & XmHSPs (on test data) we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+table( table( c( MOPs,
+ XmHSPs,
+ selfPs))
+\end_layout
+
+\begin_layout Plain Layout
+
+# 1 2 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+# 1524 120 4
+\end_layout
+
+\begin_layout Plain Layout
+
+length( unique( samples$Me))
+\end_layout
+
+\begin_layout Plain Layout
+
+# 14385
+\end_layout
+
+\begin_layout Plain Layout
+
+length( unique( samples$Me)) - length( unique( c( MOPs,
+ XmHSPs,
+ selfPs)))
+\end_layout
+
+\begin_layout Plain Layout
+
+# 13187 this should go with 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ in the first line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so about 12% of the samples are 
+\begin_inset Quotes eld
+\end_inset
+
+recaptured
+\begin_inset Quotes erd
+\end_inset
+
+,
+ and about 8% of 
+\emph on
+those 
+\emph default
+are involved 
+\begin_inset Quotes eld
+\end_inset
+
+threecaps
+\begin_inset Quotes erd
+\end_inset
+
+ etc,
+ which would be predictable based on the other comparisons and thus not informative.
+\end_layout
+
+\begin_layout Standard
+A very rough 
+\begin_inset Quotes eld
+\end_inset
+
+calculation
+\begin_inset Quotes erd
+\end_inset
+
+ goes like this:
+\end_layout
+
+\begin_layout Enumerate
+About 12% of samples are recaptured,
+ but only a very small ppn are recaptured more than once (<1% of total).
+ If we randomly ordered all the comparisons of each sample,
+ on average the first match for any of that 12% would come half-way thru its list;
+ the rest of the comparisons against that sample would contribute no new information.
+ Thus,
+ each of those samples only 
+\begin_inset Quotes eld
+\end_inset
+
+counts
+\begin_inset Quotes erd
+\end_inset
+
+ towards half its quota of comparisons.
+\end_layout
+
+\begin_layout Enumerate
+The number of comparisons that involve those 12% is about 24% of all comparisons;
+ but about half of those are not informative.
+\end_layout
+
+\begin_layout Standard
+...
+ Where I'm hoping to get,
+ is that it's about 10% wrong variance-wise overall.
+ This is close enough to ignore.
+\end_layout
+
+\begin_layout Standard
+There 
+\emph on
+are
+\emph default
+ more accurate ways to compute the effect on variance,
+ but I think it's too fancy for this application.
+\end_layout
+
+\begin_layout Standard
+¿How much info comes when there *is* a match?
+ Coz we might argue that the 
+\end_layout
+
+\begin_layout Standard
+After adding in 
 \end_layout
 
 \end_body
