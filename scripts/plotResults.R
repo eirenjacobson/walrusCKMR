@@ -27,7 +27,7 @@ ggsave(plot = last_plot(), file = "./figures/compcheck_D0_L1_S0.png",
        width = 6, height = 4, units = "in")
 
 all_Dnonprob_lglk <- data.frame(matrix(rep(NA, 6*10), nrow = 10, ncol = 6))
-names(all_Dnonprob_lglk) <- names(Dnonprob_lglk)
+names(all_Dnonprob_lglk) <- names(ptru)
 
 for (i in 1:length(suffixes)){
   
