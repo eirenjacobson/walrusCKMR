@@ -149,27 +149,27 @@ The formulation of CKMR+IMR that we use has two key properties:
 \end_layout
 
 \begin_layout Itemize
-it is based only on pairwise comparisons between samples;
+it is based on a pseudo-log-likelihood that sums over pairwise comparisons between samples;
 \end_layout
 
 \begin_layout Itemize
 the outcome of each comparison is discrete yes-or-no:
- do these two samples the 
-\begin_inset Quotes eld
-\end_inset
-
-target
-\begin_inset Quotes erd
-\end_inset
-
- kinship,
+ do these two samples the target kinship,
  or not?
+\end_layout
+
+\begin_layout Itemize
+individual samples have multiple covariates (e.g.
+ year of sampling,
+ age),
+ but the range of possible values for each covariate is limited.
 \end_layout
 
 \begin_layout Standard
 Compared to general mark-recapture frameworks,
  this leads to some remarkably simple formulae for computations.
  In particular,
+ because the pairwise comparisons are almost mutually independent (see below),
  the parameter covariance matrix can be predicted,
  without any simulated data,
  just from:
@@ -181,10 +181,316 @@ the number of pairwise comparisons with each particular combination of covariate
 \end_layout
 
 \begin_layout Itemize
-a (fairly) easy-to-compute function of the kinship probabilities,
+a fairly-easy-to-compute function of the kinship probabilities,
  which determines how much statistical information about the parameters will be obtained,
  on average,
  from a single pairwise comparison of samples with those covariates.
+\end_layout
+
+\begin_layout Standard
+A somewhat-informal mathematical version is as follows.
+ Let 
+\begin_inset Formula $y_{ijk}$
+\end_inset
+
+ be the kinship outcome for samples 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+,
+ and target kinship 
+\begin_inset Formula $k$
+\end_inset
+
+:
+ 
+\begin_inset Formula $y_{ijk}=1$
+\end_inset
+
+ if their actual kinship 
+\begin_inset Formula $K_{ij}=k$
+\end_inset
+
+,
+ or 0 if 
+\begin_inset Formula $K_{ij}\neq k$
+\end_inset
+
+;
+ and let 
+\begin_inset Formula $y$
+\end_inset
+
+ be the set of all data (all kinship outcomes).
+ The pseudo-log-likelihood 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In practice,
+ certain types of comparison are usually excluded 
+\emph on
+a priori
+\emph default
+ based purely on their covariate values and the target kinship (e.g.
+ second-order kin born a long time apart),
+ but this does not alter the basic argument.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\Lambda\left(\theta;y\right)=\sum_{i<j;k\in\mathcal{K}}\log p\left(y_{ijk}|k,z_{i},z_{j},\theta\right)\label{eq:pslglk}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $p\left(y_{ijk}|k,z_{i},z_{j},\theta\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $p_{ijk}$
+\end_inset
+
+ for short is the probability formula for target kinship 
+\begin_inset Formula $k$
+\end_inset
+
+ given covariates 
+\begin_inset Formula $z$
+\end_inset
+
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Formula $z_{j}$
+\end_inset
+
+ of the two samples
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+,
+ such as (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MOP-future"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ The maximum (pseudo) likelihood estimate 
+\begin_inset Formula $\hat{\theta}\left(y\right)$
+\end_inset
+
+ will satisfy 
+\begin_inset Formula $(d\Lambda/d\theta)\left(\hat{\theta}_{y},y\right)=0$
+\end_inset
+
+,
+ and its variance is approximately the inverse of the Hessian (second derivative matrix) at 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+
+\begin_inset Formula $\left(y\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{gather}
+H\left(\hat{\theta}_{y};y\right)=\left.\frac{d^{2}\Lambda\left(\theta;y\right)}{d\theta^{2}}\right\vert _{\hat{\theta}\left(y\right)}\nonumber \\
+=\sum_{i<j;k\in\mathcal{K}}\left.\frac{d^{2}p_{ijk}}{d\theta^{2}}\right\vert _{\hat{\theta}\left(y\right)}\label{eq:H-hat}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For design purposes,
+ we are therefore interested in the expected value of 
+\begin_inset Formula $H$
+\end_inset
+
+ across possible datasets 
+\begin_inset Formula $y$
+\end_inset
+
+,
+ which is the sum of expectations (over 
+\begin_inset Formula $y_{ijk}$
+\end_inset
+
+) of individual terms 
+\begin_inset Formula $d^{2}p_{ijk}/d\theta^{2}$
+\end_inset
+
+;
+ by standard asymptotic arguments,
+ the expectation can equally well be taken at some fixed plausible guess about the true parameter values 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ Assuming that the sam\SpecialChar breakableslash
+ple size is a small fraction of the whole population,
+ it turns out (see **BSA2016etc) that each individual expectation is well-approximated by 
+\begin_inset Formula $h_{ijk}$
+\end_inset
+
+ where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+h_{ijk}\triangleq\mathbb{E}_{Y_{ijk}}\left[\left.\frac{d^{2}p_{ijk}}{d\theta^{2}}\right\vert _{\theta_{0}}\right]\label{eq:beautiful-4}\\
+=4\left[\left.\frac{d\sqrt{\mathbb{P}\left[K_{ij}=k|k,z_{i},z_{j},\theta\right]}}{d\theta}\right\vert _{\theta_{0}}\right]\left[\left.\frac{d\sqrt{\mathbb{P}\left[K_{ij}=k|k,z_{i},z_{j},\theta\right]}}{d\theta}\right\vert _{\theta_{0}}\right]^{\top}
+\end{gather}
+
+\end_inset
+
+The term in square-brackets is the derivative vector of the square-root of the kinship probability formulae for covariate values 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_{j}$
+\end_inset
+
+ with respect to the parameters,
+ at the value 
+\begin_inset Formula $\theta=\theta_{0}$
+\end_inset
+
+.
+ Once the CK model has been coded,
+ it is simple 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather*}
+\sum_{z_{i}<z_{2}\in\mathcal{Z};k\in\mathcal{K}}m\left(z_{1}\right)m\left(z_{2}\right)
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+**Note to co-authors:
+ It's difficult to know where to pitch this,
+ and where to put it.
+ The above argument is in fact 
+\emph on
+slightly
+\emph default
+ flakey from an asymptotic-stats PoV,
+ and the notation with 
+\begin_inset Formula $y_{ijk}$
+\end_inset
+
+ is arguably cumbersome.
+ An alternative notation uses indicator functions,
+ which are quite common in formal probability theory,
+ but might be scary to some statisticians—
+ I'm not scared,
+ but I did have to carefully look up the precise form of this 
+\begin_inset Quotes eld
+\end_inset
+
+standard
+\begin_inset Quotes erd
+\end_inset
+
+ notation—
+ and probably terrifying to most ecologists.
+ I could make the whole thing entirely precise,
+ but then I'd be trampling on territory that I still hope appears first in Skaug & Bravington 2025—
+ and perhaps more significantly,
+ it would just lose a lot of readers.
+ FWIW the indicator-function version starts with
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\Lambda=\sum_{i<j;k\in\mathcal{K};\left\{ z_{i},z_{j},k\right\} \in\mathcal{U}}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|k,z_{i},z_{j},\theta\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ is the set of 
+\begin_inset Quotes eld
+\end_inset
+
+useful
+\begin_inset Quotes erd
+\end_inset
+
+ comparisons,
+ i.e.
+ triplets 
+\begin_inset Formula $\left\{ k,z,z'\right\} $
+\end_inset
+
+ where the comparison-outcome is worth using in the model.
 \end_layout
 
 \begin_layout Standard
@@ -196,17 +502,6 @@ animals (see elsewhere...).
 
 \begin_layout Standard
 NEEDS TO GO SOMEWHERE.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{gather}
-\Lambda=\sum_{i<j;k\in\mathcal{K};\text{Use}\left(z_{i},z_{j},k\right)=1}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|z_{i},z_{j},\theta\right]\label{eq:plglk}
-\end{gather}
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

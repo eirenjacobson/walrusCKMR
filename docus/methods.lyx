@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \begin_preamble
 
@@ -538,6 +538,37 @@ name "fig:Breeding-cycle"
 
 \begin_layout Subsubsection
 Formulating kinship probabilities
+\end_layout
+
+\begin_layout Standard
+** ¿Maybe explicitify somewhere that these are 
+\emph on
+demographic
+\emph default
+ probabilities,
+ ie about the true kinship?
+ We assume that genetics 
+\begin_inset Quotes eld
+\end_inset
+
+just works
+\begin_inset Quotes erd
+\end_inset
+
+ to reveal the true kinship (barring false-negs on HSPs...).
+ The reason is that people quite often get confused because they expect the genetics to give an uncertain result;
+ that doesn't happen (for the types of kinship we are interested in) precisely because we design the genotyping to make sure it gives an accurate outcome,
+ and also because we are 
+\begin_inset Quotes eld
+\end_inset
+
+unambitious
+\begin_inset Quotes erd
+\end_inset
+
+ about the closeness-of-interest;
+ i.e.,
+ we are not interested in cousins and other hard-to-be-sure kin.
 \end_layout
 
 \begin_layout Standard
@@ -1275,6 +1306,15 @@ l
 \shape default
 's birth.
  
+\end_layout
+
+\begin_layout Standard
+**GGPs—
+ exclude big birth-gaps
+\end_layout
+
+\begin_layout Standard
+** False-neg stuff (sigh..!)
 \end_layout
 
 \begin_layout Subsubsection
