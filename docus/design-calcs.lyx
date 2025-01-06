@@ -108,44 +108,16 @@ CKMR design calculations
 \end_layout
 
 \begin_layout Standard
-Our goal is to evaluate potential survey designs for a CKMR survey of walrus.
- In most other abundance estimation frameworks we would need to create a series of simulations for the differing survey designs,
- then use the results from these to conclude which design is best.
- CKMR circumvents the need for simulations in this situation:
- we can simply ...
-\end_layout
-
-\begin_layout Standard
-great wodge of theory—
- NB 2 MB what about HS..?
-\end_layout
-
-\begin_layout Standard
-\begin_inset Quotes eld
-\end_inset
-
-flowchart
-\begin_inset Quotes erd
-\end_inset
-
- for what you 
-\emph on
-actually
-\emph default
- need
-\end_layout
-
-\begin_layout Standard
-****
-\end_layout
-
-\begin_layout Standard
-The discrete (are these two samples the right kind of kin,
- or not?) and pairwise-comparison formulation of 
-\end_layout
-
-\begin_layout Standard
-The formulation of CKMR+IMR that we use has two key properties:
+Our goal is to evaluate potential survey designs for a CKMR survey of walrus,
+ i.e.
+ to predict the variance of some quantity-of-interest that would be obtained if the data was collected according to that design.
+ In many other contexts we would need to create a series of simulations for each design,
+ estimate parameters (and the quantities of real interest,
+ which may be functions of the raw parameters) for each simulation,
+ then directly calculate the variance of those estimates.
+ Happily,
+ this cumbersome process can be circumvented almost entirely with the formulation of CKMR+IMR that we use,
+ because of three key properties:
 \end_layout
 
 \begin_layout Itemize
@@ -172,12 +144,20 @@ Compared to general mark-recapture frameworks,
  because the pairwise comparisons are almost mutually independent (see below),
  the parameter covariance matrix can be predicted,
  without any simulated data,
- just from:
+ just from two types of information:
 \end_layout
 
 \begin_layout Itemize
 the number of pairwise comparisons with each particular combination of covariates,
- basically the product of the numbers of relevant samples;
+ basically the product of the numbers of relevant samples (which constitute 
+\begin_inset Quotes eld
+\end_inset
+
+the design
+\begin_inset Quotes erd
+\end_inset
+
+);
 \end_layout
 
 \begin_layout Itemize
@@ -188,7 +168,8 @@ a fairly-easy-to-compute function of the kinship probabilities,
 \end_layout
 
 \begin_layout Standard
-A somewhat-informal mathematical version is as follows.
+We present a slightly simplified explanation here,
+ dealing first with the latter.
  Let 
 \begin_inset Formula $y_{ijk}$
 \end_inset
@@ -201,7 +182,6 @@ A somewhat-informal mathematical version is as follows.
 \begin_inset Formula $j$
 \end_inset
 
-,
  and target kinship 
 \begin_inset Formula $k$
 \end_inset
@@ -226,11 +206,57 @@ A somewhat-informal mathematical version is as follows.
 \end_inset
 
  be the set of all data (all kinship outcomes).
+ Also define 
+\begin_inset Formula $p_{ijk}\left(\theta\right)=\mathbb{P}\left[K_{ij}=k|z_{i},z_{j},\theta\right]$
+\end_inset
+
+ to be the kinship probability,
+ computed from a formula such as (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MOP-future"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ for parameter values 
+\begin_inset Formula $\theta$
+\end_inset
+
+;
+ we just write 
+\begin_inset Formula $p_{ijk}$
+\end_inset
+
+ where there is no ambiguity.
+ Each comparison has a very low probability of 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset Formula $y_{ijk}=1$
+\end_inset
+
+),
+ on the order of the reciprocal of adult abundance,
+ and is well approximated by a Poisson distribution with mean 
+\begin_inset Formula $p_{ijk}$
+\end_inset
+
+.
  The pseudo-log-likelihood 
 \begin_inset Formula $\Lambda$
 \end_inset
 
- is
+ is thus
 \begin_inset Foot
 status collapsed
 
@@ -253,7 +279,7 @@ a priori
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\Lambda\left(\theta;y\right)=\sum_{i<j;k\in\mathcal{K}}\log p\left(y_{ijk}|k,z_{i},z_{j},\theta\right)\label{eq:pslglk}
+\Lambda\left(\theta;y\right)=\text{const}+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}+y_{ijk}\log p_{ijk}\right\} \label{eq:pslglk}
 \end{gather}
 
 \end_inset
@@ -262,49 +288,19 @@ a priori
 \end_layout
 
 \begin_layout Standard
-where 
-\begin_inset Formula $p\left(y_{ijk}|k,z_{i},z_{j},\theta\right)$
-\end_inset
-
- or 
-\begin_inset Formula $p_{ijk}$
-\end_inset
-
- for short is the probability formula for target kinship 
-\begin_inset Formula $k$
-\end_inset
-
- given covariates 
-\begin_inset Formula $z$
-\end_inset
-
-
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-i
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Formula $z_{j}$
-\end_inset
-
- of the two samples
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-
-\end_layout
-
+With a real dataset 
+\begin_inset Formula $y$
 \end_inset
 
 ,
- such as (
+ we would estimate 
+\begin_inset Formula $\hat{\theta}\left(y\right)$
+\end_inset
+
+ by maximizing (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:MOP-future"
+reference "eq:pslglk"
 plural "false"
 caps "false"
 noprefix "false"
@@ -312,81 +308,84 @@ nolink "false"
 
 \end_inset
 
-).
- The maximum (pseudo) likelihood estimate 
+),
+ and then infer the variance of 
 \begin_inset Formula $\hat{\theta}\left(y\right)$
 \end_inset
 
- will satisfy 
-\begin_inset Formula $(d\Lambda/d\theta)\left(\hat{\theta}_{y},y\right)=0$
-\end_inset
-
-,
- and its variance is approximately the inverse of the Hessian (second derivative matrix) at 
-\begin_inset Formula $\hat{\theta}$
-\end_inset
-
-
-\begin_inset Formula $\left(y\right)$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{gather}
-H\left(\hat{\theta}_{y};y\right)=\left.\frac{d^{2}\Lambda\left(\theta;y\right)}{d\theta^{2}}\right\vert _{\hat{\theta}\left(y\right)}\nonumber \\
-=\sum_{i<j;k\in\mathcal{K}}\left.\frac{d^{2}p_{ijk}}{d\theta^{2}}\right\vert _{\hat{\theta}\left(y\right)}\label{eq:H-hat}
-\end{gather}
+ from the inverse of the Hessian (second derivative matrix) of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pslglk"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
+)
+\begin_inset Foot
+status open
 
+\begin_layout Plain Layout
+Assuming sparse sampling...
 \end_layout
 
-\begin_layout Standard
-For design purposes,
- we are therefore interested in the expected value of 
-\begin_inset Formula $H$
 \end_inset
 
- across possible datasets 
-\begin_inset Formula $y$
+.
+ For design purposes,
+ we work instead with 
+\begin_inset Formula $H\left(\theta_{0}\right)$
 \end_inset
 
 ,
- which is the sum of expectations (over 
-\begin_inset Formula $y_{ijk}$
+ the expected value over datasets 
+\begin_inset Formula $Y$
 \end_inset
 
-) of individual terms 
-\begin_inset Formula $d^{2}p_{ijk}/d\theta^{2}$
+ of 
+\begin_inset Formula $d^{2}\Lambda\left(\theta_{0};Y\right)/d\theta^{2}$
 \end_inset
 
-;
- by standard asymptotic arguments,
- the expectation can equally well be taken at some fixed plausible guess about the true parameter values 
+ at the true parameter value 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
 .
- Assuming that the sam\SpecialChar breakableslash
-ple size is a small fraction of the whole population,
- it turns out (see **BSA2016etc) that each individual expectation is well-approximated by 
-\begin_inset Formula $h_{ijk}$
+ Since 
+\begin_inset Formula $\Lambda$
 \end_inset
 
- where
+ itself consists of a sum of terms over individual comparisons,
+ the same is true of the second derivative and its expectation,
+ which we can write say as 
+\begin_inset Formula $H\left(\theta_{0}\right)=\sum_{i<j;k\in\mathcal{K}}h_{ijk}\left(\theta_{0}\right)$
+\end_inset
+
+.
+ Some algebra (ref**) shows that the single-comparison expected Hessian is given by
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-h_{ijk}\triangleq\mathbb{E}_{Y_{ijk}}\left[\left.\frac{d^{2}p_{ijk}}{d\theta^{2}}\right\vert _{\theta_{0}}\right]\label{eq:beautiful-4}\\
-=4\left[\left.\frac{d\sqrt{\mathbb{P}\left[K_{ij}=k|k,z_{i},z_{j},\theta\right]}}{d\theta}\right\vert _{\theta_{0}}\right]\left[\left.\frac{d\sqrt{\mathbb{P}\left[K_{ij}=k|k,z_{i},z_{j},\theta\right]}}{d\theta}\right\vert _{\theta_{0}}\right]^{\top}
+h_{ijk}\left(\theta_{0}\right)=4d_{ijk}\left(\theta_{0}\right)d_{ijk}\left(\theta_{0}\right)^{\top}\label{eq:beautiful-4}\\
+\text{where }d_{ijk}\left(\theta\right)=\frac{d\sqrt{p_{ijk}}}{d\theta}\nonumber 
 \end{gather}
 
 \end_inset
 
-The term in square-brackets is the derivative vector of the square-root of the kinship probability formulae for covariate values 
+The term 
+\begin_inset Formula $d_{ijk}\left(\theta_{0}\right)$
+\end_inset
+
+ is the derivative vector of the square-root of the kinship-
+\begin_inset Formula $k$
+\end_inset
+
+ probability for covariate values 
 \begin_inset Formula $z_{i}$
 \end_inset
 
@@ -394,78 +393,106 @@ The term in square-brackets is the derivative vector of the square-root of the k
 \begin_inset Formula $z_{j}$
 \end_inset
 
- with respect to the parameters,
+ with respect to the elements of the parameter vector 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
  at the value 
 \begin_inset Formula $\theta=\theta_{0}$
 \end_inset
 
 .
- Once the CK model has been coded,
- it is simple 
+ This can be obtained efficiently for all 
+\begin_inset Formula $(i,j,k)$
+\end_inset
+
+ by numerical differentation of the probabilities calculated by the CKMR model,
+ using some reasonable guess about 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+;
+ the whole process takes just a minute or two for our walrus example.
+\end_layout
+
+\begin_layout Standard
+;
+ this involves the slight approximation of treating all comparisons as independent,
+ which is reasonable under the large-population\SpecialChar breakableslash
+sparse-sampling assumption of **BSA2016
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+should this
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The remaining requirement for design,
+ is to group similar comparisons,
+ i.e.
+ across all pairs with identical covariate values.
+ Let 
+\begin_inset Formula $z_{i}\left(k\right)$
+\end_inset
+
+ denote all the covariate values for sample 
+\begin_inset Formula $i$
+\end_inset
+
+ that are needed to compute 
+\begin_inset Formula $p_{ijk}$
+\end_inset
+
+ (note that this may vary for different 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ given different roles that the sample may be playing:
+ for brevity we just write 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ in what follows).
+ Now let 
+\begin_inset Formula $m(z)$
+\end_inset
+
+ denote the number of samples with covariate values 
+\begin_inset Formula $z$
+\end_inset
+
+.
+ The number of comparisons between samples that have covariates 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ and samples that have covariates 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $m\left(z_{1}\right)m\left(z_{2}\right)$
+\end_inset
+
+.
+ By grouping in this way,
+ the expected Hessian can be written as 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{gather*}
-\sum_{z_{i}<z_{2}\in\mathcal{Z};k\in\mathcal{K}}m\left(z_{1}\right)m\left(z_{2}\right)
-\end{gather*}
+\begin{gather}
+H\left(m_{\mathcal{Z}};\theta_{0}\right)=\sum_{z_{i}<z_{2}\in\mathcal{Z};k\in\mathcal{K}}m\left(z_{1}\right)m\left(z_{2}\right)h\left(z_{1},z_{2},k\right)\label{eq:H-grouped}
+\end{gather}
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-**Note to co-authors:
- It's difficult to know where to pitch this,
- and where to put it.
- The above argument is in fact 
-\emph on
-slightly
-\emph default
- flakey from an asymptotic-stats PoV,
- and the notation with 
-\begin_inset Formula $y_{ijk}$
-\end_inset
-
- is arguably cumbersome.
- An alternative notation uses indicator functions,
- which are quite common in formal probability theory,
- but might be scary to some statisticians—
- I'm not scared,
- but I did have to carefully look up the precise form of this 
-\begin_inset Quotes eld
-\end_inset
-
-standard
-\begin_inset Quotes erd
-\end_inset
-
- notation—
- and probably terrifying to most ecologists.
- I could make the whole thing entirely precise,
- but then I'd be trampling on territory that I still hope appears first in Skaug & Bravington 2025—
- and perhaps more significantly,
- it would just lose a lot of readers.
- FWIW the indicator-function version starts with
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $\Lambda=\sum_{i<j;k\in\mathcal{K};\left\{ z_{i},z_{j},k\right\} \in\mathcal{U}}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|k,z_{i},z_{j},\theta\right]$
 \end_inset
 
 
@@ -473,128 +500,118 @@ standard
 
 \begin_layout Standard
 where 
-\begin_inset Formula $\mathcal{U}$
+\begin_inset Formula $h\left(z_{1},z_{2},k\right)$
 \end_inset
 
- is the set of 
-\begin_inset Quotes eld
-\end_inset
-
-useful
-\begin_inset Quotes erd
-\end_inset
-
- comparisons,
- i.e.
- triplets 
-\begin_inset Formula $\left\{ k,z,z'\right\} $
-\end_inset
-
- where the comparison-outcome is worth using in the model.
-\end_layout
-
-\begin_layout Standard
-The pseudo-log-likelihood which underpins estimation for CKMR+IMR is the sum of log-likelihoods of individual pairwise comparisons amongst all samples\SpecialChar breakableslash
-animals (see elsewhere...).
- It is generally a good approximation to the full log-likelihood,
- which is intractable since it involves a sum over all possible depth-2 pedigree trees.
-\end_layout
-
-\begin_layout Standard
-NEEDS TO GO SOMEWHERE.
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $\mathbf{1}_{x}\left(Y\right)$
-\end_inset
-
- is the indicator of random variable 
-\begin_inset Formula $Y$
-\end_inset
-
- taking the value 
-\begin_inset Formula $x$
-\end_inset
-
-,
- as opposed to any other value;
- in this case,
- the random variable 
-\begin_inset Formula $K_{ij}$
-\end_inset
-
- is the kinship of 
-\begin_inset Formula $i$
+ is the single-comparison expected Hessian for two samples with covariates 
+\begin_inset Formula $z_{1}$
 \end_inset
 
  and 
-\begin_inset Formula $j$
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ respectively
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The ordering 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $z_{1}<z_{2}"$
+\end_inset
+
+ is arbitrary,
+ included just to avoid double-counting.
+ Sometimes it makes sense to also do comparisons with 
+\begin_inset Formula $z_{1}=z_{2}$
 \end_inset
 
 ,
- and the question is whether it takes the value 
-\begin_inset Formula $k$
+ in which case an extra factor of 1/2 is required.
+\end_layout
+
 \end_inset
 
 .
- Thus,
- if 
-\begin_inset Formula $k=\text{MOP}$
+ The set 
+\begin_inset Formula $\mathcal{Z}$
 \end_inset
 
- say,
- then the term 
-\begin_inset Formula $\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|\cdots\right]$
-\end_inset
-
- is the kinship probability from ref** if 
-\begin_inset Formula $i$
-\end_inset
-
+ comprises all possible combinations of covariates,
  and 
-\begin_inset Formula $j$
+\begin_inset Formula $m_{\mathcal{Z}}$
 \end_inset
 
- are indeed identified as a MOP,
- or its complement (one minus the probability) if not.
- Summation is potentially over all combinations of samples 
-\begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $j$
-\end_inset
-
-,
- and over all all kinships-of-interest (here MOP,
- XmHSP,
- and SelfP),
- but sometimes it is useful to exclude certain comparisons 
-\emph on
-a priori 
-\emph default
-based on the individuals' covariates (not on the outcome)—
- e.g.
- when a GGP might be confused with an HSP.
- Thus the function 
-\begin_inset Formula $\text{Use}\left(z_{i},z_{j},k\right)$
-\end_inset
-
- is predefined to be either 0 or 1 according to whether that comparison-outcome is being used in estimation (ref**).
-\end_layout
-
-\begin_layout Standard
-Standard asymptotic arguments imply that the inverse covariance matrix of parameter estimates can be approximated by the Fisher Information matrix 
+ is the corresponding breakdown of total sample size by covariate combinations (e.g.
+ year and age and sex).
+ Once 
 \begin_inset Formula $H$
 \end_inset
 
+ has been computed,
+ it can be inverted to give the average predicted variance 
+\begin_inset Formula $V\left(m_{\mathcal{Z}};\theta_{0}\right)$
+\end_inset
+
+ of a parameter estimate.
+ CVs or standard errors of any quantity-of-interest 
+\begin_inset Formula $g\left(\theta\right)$
+\end_inset
+
+ that can be obtained from 
+\begin_inset Formula $\theta$
+\end_inset
+
 ,
- i.e.
- the expected Hessian or second-derivative matrix of (
+ can then be approximated by the Delta method:
+\begin_inset Formula 
+\begin{gather}
+\mathbb{V}\left[g\left(\theta\right);m_{\mathcal{Z}},\theta_{0}\right]\approx\left[\left.\frac{dg}{d\theta}\right\vert _{\theta_{0}}\right]V\left(m_{\mathcal{Z}},\theta_{0}\right)\left[\left.\frac{dg}{d\theta}\right\vert _{\theta_{0}}\right]^{\top}\label{eq:V-g}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+While a 
+\begin_inset Quotes eld
+\end_inset
+
+design
+\begin_inset Quotes erd
+\end_inset
+
+ must,
+ by definition,
+ include some specification of sample sizes,
+ it may not specify the full breakdown of samples into specific 
+\begin_inset Formula $z$
+\end_inset
+
+-categories:
+ for example,
+ the plan might be to sample 1000 adult walruses per year,
+ but the age composition cannot be controlled directly.
+ However,
+ we need to know that detailed breakdown 
+\begin_inset Formula $m_{\mathcal{Z}}$
+\end_inset
+
+ in order to apply the above steps.
+ This might require additional assumptions and calculations.
+ For example,
+ our population-dynamics model does not explicitly represent the adult age composition within the population,
+ let alone within the samples;
+ probability formulae such as (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:plglk"
+reference "eq:MOP-past"
 plural "false"
 caps "false"
 noprefix "false"
@@ -602,97 +619,364 @@ nolink "false"
 
 \end_inset
 
-).
- This is clearly also a sum of Fisher Information matrices from individual com:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{gather}
-\nabla_{/\theta\theta}^{2}\Lambda=\sum_{i<j;k\in\mathcal{K};\text{Use}\left(z_{i},z_{j},k\right)=1}\nabla_{/\theta\theta}^{2}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|z_{i},z_{j},\theta\right]\label{eq:D2plglk}
-\end{gather}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-It can be shown (BSA2016orS&B**) that the Fisher Information matrix from one single comparison can be written as 
-\begin_inset Formula 
-\begin{gather}
-h_{ijk}\triangleq\mathbb{E}_{K_{ij}}\left[\nabla_{/\theta\theta}^{2}\log\mathbb{P}\left[\mathbf{1}_{k}\left(K_{ij}\right)|z_{i},z_{j},\theta\right]\right]\label{eq:FI}\\
-=4\left[\frac{d\sqrt{p_{k}\left(z_{i},z_{j},\theta\right)}}{d\theta}\right]\left[\frac{d\sqrt{p_{k}\left(z_{i},z_{j},\theta\right)}}{d\theta}\right]^{\top}
-\end{gather}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Since many samples will have identical covariate values,
- we can condense the sum over all pairs,
- into a sum over all 
+) are 
 \emph on
-types
+conditioned
 \emph default
- of pairwise comparison:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{gather}
-H=\sum_{z_{1},z_{2},k}c\left(z_{1},z_{2},k\right)m\left(z_{1}\right)m(z_{2})h_{ijk}\label{eq:Hsum}
-\end{gather}
+ on sample age,
+ but makes no assumption about how many samples of each age there will be.
+ It would be possible to calculate expected sample sizes based on quasi-stable and unselective-sampling assumptions (assumptions that are in fact implicit for the self-recapture probability (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:self-staged"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
+)),
+ but somewhat laborious.
+ Instead,
+ since we are simulating sampled datasets in any case,
+ the simulated sample composition can be used directly for 
+\begin_inset Formula $m_{\mathcal{Z}}$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Standard
-where 
-\begin_inset Formula $m\left(z_{1}\right)$
+The use of the pseudo-log-likelihood Hessian to approximate the inverse variance is not strictly justified in a mathematical sense,
+ because the pairwise comparisons are not fully mutually independent.
+ The proposed walrus sample size (about 15,000 in total) is so large relative to adult abundance (about 70,000 females,
+ although in effect somewhat more because of turnover during the years modeled) that roughly 10% of samples are recaptured multiple times,
+ as self and\SpecialChar breakableslash
+or as kin.
+ This means that an appreciable proportion of pairwise comparisons (maybe as high as 20%) have predictable outcomes based on the results of other comparisons,
+ which breaks independence.
+ The 
+\begin_inset Quotes eld
 \end_inset
 
- is the number of samples with covariates 
-\begin_inset Formula $z_{1}$
+sparse sampling
+\begin_inset Quotes erd
+\end_inset
+
+ assumption of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
 \end_inset
 
 ,
- etc.
- The factor 
-\begin_inset Formula $c\left(z_{1},z_{2},k\right)$
+ which underlies the use of the Hessian,
+ is not strictly justified here;
+ this does not lead to bias in point estimates,
+ but the Hessian-based approximation is likely to underestimate the true variance somewhat unless adjustments are made.
+ Accordingly,
+ we have-made/should-have-made **delete as appropriate!** some simple adjustments to 
+\begin_inset Quotes eld
 \end_inset
 
- is usually 1 (i.e.,
- use all available comparisons of this type) except when 
-\begin_inset Formula $\text{Use}\left(z_{1},z_{2},k\right)=0$
+effective sample size
+\begin_inset Quotes erd
 \end_inset
 
- or when double-counting must be avoided.
+ based on summaries of the simulated datasets,
+ as explained in the Appendix.
+ This should be quite adequate for design purposes—
+ since,
+ in any case,
+ all our variance estimates have to be based on uncertain assumptions about true parameter values—
+ but a more detailed treatment may be worthwhile when it comes to analysing the real data.
 \end_layout
 
 \begin_layout Subsection
-Small population adjustments
+Something for the Appendix,
+ perhaps:
+ Adjustments for non-sparse sampling
 \end_layout
 
 \begin_layout Standard
-hopefully don't bother,
- if few triads...
+From experience,
+ any attempt at a comprehensive treatment of non-independence in CKMR is complicated,
+ to say the least.
+ In this paper,
+ we restrict attention to some obvious aspects for walrus that are easy to address.
+ We consider the comparisons in stages:
+ first SelfPs,
+ then MOPs,
+ then XmHSPs.
+ We adjust set the effective sample size for each stage based on recaptures from the preceding stages in one simulated dataset,
+ as follows:
+\end_layout
+
+\begin_layout Itemize
+Sample sizes are initially taken from the simulated dataset (thus allowing detailed breakdown of sample size by age,
+ year,
+ etc).
+ All available samples are used for SelfP comparisons.
+\end_layout
+
+\begin_layout Itemize
+If an individual is self-recaptured,
+ only its final capture will be used in MOP and XmHSP comparisons (i.e.
+ duly adjusting the sample sizes sample sizes for MOPs and XmHSPs,
+ as well as the number of MOPs etc found if that individual is involved).
+\end_layout
+
+\begin_layout Itemize
+Any Offspring 
+\begin_inset Formula $o$
+\end_inset
+
+ identified in a MOP,
+ will be excluded from XmHSP comparisons (since 
+\begin_inset Formula $o$
+\end_inset
+
+'s sibship with any other sample 
+\begin_inset Formula $i$
+\end_inset
+
+ can be deduced from the MOP results,
+ based on whether 
+\begin_inset Formula $i$
+\end_inset
+
+ is also an offspring of 
+\begin_inset Formula $o$
+\end_inset
+
+'s Mother).
 \end_layout
 
 \begin_layout Standard
-Among SelfPs (already filtered to remove triads),
- MOPs,
- & XmHSPs (on test data) we have 
+This deals with the implications of one type of kinship for the others,
+ but does not deal with multiple recaptures within a kinship class (e.g.
+ an individual who is sampled 3 times;
+ given that sample A matches sample B,
+ and B matches C,
+ it is redundant to compare A with C).
+ There are simple ways to handle that with real datasets,
+ as long as age is known fairly accurately,
+ .
+ Taking self-recapture as an example,
+ we can compare the first capture of an individual to other samples from successively later dates,
+ stopping immediately after a second capture (i.e.
+ a self-recapture) if there is one.
+ Thereafter,
+ the first sample is not used in self-comparisons against later samples,
+ but the second sample (the recapture) should still be used until and unless it too is recaptured,
+ and so on.
+ For XmHSPs,
+ where we are really recapturing the shared Mother rather than the samples themselves,
+ we can proceed in an analogous fashion,
+ dropping the firstborn halfsib from subsequent comparisons once its first halfsib has been found,
+ and so on.
+\end_layout
+
+\begin_layout Standard
+It is difficult to follow that approach in a design context,
+ because the number of 
+\emph on
+possible
+\emph default
+ triads is extremely large,
+ even though in practice only a limited number will be seen in any real dataset.
+ Instead,
+ we make simple overall adjustments,
+ as follows:
+\end_layout
+
+\begin_layout Itemize
+For SelfPs,
+ we start by tabulating the number of triple captures,
+ etc.
+ If we were using the above scheme for an individual caught 3 times,
+ we would want to end up counting only 2 recaptures,
+ rather than 3 from all pairwise matches;
+ generally,
+ for an individual caught 
+\begin_inset Formula $N$
+\end_inset
+
+ times,
+ we would only count 
+\begin_inset Formula $N-1$
+\end_inset
+
+ recaptures rather than 
+\begin_inset Formula $N\left(N-1\right)/2$
+\end_inset
+
+ from all pairings of its samples.
+ Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the proportional reduction in the number of SelfP pairs that would result.
+ The number of comparisons should be reduced accordingly,
+ and we apply the same reduction 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ across-the-board to 
+\emph on
+all
+\emph default
+ SelfP comparison categories.
+ (About 2% of walrus self-recaptures in different years are expected to be 3rd or more captures.)
+\end_layout
+
+\begin_layout Itemize
+An exactly analogous approach works for XmHSPs (ignoring yet more complications from false-negatives).
+ (About 6% of walrus XmHSPs are expected to be part of triads.)
+\end_layout
+
+\begin_layout Standard
+This should give a reasonably unbiased adjustment to ensure sample sizes in the design are comparable to the adjusted sample sizes we would get with real data,
+ although it is not quite right because some types of comparison (i.e.
+ pairs of covariates) are liable to be more\SpecialChar breakableslash
+less susceptible to multiple recaptures than others.
+ That nuance really does not seem important for design purposes.
+ A more practical problem is that the adjustments are dependent on results from a single realization of sampling,
+ and in particular on the number of triple-captures,
+ which is fairly small and thus subject to some variability.
+ Thus,
+ as usual in statistics,
+ bias correction entails some increase in uncertainty.
+\end_layout
+
+\begin_layout Standard
+It is not necessary to adjust MOP counts in the same way,
+ because the outcomes of comparing one potential-offspring to all adults for MOPship are almost independent
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Or almost completely independent:
+ if the two potential-offspring are born in the same or successive years,
+ then walrus biology precludes them from both being offspring of the same mother.
+ Another complication arises with non-lethal adult sampling;
+ some MOP pairs will have offspring born after non-lethal sampling of the mother,
+ in which case the mother's known lifespan can be allowed for in comparisons with other samples.
+ We ignore all this.
+ 
+\end_layout
+
+\end_inset
+
+ of the results for any other potential-offspring;
+ mothers are allowed to have multiple offspring.
+\end_layout
+
+\begin_layout Standard
+All the phenomena above would,
+ if uncorrected,
+ tend to lead to underestimates of variance.
+ However,
+ there is another related phenomenon in non-sparse-sampling which tends to have the 
+\emph on
+opposite
+\emph default
+ effect,
+ basically of finite-population-correction.
+ Consider a simplified setting where all adults have the same covariates and only one juvenile,
+ 
+\begin_inset Formula $O$
+\end_inset
+
+,
+ is sampled.
+ In the MOP comparisons between 
+\begin_inset Formula $O$
+\end_inset
+
+ and all 
+\begin_inset Formula $m_{\text{ad}}$
+\end_inset
+
+ adult samples,
+ at most 1 of those adult samples can be 
+\begin_inset Formula $O$
+\end_inset
+
+'s Mother,
+ whereas the Poisson approximation in theory allows for 2 or more,
+ albeit with low probability.
+ It can be shown that the Fisher information (for a model where the only parameter is 
+\begin_inset Formula $N_{\text{ad}}$
+\end_inset
+
+,
+ the number of adult females) based on the Poisson approximation is lower than the true Fisher information based on the yes-no outcome to all 
+\begin_inset Formula $m_{\text{ad}}$
+\end_inset
+
+ comparisons at once,
+ by a factor 
+\begin_inset Formula $\left(N_{\text{ad}}-m_{\text{ad}}\right)/N_{\text{ad}}$
+\end_inset
+
+ in this simple case;
+ that is,
+ the pseudo-log-likelihood Hessian here leads to an 
+\emph on
+overestimate
+\emph default
+ of true variance.
+ While the same qualitative effect presumably extends to more complex settings with different covariates,
+ it is by no means obvious how to extend the calculations,
+ and we propose generally ignoring this overestimation of variance.
+ On the whole,
+ it is usually a worse mistake to be over-confident than to be under-confident in an estimate;
+ model-based variance estimates tend to be biased low anyway,
+ through ignoring structural oversimplifications in the model;
+ and with CKMR variance can usually be reduced anyway by modest increases in sample size.
+ For walrus in particular,
+ the total proposed adult sample size is under 10% of the population,
+ so the effect on standard deviations would presumably not exceed 5%.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+yes I do have ideas about what you 
+\emph on
+could
+\emph default
+ try when things are really bad,
+ but this paper sure isn't the place...
+ (and I am not particularly interested in following up about that...).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Some code I don't want to delete yet...
 \end_layout
 
 \begin_layout Standard
 \begin_inset listings
 inline false
 status open
+
+\begin_layout Plain Layout
+
+I ran these snippets inside add_data(),
+ using my debugger 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -741,95 +1025,155 @@ length( unique( samples$Me)) - length( unique( c( MOPs,
  in the first line
 \end_layout
 
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
-so about 12% of the samples are 
+\begin_layout Plain Layout
+
+# So,
+ quite a few:
+ 10% of samples are in pairs,
+ 10% of those are in triplets!
+\end_layout
+
+\begin_layout Plain Layout
+
+# Where are most of these triplets coming from?
+\end_layout
+
+\begin_layout Plain Layout
+
+table( table( c( XmHSPs)))
+\end_layout
+
+\begin_layout Plain Layout
+
+# 1  2
+\end_layout
+
+\begin_layout Plain Layout
+
+# 444 27
+\end_layout
+
+\begin_layout Plain Layout
+
+# ...
+ so it's mostly not from the XmHSPs
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+table( metab) # SelfPs before trimming the xtuples
+\end_layout
+
+\begin_layout Plain Layout
+
+#    1    2    3 
+\end_layout
+
+\begin_layout Plain Layout
+
+# 9286  212    3 
+\end_layout
+
+\begin_layout Plain Layout
+
+# ...
+ not them either
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+table( table( MOPs[,1]))
+\end_layout
+
+\begin_layout Plain Layout
+
+#   1   2 
+\end_layout
+
+\begin_layout Plain Layout
+
+# 419  13 
+\end_layout
+
+\begin_layout Plain Layout
+
+# ...
+ so it's mostly not from multiple offspring of one mother...
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+table( table( MOPs[,2]))
+\end_layout
+
+\begin_layout Plain Layout
+
+# 1
+\end_layout
+
+\begin_layout Plain Layout
+
+# 445
+\end_layout
+
+\begin_layout Plain Layout
+
+# ...
+ good;
+ no-one has >1 mother!
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Thus,
+ the bulk of the 124 must be 
 \begin_inset Quotes eld
 \end_inset
 
-recaptured
+interference
 \begin_inset Quotes erd
 \end_inset
 
-,
- and about 8% of 
-\emph on
-those 
-\emph default
-are involved 
-\begin_inset Quotes eld
+ across kinships
+\end_layout
+
+\begin_layout Plain Layout
+
+# which is probably worth fixing,
+ using the first lot of simple steps above.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-threecaps
-\begin_inset Quotes erd
-\end_inset
 
- etc,
- which would be predictable based on the other comparisons and thus not informative.
-\end_layout
-
-\begin_layout Standard
-A very rough 
-\begin_inset Quotes eld
-\end_inset
-
-calculation
-\begin_inset Quotes erd
-\end_inset
-
- goes like this:
-\end_layout
-
-\begin_layout Enumerate
-About 12% of samples are recaptured,
- but only a very small ppn are recaptured more than once (<1% of total).
- If we randomly ordered all the comparisons of each sample,
- on average the first match for any of that 12% would come half-way thru its list;
- the rest of the comparisons against that sample would contribute no new information.
- Thus,
- each of those samples only 
-\begin_inset Quotes eld
-\end_inset
-
-counts
-\begin_inset Quotes erd
-\end_inset
-
- towards half its quota of comparisons.
-\end_layout
-
-\begin_layout Enumerate
-The number of comparisons that involve those 12% is about 24% of all comparisons;
- but about half of those are not informative.
-\end_layout
-
-\begin_layout Standard
-...
- Where I'm hoping to get,
- is that it's about 10% wrong variance-wise overall.
- This is close enough to ignore.
-\end_layout
-
-\begin_layout Standard
-There 
-\emph on
-are
-\emph default
- more accurate ways to compute the effect on variance,
- but I think it's too fancy for this application.
-\end_layout
-
-\begin_layout Standard
-¿How much info comes when there *is* a match?
- Coz we might argue that the 
-\end_layout
-
-\begin_layout Standard
-After adding in 
 \end_layout
 
 \end_body

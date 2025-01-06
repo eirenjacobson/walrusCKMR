@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \use_default_options true
 \begin_modules
@@ -105,6 +105,325 @@ model checking
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Checking model correctness by simulation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I have an open mind about how much of this should go in the main MS (first para only?),
+ how much in an Apx,
+ and how much not at all—
+ but it'd be kind-of a shame to miss this chance to showcase a practical benefit of CKMR simulations,
+ especially since I have frequently maintained that simulations are *not* necessary in CKMR (true,
+ but as we see here they can still be very *useful*).
+ The other Q is how much to mix in the results of the checks (once everything worked...) with the description of them;
+ it doesn't make sense to me to have this as a Methods section,
+ then a huge gap with a tonne of other results,
+ then return to this with a small set of results pertaining to an aspect of methods that all readers will by that point have forgotten.
+ So again an Apx could be the place for much of it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although close-kin pairwise probability formulae are usually quite simple with hindsight,
+ they still can be awkard to get right in the first place.
+ One way to reduce the risk of mistakes is to generate simulated datasets,
+ and check that the CKMR code is giving the expected results when known parameter values are inserted.
+ CKMR simulation code looks utterly different from kinship-probability code,
+ and the chance of 
+\begin_inset Quotes eld
+\end_inset
+
+making the same mistake twice
+\begin_inset Quotes erd
+\end_inset
+
+ is therefore much less than with many statistical simulations.
+ Robustness is improved even further if two different people are involved,
+ one to simulate and one to write kinship-probability code.
+ Even though simulation is not strictly necessary for most CKMR design exercises,
+ simulation may be worth the additional effort in order to help the whole process,
+ and that is the approach we took for walrus.
+ We did find and fix several mistakes this way,
+ both in the CKMR code and in the simulation code,
+ so the exercise was certainly worthwhile.
+\end_layout
+
+\begin_layout Standard
+The obvious question is how to approach CKMR model-checking when simulated datasets are available.
+ There are various options and no .
+ One thing to avoid,
+ if possible,
+ is the naive and laborious approach of actually 
+\emph on
+fitting
+\emph default
+ a CKMR to each simulated dataset,
+ which can be painfully slow.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+(Note,
+ perhaps for discussion:
+ We started this project before RTMB became available,
+ expecting that the actual model-fitting code for real data would eventually have to be written in TMB itself,
+ but keen to avoid the complexity of TMB at the design stage.
+ In contrast,
+ design calculations are quick because it is only necessary to calculate probability arrays once,
+ and R itself is adequately fast.
+ It would not be practical to fit our simple model to multiple datasets without RTMB;
+ and even with RTMB,
+ repeated fitting of a more complicted model,
+ e.g.
+ with copious random effects,
+ might be a challenge.)
+\end_layout
+
+\end_inset
+
+ We used several checks,
+ the first two based on single realizations of simulated data and the last two requiring multiple datasets.
+\end_layout
+
+\begin_layout Itemize
+Observed and expected totals of sampled kin-pairs of each type.
+ Clearly,
+ unless these match reasonably well,
+ there must be a major inconsistency between model and simulationg.
+ The definition of 
+\begin_inset Quotes eld
+\end_inset
+
+reasonably well
+\begin_inset Quotes erd
+\end_inset
+
+ can be guided by the inherent Poisson variability.
+ If an expected total is 227,
+ say,
+ then we would not expect to see observed total much outside,
+ say,
+ the 95% confidence limits for a Poisson distribution with mean (and therefore variance) 227.
+ This can be roughly approximated by 
+\begin_inset Formula $227\pm2\sqrt{227}$
+\end_inset
+
+ or about [195,255].
+ Clearly,
+ the expected total needs to be fairly large for this to have much power,
+ so it might be useful to increase the simulated sample size for checking purposes.
+\end_layout
+
+\begin_layout Itemize
+Breakdown of observed and expected kin-pair totals across some covariate of interest.
+ If the totals from the previous step are not matching well,
+ then the breakdown may shed light on where to look for problems.
+ For example:
+ the distribution of birth-gaps between XmHSPs is driven in the longer term by the adult rate mortality rate,
+ so if observed and expected do not correspond,
+ then the treatment of mortality is likely inconsistent.
+ Also,
+ the number of mothers by age-at-birth should fluctuate over the first few years of adulthood because of the typically-three-year breeding cycle (most 6yo have just given birth;
+ most 7yo are still nursing last year's offspring,
+ etc),
+ until it settles down because of the averaging effects of irregularities.
+ If the observed and expected patterns do not match,
+ then the breeding cycle treatment is inconsistent.
+\end_layout
+
+\begin_layout Itemize
+P-values of observed kin-totals by type,
+ based on the Poisson distribution as above.
+ Given a reasonable number of simulated datasets (say 20 or more),
+ these should be roughly uniform across the interval [0,1].
+ Clearly,
+ it would require a large number of simulations to get a precise check here,
+ but precision is not necessary:
+ the goal is to pick up fairly coarse errors.
+\end_layout
+
+\begin_layout Itemize
+Looking at the mean and variance of the derivative of the pseudo-log-likelihood at the true parameter values 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ (something which can be calculated fairly quickly by numerical differentiation).
+ The mean should be close to 0 and the variance determines what 
+\begin_inset Quotes eld
+\end_inset
+
+close
+\begin_inset Quotes erd
+\end_inset
+
+ might mean,
+ given the number of simulations available.
+ This checks the crucial 
+\begin_inset Quotes eld
+\end_inset
+
+unbiased estimating equation
+\begin_inset Quotes erd
+\end_inset
+
+ (UEE) assumption required by most statistical estimation frameworks,
+ including maximum-likelihood.
+ If UEE does not hold,
+ then by definition there is a mismatch between simulation and model.
+\end_layout
+
+\begin_layout Standard
+The description so far implicitly assumes that the CKMR model (if working right) corresponds exactly to the data-generation mechanism in the simulations.
+ However,
+ it might be desirable to make the CKMR model simpler,
+ especially for design purposes where the goal is just to make sure that sampling plans are sensible;
+ developing a more complicated and realistic model can often be left until the real data appears.
+ For example,
+ we wanted to avoid reproductive senescence in the CKMR equations,
+ so that all adults could be treated as a single block without requiring age-structured dynamics inside the model.
+ However,
+ senescence is likely a reality of the walrus world,
+ and there is such a thing as 
+\begin_inset Quotes eld
+\end_inset
+
+too simple to be useful
+\begin_inset Quotes erd
+\end_inset
+
+,
+ so it is worth checking whether the simpler formulation is going to run into serious trouble.
+ Simulated datasets can be used to estimate approximate bias in a slightly-mis-specified CKMR model,
+ again without needing to do any estimation.
+ The idea is to approximate the MLE for each dataset,
+ based only on calculations using the true parameter value for the simulations.
+ The MLE 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ will by definition satisfy the equation 
+\begin_inset Formula $\left.d\Lambda/d\theta\right\vert _{\hat{\theta}}=0$
+\end_inset
+
+,
+ and we can take a first-order Taylor expansion around the true value 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ to give
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+0=\left.\frac{d\Lambda}{d\theta}\right\vert _{\hat{\theta}}\approx\left.\frac{d\Lambda}{d\theta}\right\vert _{\theta_{0}}+\left(\hat{\theta}-\theta_{0}\right)\left.\frac{d^{2}\Lambda}{d\theta^{2}}\right\vert _{\theta_{0}}\nonumber \\
+\implies\hat{\theta}-\theta_{0}\approx-\left[\left.\frac{d\Lambda^{2}}{d\theta^{2}}\right\vert _{\theta_{0}}\right]^{-1}\left.\frac{d\Lambda}{d\theta}\right\vert _{\theta_{0}}\label{eq:bias-approx}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The square-bracketed term can be replaced (to the same order of accuracy as the rest of the approxmation) by the 
+\emph on
+expected
+\emph default
+ Hessian which is the crux of our design calculations anyway,
+ and which of course does not vary from one simulation to the next.
+ Thus,
+ the only quantity that has to be calculated per simulated dataset is 
+\begin_inset Formula $\left.d\Lambda/d\theta\right\vert _{\theta_{0}}$
+\end_inset
+
+,
+ already required for the unbiased-estimating-equation check above.
+ The estimated bias is the average across simulations of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bias-approx"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ This is quite similar to the UEE check above,
+ but with a change in focus:
+ this time,
+ we may be prepared to tolerate some small violation of UEE,
+ provided that it does not imply substantial bias on the parameter scale.
+ In particular,
+ if the estimated bias for the 
+\begin_inset Formula $r$
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th
+\end_layout
+
+\end_inset
+
+ parameter (i.e.
+ 
+\begin_inset Formula $r$
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th 
+\end_layout
+
+\end_inset
+
+ component of 
+\begin_inset Formula $\theta$
+\end_inset
+
+) is below its sampling variability—
+ say,
+ if bias is less than 1 standard deviation,
+ computed from the square-root of the diagonal of the inverse Hessian or 
+\begin_inset Formula $\sqrt{H^{-1}\left(r,r\right)}$
+\end_inset
+
+—
+ then there is little reason to worry about bias for that particular parameter.
+ 
+\end_layout
+
+\begin_layout Standard
+In the end,
+ based on the checks above,
+ our estimation and simulation codes did indeed appear consistent,
+ and any bias induced by (among other minor things) ignoring senescence did not seem problematic.
+ Of course,
+ we only reached that position 
+\emph on
+after
+\emph default
+ going thru the checking process several times,
+ to find and fix inconsistencies.
 \end_layout
 
 \end_body
