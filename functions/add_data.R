@@ -331,7 +331,7 @@ warning( "Pairs found but ignored cozza zero usable comps: " %&%
     n_comp_selfP_EYDY,
     n_selfP_EYDY,
     
-    m_SYEL, # not the breakdowns from prepare_usable_SS()--- but why not???
+    m_SYEL, # not the breakdowns from prepare_usable_SS()--- though why not???
     
     zap_MOP,
     zap_HSP,
@@ -371,6 +371,9 @@ warning( "Pairs found but ignored cozza zero usable comps: " %&%
     LAST_PCOHORT= tail( PCOHORTS, 1),
     
     MAX_Tsep= 100, # excessive, but too hard to precalc for now..!
+    
+    PPN_2KP_FALSE_NEG, # needed by lglk_walrus
+    
     nsamples = nrow(samples),
     nallsamples = nrow(allsamples)
   ))

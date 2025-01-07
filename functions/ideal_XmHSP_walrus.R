@@ -12,6 +12,7 @@
       Pr_fadsurv_t[ abs( b2-b1)] * # avoid OOB
       Pr_breedyagain_Db[ abs( b2-b1)] * 
       recip_Nfad_y[ pmax( b1, b2)] *
-      recip_ppn_breedy
+      recip_ppn_breedy *
+      (1-PPN_2KP_FALSE_NEG) # new in 2025
     )
 })
