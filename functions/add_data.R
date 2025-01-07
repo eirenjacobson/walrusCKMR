@@ -14,6 +14,8 @@
   MAX_BGAP_HSPS= 2*AMAT + 2, # GGPs unlikely within this
   FEC_ASYMP_AGE= 15,
   MAXAGERR= 0, # bold!
+  PPN_2KP_FALSE_NEG= 0, # possibly unwise to have such a low default... 0.15?
+  nonsparse= FALSE, # if TRUE, tweak sample sizes and kin for better independence
   ... # just to allow ending all previous arglines with commas
 ){
   # Auto-trimming is good (remove calves)
@@ -178,8 +180,9 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   ## Self-recaps: done from separate file
   # NB that SS is _slightly_ different in the separate file
   # cos recaps are excluded from the original. But it's <2% so use orig
-  # More consistent would be to use recapees *twice* in POP/HSP checks
-  # but not worth fixing for now
+  # Not quite perfect; should use absolutely everything, then adjust as for XmHSPs
+  # Only first & last captures are used, but there aren't many threecaps
+  # in fact just 3 animals in the "base" simulation
   # Look for file in same folder as simfile
   allsimfile <- file.path( dirname( simfile),
                            'All' %&% basename( simfile))
@@ -201,8 +204,9 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   # Females only, no calves
   allsamples <- allsamples %where% ((Sex=='F') & (A>0))
 
-  # For Xtuple recaps (doesn't happen in "base data")
-  # just use 1st and last...
+  # For Xtuple recaps, just use 1st and last...
+  # this is not 100 %ideal; should follow HSP approach as above
+  # and recalc sample sizes purely for SelfPs. But anyway.
   # MVB: I have run out of meaningful variable names here
   metab <- table( allsamples$Me)
   threecaps <- names( metab[ metab>2])
@@ -217,7 +221,6 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
     }
   }
 
-  # At most one recap each
   recaps <- names( metab[ metab==2])
   scrungio <- which( allsamples$Me %in% recaps)
   blurk <- allsamples$Me[ scrungio]
@@ -226,14 +229,25 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   selfPs <- cbind( scrungio[ firsto], scrungio[ lasto])
   
   ## Numbers of comparisons, and of actual kin-pairs
-  # create offarrays n_comps_<blah>
-  extract.named( 
-    make_n_comps(
-      mlist= get_usable_SS( m_SYEL, Devstage_A), # for different kin-types
-      FIRST_PDYEAR,
-      AMAT,
-      MAX_BGAP_HSPS
-    )) 
+  # Create offarrays n_comps_<blah>
+  if( !nonsparse){ # old 2024 version
+    # To avoid over-changing existing code: this sparsity-assuming version is 
+    # a non-nested function, whose args gotta be passed in
+    # explicitly, and whose results are returned as a list--- which 
+    # extract.named then turns into variables right here
+    extract.named( 
+      make_n_comps(
+        mlist= get_usable_SS( m_SYEL, Devstage_A), # for different kin-types
+        FIRST_PDYEAR,
+        AMAT,
+        MAX_BGAP_HSPS,
+      ))
+  } else {
+     # This modifies eg m_YE to account for nonsparsity, as well as creating 
+     # n_comps_<blah>. It's a nested function
+     # so doesn't need args or return-value--- and it's easier to follow!
+     nested_make_n_comps_nonsparsely()
+  }
   
   ## MOPs:
   n_MOP_EYEYL <- offarray(table(
@@ -249,6 +263,10 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
   n_MOP_EYEYL[ MATSUB = zap_MOP] <- 0
 
   ## HSPs... make it compatible with offposs etc
+  r"--{
+     First we apply false-neg filter. This is done *after* creating the full XmHSP list and applying any nonsparsity stuff, which is a bit weird coz you couldn't do it with real data. The reason is to avoid logical problems with triads where some pairwise outcomes are falsely lost. This is painful detail. Cross the real-data bridge when we come to it.
+  }--"
+  XmHSPs <- XmHSPs[ runif( nrow( XmHSPs)) > PPN_2KP_FALSE_NEG,]  
   n_XmHSP_EYEY <- offarray( table(
     a1= A[ XmHSPs[,1]],
     y1= Y[ XmHSPs[,1]],
@@ -313,7 +331,7 @@ warning( "Pairs found but ignored cozza zero usable comps: " %&%
     n_comp_selfP_EYDY,
     n_selfP_EYDY,
     
-    m_SYEL, # not the breakdowns from prepare_usable_SS()
+    m_SYEL, # not the breakdowns from prepare_usable_SS()--- but why not???
     
     zap_MOP,
     zap_HSP,
