@@ -135,8 +135,9 @@ I have an open mind about how much of this should go in the main MS (first para 
 \end_layout
 
 \begin_layout Standard
-Although close-kin pairwise probability formulae are usually quite simple with hindsight,
- they still can be awkard to get right in the first place.
+Close-kin pairwise probability formulae are usually quite simple,
+ at least with hindsight,
+ but they still can be awkard to get right in the first place.
  One way to reduce the risk of mistakes is to generate simulated datasets,
  and check that the CKMR code is giving the expected results when known parameter values are inserted.
  CKMR simulation code looks utterly different from kinship-probability code,
@@ -182,8 +183,10 @@ status open
  but keen to avoid the complexity of TMB at the design stage.
  In contrast,
  design calculations are quick because it is only necessary to calculate probability arrays once,
- and R itself is adequately fast.
- It would not be practical to fit our simple model to multiple datasets without RTMB;
+ and R alone is adequately fast,
+ without TMB or RTMB.
+ However,
+ it would not be practical to fit even our simple model to multiple datasets without RTMB;
  and even with RTMB,
  repeated fitting of a more complicted model,
  e.g.
@@ -193,8 +196,34 @@ status open
 
 \end_inset
 
- We used several checks,
- the first two based on single realizations of simulated data and the last two requiring multiple datasets.
+ We used several checks.
+ All are aimed at detecting gross errors (and we did find some);
+ power to detect subtle mistakes is lower,
+ but in our experience subtle mistakes are actually less likely than big ones.
+ The first two checks are based on single realizations of simulated data,
+ and so are also suitable as diagnostics when fitting to real data;
+ the last two require multiple simulated datasets.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+One option is to include final result(s) for each check right here,
+ after describing the check.
+ Otherwise,
+ if this section goes mainly into Methods,
+ the results of each little check will be a long way from the text describing it,
+ and the reader will have forgotten what the check is by the time they see its results.
+ I absolutely hate papers like that :) But,
+ it might depend;
+ needs Zoom.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -224,6 +253,11 @@ reasonably well
  Clearly,
  the expected total needs to be fairly large for this to have much power,
  so it might be useful to increase the simulated sample size for checking purposes.
+\begin_inset Newline newline
+\end_inset
+
+**OPTION**list the totals here (for first test dataset,
+ chosen so that sim matches CK code as closely as possible)
 \end_layout
 
 \begin_layout Itemize
@@ -241,6 +275,10 @@ Breakdown of observed and expected kin-pair totals across some covariate of inte
  until it settles down because of the averaging effects of irregularities.
  If the observed and expected patterns do not match,
  then the breeding cycle treatment is inconsistent.
+\begin_inset Newline newline
+\end_inset
+
+**OPTION** show the 2 graphs here.
 \end_layout
 
 \begin_layout Itemize
@@ -252,6 +290,10 @@ P-values of observed kin-totals by type,
  it would require a large number of simulations to get a precise check here,
  but precision is not necessary:
  the goal is to pick up fairly coarse errors.
+\begin_inset Newline newline
+\end_inset
+
+**OPTION** show 4 histos here (instead of box'n'whiska)
 \end_layout
 
 \begin_layout Itemize
@@ -282,6 +324,11 @@ unbiased estimating equation
  including maximum-likelihood.
  If UEE does not hold,
  then by definition there is a mismatch between simulation and model.
+\begin_inset Newline newline
+\end_inset
+
+**OPTION** there's some numbers printeed at the end of compare2sims.R,
+ I thnk.
 \end_layout
 
 \begin_layout Standard
@@ -293,7 +340,7 @@ The description so far implicitly assumes that the CKMR model (if working right)
  For example,
  we wanted to avoid reproductive senescence in the CKMR equations,
  so that all adults could be treated as a single block without requiring age-structured dynamics inside the model.
- However,
+ Nevertheless,
  senescence is likely a reality of the walrus world,
  and there is such a thing as 
 \begin_inset Quotes eld
@@ -410,6 +457,14 @@ th
 —
  then there is little reason to worry about bias for that particular parameter.
  
+\end_layout
+
+\begin_layout Standard
+**OPTION** stuff from the end of compare2sims.R
+\end_layout
+
+\begin_layout Standard
+**DISCUSSION?**
 \end_layout
 
 \begin_layout Standard

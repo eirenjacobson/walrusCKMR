@@ -210,7 +210,11 @@ We present a slightly simplified explanation here,
 \begin_inset Formula $p_{ijk}\left(\theta\right)=\mathbb{P}\left[K_{ij}=k|z_{i},z_{j},\theta\right]$
 \end_inset
 
- to be the kinship probability,
+ to be the kinship probability for parameter values 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
  computed from a formula such as (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -222,17 +226,16 @@ nolink "false"
 
 \end_inset
 
-),
- for parameter values 
-\begin_inset Formula $\theta$
-\end_inset
-
-;
+);
  we just write 
 \begin_inset Formula $p_{ijk}$
 \end_inset
 
- where there is no ambiguity.
+ where there is no ambiguity about 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
  Each comparison has a very low probability of 
 \begin_inset Quotes eld
 \end_inset
@@ -417,29 +420,12 @@ The term
 \end_layout
 
 \begin_layout Standard
-;
- this involves the slight approximation of treating all comparisons as independent,
- which is reasonable under the large-population\SpecialChar breakableslash
-sparse-sampling assumption of **BSA2016
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-should this
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The remaining requirement for design,
  is to group similar comparisons,
  i.e.
  across all pairs with identical covariate values.
  Let 
-\begin_inset Formula $z_{i}\left(k\right)$
+\begin_inset Formula $z_{i}$
 \end_inset
 
  denote all the covariate values for sample 
@@ -456,11 +442,11 @@ The remaining requirement for design,
 
 ,
  given different roles that the sample may be playing:
- for brevity we just write 
-\begin_inset Formula $z_{i}$
+ for brevity we omit the 
+\begin_inset Formula $k$
 \end_inset
 
- in what follows).
+ here).
  Now let 
 \begin_inset Formula $m(z)$
 \end_inset
@@ -483,8 +469,7 @@ The remaining requirement for design,
 \end_inset
 
 .
- By grouping in this way,
- the expected Hessian can be written as 
+ The grouped version of the expected Hessian can be written as 
 \end_layout
 
 \begin_layout Standard
@@ -594,17 +579,17 @@ design
 \begin_inset Formula $z$
 \end_inset
 
--categories:
- for example,
+-categories.
+ For example,
  the plan might be to sample 1000 adult walruses per year,
  but the age composition cannot be controlled directly.
  However,
- we need to know that detailed breakdown 
+ we still need to know that detailed breakdown 
 \begin_inset Formula $m_{\mathcal{Z}}$
 \end_inset
 
- in order to apply the above steps.
- This might require additional assumptions and calculations.
+ in order to apply the above steps,
+ so some extra extra assumptions and calculations might be required.
  For example,
  our population-dynamics model does not explicitly represent the adult age composition within the population,
  let alone within the samples;
@@ -624,8 +609,8 @@ nolink "false"
 conditioned
 \emph default
  on sample age,
- but makes no assumption about how many samples of each age there will be.
- It would be possible to calculate expected sample sizes based on quasi-stable and unselective-sampling assumptions (assumptions that are in fact implicit for the self-recapture probability (
+ but make no prediction about how many samples of each age there will be.
+ It would be possible to calculate expected sample sizes based on quasi-stable age compositions and unselective-sampling assumptions (assumptions that are in fact implicit for the self-recapture probability (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:self-staged"
@@ -654,9 +639,9 @@ The use of the pseudo-log-likelihood Hessian to approximate the inverse variance
  although in effect somewhat more because of turnover during the years modeled) that roughly 10% of samples are recaptured multiple times,
  as self and\SpecialChar breakableslash
 or as kin.
- This means that an appreciable proportion of pairwise comparisons (maybe as high as 20%) have predictable outcomes based on the results of other comparisons,
+ This means that a comparable proportion of pairwise comparisons have predictable outcomes based on the results of other comparisons,
  which breaks independence.
- The 
+ Thus the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -674,11 +659,11 @@ literal "false"
 
 ,
  which underlies the use of the Hessian,
- is not strictly justified here;
+ is not strictly justified;
  this does not lead to bias in point estimates,
- but the Hessian-based approximation is likely to underestimate the true variance somewhat unless adjustments are made.
+ but the Hessian-based approximation is likely to underestimate the true variance somewhat.
  Accordingly,
- we have-made/should-have-made **delete as appropriate!** some simple adjustments to 
+ we have made some simple adjustments to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -799,8 +784,8 @@ For SelfPs,
  etc.
  If we were using the above scheme for an individual caught 3 times,
  we would want to end up counting only 2 recaptures,
- rather than 3 from all pairwise matches;
- generally,
+ rather than the 3 that arise from all pairwise matches.
+ Generally,
  for an individual caught 
 \begin_inset Formula $N$
 \end_inset
