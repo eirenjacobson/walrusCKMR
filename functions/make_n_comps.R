@@ -39,7 +39,7 @@
       
       (bju >= FIRST_PDYEAR) *
         (bju >= (bad+AMAT)) *
-        (yj != yc) * # should only apply to pre-max-weanage, but...
+        ((yj != yc) | (aj > MAX_WEAN_AGE)) * # no risk offspring & mum nearby
         m_YE[yj, aj] * mF_YEL[yc, ac, lc]
     })
 
