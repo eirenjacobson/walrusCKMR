@@ -241,6 +241,7 @@ stopifnot( exists( 'indiv', environment(), inherits=FALSE))
         FIRST_PDYEAR,
         AMAT,
         MAX_BGAP_HSPS,
+        MAX_WEANAGE # added 16/1/2025: now needed coz allowing *some* MOP comps when yj==yc
       ))
   } else {
      # This modifies eg m_YE to account for nonsparsity, as well as creating 

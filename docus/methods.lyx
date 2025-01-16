@@ -1481,7 +1481,18 @@ Where
 \end_inset
 
 .
- ERO and TRO are in units of "number of calves".
+ 
+\change_inserted 193499690 1736925138
+The units of 
+\change_unchanged
+ERO and TRO 
+\change_inserted 193499690 1736925162
+can be arbitrary (as long as they are the same),
+ but here it makes sense to pick 
+\change_deleted 193499690 1736925164
+are in units of 
+\change_unchanged
+"number of calves".
  TRO is the total number of adult females in the population when 
 \begin_inset Formula $j$
 \end_inset
@@ -1519,6 +1530,44 @@ There are two components to
 \end_inset
 
 :
+\change_inserted 193499690 1736925222
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1736925273
+Where is 
+\begin_inset Formula $\bar{\beta}$
+\end_inset
+
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1736925233
+2
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ calculated?
+ Needs to be here...
+ unless it's done earlier,
+ in the breeding cycle bit.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \begin_inset Formula 
 \begin{gather}
 R_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(y_{i}-b_{j},a_{i}\right)\mathbb{P}\left[B\left(a_{i}+b_{j}-y_{i}\right)=2\right],\label{eq:MOP-RO}
@@ -1753,10 +1802,53 @@ If
 
 ,
  what is the probability that 
+\change_deleted 193499690 1736925340
+
 \begin_inset Formula $l$
 \end_inset
 
-'s mother was 
+
+\change_inserted 193499690 1736925340
+
+\begin_inset Formula $\ell$
+\end_inset
+
+
+\change_unchanged
+'s mother
+\change_inserted 193499690 1736925367
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1736925418
+It's hard to read script-
+\begin_inset Formula $l$
+\end_inset
+
+ vs 1 or script-
+\begin_inset Formula $i$
+\end_inset
+
+—
+ so I recommend 
+\begin_inset Formula $\ell$
+\end_inset
+
+.
+ I have changed a couple here,
+ but not done all.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ was 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1829,7 +1921,7 @@ ii
 
 \emph default
  to be 
-\begin_inset Formula $l$
+\begin_inset Formula $\ell$
 \end_inset
 
 's mother,
@@ -1838,7 +1930,7 @@ ii
 
 \begin_layout Enumerate
 she survives until 
-\begin_inset Formula $b_{\text{\emph{l}}}$
+\begin_inset Formula $b_{\ell}$
 \end_inset
 
 ;
@@ -1846,7 +1938,7 @@ she survives until
 
 \begin_layout Enumerate
 she is in breeding state 2 in 
-\begin_inset Formula $b_{\text{\emph{l}}}$
+\begin_inset Formula $b_{\ell}$
 \end_inset
 
 ;
@@ -1943,7 +2035,20 @@ m
 l
 \shape default
 's birth.
+\change_inserted 193499690 1736925431
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1736925481
+There is a practical complication with HSPs:
+ we do not identify them directly,
+ but 
+\change_deleted 193499690 1736925431
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1971,7 +2076,7 @@ I will write something here...
 
 \begin_layout Standard
 ** False-neg stuff (sigh..!)
-\change_inserted 193499690 1736763477
+\change_inserted 193499690 1736925470
 
 \begin_inset Note Greyedout
 status open
@@ -1988,6 +2093,12 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1736925476
+** mtDNA
 \change_unchanged
 
 \end_layout

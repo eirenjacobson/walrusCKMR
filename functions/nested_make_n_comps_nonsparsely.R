@@ -31,7 +31,7 @@
       
       (bju >= FIRST_PDYEAR) *
         (bju >= (bad+AMAT)) *
-        ((yj != yc) | (aj > MAX_WEAN_AGE)) * # no risk offspring & mum nearby
+        ((yj != yc) | (aj > MAX_WEANAGE)) * # no risk offspring & mum nearby
         m_YE[yj, aj] * mF_YEL[yc, ac, lc]
     })
 

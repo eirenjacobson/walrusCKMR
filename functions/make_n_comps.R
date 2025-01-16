@@ -2,7 +2,8 @@
   mlist, # should contain m_YE etc--- see below
   FIRST_PDYEAR,
   AMAT,
-  MAX_BGAP_HSPS
+  MAX_BGAP_HSPS,
+  MAX_WEANAGE
 ){
   r"--{
   mlist presumbaly from calling prepare_usable_SS, or hand-tweaking afterwards
@@ -39,7 +40,7 @@
       
       (bju >= FIRST_PDYEAR) *
         (bju >= (bad+AMAT)) *
-        ((yj != yc) | (aj > MAX_WEAN_AGE)) * # no risk offspring & mum nearby
+        ((yj != yc) | (aj > MAX_WEANAGE)) * # no risk offspring & mum nearby
         m_YE[yj, aj] * mF_YEL[yc, ac, lc]
     })
 
