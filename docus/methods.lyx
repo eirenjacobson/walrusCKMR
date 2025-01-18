@@ -304,8 +304,7 @@ Walrus reprod biol should describe how this stuff works.
 \end_inset
 
 2000 is set because there were fairly drastic changes in the population prior to that).
- Assuming that within-stage age composition is fairly stable over that period ("quasi-equilibrium" or "quasi-stable"),
- we have
+ W-e have
 \change_inserted 193499690 1736761318
 
 \begin_inset Note Greyedout
@@ -434,14 +433,6 @@ can someone please check this;
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1736761864
-abc
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
 N_{ya}\propto N_{y\text{A}}\phi_{\text{A}}^{a}e^{-ra}\label{eq:stabeq}
@@ -555,7 +546,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -766,57 +757,7 @@ Formulating kinship probabilities
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1736762982
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736763095
-There's scope for confusion between 
-\begin_inset Quotes eld
-\end_inset
-
-sample
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-individual
-\begin_inset Quotes erd
-\end_inset
-
- here.
- In a purist and not-helpful sense,
- comparisons are just between samples.
- In fact,
- we take trouble to only compare a single sample from each individual (in those cases where there's >1) with other reprsenetative samples.
- But when we get onto SPs,
- then it really is samples...
- 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-We now need to formulate the demographic probabilities that two 
-\change_inserted 193499690 1736763119
-¿
-\change_unchanged
-samples
-\change_inserted 193499690 1736763116
-\SpecialChar breakableslash
-individuals?
-
-\change_unchanged
- have a given kinship.
+We now need to formulate the demographic probabilities that two samples have a given kinship.
  We write the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
@@ -835,55 +776,42 @@ individuals?
  SP,
  or UP (i.e.
  none of the others).
-
-\change_deleted 193499690 1736762746
- In each case the general formulation is the same:
- the probability simply comes down to the ratio of number of individuals which match the characteristics needed for that kinship to hold (e.g.,
- that 
-\begin_inset Formula $i$
+ In the case of MOPs and XmHSPs,
+ we take care to use only one sample from each individual (so 
+\begin_inset Quotes eld
 \end_inset
 
- is born in a particular year,
- is old enough to be 
-\begin_inset Formula $j$
+sample
+\begin_inset Quotes erd
 \end_inset
 
-'s mother,
- etc) and the total number of females which could be considered (e.g.,
- the expected number of juveniles born in a particular year).
- In each case we need to carefully consider how to count both of these quantities,
- given our biological knowledge.
-\change_inserted 193499690 1736762750
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736763288
-I'd drop all that;
- it's substantially not right as it is presently written (eg AFAIK expected number of juveniles never matters!
- and the number of possible 
-\begin_inset Formula $i$
+ and 
+\begin_inset Quotes eld
 \end_inset
 
-'s doesn't either) and it's actually really hard to get right in a general sense.
- And then there's SelfPs....
- I get the reason for wanting to say something,
- but it's too hard!
- The core concept is ERRO,
- as per BSA2016,
- but that doesn't cover SPs.
- Let's just plunge into specific cases...
-\change_unchanged
-
-\end_layout
-
+individual
+\begin_inset Quotes erd
 \end_inset
 
+ are interchangeable terms),
+ whereas for SPs we need to consider multiple samples from one individual (in which case,
+ 
+\begin_inset Quotes eld
+\end_inset
 
-\change_unchanged
+sample
+\begin_inset Quotes erd
+\end_inset
 
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+individual
+\begin_inset Quotes erd
+\end_inset
+
+ have different meanings).
 \end_layout
 
 \begin_layout Standard
