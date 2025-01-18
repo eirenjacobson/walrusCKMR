@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
@@ -79,7 +79,7 @@ Provides natbib 1
 \papersides 1
 \paperpagestyle default
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content true
@@ -107,121 +107,7 @@ INTRODUCTION
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1736652992
-Estimation of both abundance and demographic parameters are key parts of the management of wildlife populations.
- Obtaining these estimates with minimal bias and low uncertainty is critical for conservation.
- Traditional mark-recapture analysis 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "williams_analysis_2002"
-literal "false"
-
-\end_inset
-
- can provide estimates of abundance and demographic parameters,
- but requires that individual animals i) are naturally,
- artificially,
- or genetically “marked” and identifiable and ii) can be recaptured over time.
- If genotypes are used as genetic marks to identify individuals,
- as in genetic individual mark-recapture (IMR;
- 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "palsboll_genetic_1997"
-literal "false"
-
-\end_inset
-
-),
- we can make use of additional genetic information in the collected samples 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "skaug_allele-sharing_2001"
-literal "false"
-
-\end_inset
-
-.
- Close-kin mark-recapture (CKMR;
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington_close-kin_2016"
-literal "false"
-
-\end_inset
-
- uses observed relationships between individuals to estimate abundance and demographic parameters.
- CKMR is still unfamiliar to many,
- but there are now quite a few published applications,
- mostly on fish and sharks but some on mammals.
- We will not give an exhaustive list here,
- but see 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "conn_robustness_2020"
-literal "false"
-
-\end_inset
-
- for a CKMR design exercise
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Conn et al is not really a design study in the way this one is—
- it's a robustness check
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "taras_estimating_2024"
-literal "false"
-
-\end_inset
-
-for its implementation on bearded seals and 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "lloyd-jones_close-kin_2023"
-literal "false"
-
-\end_inset
-
-for an application to flying foxes.
-\change_inserted 193499690 1736652996
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736655318
-Minor rewordings suggested in next para—
- also incorping a bit of 2nd para
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-Estimation of abundance
-\change_inserted 193499690 1736653164
-,
-
-\change_unchanged
- and of other demographic parameters such as survival,
- is a key part of wildlife management and conservation.
+Estimation of abundance and of other demographic parameters such as survival is a key part of wildlife management and conservation.
  Traditional mark-recapture analysis 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -257,11 +143,7 @@ literal "false"
 
 .
  Close-kin mark-recapture (CKMR;
- 
-\change_inserted 193499690 1736673623
-see 
-\change_unchanged
-
+ see 
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "bravington_close-kin_2016"
@@ -269,60 +151,14 @@ literal "false"
 
 \end_inset
 
-
-\change_inserted 193499690 1736673817
- for more detail on the points made below
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736673846
-saying that here to avoid needing to give a ref for each claim in the data requirements and model structure paras below
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-) is a framework for using these kinships,
+ for more detail on the points made below) is a framework for using these kinships,
  as inferred from genotypes,
  to estimate abundance and demographic parameters.
- CKMR provides additional flexibility compared with IMR since
-\change_inserted 193499690 1736654089
-,
-
-\change_unchanged
- if necessary
-\change_inserted 193499690 1736654091
-,
-
-\change_unchanged
- the entire study can be done just with lethal samples (from sampling,
+ CKMR provides additional flexibility compared with IMR since lethal samples (from sampling,
  hunting,
- natural mortality etc.)
-\change_deleted 193499690 1736654102
-,
-\change_inserted 193499690 1736654102
-;
-
-\change_unchanged
- 
-\change_deleted 193499690 1736654103
-although 
-\change_inserted 193499690 1736654105
-however,
- 
-\change_unchanged
-non-lethal samples can 
-\change_inserted 193499690 1736654107
-certainly 
-\change_unchanged
-be used too.
+ natural mortality etc.) and/or non-lethal samples can be used.
  As of 2025,
- most CKMR projects have been for commercial fish (e.g.
+ most CKMR projects have been for commercial fish (e.g.,
  
 \begin_inset CommandInset citation
 LatexCommand citealp
@@ -331,7 +167,7 @@ literal "false"
 
 \end_inset
 
-) or sharks (e.g.
+) or sharks (e.g.,
  
 \begin_inset CommandInset citation
 LatexCommand citealp
@@ -350,11 +186,7 @@ literal "false"
 
 \end_inset
 
-'s modeling study of bearded seals and it
-\change_inserted 193499690 1736655188
-s
-\change_unchanged
- implementation by 
+'s modeling study of bearded seals and its implementation by 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "taras_estimating_2024"
@@ -375,24 +207,10 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The 
-\change_inserted 193499690 1736654000
-principle behind 
-\change_deleted 193499690 1736654000
-premise of 
-\change_unchanged
-CKMR is that
-\change_deleted 193499690 1736654002
- 
-\change_inserted 193499690 1736656212
- every individual has (or had) just one mother and one father in the population;
+The principle behind CKMR is that every individual has (or had) one mother and one father;
  thus,
- 
-\change_unchanged
-for a given sample size,
+ for a given sample size,
  in a large population there will be few 
-\change_inserted 193499690 1736654042
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -400,107 +218,47 @@ recaptures
 \begin_inset Quotes erd
 \end_inset
 
- of parents or their other descendents,
- 
-\change_deleted 193499690 1736654051
-closely related individuals,
-
-\change_unchanged
- while in a small population
-\change_deleted 193499690 1736653149
-,
-
-\change_unchanged
- there will be many
-\change_inserted 193499690 1736653644
-;
-\change_unchanged
-.
+ of parents or their other descendants,
+ while in a small population there will be many.
  In practice,
- 
-\change_inserted 193499690 1736671105
-the data for CKMR comprise the outcome of pairwise kinship checks amongst the samples (e.g.,
+ the data for CKMR comprise the outcome of pairwise kinship checks amongst samples (e.g.,
  whether two particular samples are genetically parent-and-offspring),
  plus covariates associated with each sample such as its date of capture,
  age,
  size,
  sex etc.
- The CKMR model has two parts:
+ The CKMR model has two components:
  a population-dynamics part driven by the demographic parameters;
  and formulae for the expected frequencies of different kinship types in pairwise comparisons,
  conditional on sample covariates and population dynamics.
  By combining the kinship data with the model,
  parameters can be estimated using maximum-likelihood or Bayesian methods.
+\end_layout
+
+\begin_layout Standard
+Most 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+can we use a different term?
+ Animals?
+ Vertebrates?
+ 
+\begin_inset Quotes eld
+\end_inset
+
+higher animal
+\begin_inset Quotes erd
+\end_inset
+
+ has some value judgement I don't like.
  
 \end_layout
 
-\begin_layout Standard
-
-\change_deleted 193499690 1736656164
-CKMR models use population dynamics models in conjunction with age information and pairwise formulae for the probabilities of different kinship types to evaluate the likelihood of observed kin pairs.
- CKMR provides additional flexibility compared with IMR as both non-lethal and lethal (from sampling,
- hunting,
- natural mortality etc.) samples can be used.
-\change_inserted 193499690 1736654209
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736654138
-moved 
-\change_unchanged
-
-\end_layout
-
 \end_inset
 
-
-\change_unchanged
- 
-\change_deleted 193499690 1736654121
-By harnessing this extra information and putting kinship into a probabilistic framework,
- we can gain more accurate estimates of abundance and demographic parameters.
-\change_inserted 193499690 1736656240
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736654130
-redundant really
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1736656257
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736656256
-I will have a go at the next two paras...
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1736674645
-Most higher animal species are potential candidates for CKMR,
+ are potential candidates for CKMR,
  except semelparous (breed-once-and-die) species and a few pathological cases mentioned 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -511,26 +269,9 @@ literal "false"
 
 .
  The data requirements are otherwise quite flexible;
- CKMR is 
-\begin_inset Quotes eld
-\end_inset
-
-a framework not a formula
-\begin_inset Quotes erd
-\end_inset
-
-,
- and the kinships used in any particular study can vary depending on logistic and modeling considerations.
+ the kinships used in any particular study can vary depending on logistic and modeling considerations.
  However,
- CKMR does 
-\change_deleted 193499690 1736671481
-CKMR 
-\change_unchanged
-require
-\change_deleted 193499690 1736671482
-s
-\change_unchanged
- fairly unambiguous pairwise kinship determination which,
+ CKMR does require fairly unambiguous pairwise kinship determination which,
  at least with current genetic methods,
  limits the usable types of 
 \begin_inset Quotes eld
@@ -541,10 +282,8 @@ close
 \end_inset
 
  kin to three or four:
- Parent-Offspring Pairs (POPs);
- Full-Sibling Pairs (FSP;
- two shared parents,
- irrelevant for many species);
+ Parent-Offspring Pairs (POPs),
+ Full-Sibling Pairs (FSP),
  and 
 \begin_inset Quotes eld
 \end_inset
@@ -555,11 +294,7 @@ second-order kin
 
 ,
  which are primarily Half-Sibling Pairs (HSP;
- one shared parent) although other types 
-\change_inserted 193499690 1736671990
-of second-order kin 
-\change_unchanged
-do exist (see section**GGPs).
+ one shared parent).
  Any other kinship constitutes an 
 \begin_inset Quotes eld
 \end_inset
@@ -570,47 +305,7 @@ Unrelated Pair
 
  (UP) for modelling purposes,
  even if there is genetic evidence of weak relatedness.
- 
-\change_deleted 193499690 1736671487
-;
-
-\change_unchanged
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington_absolute_2016"
-literal "false"
-
-\end_inset
-
- used POPs only,
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Hillary2018WS-CKMR"
-literal "false"
-
-\end_inset
-
- used HSPs only,
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "taras_estimating_2024"
-literal "false"
-
-\end_inset
-
- used both
-\change_inserted 193499690 1736674179
-,
- which would normally be the most informative option if logistics allow
-\change_unchanged
-.
-
-\change_inserted 193499690 1736674713
- Some information about sample age is required,
- especially for young samples.
+ Some information about sample age is required.
  Often this comes from 
 \begin_inset Quotes eld
 \end_inset
@@ -624,97 +319,20 @@ hard parts
  from covariates such as body size;
  however,
  the advent of epigenetic ageing (Polanowski**;
- Mayne**lungfish) makes it possible to use just the genetic biopsy sample itself.
- Uncertainty in e.g.
- age estimates can be accommodated within the model,
+ Mayne**lungfish) makes it possible to use just the biopsy sample itself.
+ Uncertainty in age and other covariate estimates can be accommodated within the model,
  though the precision of parameter estimates is of course linked both to sample sizes,
  and to the accuracy of covariate measurements.
- Genetics per se is not usually limiting for CKMR,
- unless samples are very degraded.
-\change_unchanged
-
+ 
 \end_layout
 
 \begin_layout Standard
-Devising the formulae for the 
-\change_inserted 193499690 1736669857
-expected frequencies 
-\change_deleted 193499690 1736669857
-probability 
-\change_unchanged
-of those kinships requires consideration of the life history and reproductive biology of the organism in question
-\change_inserted 193499690 1736671411
-,
- as well as aspects of the sampling
-\change_unchanged
-.
- 
-\change_deleted 193499690 1736672140
-For example,
- CKMR will not work on species that reproduce clonally via parthenogenesis (e.g.,
- aphids),
- nor for species where by giving birth to clones (e.g.,
- armadillos
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-AFAIK it's only the genus 
-\emph on
-Dasypus
-\emph default
-,
- fortunately ;)
-\end_layout
-
-\end_inset
-
-).
- CKMR would also be ineffective for monogamous species,
- as the information from each additional capture is minimal.
-\change_inserted 193499690 1736655217
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736656035
-No—
- it would work (eg POPs are fine,
- sibs are more complicated),
- but needs tweaking to 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
+Devising the formulae for the expected frequencies of kinships requires consideration of the life history and reproductive biology of the organism in question,
+ as well as aspects of the sampling.
  Knowing about reproductive strategy is also important for both sampling and probability of kinship:
- does the 
-\change_inserted 193499690 1736672123
-population 
-\change_deleted 193499690 1736674032
-animal in question 
-\change_unchanged
-breed in one place and at one time?
- 
-\change_deleted 193499690 1736674420
-Is the population panmictic?
-
-\change_unchanged
- Does 
-\change_inserted 193499690 1736674046
-the species have 
-\change_deleted 193499690 1736674047
-it use 
-\change_unchanged
-a polygynous mating structure?
-
-\change_inserted 193499690 1736675221
- Are breeding animals just as likely to be sampled as 
+ does the population breed in one place and at one time?
+ Does the species have a polygynous mating structure?
+ Are breeding animals as likely to be sampled as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -723,165 +341,52 @@ resting
 \end_inset
 
  ones?
- We give examples later in the paper.
-\change_unchanged
-
+ 
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1736674728
-The kinds of kin relationships that can be inferred from genetic samples have increased with advances in sequencing technology.
- Parent-offspring pairs (POPs) provide the most basic level of information,
- but we might also be able to identify full- or half-sibling pairs (FSPs or HSPs).
- Grandparent-grandchild pairs (GGPs) are not genetically distinguishable from thiatic (niece/nephew-uncle/aunt) relationships (FTPs),
- but with age information (and some knowledge about the life history of the organism) we can include these relationships in our analysis.
- The advent of epigenetic age determination gives us a probabilistic quantification of age which is already being used in conjunction with CKMR (CITE some fish paper of Mark’s).
-\change_inserted 193499690 1736674731
-
-\begin_inset Note Comment
-status collapsed
+\begin_inset Note Greyedout
+status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736674775
-Actually I don't think 
-\begin_inset Quotes eld
-\end_inset
-
-we
-\begin_inset Quotes erd
-\end_inset
-
- have used DNAge in any real CKMR study yet!
- I just keep talking about it because it's in the pipeline for quite a few species and it's OBVIOUSLy coming!
-\change_unchanged
-
+Need a transition here
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1736675259
-To design any effective survey,
- it is important to consider whether desired monitoring goals can be met given available time,
- money,
- and effort.
- Because of the genetics,
- CKMR and genetic IMR do incur extra costs relative to,
- say,
- photo-ID-based IMR (a non-option for many species),
- but 
-\change_deleted 193499690 1736674345
-The monetary 
-\change_inserted 193499690 1736675008
-that aspect of 
-\change_unchanged
-cost 
-\change_deleted 193499690 1736674365
-of CKMR 
-\change_inserted 193499690 1736675008
-continues to 
-\change_deleted 193499690 1736674368
-is 
-\change_unchanged
-decreas
-\change_deleted 193499690 1736674371
-ing
-\change_inserted 193499690 1736675008
-e
-\change_unchanged
- 
-\change_inserted 193499690 1736675008
-as new 
-\change_deleted 193499690 1736674375
-in terms of 
-\change_unchanged
-sequencing 
-\change_deleted 193499690 1736674377
-as new 
-\change_unchanged
-technology comes online.
- The non-laboratory costs remain as they ever were for mark-recapture (or any other observational study):
- person-hours in the field.
- As is the case with all fieldwork,
- researchers aim to maximize information gathering while minimizing cost and also keeping people safe.
- 
-\change_inserted 193499690 1736675207
-If CKMR can deliver adequate precision with less cost 
-\emph on
-sensu largo
-\emph default
- than other approaches,
- then the genetic expense is not a problem.
- 
-\change_deleted 193499690 1736675004
 To design an effective survey,
  it is important to consider whether desired monitoring goals can be met given available time,
  money,
  and effort.
-
-\change_unchanged
+ Because of the genetic component,
+ CKMR and genetic IMR do incur extra costs relative to,
+ say,
+ photographic IMR,
+ but that aspect of cost continues to decrease as new sequencing technology comes online.
+ The non-laboratory costs remain as they ever were for mark-recapture (or any other observational study):
+ person-hours in the field.
+ As is the case with all fieldwork,
+ researchers aim to maximize information gathering while minimizing cost and also keeping people safe.
  This leads us to the question of “how many samples?”.
  In the case of CKMR,
  this is relatively easy to calculate.
- Given 
-\change_deleted 193499690 1736675102
-a target coefficient of variation (CV)
-\change_unchanged
- and some information on demographics and abundance (from existing genetic surveys,
+ Given some information on demographics and abundance (from existing genetic surveys,
  pilot studies,
  or the literature),
- we can calculate how many kin pairs one is likely to obtain from a given number 
-\change_inserted 193499690 1736675117
-and composition (e.g.,
- by age) 
-\change_unchanged
-of samples
-\change_inserted 193499690 1736675133
-,
- and what CV is likely to be obtained for various demographic parameters
-\change_deleted 193499690 1736675121
-.
-
-\change_unchanged
- In this paper we show how to 
-\change_inserted 193499690 1736675135
-do
-\change_deleted 193499690 1736675136
-perform 
-\change_inserted 193499690 1736675137
- 
-\change_unchanged
-these calculations using a case study on the Pacific walrus (
+ we can calculate how many kin pairs one is likely to obtain from a given number and composition (e.g.,
+ by age) of samples,
+ and what CV is likely to be obtained for various demographic parameters of interest.
+ In this paper we show how to do these calculations using a case study on the Pacific walrus (
 \emph on
 Odobenus rosmarus divergens
-\change_deleted 193499690 1736670308
-
 \emph default
-,
-\change_inserted 193499690 1736675008
 ;
-
-\change_unchanged
  hereafter,
  walrus) in the North Pacific.
-\change_inserted 193499690 1736675008
-
-\end_layout
-
-\begin_layout Subsection
-
-\change_inserted 193499690 1736669949
-Walrus background
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -898,31 +403,7 @@ literal "false"
 .
  In summer (when sea ice is absent from the Bering Sea) almost all juvenile and adult female walruses,
  and some adult male walruses,
- 
-\change_inserted 193499690 1736670346
-migrate north to
-\change_deleted 193499690 1736670349
-occupy
-\change_unchanged
- the Chukchi Sea
-\change_inserted 193499690 1736670353
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736670361
-Many readers won't know which sea is where...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-.
+ migrate north to the Chukchi Sea.
  When walruses rest offshore on sea ice floes,
  their distribution is dynamic,
  because it generally follows the marginal ice zone (a moving,
