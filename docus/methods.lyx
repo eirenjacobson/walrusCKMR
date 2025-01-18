@@ -304,7 +304,7 @@ Walrus reprod biol should describe how this stuff works.
 \end_inset
 
 2000 is set because there were fairly drastic changes in the population prior to that).
- W-e have
+ We have
 \change_inserted 193499690 1736761318
 
 \begin_inset Note Greyedout
@@ -883,35 +883,10 @@ status open
 
 \change_unchanged
 .
- We define the binary variable
-\change_deleted 193499690 1736762599
-,
-
-\change_unchanged
- 
+ We define the binary variable 
 \begin_inset Formula $L$
 \end_inset
 
-
-\change_deleted 193499690 1736762601
-,
-\change_inserted 193499690 1736762603
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736762614
-no commas coz there is more than one binary variable in existence
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
  to indicate lethality of sampling (
 \begin_inset Formula $L_{i}=1$
 \end_inset
