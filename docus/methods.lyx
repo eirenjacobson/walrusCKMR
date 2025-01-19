@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -82,7 +82,7 @@ InStar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -113,45 +113,19 @@ METHODS
 
 \begin_layout Standard
 To evaluate our proposed survey designs,
- we must first construct our 
-\change_inserted 193499690 1736746985
-I
-\change_unchanged
-CKMR model for walrus.
+ we must first construct our ICKMR model for walrus.
  We encode our knowledge about walrus biology and life history to (
 \shape italic
 i
 \shape default
-) build a model of walrus population dynamics
-\change_inserted 193499690 1736746314
-,
- 
-\change_deleted 193499690 1736746315
- (
-\change_unchanged
-including 
-\change_deleted 193499690 1736746319
-a model of 
-\change_unchanged
-the 
-\change_deleted 193499690 1736746321
-walrus 
-\change_unchanged
-breeding cycle
-\change_deleted 193499690 1736746322
-)
-\change_inserted 193499690 1736746323
-,
-
-\change_unchanged
+) build a model of walrus population dynamics,
+ including the breeding cycle,
  and (
 \shape italic
 ii
 \shape default
 ) formulate kinship probabilities between pairs of individuals.
- 
-\change_inserted 193499690 1736748212
-The population dynamics model incorporates demographic parameters that will need to be estimated:
+ The population dynamics model incorporates demographic parameters that will need to be estimated:
  survival rates,
  adult abundance in some reference year,
  trend,
@@ -172,13 +146,9 @@ The population dynamics model incorporates demographic parameters that will need
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736747157
 Some of that para might repeat stuff in the Intro,
  or might better belong there.
  dunno
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -186,22 +156,18 @@ Some of that para might repeat stuff in the Intro,
 
 \end_layout
 
-\begin_layout Standard
-
-\change_deleted 193499690 1736747055
-The likelihood is then formed by taking each comparison between pairs individuals and assuming that the likelihood contribution of that pair is a Bernoulli trial.
- For computational efficiency we approximated these trials with a Poisson distribution.
- The population dynamics model is coupled to the likelihood via the demographic parameters required to calculate the kinship probabilities (survival,
- abundance,
- breeding cycle,
- see below).
- 
-\change_unchanged
-
-\end_layout
-
 \begin_layout Subsection
 Biological considerations
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+could some of this go in the intro?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -217,167 +183,37 @@ nolink "false"
 \end_inset
 
 ).
- 
-\change_inserted 193499690 1736741198
-They also form leks and compete for breeding access to females,
- so it is plausible that 
-\change_deleted 193499690 1736740272
-A
-\change_inserted 193499690 1736741162
-a
-\change_unchanged
-dult males 
-\change_deleted 193499690 1736740277
-are 
-\change_inserted 193499690 1736741162
-might 
-\change_unchanged
-also 
-\change_deleted 193499690 1736740286
-likely to have
-\change_inserted 193499690 1736741162
-exhibit
-\change_unchanged
- persistent individual variability in breeding success
-\change_inserted 193499690 1736741327
-,
- which would considerably complicate the interpretation of paternal half-sibling kinship data (see Discussion)
-\change_unchanged
-.
+ They also form leks and compete for breeding access to females,
+ so it is plausible that adult males might also exhibit persistent individual variability in breeding success,
+ which would considerably complicate the interpretation of paternal half-sibling kinship data (see Discussion).
  Therefore,
- we 
-\change_deleted 193499690 1736741226
-focus 
-\change_inserted 193499690 1736741251
-restrict attention to 
-\change_deleted 193499690 1736741237
-on 
-\change_unchanged
-female-only dynamics
-\change_inserted 193499690 1736741266
-,
- and 
-\change_deleted 193499690 1736741267
- 
-\change_inserted 193499690 1736741477
-consider only three types of kinship:
+ we restrict attention to female-only dynamics,
+ and consider only three types of kinship:
  Mother-Offspring Pair (MOP),
  Cross-cohort maternal Half-Sibling Pair (XmHSP),
  and Self Pair (SP),
  i.e.
  recapture of an individual.
-\change_deleted 193499690 1736741494
-and do not include paternal father-offspring or half-sibling pairs in the model
-\change_inserted 193499690 1736760391
  Our samples comprise juvenile and adult females,
  plus juvenile males;
- the problems are with modeling males as parents,
- but we can safely use 
-\change_unchanged
-sampled 
-\change_inserted 193499690 1736741162
-juvenile 
-\change_unchanged
-males
-\change_deleted 193499690 1736760284
- 
-\change_unchanged
-as potential offspring 
-\change_inserted 193499690 1736741162
-of females 
-\change_unchanged
-and 
-\change_deleted 193499690 1736740201
-whose mothers might also be captured and 
-\change_inserted 193499690 1736741162
-as 
-\change_unchanged
-potential 
-\change_inserted 193499690 1736741162
-maternal 
-\change_unchanged
-half-siblings of other 
-\change_inserted 193499690 1736741162
-(female or male) samples
-\change_deleted 193499690 1736740769
-individuals
-\change_unchanged
-,
- 
-\change_inserted 193499690 1736741162
-as 
-\change_deleted 193499690 1736740331
-see 
-\change_unchanged
-below
-\change_deleted 193499690 1736740333
-)
-\change_unchanged
-.
- 
-\change_deleted 193499690 1736740341
-While males form leks and compete for breeding access to females,
- w
-\change_inserted 193499690 1736741162
-W
-\change_unchanged
-e do not expect females to vary 
-\change_inserted 193499690 1736741162
-much 
-\change_unchanged
-in terms of individual fecundity.
+ the problems are with modelling males as parents,
+ but we can safely use sampled juvenile males as potential offspring of females and as potential maternal half-siblings of other (female or male) samples,
+ below.
+ We do not expect females to vary much in terms of individual fecundity.
  The population is well-mixed across its range,
- with no evidence of site fidelity within or between years
-\change_deleted 193499690 1736745358
-,
- and no genetic substructure is expected
-\change_unchanged
- (CITE)
-\change_inserted 193499690 1736741162
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736760442
-I reckon this should be covered in the Intro,
- and xrefed here back to that.
- Also,
- NB that 
-\begin_inset Quotes eld
-\end_inset
-
-genetic substructure
-\begin_inset Quotes erd
-\end_inset
-
- (ie classical pop gen differences) is not the point with CKMR;
- if you have non-heritable site fidelity,
- you're still in trouble...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
+ with no evidence of site fidelity within or between years (CITE)
 \change_deleted 193499690 1736748236
 .
  We consider individuals of ages 1-5 to be juvenile and adult from 6 onwards,
  we do not consider individuals of age 0,
  as they are still associated with their mother.
-\change_inserted 193499690 1736748240
+\change_unchanged
 
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736748240
 coming next...
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -386,19 +222,14 @@ coming next...
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1736760509
 We assume that age estimates will be available for all samples,
- based on epigenetic data (ref**).
- Visual classification is only accurate over the first couple of years of life (ref**),
+ based on epigenetic data (CITE).
+ Visual classification is only accurate over the first couple of years of life (CITE),
  which could be problematic for CKMR.
- Our model is structured to allow for errors in estimated age (with standard deviation assumed known,
- i.e.
+ Our model is structured to allow for errors in estimated age (with standard deviation assumed known i.e.,
  after calibration of epigenetic against known-age samples),
  though the results here assume that there are no errors;
  see Discussion.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -406,8 +237,6 @@ Stage-structured quasi-equilibrium dynamics
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1736760801
 For our female-only population dynamics model,
  we could choose between a fully-age-structured or a stage-structured (juvenile+adult) approach.
  We opted for the the latter because (i) most female adults are expected to have similar reproductive capacity and chance of survival regardless of age (unlike with teleost fish,
@@ -422,35 +251,6 @@ For our female-only population dynamics model,
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1736748085
-Age structure 
-\shape italic
-per se
-\shape default
- is not required for CKMR,
- and adult age structure is not required for IMR either,
- at least given the way we have formulated the latter (Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:selfPs"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-).
- Rather,
- we use a stage-structured dynamics model (adults and juveniles) 
-\change_inserted 193499690 1736747566
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1736748191
 We used two stages:
  juveniles aged 1–5,
  and adults aged 6+ (the first age at which an accompanying calf is common).
@@ -476,11 +276,7 @@ at sampling
  i.e.
  in the summertime;
  births are in spring.
- 
-\change_deleted 193499690 1736747861
-where s
-\change_unchanged
-We assume that survival over age and time within each stage is constant (
+ We assume that survival over age and time within each stage is constant (
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
 
@@ -489,24 +285,10 @@ We assume that survival over age and time within each stage is constant (
 \end_inset
 
 ),
- and that an offspring's survival from age 1 onwards is independent of 
-\change_inserted 193499690 1736761997
-its mother's survival,
- 
-\change_unchanged
-whether 
-\change_inserted 193499690 1736762001
-or not the offspring 
-\change_deleted 193499690 1736762001
-it 
-\change_unchanged
-has weaned yet
-\change_deleted 193499690 1736762003
- or not 
-\change_unchanged
-
+ and that an offspring's survival from age 1 onwards is independent of its mother's survival,
+ whether or not the offspring has weaned yet
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Walrus reprod biol should describe how this stuff works.
@@ -516,27 +298,13 @@ Walrus reprod biol should describe how this stuff works.
 \end_inset
 
 .
- 
-\change_inserted 193499690 1736761785
-Further,
- 
-\change_deleted 193499690 1736761785
-W
-\change_inserted 193499690 1736761786
-w
-\change_unchanged
-e assume that adult female abundance is increasing or decreasing exponentially over the period covered by the population dynamics (2000–2027;
+ We assume that adult female abundance is increasing or decreasing exponentially over the period covered by the population dynamics (2000–2027;
  the lower limit of 
 \begin_inset Formula $y_{0}=$
 \end_inset
 
 2000 is set because there were fairly drastic changes in the population prior to that).
- 
-\change_deleted 193499690 1736748031
-Assuming that within-stage age composition is fairly stable over that period ("quasi-equilibrium" or "quasi-stable"),
- 
-\change_unchanged
-we have
+ We have
 \change_inserted 193499690 1736761318
 
 \begin_inset Note Greyedout
@@ -616,20 +384,10 @@ where
 \begin_inset Formula $e^{r}$
 \end_inset
 
- is the 
-\change_inserted 193499690 1736748053
-e
-\change_unchanged
-rate of population increase.
-\change_inserted 193499690 1736761044
-
+ is the rate of population increase.
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1736761044
- 
-\change_inserted 193499690 1736763567
 Age composition within stage is not required for calculating MOP and XmHSP probabilities as below,
  but it is relevant for SPs.
  For that purpose,
@@ -637,7 +395,7 @@ Age composition within stage is not required for calculating MOP and XmHSP proba
 \begin_inset Quotes eld
 \end_inset
 
-quasi-equilibrium" distribution consistent with survial 
+quasi-equilibrium" distribution consistent with survival 
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
 
@@ -665,26 +423,12 @@ literal "false"
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736761862
 can someone please check this;
  I've just typed from intuition!
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 193499690 1736761864
-abc
-\change_unchanged
 
 \end_layout
 
@@ -711,36 +455,6 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1736763308
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736763382
-It's confusing to have digits used for the three states,
- but also for ages!
- eg 
-\begin_inset Quotes eld
-\end_inset
-
-females enter state 3 at age 4
-\begin_inset Quotes erd
-\end_inset
-
-...
- Could be alleviated by always calling the states B1,B2,B3 or S1...
- I also suspect this is a bit wordy,
- esp given the nice figure.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
 We use a Markov model to describe the walrus breeding cycle.
  We assume three breeding states:
  (1) pregnant,
@@ -832,7 +546,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1043,57 +757,7 @@ Formulating kinship probabilities
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1736762982
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736763095
-There's scope for confusion between 
-\begin_inset Quotes eld
-\end_inset
-
-sample
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-individual
-\begin_inset Quotes erd
-\end_inset
-
- here.
- In a purist and not-helpful sense,
- comparisons are just between samples.
- In fact,
- we take trouble to only compare a single sample from each individual (in those cases where there's >1) with other reprsenetative samples.
- But when we get onto SPs,
- then it really is samples...
- 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-We now need to formulate the demographic probabilities that two 
-\change_inserted 193499690 1736763119
-¿
-\change_unchanged
-samples
-\change_inserted 193499690 1736763116
-\SpecialChar breakableslash
-individuals?
-
-\change_unchanged
- have a given kinship.
+We now need to formulate the demographic probabilities that two samples have a given kinship.
  We write the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
@@ -1112,55 +776,42 @@ individuals?
  SP,
  or UP (i.e.
  none of the others).
-
-\change_deleted 193499690 1736762746
- In each case the general formulation is the same:
- the probability simply comes down to the ratio of number of individuals which match the characteristics needed for that kinship to hold (e.g.,
- that 
-\begin_inset Formula $i$
+ In the case of MOPs and XmHSPs,
+ we take care to use only one sample from each individual (so 
+\begin_inset Quotes eld
 \end_inset
 
- is born in a particular year,
- is old enough to be 
-\begin_inset Formula $j$
+sample
+\begin_inset Quotes erd
 \end_inset
 
-'s mother,
- etc) and the total number of females which could be considered (e.g.,
- the expected number of juveniles born in a particular year).
- In each case we need to carefully consider how to count both of these quantities,
- given our biological knowledge.
-\change_inserted 193499690 1736762750
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736763288
-I'd drop all that;
- it's substantially not right as it is presently written (eg AFAIK expected number of juveniles never matters!
- and the number of possible 
-\begin_inset Formula $i$
+ and 
+\begin_inset Quotes eld
 \end_inset
 
-'s doesn't either) and it's actually really hard to get right in a general sense.
- And then there's SelfPs....
- I get the reason for wanting to say something,
- but it's too hard!
- The core concept is ERRO,
- as per BSA2016,
- but that doesn't cover SPs.
- Let's just plunge into specific cases...
-\change_unchanged
-
-\end_layout
-
+individual
+\begin_inset Quotes erd
 \end_inset
 
+ are interchangeable terms),
+ whereas for SPs we need to consider multiple samples from one individual (in which case,
+ 
+\begin_inset Quotes eld
+\end_inset
 
-\change_unchanged
+sample
+\begin_inset Quotes erd
+\end_inset
 
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+individual
+\begin_inset Quotes erd
+\end_inset
+
+ have different meanings).
 \end_layout
 
 \begin_layout Standard
@@ -1232,35 +883,10 @@ status open
 
 \change_unchanged
 .
- We define the binary variable
-\change_deleted 193499690 1736762599
-,
-
-\change_unchanged
- 
+ We define the binary variable 
 \begin_inset Formula $L$
 \end_inset
 
-
-\change_deleted 193499690 1736762601
-,
-\change_inserted 193499690 1736762603
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736762614
-no commas coz there is more than one binary variable in existence
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
  to indicate lethality of sampling (
 \begin_inset Formula $L_{i}=1$
 \end_inset
@@ -1277,9 +903,7 @@ no commas coz there is more than one binary variable in existence
  as an indicator function,
  giving 1 when the condition inside the brackets is true,
  else 0.
- Kinship probabilities are functions of demographic parameters
-\change_inserted 193499690 1736762670
- such as 
+ Kinship probabilities are functions of demographic parameters such as 
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
 
@@ -1287,28 +911,12 @@ and
 \begin_inset Formula $N_{y_{0}\text{A}}$
 \end_inset
 
-
-\change_deleted 193499690 1736762630
-,
-\change_inserted 193499690 1736762630
 ;
-
-\change_unchanged
- throughout we use 
+ we use 
 \begin_inset Formula $\boldsymbol{\theta}$
 \end_inset
 
- as shorthand for 
-\change_inserted 193499690 1736762643
-the full set of 
-\change_deleted 193499690 1736762644
-this collection of 
-\change_inserted 193499690 1736762638
-parameters
-\change_deleted 193499690 1736762638
-variables
-\change_unchanged
-,
+ as shorthand for this set of parameters,
  which become explicit in later iterations of the formulae.
 \end_layout
 
@@ -1425,16 +1033,10 @@ j
 \emph default
 's birth).
  In this case 
-\change_deleted 193499690 1736763167
-the
-\change_inserted 193499690 1736763169
-
 \begin_inset Formula $i$
 \end_inset
 
-'s
-\change_unchanged
- sampling must be non-lethal (
+'s sampling must be non-lethal (
 \begin_inset Formula $L_{i}=0$
 \end_inset
 
@@ -1481,18 +1083,7 @@ Where
 \end_inset
 
 .
- 
-\change_inserted 193499690 1736925138
-The units of 
-\change_unchanged
-ERO and TRO 
-\change_inserted 193499690 1736925162
-can be arbitrary (as long as they are the same),
- but here it makes sense to pick 
-\change_deleted 193499690 1736925164
-are in units of 
-\change_unchanged
-"number of calves".
+ ERO and TRO are in units of "number of calves" here (though generally their units are arbitrary but matching).
  TRO is the total number of adult females in the population when 
 \begin_inset Formula $j$
 \end_inset
@@ -1773,11 +1364,7 @@ We now find the probabilities of cross-cohort (X),
 \begin_inset Formula $b_{k}\neq b_{l}$
 \end_inset
 
- (walrus give birth to a single offspring
-\change_inserted 193499690 1736763241
- at a time
-\change_unchanged
-);
+ (walrus give birth to a single offspring at a time);
 \end_layout
 
 \begin_layout Itemize
@@ -1802,53 +1389,10 @@ If
 
 ,
  what is the probability that 
-\change_deleted 193499690 1736925340
-
 \begin_inset Formula $l$
 \end_inset
 
-
-\change_inserted 193499690 1736925340
-
-\begin_inset Formula $\ell$
-\end_inset
-
-
-\change_unchanged
-'s mother
-\change_inserted 193499690 1736925367
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736925418
-It's hard to read script-
-\begin_inset Formula $l$
-\end_inset
-
- vs 1 or script-
-\begin_inset Formula $i$
-\end_inset
-
-—
- so I recommend 
-\begin_inset Formula $\ell$
-\end_inset
-
-.
- I have changed a couple here,
- but not done all.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- was 
+'s mother was 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1921,7 +1465,7 @@ ii
 
 \emph default
  to be 
-\begin_inset Formula $\ell$
+\begin_inset Formula $l$
 \end_inset
 
 's mother,
@@ -1930,7 +1474,7 @@ ii
 
 \begin_layout Enumerate
 she survives until 
-\begin_inset Formula $b_{\ell}$
+\begin_inset Formula $b_{l}$
 \end_inset
 
 ;
@@ -1938,7 +1482,7 @@ she survives until
 
 \begin_layout Enumerate
 she is in breeding state 2 in 
-\begin_inset Formula $b_{\ell}$
+\begin_inset Formula $b_{l}$
 \end_inset
 
 ;
@@ -2116,21 +1660,10 @@ name "subsec:selfPs"
 
 \begin_layout Standard
 Our stage-structured model keeps the population dynamics simple,
- but we do have to make extra assumptions about sampling selectivity to include the IMR data
-\change_inserted 193499690 1736125723
-.
+ but we do have to make extra assumptions about sampling selectivity to include the IMR data.
  Here,
- 
-\change_deleted 193499690 1736125724
-;
- here 
-\change_unchanged
-we assume that selectivity only varies by stage (adults and juveniles)
-\change_inserted 193499690 1736125734
-,
- not by age within stage
-\change_unchanged
-.
+ we assume that selectivity only varies by stage (adults and juveniles),
+ not by age within stage.
  We only consider female samples for self-recapture,
  since juvenile males are prone to "permanent emigration" (CITE) as well as true mortality,
  so do not yield readily-interpretable inferences.
@@ -2213,14 +1746,7 @@ MVB:
 
 \change_unchanged
 .
- We also condition on the first sample being non-lethal
-\change_inserted 193499690 1736125851
-,
- for obvious reasons
-\change_deleted 193499690 1736125858
- (else we'd have nothing to sample a second time)
-\change_unchanged
-.
+ We also condition on the first sample being non-lethal (else we'd have nothing to sample a second time).
  To obtain 
 \begin_inset Formula $N_{y_{2},d_{2}}$
 \end_inset
@@ -2255,11 +1781,7 @@ where
 \begin_inset Formula $\rho=e^{r}$
 \end_inset
 
- is the 
-\change_inserted 193499690 1736125890
-relative annual 
-\change_unchanged
-population increase/decrease.
+ is the relative annual population increase/decrease.
 \end_layout
 
 \begin_layout Subsection

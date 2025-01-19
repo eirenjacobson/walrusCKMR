@@ -17,6 +17,11 @@
 \usepackage[utf8]{inputenc}
 \DeclareUnicodeCharacter{202A}{!!!FIX ME!!!}
 \DeclareUnicodeCharacter{202C}{!!!FIX ME!!!}
+
+% get rid of the note field (which has an eprint URL for most entries)
+%\AtEveryBibitem{\clearfield{note}\clearfield{addendum}}
+%\AtEveryCitekey{\clearfield{note}\clearfield{addendum}}
+%\DeclareFieldFormat*{note}{}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -67,7 +72,7 @@ InStar
 \cite_engine biblatex-natbib
 \cite_engine_type authoryear
 \biblio_style plainnat
-\biblio_options maxcitenames=2, mincitenames=1,uniquelist=false
+\biblio_options doi=false, isbn=false, maxcitenames=2, mincitenames=1,uniquelist=false, url=false, date=year, giveninits=true, eprint=false
 \biblatex_bibstyle authoryear
 \biblatex_citestyle authoryear
 \use_bibtopic false
