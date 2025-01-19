@@ -5,6 +5,7 @@ library(tidyr)
 
 # check expected versus observed comparison types
 
+
 for (i in 1:length(suffixes)){
   
   c <- data.frame(compcheck[,,suffixes[i]])
@@ -15,6 +16,19 @@ for (i in 1:length(suffixes)){
   allcomparisons <- rbind.data.frame(allcomparisons, c)
   
   }}
+
+ggplot(allcomparisons) +
+  geom_histogram(aes(P), binwidth=0.1) +
+  facet_wrap(~Type, nrow = 3) +
+  xlab("P-Value")+
+  ylab("Number of Simulated Datasets")+
+  theme_bw()
+
+ggsave(plot = last_plot(), file = "./figures/comphist_D0_L1_S0.png", 
+       width = 6, height = 4, units = "in")
+
+
+#############
 
 ggplot(allcomparisons) +
   geom_boxplot(aes(x=Type, y = P)) +

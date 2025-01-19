@@ -27,7 +27,9 @@ for( i in seq_along( suffixes)){
   suff <- suffixes[ i]
   sim_lglks[[ suff]] <- add_data( lglk_walrus,
       simfile = sprintf( 'test/WalrusSamples_%s_%s.RData', TEST_CASE, suff),
-      YSTART = denv$YSTART) # presumably 2015
+      YSTART = denv$YSTART, # presumably 2015
+      PPN_2KP_FALSE_NEG= 0.15, # new in 2025
+      nonsparse= TRUE) # new in 2025)
   denvi <- environment( sim_lglks[[ i]]) # where stuff lives
 
   compcheck[ 'MOP', 'Obs', i] <- sum(denvi$n_MOP_EYEYL)
