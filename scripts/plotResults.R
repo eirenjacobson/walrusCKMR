@@ -17,14 +17,14 @@ for (i in 1:length(suffixes)){
   
   }}
 
-ggplot(allcomparisons) +
+p <- ggplot(allcomparisons) +
   geom_histogram(aes(P), binwidth=0.1) +
   facet_wrap(~Type, nrow = 3) +
   xlab("P-Value")+
   ylab("Number of Simulated Datasets")+
   theme_bw()
 
-ggsave(plot = last_plot(), file = "./figures/comphist_D0_L1_S0.png", 
+ggsave(plot = p, file = "./figures/comphist_D0_L1_S0.png", 
        width = 6, height = 4, units = "in")
 
 
