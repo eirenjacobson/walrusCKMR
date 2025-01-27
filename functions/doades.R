@@ -20,7 +20,8 @@
   ncomp_list <- make_n_comps( m_breakdown, 
       FIRST_PDYEAR= denv$FIRST_PDYEAR, 
       AMAT= denv$AMAT, 
-      MAX_BGAP_HSPS= denv$MAX_BGAP_HSPS)
+      MAX_BGAP_HSPS= denv$MAX_BGAP_HSPS,
+      MAX_WEANAGE = 5)
   
   H <- matrix( 0, npars, npars)
   
