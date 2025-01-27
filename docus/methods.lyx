@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \begin_preamble
 
@@ -124,7 +124,13 @@ i
 \shape italic
 ii
 \shape default
-) formulate kinship probabilities between pairs of individuals.
+) formulate kinship probabilities between pairs of 
+\change_inserted 193499690 1737934998
+samples
+\change_deleted 193499690 1737934999
+individuals
+\change_unchanged
+.
  The population dynamics model incorporates demographic parameters that will need to be estimated:
  survival rates,
  adult abundance in some reference year,
@@ -146,9 +152,7 @@ ii
 status open
 
 \begin_layout Plain Layout
-Some of that para might repeat stuff in the Intro,
- or might better belong there.
- dunno
+Some of that para might repeat stuff in the Intro
 \end_layout
 
 \end_inset
@@ -158,8 +162,8 @@ Some of that para might repeat stuff in the Intro,
 
 \begin_layout Subsection
 Biological considerations
-\begin_inset Note Note
-status open
+\begin_inset Note Greyedout
+status collapsed
 
 \begin_layout Plain Layout
 could some of this go in the intro?
@@ -197,8 +201,12 @@ nolink "false"
  Our samples comprise juvenile and adult females,
  plus juvenile males;
  the problems are with modelling males as parents,
- but we can safely use sampled juvenile males as potential offspring of females and as potential maternal half-siblings of other (female or male) samples,
- below.
+ but we can safely use sampled juvenile males as potential offspring of females and as potential maternal half-siblings of other (female or male) samples
+\change_deleted 193499690 1737935775
+,
+ below
+\change_unchanged
+.
  We do not expect females to vary much in terms of individual fecundity.
  The population is well-mixed across its range,
  with no evidence of site fidelity within or between years (CITE)
@@ -228,7 +236,13 @@ We assume that age estimates will be available for all samples,
  which could be problematic for CKMR.
  Our model is structured to allow for errors in estimated age (with standard deviation assumed known i.e.,
  after calibration of epigenetic against known-age samples),
- though the results here assume that there are no errors;
+ though the results 
+\change_deleted 193499690 1737935802
+here
+\change_inserted 193499690 1737935805
+later on
+\change_unchanged
+ assume that there are no errors;
  see Discussion.
 \end_layout
 
@@ -239,7 +253,12 @@ Stage-structured quasi-equilibrium dynamics
 \begin_layout Standard
 For our female-only population dynamics model,
  we could choose between a fully-age-structured or a stage-structured (juvenile+adult) approach.
- We opted for the the latter because (i) most female adults are expected to have similar reproductive capacity and chance of survival regardless of age (unlike with teleost fish,
+ We opted for the latter because (i) most female adults are expected to have similar reproductive capacity and chance of survival
+\change_inserted 193499690 1737935829
+,
+
+\change_unchanged
+ regardless of age (unlike with teleost fish,
  say);
  and (ii) stage-structured models are simpler to code for CKMR and require fewer parameters—
  although with IMR data as well,
@@ -305,14 +324,10 @@ Walrus reprod biol should describe how this stuff works.
 
 2000 is set because there were fairly drastic changes in the population prior to that).
  We have
-\change_inserted 193499690 1736761318
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736761504
 Elsewhere we have 
 \begin_inset Formula $N(y,A)$
 \end_inset
@@ -354,15 +369,16 @@ all Adults
 \end_inset
 
 ...
+
+\change_deleted 193499690 1737935902
  
 \change_unchanged
-
+ I have not changed this elsewhere,
+ leaving up to other authors
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \begin_inset Formula 
 \begin{align}
@@ -379,16 +395,67 @@ where
 \begin_inset Formula $y$
 \end_inset
 
+
+\change_deleted 193499690 1737936189
 .
+\change_inserted 193499690 1737936192
+,
+ and
+\change_unchanged
  
 \begin_inset Formula $e^{r}$
 \end_inset
 
- is the rate of population increase.
+ is the 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Is that terminology right?
+ I think 
+\begin_inset Formula $r$
+\end_inset
+
+ is intantaneous rate of increase (but still has units of yr
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+).
+ I'm never sure how to refert to eg 
+\begin_inset Formula $e^{r}$
+\end_inset
+
+ which is annual relative abundance factor;
+ it's not per se a change,
+ which would be N(y+1)/N(y)-1 .
+\end_layout
+
+\end_inset
+
+rate of population increase.
 \end_layout
 
 \begin_layout Standard
-Age composition within stage is not required for calculating MOP and XmHSP probabilities as below,
+Age composition within stage 
+\change_inserted 193499690 1737936577
+turns out not to matter
+\change_deleted 193499690 1737936579
+is not required
+\change_unchanged
+ for 
+\change_deleted 193499690 1737936583
+calculating 
+\change_unchanged
+MOP and XmHSP probabilities
+\change_deleted 193499690 1737936587
+ as below
+\change_unchanged
+,
  but it is relevant for SPs.
  For that purpose,
  we assume that age composition over the period is adequately described by the stable-age or 
@@ -455,15 +522,91 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Can we refer to the breeding states always as S1,
+ S2,
+ S3?
+ That reduces confusion with eg the use of 
+\begin_inset Quotes eld
+\end_inset
+
+age 5
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+2 year gap
+\begin_inset Quotes erd
+\end_inset
+
+ and so on...
+ I have not made that change everywhere,
+ in case others disagree violently...
+\end_layout
+
+\end_inset
+
 We use a Markov model to describe the walrus breeding cycle.
  We assume three breeding states:
- (1) pregnant,
- (2) with young-of-the-year (YOTY) calf or,
- (3) non-breeding;
+ (
+\change_inserted 193499690 1737936816
+S
+\change_unchanged
+1) pregnant
+\change_deleted 193499690 1737936616
+,
+\change_inserted 193499690 1737936616
+;
+
+\change_unchanged
+ (
+\change_inserted 193499690 1737936821
+S
+\change_unchanged
+2) with young-of-the-year (YOTY) calf
+\change_inserted 193499690 1737936620
+;
+
+\change_unchanged
+ or
+\change_deleted 193499690 1737936622
+,
+
+\change_unchanged
+ (
+\change_inserted 193499690 1737936823
+S
+\change_unchanged
+3) non-breeding
+\change_deleted 193499690 1737936625
+;
+\change_inserted 193499690 1737936626
+,
+
+\change_unchanged
  i.e.,
  neither of the above.
  The Markov property assumes that next year's state depends only on this year's.
- From state 1 (pregnant),
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Would it better just to point to the Diagram here?
+ The written description gets hard-to-follow;
+ it's written perfectly well,
+ but it's simply difficult (for me) to 
+\end_layout
+
+\end_inset
+
+From state 1 (pregnant),
  next year's state must be 2 (with YOTY calf).
  From state 2,
  a female may next year either return to state 1 (become pregnant again),
@@ -488,7 +631,17 @@ We use a Markov model to describe the walrus breeding cycle.
 \end_inset
 
 .
- Due to long gestation times (~14 months),
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Next sentence to Intro?
+\end_layout
+
+\end_inset
+
+Due to long gestation times (~14 months),
  walrus cannot give birth to calves in two consecutive years (CITE).
  We also allow 
 \begin_inset Formula $\psi_{2}\neq\psi_{3}$
@@ -535,9 +688,36 @@ nolink "false"
 \end_inset
 
  are estimated from the data.
- We do not use any data on whether females were with/without calf when sampled,
- so the information on those parameters comes indirectly,
- through the distribution of birth-gaps between maternal half-sibling pairs.
+ We do not use any data on whether females were with\SpecialChar breakableslash
+without calf when sampled,
+ so the 
+\change_inserted 193499690 1737937163
+estimates 
+\change_deleted 193499690 1737937163
+information 
+\change_unchanged
+o
+\change_deleted 193499690 1737937165
+n
+\change_inserted 193499690 1737937165
+f
+\change_unchanged
+ 
+\begin_inset Formula $\psi_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{3}$
+\end_inset
+
+ 
+\change_deleted 193499690 1737937148
+comes indirectly,
+ through 
+\change_inserted 193499690 1737937180
+ are ultimately reliant on 
+\change_unchanged
+the distribution of birth-gaps between maternal half-sibling pairs.
 \end_layout
 
 \begin_layout Standard
@@ -750,6 +930,35 @@ name "fig:Breeding-cycle"
 \end_inset
 
 
+\change_inserted 193499690 1737937466
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+I reckon this should also include the calculation of mean-ppn-in-state S2 (
+\begin_inset Formula $\bar{\beta}$
+\end_inset
+
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+) and the mean-fec-at-age vector.
+ Saves diversions later.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -840,12 +1049,21 @@ Throughout we use the following notation:
 .
  As noted above,
  we only consider female abundance,
- so throughout,
- 
+ so throughout 
 \begin_inset Formula $N$
 \end_inset
 
- refers to females only.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+and other params?
+\end_layout
+
+\end_inset
+
+refers to females only.
  When female abundance is considered for a given year and development stage (respectively),
  it is written with two arguments,
  
@@ -861,27 +1079,19 @@ Throughout we use the following notation:
 \end_inset
 
 )
-\change_inserted 193499690 1736762914
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736762936
 \begin_inset Formula $N_{y\text{A}}$
 \end_inset
 
  has already been used in the pop dyn bit,
  so sequence has gone awry
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 .
  We define the binary variable 
 \begin_inset Formula $L$
@@ -913,11 +1123,29 @@ and
 
 ;
  we use 
-\begin_inset Formula $\boldsymbol{\theta}$
+\begin_inset Formula $\theta$
 \end_inset
 
  as shorthand for this set of parameters,
  which become explicit in later iterations of the formulae.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1737938873
+The basic principle behind kinship probabilities (other than self-recapture) is 
+\begin_inset Quotes eld
+\end_inset
+
+ERRO
+\begin_inset Quotes erd
+\end_inset
+
+ (Expected Relative Reproductive Output),
+ as in **BSA2016sec3?.
+ The chance of any particular adult (of given sex) being the parent (of that sex) of 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -925,7 +1153,11 @@ Mother-offspring pairs (MOPs)
 \end_layout
 
 \begin_layout Standard
-Suppose we are about to compare a potential mother individual 
+Suppose we are about to compare a potential mother 
+\change_deleted 193499690 1737937315
+individual 
+\change_unchanged
+
 \emph on
 i
 \emph default
@@ -977,14 +1209,22 @@ j
 
 
 \emph default
- need not be) (only female adult dynamics are being modelled);
+ need not be)
+\change_deleted 193499690 1737937338
+ (only female adult dynamics are being modelled)
+\change_unchanged
+;
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $a_{j}\geqslant1$
 \end_inset
 
- (no calf samples);
+ (no calf samples
+\change_inserted 193499690 1737937344
+ are used
+\change_unchanged
+);
 \end_layout
 
 \begin_layout Itemize
@@ -1044,7 +1284,7 @@ j
  The MOP probability is
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}.\label{eq:MOP1}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\theta\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}.\label{eq:MOP1}
 \end{gather}
 
 \end_inset
@@ -1251,7 +1491,7 @@ so that immature animals have fecundity 0,
  Thus
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j},\boldsymbol{\theta}\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j},\theta\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
 \end{gather}
 
 \end_inset
@@ -1305,7 +1545,7 @@ in this case we don't care if sampling is lethal??
 
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i},\boldsymbol{\theta}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i},\theta\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
 \end{gather}
 
 \end_inset
@@ -1558,7 +1798,7 @@ which is the probability vector of
  Then:
 \begin_inset Formula 
 \begin{align}
-\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\boldsymbol{\theta}\right] & =\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\boldsymbol{\theta}\right]\nonumber \\
+\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right] & =\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
  & =\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
 \end{align}
 
@@ -1692,7 +1932,7 @@ any
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2},L_{1}=0,\boldsymbol{\theta}\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
+\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2},L_{1}=0,\theta\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
 \end{gather}
 
 \end_inset
