@@ -4,6 +4,10 @@
 # ptru, Vpar, denv (which contains sample size info)
 # and various functions
 
+# load empty dataframe to hold design results
+load("./results/design_df.RData")
+load("./results/compdesign.RData")
+
 compdesign[d, l, s, "Yes", "Yes", , "Est"] <- as.numeric(interesting_stuff(ptru, lglk_with_data))
 design_df[which(design_df$ID == suffixes[TEST_SUFFIX] & design_df$CKMR == "Yes" & design_df$Value == "Est"),7:13] <- as.numeric(interesting_stuff(ptru, lglk_with_data))
 
