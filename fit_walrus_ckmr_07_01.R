@@ -46,7 +46,7 @@ lglk_with_data <- add_data( lglk_walrus,
     simfile = sprintf( 'test/WalrusSamples_%s_%s.RData', 
         TEST_CASE, suffixes[ TEST_SUFFIX]),
     YSTART= 2015,      #  more stable parametrization (no math difference)
-    SYEARS= 2013:2028,
+    SYEARS= 2013:2027,
     PPN_2KP_FALSE_NEG= 0.15, # new in 2025
     nonsparse= TRUE # new in 2025
   )
