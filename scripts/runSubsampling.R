@@ -1,4 +1,8 @@
 
+# Script to take a simulated dataset with sampling from 2023-2028
+# and subsample it according to various possible scenarios
+# as detailed in the sampling tab of scenarios.xlsx
+
 source("./scripts/subsample.R")
 
 Ls <- c("L1", "L2")
