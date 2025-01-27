@@ -1,6 +1,6 @@
 
 # function to subsample from a scenario labelled DX_LX_S0
-# where S0 indicates that sampling occurred in all possible years
+# where S0 indicates that sampling occurred in all possible years 2023-2028
 
 library(tidyr)
 library(dplyr)
