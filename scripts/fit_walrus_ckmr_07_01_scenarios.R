@@ -64,7 +64,7 @@ print( load( sprintf( './simulation/Nfad_RoI_%s_%s.RData',
 Dval <- scenarios[i, 1]
 if(Dval == "D1"){phi1 = 0.99; phi2 = 0.55}
 if(Dval == "D2"){phi1 = 0.985; phi2 = 0.5}
-if(Dval == "D3"){phi1 = 099; phi2 = 0.6}
+if(Dval == "D3"){phi1 = 0.99; phi2 = 0.6}
 effective_adult_surv <- truncsurvsenesce(phi1, phi2) 
 
 # juvenile survival also changes depending on which demographic scenario
