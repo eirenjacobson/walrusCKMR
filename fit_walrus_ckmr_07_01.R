@@ -74,7 +74,7 @@ ptru <- c(
   log_Nfad_y0 = log( Nfad_2015), # NB add_data( ... YSTART=2015)
   RoI= unname( out[ 'RoI']), # avoid name RoI.RoI..!
   lgt_fadsurv= logit( effective_adult_surv),
-  diff_lgt_fjusurv=  logit( 0.9) - logit( 0.9622), # 0 => same as adult
+  diff_lgt_fjusurv=  logit( 0.9) - logit( effective_adult_surv), # 0 => same as adult
   lpsi= logit( c( 0.1, 0.5)), # Pr[preg in 2nd year], Pr[preg from y>2]
   # No spatial params now
   NULL # so all previous lines can end with comma
