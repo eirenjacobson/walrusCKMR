@@ -95,7 +95,7 @@ knitr
 \begin_body
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
@@ -212,6 +212,14 @@ We present a slightly simplified explanation here,
 
  to be the kinship probability for parameter values 
 \begin_inset Formula $\theta$
+\end_inset
+
+ for a pair with covariates 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_{j}$
 \end_inset
 
 ,
@@ -748,8 +756,22 @@ This deals with the implications of one type of kinship for the others,
  and B matches C,
  it is redundant to compare A with C).
  There are simple ways to handle that with real datasets,
- as long as age is known fairly accurately,
- .
+ as long as age is known fairly accurately.
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+I am no longer sure that it's actually a good idea to bother with this second aspect of nonsparsity (whereas the first aspect,
+ above,
+ surely is sensible).
+ The mini-elephant is that there's also a finite-population correction (which CK omits) adds bias in the other direction,
+ ie makes computed variance look worse than true variance.
+ I'll leave the text for now (and it does match the code) but we should reconsider when the MS gets close to D-Day.
+ It's both complicated and not-very-important...
+\end_layout
+
+\end_inset
+
  Taking self-recapture as an example,
  we can compare the first capture of an individual to other samples from successively later dates,
  stopping immediately after a second capture (i.e.
@@ -924,9 +946,20 @@ overestimate
  through ignoring structural oversimplifications in the model;
  and with CKMR variance can usually be reduced anyway by modest increases in sample size.
  For walrus in particular,
- the total proposed adult sample size is under 10% of the population,
+ the total proposed adult sample size is under 10% of the population
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+I think...
+ is that right..?
+\end_layout
+
+\end_inset
+
+,
  so the effect on standard deviations would presumably not exceed 5%.
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout

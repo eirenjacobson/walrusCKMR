@@ -966,7 +966,12 @@ Formulating kinship probabilities
 \end_layout
 
 \begin_layout Standard
-We now need to formulate the demographic probabilities that two samples have a given kinship.
+We now need to formulate the demographic probabilities that two samples have a given kinship
+\change_inserted 193499690 1738061417
+,
+ using the ERRO principle mentioned earlier
+\change_unchanged
+.
  We write the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
@@ -1128,24 +1133,6 @@ and
 
  as shorthand for this set of parameters,
  which become explicit in later iterations of the formulae.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1737938873
-The basic principle behind kinship probabilities (other than self-recapture) is 
-\begin_inset Quotes eld
-\end_inset
-
-ERRO
-\begin_inset Quotes erd
-\end_inset
-
- (Expected Relative Reproductive Output),
- as in **BSA2016sec3?.
- The chance of any particular adult (of given sex) being the parent (of that sex) of 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -1361,14 +1348,10 @@ There are two components to
 \end_inset
 
 :
-\change_inserted 193499690 1736925222
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736925273
 Where is 
 \begin_inset Formula $\bar{\beta}$
 \end_inset
@@ -1377,11 +1360,7 @@ Where is
 \begin_inset script subscript
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736925233
 2
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1390,14 +1369,11 @@ Where is
  Needs to be here...
  unless it's done earlier,
  in the breeding cycle bit.
-\change_unchanged
-
+ That would be better
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \begin_inset Formula 
 \begin{gather}
@@ -1538,6 +1514,11 @@ status open
 
 \begin_layout Plain Layout
 in this case we don't care if sampling is lethal??
+
+\change_inserted 193499690 1738064744
+ Correct
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -1796,6 +1777,26 @@ which is the probability vector of
 
  is the proportion of adult females in state 2.
  Then:
+\change_inserted 193499690 1738064698
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1738064714
+Equation is wrong:
+ needs to sum over all possible m's!
+ See report (presumably)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \begin_inset Formula 
 \begin{align}
 \mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\theta\right] & =\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\theta\right]\nonumber \\
@@ -1825,66 +1826,93 @@ l
 
 \begin_layout Standard
 
-\change_inserted 193499690 1736925481
-There is a practical complication with HSPs:
- we do not identify them directly,
- but 
-\change_deleted 193499690 1736925431
- 
-\change_unchanged
+\change_inserted 193499690 1738063601
+There is a practical complication with HSPs,
+ in that we cannot identify them directly and unambiguously,
+ for two reasons.
+ First,
+ HSPs are just one of several 
+\begin_inset Quotes eld
+\end_inset
 
+second-order
+\begin_inset Quotes erd
+\end_inset
+
+ kin-pairs that all have the same coefficient-of-kinship and that are practically indistinguishable genetically.
+ Fortunately,
+ HSPs are demographically by far the most common when the birth-gap is short.
+ When the birth-gap approaches twice the age-of-maturity,
+ though,
+ GGPs (Grandparent-Grandchild Pair) are more common.
+ This can be dealt with either by also calculating GGP probabilities and adding to the HSP probabilities to give second-order kin probabilities,
+ or by restricting the range of birth-gaps used in fitting the model to those where GGPs are very rare (e.g.
+ below twice the age at maturity).
+ We opted for the latter,
+ which is simpler.
 \end_layout
 
 \begin_layout Standard
-**GGPs—
- exclude big birth-gaps
-\change_inserted 193499690 1736763470
 
-\begin_inset Note Greyedout
-status open
+\change_inserted 193499690 1738064114
+The second issue with all second-order kin,
+ is that pairwise-kinship statistics are not currently powerful enough to completely distinguish them all from a few 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Plain Layout
+lucky
+\begin_inset Quotes erd
+\end_inset
 
-\change_inserted 193499690 1736763474
-I will write something here...
-\change_unchanged
-
-\end_layout
+ third-order kin such as Great-Gandparent-Grandchild.
+ To handle this without bias,
+ the best approach is set a threshold for the statistic that should almost completely exclude false-positives from third-order kin,
+ then to estimate empirically the proportion of true second-order kin that will be lost below the threshold (i.e.,
+ the false-negative rate) based on the observed distribution of kin-pair statistics.
+ Only kin-pairs that are above the threshold will be treated as HSPs,
+ but the probability formula can be multiplied by the complement of the false-negative probability to compensate.
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
 
 \end_inset
 
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-** False-neg stuff (sigh..!)
-\change_inserted 193499690 1736925470
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1736763480
-...
- and here
-\change_unchanged
-
-\end_layout
+ or 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hillary2018WS-CKMR"
+literal "false"
 
 \end_inset
 
-
+ for more details.
+ The false-negative rate depends both on the species and the genotyping method (in particular,
+ the number of loci) and cannot be predicted in advance,
+ but experience suggests that 15% is usually a safe upper limit.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 193499690 1736925476
-** mtDNA
-\change_unchanged
-
+\change_inserted 193499690 1738064669
+Finally,
+ determining that a pair is HSP does not differentiate between mHSPs (maternal;
+ shared mother) and pHSPs (paternal;
+ shared father).
+ However,
+ this can be determined by genotyping the mitochondrial DNA (mtDNA;
+ always inherited from the mother only) of known HSPs.
+ If the genotypes are different,
+ the descent must be paternal;
+ if the same,
+ descent is probably maternal,
+ but could arise by chance in a few paternal-HSP cases.
+ However,
+ in our experience,
+ except for very small populations (hundreds of adults),
+ mtDNA diversity has always been high enough that shared-mtDNA HSPs might as well be treated as definite mHSPs.
+ We assume as much here.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1902,9 +1930,25 @@ name "subsec:selfPs"
 Our stage-structured model keeps the population dynamics simple,
  but we do have to make extra assumptions about sampling selectivity to include the IMR data.
  Here,
- we assume that selectivity only varies by stage (adults and juveniles),
+ we assume that selectivity 
+\change_deleted 193499690 1738061668
+only 
+\change_unchanged
+varies 
+\change_inserted 193499690 1738061670
+only 
+\change_unchanged
+by stage (adults and juveniles),
  not by age within stage.
- We only consider female samples for self-recapture,
+ We 
+\change_inserted 193499690 1738061694
+also just
+\change_deleted 193499690 1738061679
+only 
+\change_inserted 193499690 1738061682
+ 
+\change_unchanged
+consider female samples for self-recapture,
  since juvenile males are prone to "permanent emigration" (CITE) as well as true mortality,
  so do not yield readily-interpretable inferences.
 \end_layout
@@ -1951,14 +1995,10 @@ where
 \end_inset
 
 
-\change_inserted 193499690 1736125818
-
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1736125825
 MVB:
  I changed the 
 \begin_inset Quotes eld
@@ -1977,14 +2017,10 @@ MVB:
 \end_inset
 
  here
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 .
  We also condition on the first sample being non-lethal (else we'd have nothing to sample a second time).
  To obtain 
@@ -2022,6 +2058,103 @@ where
 \end_inset
 
  is the relative annual population increase/decrease.
+\change_inserted 193499690 1738061714
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+I feel we need to say something about why such a weird SP model.
+ Either here,
+ or in Discussion.
+ Putting it here seems to overload things a bit,
+ because the logic is quite subtle (and by no means ironclad);
+ however,
+ deferring it to the Discussion is also quite a risk,
+ because the alert reader will be thinking 
+\begin_inset Quotes eld
+\end_inset
+
+WTF is this crazy SP stage-structured model all about???
+\begin_inset Quotes erd
+\end_inset
+
+.
+ And you really don't want readers to be doing too much thinking while they read the paper...
+\end_layout
+
+\begin_layout Plain Layout
+Anyway,
+ I needed to write this para to get it off my chest—
+ onto other people's!
+\change_inserted 193499690 1738064775
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted 193499690 1738063356
+This is something of a compromise.
+ With HSPs and MOPs,
+ it is not necessary to explicitly consider the adult age distribution because the 
+\begin_inset Quotes eld
+\end_inset
+
+competition
+\begin_inset Quotes erd
+\end_inset
+
+ (i.e.
+ the alternatives to one particular sample being a 
+\begin_inset Quotes eld
+\end_inset
+
+recapture
+\begin_inset Quotes erd
+\end_inset
+
+) is always the total fecundity from all adults.
+ With SPs,
+ though,
+ if we know that the first sample would be age 10 when the second sample is taken (and that the second sample really is age 10),
+ then the only 
+\begin_inset Quotes eld
+\end_inset
+
+competition
+\begin_inset Quotes erd
+\end_inset
+
+ comes from other 10yos in the population;
+ it is restricted to one age class.
+ Although it is easy to write a purely-age-structured version of eqn 
+\begin_inset Formula $\left(\ref{eq:self-staged}\right)$
+\end_inset
+
+,
+ the model would then needsto explicitly keep track of numbers-at-age,
+ not just of total adults.
+ Of course,
+ we could get that by leaning more heavily on the quasi-equilibrium assumption;
+ but to do so unrealistically optimistic,
+ because that assumption directly constrains relative abundances-at-age.
+ Thus,
+ for example,
+ the 10yo samples are somewhat magically providing direct estimates of the abundance of 30yos.
+ In practice,
+ if we do use a fully age-structured CKMR formulation on the real data,
+ we will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
+ and that will require estimating additional parameters.
+ The statistical information unavoidably expended on estimating those parameters,
+ would reduce the information available about abundance etc.
+ We therefore opted for a stage- rather than age-structured SP model to match our simple stage-structured population dynamics model,
+ in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated and flexible fully-age-structured population dynamics.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -4565,8 +4698,23 @@ nolink "false"
 
 .
  For these simulations,
- we simulated historical sampling according to realized sample sizes by age and sex and future sampling by target sample sizes by age class.
+ we simulated historical sampling according to realized sample sizes by age and sex
+\change_inserted 193499690 1738064825
+,
+
+\change_unchanged
+ and future sampling by target sample sizes by age class.
  We simulated scenarios with (L2) and without (L1) the collection of 100 lethal samples per year in sampling years.
+\begin_inset Note Greyedout
+status collapsed
+
+\begin_layout Plain Layout
+This is where we-all might wanna consider investigatin wotif a LOT more lethal ones;
+ 100 is too small to help.
+\end_layout
+
+\end_inset
+
  We also simulated various reductions in sampling effort,
  either by reducing the number of sampling years or by reducing the amount of sampling effort within years (S1-S7;
  Table 

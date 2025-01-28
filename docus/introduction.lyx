@@ -427,8 +427,9 @@ literal "false"
  The data requirements are otherwise quite flexible;
  the kinships used in any particular study can vary depending on logistic and modeling considerations.
  
-\change_inserted 193499690 1737966303
-Given good-quality tissue samples,
+\change_inserted 193499690 1738064265
+Genotyping methods are beyond the scope of this paper but,
+ given good-quality tissue samples,
  modern high-throughput sequencing and microarrays are cheap and reliable enough to permit reliable and (almost) unambiguous detection of small numbers of kin-pairs within large sample sizes
 \begin_inset Note Greyedout
 status open
@@ -540,8 +541,8 @@ hard parts
 \end_inset
 
  such as teeth or otoliths
-\change_inserted 193499690 1737963627
-,
+\change_inserted 193499690 1738058734
+ (requiring lethal samples),
 
 \change_unchanged
  or
@@ -560,17 +561,121 @@ hard parts
  or from a visual assessment of life-stage
 \change_unchanged
 .
- However,
- the advent of epigenetic ageing (Polanowski**;
- Mayne**lungfish;
- **something recent on mammals?) makes it possible to use just the biopsy sample itself.
- Uncertainty in age and other covariate estimates can be accommodated within the model,
- though the precision of parameter estimates is of course linked both to sample sizes,
- and to the accuracy of covariate measurements.
+ 
+\change_deleted 193499690 1738057405
+However,
+ t
+\change_inserted 193499690 1738057405
+T
+\change_unchanged
+he advent of epigenetic ageing (
+\change_inserted 193499690 1738058640
+e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Weber2024DNAgeray,Robeck2023DNAgepinni,Peters2023DNAgebotdol"
+literal "false"
+
+\end_inset
+
+) 
+\change_unchanged
+makes it possible to use just the biopsy sample itself.
+ Uncertainty in age and other covariate estimates can be accommodated within the 
+\change_inserted 193499690 1738058657
+CK MR 
+\change_unchanged
+model,
+ though the precision of parameter estimates is of course 
+\change_deleted 193499690 1738058774
+linked both to sample sizes,
+ and to
+\change_unchanged
+to the accuracy of covariate measurements.
+\change_inserted 193499690 1738060535
+
 \end_layout
 
 \begin_layout Standard
-Devising the formulae for the expected frequencies of kinships requires 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+I think we need 
+\emph on
+some
+\emph default
+ description of how CKMR is built up,
+ either in INtro or Methods.
+ But if we leave it til Methods,
+ the para after this looks pretty weird.
+
+\change_deleted 193499690 1738060538
+ 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted 193499690 1738060533
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1738060848
+
+\lang english
+The basic principle behind kinship probabilities is 
+\begin_inset Quotes eld
+\end_inset
+
+ERRO
+\begin_inset Quotes erd
+\end_inset
+
+ (Expected Relative Reproductive Output).
+ Roughly:
+ the chance of any particular male adult sample being the father of some offspring that was sampled independently,
+ is the ratio of that adult's expected fecundity to the total fecundity of all males,
+ at the time the offspring was born.
+ (That version is not completely rigorous;
+ it is possible to devise one,
+ as in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ but only at the expense of length and clarity.) 
+\begin_inset Quotes eld
+\end_inset
+
+Expected fecundity
+\begin_inset Quotes erd
+\end_inset
+
+ is calculated conditional on covariates of the samples in question,
+ for example projecting the length of a fish (which is linked to its fecundity) back in time from adult capture to offspring birth.
+ Phenomena such as size-fecundity relationships need to be expressed in parametrized form,
+ with the values of the parameters to be estimated alongside other demographic parameters when the model is fitted to data.
+ It is necessary to give 
+\change_deleted 193499690 1738060848
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1738060841
+Devising the formulae for the expected frequencies of kinships requires
+\change_unchanged
+ 
 \change_inserted 193499690 1737940523
 at least qualitative
 \begin_inset Note Greyedout
@@ -584,9 +689,27 @@ implying that we don't need to have prior estiamtes of demog parameters for ever
 
  
 \change_unchanged
-consideration of the life history and reproductive biology of the organism in question,
+consideration 
+\change_inserted 193499690 1738061317
+to
+\change_deleted 193499690 1738061320
+of
+\change_unchanged
+ the life history and reproductive biology of the 
+\change_inserted 193499690 1738060860
+species
+\change_deleted 193499690 1738060861
+organism in question
+\change_unchanged
+,
  as well as aspects of the sampling.
- Knowing about reproductive strategy is also important for both sampling and probability of kinship:
+ 
+\change_deleted 193499690 1738060891
+Knowing about reproductive strategy is also important for both sampling and probability of kinship
+\change_inserted 193499690 1738060892
+For example
+\change_unchanged
+:
  does the population breed in one place and at one time?
  Does the species have a polygynous mating structure?
  Are breeding animals as likely to be sampled as 
@@ -598,8 +721,15 @@ resting
 \end_inset
 
  ones?
-\change_inserted 193499690 1737940477
 
+\change_deleted 193499690 1738060686
+ 
+\change_inserted 193499690 1738061231
+Not everything matters,
+ but anything that affects ERRO should,
+ in principle,
+ be allowed for in the model.
+ We give walrus-flavoured examples in Methods.
 \end_layout
 
 \begin_layout Standard
@@ -662,6 +792,23 @@ Walrus biology and background
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 193499690 1738061327
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1738061341
+I have not looked at this (and am not planning to!) but see comments at the end
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 The walrus is a gregarious,
  ice-associated pinniped inhabiting continental shelf waters of the Bering and Chukchi seas.
  During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea 
@@ -909,7 +1056,7 @@ literal "false"
 \begin_layout Standard
 
 \change_inserted 193499690 1736675266
-***NEED something about walrus moving about all over the goddamn place,
+***NEED something about walrus moving about all over the place,
  from IMR data and (more likely) sat tags :) Some of that *could* go to the Discussion,
  but I think aat least a pre-mention here,
  coz it will otherwise be in the alert reader's mind as they look at the model structure
