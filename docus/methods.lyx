@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -124,13 +124,7 @@ i
 \shape italic
 ii
 \shape default
-) formulate kinship probabilities between pairs of 
-\change_inserted 193499690 1737934998
-samples
-\change_deleted 193499690 1737934999
-individuals
-\change_unchanged
-.
+) formulate kinship probabilities between pairs of samples.
  The population dynamics model incorporates demographic parameters that will need to be estimated:
  survival rates,
  adult abundance in some reference year,
@@ -163,7 +157,7 @@ Some of that para might repeat stuff in the Intro
 \begin_layout Subsection
 Biological considerations
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 could some of this go in the intro?
@@ -208,25 +202,7 @@ nolink "false"
 \change_unchanged
 .
  We do not expect females to vary much in terms of individual fecundity.
- The population is well-mixed across its range,
- with no evidence of site fidelity within or between years (CITE)
-\change_deleted 193499690 1736748236
-.
- We consider individuals of ages 1-5 to be juvenile and adult from 6 onwards,
- we do not consider individuals of age 0,
- as they are still associated with their mother.
-\change_unchanged
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-coming next...
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2529,8 +2505,15 @@ nolink "false"
 \end_inset
 
 ),
- which were based on rates reported in Taylor et al.
- XXXX.
+ which were based on rates reported in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+.
  Individuals that are at or beyond the age of first reproduction mate randomly and males can potentially father more than one calf.
  Females reproduction follows Section
 \begin_inset space ~
@@ -2651,7 +2634,7 @@ nolink "false"
 \begin_layout Standard
 All simulations had a starting population size of 250,000 and were run from 1950 to 2030.
  To evaluate agreement between the simulation and CKMR model,
- we generated 10 replicate simulated datasets with demographic parameters under a null scenario as in Table 
+ we generated 50 replicate simulated datasets with demographic parameters under a null scenario as in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:demo-pars"
@@ -3638,7 +3621,7 @@ S0
 \noun off
 \color none
 NULL:
- 100% effort 2023-2028
+ 100% effort 2023-20287
 \end_layout
 
 \end_inset
@@ -3762,21 +3745,7 @@ NULL:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-1
+0
 \end_layout
 
 \end_inset
@@ -5058,10 +5027,6 @@ nolink "false"
 
 \begin_layout Standard
 We used the simulated samples from each simulated dataset to...not sure whether this should be explained here or after design calcs.
-\end_layout
-
-\begin_layout Subsection
-Sensitivity analyses
 \end_layout
 
 \begin_layout Subsection

@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
@@ -79,7 +79,7 @@ Provides natbib 1
 \papersides 1
 \paperpagestyle default
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content true
@@ -151,18 +151,12 @@ literal "false"
 
 \end_inset
 
-
-\change_deleted 193499690 1737939979
- for more detail on the points made below
-\change_unchanged
 ) is a framework for using these kinships,
  as inferred from genotypes,
  to estimate abundance and demographic parameters.
  CKMR provides additional flexibility compared with IMR since lethal samples (from sampling,
  hunting,
- natural mortality etc.) and/or non-lethal samples can be used
-\change_inserted 193499690 1737940038
-;
+ natural mortality etc.) and/or non-lethal samples can be used;
  it also increases the effective sample size,
  since more types of 
 \begin_inset Quotes eld
@@ -173,8 +167,6 @@ recapture
 \end_inset
 
  are possible.
-
-\change_unchanged
  As of 2025,
  most CKMR projects have been for commercial fish (e.g.,
  
@@ -253,38 +245,7 @@ recaptures
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1737963498
- 
-\change_unchanged
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-I moved this from the end of the Intro,
- where it was mingled with walrus details.
-\end_layout
-
-\end_inset
-
-CKMR has mostly been used in situations where self-recaptures are unlikely or impossible (e.g.
-\change_deleted 193499690 1737951593
-,
- because the population is very large,
- or
-\change_unchanged
-
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-That's almost as much of a problem for CKMR as for IMR;
- it's more that the huge-population applics tend to be lethal sampling...
-\end_layout
-
-\end_inset
-
+CKMR has mostly been used in situations where self-recaptures are unlikely or impossible (e.g.,
  because sampling is lethal).
  
 \begin_inset CommandInset citation
@@ -297,26 +258,12 @@ literal "false"
  did include IMR results in a CKMR study but did not integrate both datasets into a single model.
  Here,
  we focus on a population where IMR was the original project goal;
- and therefore we extend traditional CKMR to include IMR in the same model as an additional kinship type
-\change_inserted 193499690 1737965021
-,
- whereby pairwise genetic comparison can also show that two samples are from the same animal rather than,
- say,
- a parent-offspring pair
-\change_unchanged
-.
- 
-\change_inserted 193499690 1737964782
-
+ therefore we extend traditional CKMR to include IMR in the same model as an additional kinship type,
+ whereby pairwise genetic comparison can show that two samples are from the same animal.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1737965085
-Getting useful results from CKMR and\SpecialChar breakableslash
-or IMR depends on getting enough useful data—
- specifically,
- recaptures.
+The success of CKMR and/or IMR depends on whether data collected contain sufficient recaptures.
  Sampling design (e.g.
  number of samples,
  composition,
@@ -324,7 +271,7 @@ or IMR depends on getting enough useful data—
  quality of covariate measurements) is crucial to avoid expensive,
  embarrassing,
  and predictable failure.
- The pairwise-comparison framework leads to analytical results for expected number of kin-pairs and expected variance,
+ The pairwise-comparison framework leads to analytical results for expected number of kin-pairs and expected variance given expected number of samples (and associated covariates),
  so that simulation is not essential;
  nevertheless,
  simulation can sometimes be useful as a way to check the fairly complex code of kinship probabilities and design setup.
@@ -335,23 +282,13 @@ Odobenus rosmarus divergens
 ;
  hereafter,
  walrus) in the North Pacific.
- 
-\change_unchanged
-We 
-\change_deleted 193499690 1737965086
-then 
-\change_unchanged
-explore different demographic and design scenarios for walrus using IMR alone versus CKMR + IMR = ICKMR,
+ We explore different demographic and design scenarios for walrus using IMR alone versus CKMR + IMR = ICKMR,
  and demonstrate how the latter can be used to substantially reduce the overall amount of survey effort required for adequate monitoring.
-\change_inserted 193499690 1737965363
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1737965997
 In the rest of this Introduction,
- we give a little more background first on CKMR (drawn from 
+ we provide some background on CKMR (drawn from 
 \begin_inset CommandInset citation
 LatexCommand citealt
 key "bravington_close-kin_2016"
@@ -360,62 +297,27 @@ literal "false"
 \end_inset
 
  and experience on numerous projects since),
- and second on walrus biology and the survey setup.
+ and on walrus biology and the survey setup.
  In Methods,
- we describe our walrus population dynamics model;
- derive walrus-appropriate kinship probability formulae;
- and show how to calculate analytically the expected variances that might come from different survey designs.
+ we describe our walrus population dynamics model,
+ derive walrus-appropriate kinship probability formulae,
+ and show how to analytically calculate the expected variances that might come from different survey designs.
  We also outline the simulation setup which we used to test our CKMR model.
- The Results section shows how different survey designs are likely to perform (e.g.
+ The Results section shows how different survey designs are likely to perform (e.g.,
  with\SpecialChar breakableslash
 without CKMR).
  In the Discussion,
  we summarize our conclusions for walrus,
- and also mention some modeling simplifications made for design purposes that we may wish to reconsider when the real data arrives.
+ and also mention some modeling simplifications made for design purposes that we may wish to reconsider when working with real data.
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 193499690 1737964175
 Close-kin practicalities
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-Most 
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-Although I don't lurv jargon,
- the key point for CKMR really is:
- do they breed several times?
- Hence...
-\end_layout
-
-\end_inset
-
- 
-\change_inserted 193499690 1737965676
-iteroparous species 
-\change_unchanged
-are potential candidates for CKMR,
- except 
-\change_deleted 193499690 1737965684
-semelparous (breed-once-and-die) species and
-\change_inserted 193499690 1737965687
- for
-\change_unchanged
- a few pathological cases 
-\change_inserted 193499690 1737965163
-such as those 
-\change_unchanged
-mentioned 
-\change_inserted 193499690 1737965166
-in 
-\change_unchanged
-
+Most iteroparous species are potential candidates for CKMR,
+ except for a few pathological cases such as those mentioned in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "bravington_close-kin_2016"
@@ -426,41 +328,11 @@ literal "false"
 .
  The data requirements are otherwise quite flexible;
  the kinships used in any particular study can vary depending on logistic and modeling considerations.
- 
-\change_inserted 193499690 1738064265
-Genotyping methods are beyond the scope of this paper but,
+ Genotyping methods are beyond the scope of this paper but,
  given good-quality tissue samples,
- modern high-throughput sequencing and microarrays are cheap and reliable enough to permit reliable and (almost) unambiguous detection of small numbers of kin-pairs within large sample sizes
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1737966337
-Reviewers will,
- tediously,
- probably clamour for a reference here.
- I will let someone else dig one up...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-.
- At least with current genetic methods,
- the 
-\change_deleted 193499690 1737966229
-However,
- CKMR does require fairly unambiguous pairwise kinship determination which,
- at least with current genetic methods,
- limits 
-\change_unchanged
-the 
-\change_inserted 193499690 1737965710
-informative and 
-\change_unchanged
-usable types of 
+ modern high-throughput sequencing and microarrays are cheap and reliable enough to permit reliable and (almost) unambiguous detection of small numbers of kin-pairs within large sample sizes [REF NEEDED].
+ With current genetic methods,
+ the the informative and usable types of 
 \begin_inset Quotes eld
 \end_inset
 
@@ -468,31 +340,12 @@ close
 \begin_inset Quotes erd
 \end_inset
 
- kin 
-\change_inserted 193499690 1737966240
-are usually limited 
-\change_unchanged
-to 
-\change_deleted 193499690 1737964640
-three or four
-\change_unchanged
-:
- Parent-Offspring Pairs (POPs)
-\change_inserted 193499690 1737965710
- and Half-Sibling Pairs (HSPs,
+ kin are usually limited to:
+ Parent-Offspring Pairs (POPs) and Half-Sibling Pairs (HSPs,
  which share one parent).
  In some applications,
- 
-\change_deleted 193499690 1737965201
-,
- 
-\change_unchanged
-Full-Sibling Pairs (FSP),
- and 
-\change_inserted 193499690 1737965710
-other 
-\change_unchanged
-
+ Full-Sibling Pairs (FSP),
+ and other 
 \begin_inset Quotes eld
 \end_inset
 
@@ -500,23 +353,11 @@ second-order kin
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_inserted 193499690 1737965710
  beside HSPs such as Grandparent-Grandchild Pairs (GGPs),
  may also be important.
-\change_deleted 193499690 1737965273
-,
- which are primarily Half-Sibling Pairs (HSP;
- one shared parent).
-
-\change_unchanged
- 
-\change_inserted 193499690 1737965710
-To deal with IMR in the same framework,
+ To deal with IMR in the same framework,
  we add the kinship category Self-Pair (SP).
- 
-\change_unchanged
-Any other kinship constitutes an 
+ Any other kinship constitutes an 
 \begin_inset Quotes eld
 \end_inset
 
@@ -526,8 +367,6 @@ Unrelated Pair
 
  (UP) for modelling purposes,
  even if there is genetic evidence of weak relatedness.
-\change_inserted 193499690 1737965710
-
 \end_layout
 
 \begin_layout Standard
@@ -540,37 +379,9 @@ hard parts
 \begin_inset Quotes erd
 \end_inset
 
- such as teeth or otoliths
-\change_inserted 193499690 1738058734
- (requiring lethal samples),
-
-\change_unchanged
- or
-\change_deleted 193499690 1737963628
-,
-
-\change_unchanged
- less accurately
-\change_deleted 193499690 1737963629
-,
-
-\change_unchanged
- from covariates such as body size
-\change_inserted 193499690 1737963633
-,
- or from a visual assessment of life-stage
-\change_unchanged
-.
- 
-\change_deleted 193499690 1738057405
-However,
- t
-\change_inserted 193499690 1738057405
-T
-\change_unchanged
-he advent of epigenetic ageing (
-\change_inserted 193499690 1738058640
-e.g.
+ such as teeth or otoliths (requiring lethal samples),
+ or less accurately from covariates such as body size or from a visual assessment of life-stage.
+ The advent of epigenetic ageing (e.g.
  
 \begin_inset CommandInset citation
 LatexCommand citealp
@@ -579,54 +390,12 @@ literal "false"
 
 \end_inset
 
-) 
-\change_unchanged
-makes it possible to use just the biopsy sample itself.
- Uncertainty in age and other covariate estimates can be accommodated within the 
-\change_inserted 193499690 1738058657
-CK MR 
-\change_unchanged
-model,
- though the precision of parameter estimates is of course 
-\change_deleted 193499690 1738058774
-linked both to sample sizes,
- and to
-\change_unchanged
-to the accuracy of covariate measurements.
-\change_inserted 193499690 1738060535
-
+) makes it possible to use just the biopsy sample itself.
+ Uncertainty in age and other covariate estimates can be accommodated within the CKMR model,
+ though the precision of parameter estimates is of course linked to the accuracy of covariate measurements.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-I think we need 
-\emph on
-some
-\emph default
- description of how CKMR is built up,
- either in INtro or Methods.
- But if we leave it til Methods,
- the para after this looks pretty weird.
-
-\change_deleted 193499690 1738060538
- 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_inserted 193499690 1738060533
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738060848
 
 \lang english
 The basic principle behind kinship probabilities is 
@@ -639,77 +408,13 @@ ERRO
 
  (Expected Relative Reproductive Output).
  Roughly:
- the chance of any particular male adult sample being the father of some offspring that was sampled independently,
- is the ratio of that adult's expected fecundity to the total fecundity of all males,
- at the time the offspring was born.
- (That version is not completely rigorous;
- it is possible to devise one,
- as in 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington_close-kin_2016"
-literal "false"
-
-\end_inset
-
-,
- but only at the expense of length and clarity.) 
-\begin_inset Quotes eld
-\end_inset
-
-Expected fecundity
-\begin_inset Quotes erd
-\end_inset
-
- is calculated conditional on covariates of the samples in question,
- for example projecting the length of a fish (which is linked to its fecundity) back in time from adult capture to offspring birth.
- Phenomena such as size-fecundity relationships need to be expressed in parametrized form,
- with the values of the parameters to be estimated alongside other demographic parameters when the model is fitted to data.
- It is necessary to give 
-\change_deleted 193499690 1738060848
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 193499690 1738060841
-Devising the formulae for the expected frequencies of kinships requires
-\change_unchanged
+ the chance of any particular adult sample being the parent of some offspring that was sampled independently,
+ is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
  
-\change_inserted 193499690 1737940523
-at least qualitative
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-implying that we don't need to have prior estiamtes of demog parameters for everything
-\end_layout
-
-\end_inset
-
- 
-\change_unchanged
-consideration 
-\change_inserted 193499690 1738061317
-to
-\change_deleted 193499690 1738061320
-of
-\change_unchanged
- the life history and reproductive biology of the 
-\change_inserted 193499690 1738060860
-species
-\change_deleted 193499690 1738060861
-organism in question
-\change_unchanged
-,
+\lang american
+Devising the formulae for the expected frequencies of kinships requires at least qualitative consideration to the life history and reproductive biology of the species,
  as well as aspects of the sampling.
- 
-\change_deleted 193499690 1738060891
-Knowing about reproductive strategy is also important for both sampling and probability of kinship
-\change_inserted 193499690 1738060892
-For example
-\change_unchanged
-:
+ For example:
  does the population breed in one place and at one time?
  Does the species have a polygynous mating structure?
  Are breeding animals as likely to be sampled as 
@@ -721,94 +426,18 @@ resting
 \end_inset
 
  ones?
-
-\change_deleted 193499690 1738060686
- 
-\change_inserted 193499690 1738061231
-Not everything matters,
+ Not everything matters,
  but anything that affects ERRO should,
  in principle,
  be allowed for in the model.
- We give walrus-flavoured examples in Methods.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-I suggest zapping the next para;
- some bits have been moved to earlier,
- other bits should probably go to the Discussion?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 193499690 1737966353
-To design an effective survey,
- it is important to consider whether desired monitoring goals can be met given available time,
- money,
- and effort.
- Because of the genetic component,
- CKMR and genetic IMR do incur extra costs relative to,
- say,
- photographic IMR,
- but that aspect of cost continues to decrease as new sequencing technology comes online.
- The non-laboratory costs remain as they ever were for mark-recapture (or any other observational study):
- person-hours in the field.
- As is the case with all fieldwork,
- researchers aim to maximize information gathering while minimizing cost and also keeping people safe.
- This leads us to the question of “how many samples?”.
- In the case of CKMR,
- this is relatively easy to calculate.
- Given some information on demographics and abundance (from existing genetic surveys,
- pilot studies,
- or the literature),
- we can calculate how many kin pairs one is likely to obtain from a given number and composition (e.g.,
- by age) of samples,
- and what CV is likely to be obtained for various demographic parameters of interest.
- In this paper we show how to do these calculations using a case study on the Pacific walrus (
-\emph on
-Odobenus rosmarus divergens
-\emph default
-;
- hereafter,
- walrus) in the North Pacific.
-\change_inserted 193499690 1737942686
-
+ We give walrus-specific examples in Methods.
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 193499690 1737940080
 Walrus biology and background
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1738061327
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1738061341
-I have not looked at this (and am not planning to!) but see comments at the end
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
 The walrus is a gregarious,
  ice-associated pinniped inhabiting continental shelf waters of the Bering and Chukchi seas.
  During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea 
@@ -828,6 +457,18 @@ literal "false"
  because it generally follows the marginal ice zone (a moving,
  changing habitat which contains a mix of ice floes and water) but also concentrates in regions of high benthic productivity.
  This allows walruses to forage for benthic invertebrates while simultaneously having access to a nearby substrate for hauling out.
+\end_layout
+
+\begin_layout Standard
+***NEED something about walrus moving about all over the place,
+ from IMR data and (more likely) sat tags :) Some of that *could* go to the Discussion,
+ but I think aat least a pre-mention here,
+ coz it will otherwise be in the alert reader's mind as they look at the model structure
+\end_layout
+
+\begin_layout Standard
+***Walrus reprod biol summary should go here?
+ Rather than putting it off until Methods.
 \end_layout
 
 \begin_layout Standard
@@ -1049,62 +690,8 @@ literal "false"
  which,
  through CKMR,
  can substantially augment the information content of genetic IMR without increasing sampling effort.
+ [2028 words].
 \change_inserted 193499690 1736674837
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1736675266
-***NEED something about walrus moving about all over the place,
- from IMR data and (more likely) sat tags :) Some of that *could* go to the Discussion,
- but I think aat least a pre-mention here,
- coz it will otherwise be in the alert reader's mind as they look at the model structure
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1737966460
-***Walrus reprod biol summary should go here?
- Rather than putting it off until Methods.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Next has been moved higher.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 193499690 1737942001
-CKMR has mostly been used in situations where self-recaptures are unlikely or impossible (e.g.,
- because the population is very large,
- or because sampling is lethal) although 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "lloyd-jones_close-kin_2023"
-literal "false"
-
-\end_inset
-
- did include IMR in a CKMR study but not integrated into a single model.
- Here,
- we focus on a population where IMR was the original project goal and therefore we extend traditional CKMR to include IMR in the same model as an additional kinship type.
- We then explore different demographic and design scenarios for walrus using IMR alone versus CKMR + IMR = ICKMR and demonstrate how the latter can be used to substantially reduce the overall amount of survey effort required for adequate monitoring.
- [1822 words]
-\change_unchanged
 
 \end_layout
 
