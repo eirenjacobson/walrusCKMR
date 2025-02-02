@@ -127,6 +127,93 @@ obvs the checks passed (eventually...).
 Survey design
 \end_layout
 
+\begin_layout Subsubsection
+Demographic parameters
+\end_layout
+
+\begin_layout Standard
+The simulated values of adult female survival and post-senescent adult female survival (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) resulted in effective survival of 0.96,
+ 0.95,
+ 0.96 for stable,
+ decreasing,
+ and increasing populations respectively.
+ The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.02).
+ The mean expected CVs were 0.02 (range 0.01-0.04),
+ 0.01 (range 0.01-0.02),
+ and 0.03 (0.01-0.06) for stable,
+ decreasing,
+ and increasing populations respectively.
+ Expected CVs were less than 0.2 for all scenarios where CKMR was applied,
+ but as high as 0.06 when it was not.
+ 
+\end_layout
+
+\begin_layout Standard
+The simulated values of juvenile female survival were 0.9,
+ 0.85,
+ and 0.925 (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Again,
+ the expected CVs on juvenile survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.02).
+ The mean expected CVs on juvenile female survival were 0.06 (range 0.04-0.09),
+ 0.03 (range 0.02-0.05),
+ and 0.07 (range 0.05-0.07) for stable,
+ decreasing,
+ and increasing populations respectively.
+\end_layout
+
+\begin_layout Standard
+Across all demographic and sampling scenarios,
+ the simulated proportion of adult females in breeding state 2 was 0.26.
+ The expected CVs varied greatly depending on both demographic and sampling scenario,
+ but were notably lower when ICKMR was used compared to IMR (mean decrease in CV = 0.82).
+ The mean expected CVs on the proportion of adult females in breeding state 2 were 0.54,
+ 0.31,
+ and 0.66 for stable,
+ decreasing,
+ and increasing populations respectively.
+\end_layout
+
+\begin_layout Standard
+See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:LH_Expected-CVs"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ for expected CVs of life history parameters across all demographic and sampling scenarios with and without the use of lethal samples and ICKMR.
+\end_layout
+
+\begin_layout Subsubsection
+Adult female abundance
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement document
@@ -328,6 +415,18 @@ nolink "false"
  The mean gain in CV on adult female abundance in paired scenarios with and without ICKMR was 11% for a stable population,
  5% for a decreasing population,
  and 15% for an increasing population.
+ See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:N_Expected-CV"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ for expected CVs of adult female abundance across all demographic and sampling scenarios with and without the use of ICKMR.
 \end_layout
 
 \begin_layout Standard
@@ -447,9 +546,9 @@ nolink "false"
 \end_inset
 
 ).
- The expected CV on estimates of adult female abundance in 2025,
+ The expected CVs on estimates of adult female abundance in 2025,
  2020,
- and 2025 was comparable between these sampling scenarios (Fig.
+ and 2025 were comparable between these sampling scenarios (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -486,7 +585,7 @@ nolink "false"
 
 ,
  bottom panel).
- This suggests that more years of effort with fewer samples collected per year could improve overall precision.
+ This suggests that more years of effort with fewer samples collected per year could improve overall precision in estimates of adult female abundance.
 \end_layout
 
 \end_body
