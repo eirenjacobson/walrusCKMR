@@ -91,7 +91,6 @@ InStar
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
-\author 193499690 "mvb"
 \end_header
 
 \begin_body
@@ -142,30 +141,10 @@ ii
  kinship probability formula,
  design calculations,
  and simulation setup.
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Some of that para might repeat stuff in the Intro
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 Biological considerations
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-could some of this go in the intro?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -195,14 +174,8 @@ nolink "false"
  Our samples comprise juvenile and adult females,
  plus juvenile males;
  the problems are with modelling males as parents,
- but we can safely use sampled juvenile males as potential offspring of females and as potential maternal half-siblings of other (female or male) samples
-\change_deleted 193499690 1737935775
-,
- below
-\change_unchanged
-.
+ but we can safely use sampled juvenile males as potential offspring of females and as potential maternal half-siblings of other (female or male) samples.
  We do not expect females to vary much in terms of individual fecundity.
- 
 \end_layout
 
 \begin_layout Standard
@@ -212,13 +185,7 @@ We assume that age estimates will be available for all samples,
  which could be problematic for CKMR.
  Our model is structured to allow for errors in estimated age (with standard deviation assumed known i.e.,
  after calibration of epigenetic against known-age samples),
- though the results 
-\change_deleted 193499690 1737935802
-here
-\change_inserted 193499690 1737935805
-later on
-\change_unchanged
- assume that there are no errors;
+ though the results here assume that there are no errors;
  see Discussion.
 \end_layout
 
@@ -229,11 +196,7 @@ Stage-structured quasi-equilibrium dynamics
 \begin_layout Standard
 For our female-only population dynamics model,
  we could choose between a fully-age-structured or a stage-structured (juvenile+adult) approach.
- We opted for the latter because (i) most female adults are expected to have similar reproductive capacity and chance of survival
-\change_inserted 193499690 1737935829
-,
-
-\change_unchanged
+ We opted for the latter because (i) most female adults are expected to have similar reproductive capacity and chance of survival,
  regardless of age (unlike with teleost fish,
  say);
  and (ii) stage-structured models are simpler to code for CKMR and require fewer parameters—
@@ -281,18 +244,7 @@ at sampling
 
 ),
  and that an offspring's survival from age 1 onwards is independent of its mother's survival,
- whether or not the offspring has weaned yet
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Walrus reprod biol should describe how this stuff works.
- It's uttlerly different from most seals.
-\end_layout
-
-\end_inset
-
-.
+ whether or not the offspring has weaned yet.
  We assume that adult female abundance is increasing or decreasing exponentially over the period covered by the population dynamics (2000–2027;
  the lower limit of 
 \begin_inset Formula $y_{0}=$
@@ -300,62 +252,6 @@ Walrus reprod biol should describe how this stuff works.
 
 2000 is set because there were fairly drastic changes in the population prior to that).
  We have
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Elsewhere we have 
-\begin_inset Formula $N(y,A)$
-\end_inset
-
- I think.
- I don't mind the bracketed version.
- If we do go with subscripts instead,
- then I'd prefer to drop commas wherever possible,
- coz theyre bloody hard to read in subscript font.
- EG 
-\begin_inset Formula $N_{y_{0}A}$
-\end_inset
-
- is fine coz there's no ambiguity.
- Also I wonder if we have a bit of notational trouble here:
- 
-\begin_inset Formula $N_{ya}$
-\end_inset
-
- usually means 
-\begin_inset Quotes eld
-\end_inset
-
-numbers at year and age
-\begin_inset Quotes erd
-\end_inset
-
- (with fish...) and we'll need that below;
- but here 
-\begin_inset Formula $N_{y\text{A}}$
-\end_inset
-
- is meaning 
-\begin_inset Quotes eld
-\end_inset
-
-all Adults
-\begin_inset Quotes erd
-\end_inset
-
-...
-
-\change_deleted 193499690 1737935902
- 
-\change_unchanged
- I have not changed this elsewhere,
- leaving up to other authors
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{align}
 N_{y,\text{A}} & =N_{y_{0},\text{A}}e^{r(y-y_{0})}\label{popdyn}
@@ -371,67 +267,34 @@ where
 \begin_inset Formula $y$
 \end_inset
 
-
-\change_deleted 193499690 1737936189
-.
-\change_inserted 193499690 1737936192
 ,
- and
-\change_unchanged
- 
+ and 
 \begin_inset Formula $e^{r}$
 \end_inset
 
- is the 
-\begin_inset Note Greyedout
-status open
+ is the rate of population increase.
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
-Is that terminology right?
- I think 
-\begin_inset Formula $r$
+MARK:
+ before you complain about the commas in the subscripts,
+ these are necessary for later (esp.
+ appendices) where we have quantities like 
+\begin_inset Formula $N_{y+1,A}$
 \end_inset
 
- is intantaneous rate of increase (but still has units of yr
-\begin_inset script superscript
-
-\begin_layout Plain Layout
--1
+ etc and we need to make it clear what we're talking about.
+ If we don't leave them in throughout some boring reviewer will tell us we're not being consistent.
 \end_layout
 
 \end_inset
 
-).
- I'm never sure how to refert to eg 
-\begin_inset Formula $e^{r}$
-\end_inset
 
- which is annual relative abundance factor;
- it's not per se a change,
- which would be N(y+1)/N(y)-1 .
-\end_layout
-
-\end_inset
-
-rate of population increase.
 \end_layout
 
 \begin_layout Standard
-Age composition within stage 
-\change_inserted 193499690 1737936577
-turns out not to matter
-\change_deleted 193499690 1737936579
-is not required
-\change_unchanged
- for 
-\change_deleted 193499690 1737936583
-calculating 
-\change_unchanged
-MOP and XmHSP probabilities
-\change_deleted 193499690 1737936587
- as below
-\change_unchanged
-,
+Age composition within stage turns out not to matter for MOP and XmHSP probabilities,
  but it is relevant for SPs.
  For that purpose,
  we assume that age composition over the period is adequately described by the stable-age or 
@@ -447,7 +310,7 @@ quasi-equilibrium" distribution consistent with survival
 \end_inset
 
 .
- As shown in e.g.
+ As shown in e.g.,
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -456,18 +319,13 @@ literal "false"
 
 \end_inset
 
- section
-\begin_inset space ~
-\end_inset
-
-5,
- this is
-\begin_inset Note Greyedout
+ Chapter 5,
+ this is 
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-can someone please check this;
- I've just typed from intuition!
+this looks like (5.1.4) in K+C (2005)
 \end_layout
 
 \end_inset
@@ -478,7 +336,7 @@ can someone please check this;
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-N_{ya}\propto N_{y\text{A}}\phi_{\text{A}}^{a}e^{-ra}\label{eq:stabeq}
+N_{y,a}\propto N_{y,\text{A}}\phi_{\text{A}}^{a}e^{-ra}\label{eq:stabeq}
 \end{gather}
 
 \end_inset
@@ -498,126 +356,40 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Can we refer to the breeding states always as S1,
- S2,
- S3?
- That reduces confusion with eg the use of 
-\begin_inset Quotes eld
-\end_inset
-
-age 5
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-2 year gap
-\begin_inset Quotes erd
-\end_inset
-
- and so on...
- I have not made that change everywhere,
- in case others disagree violently...
-\end_layout
-
-\end_inset
-
 We use a Markov model to describe the walrus breeding cycle.
  We assume three breeding states:
- (
-\change_inserted 193499690 1737936816
-S
-\change_unchanged
-1) pregnant
-\change_deleted 193499690 1737936616
-,
-\change_inserted 193499690 1737936616
-;
-
-\change_unchanged
- (
-\change_inserted 193499690 1737936821
-S
-\change_unchanged
-2) with young-of-the-year (YOTY) calf
-\change_inserted 193499690 1737936620
-;
-
-\change_unchanged
- or
-\change_deleted 193499690 1737936622
-,
-
-\change_unchanged
- (
-\change_inserted 193499690 1737936823
-S
-\change_unchanged
-3) non-breeding
-\change_deleted 193499690 1737936625
-;
-\change_inserted 193499690 1737936626
-,
-
-\change_unchanged
+ (S1) pregnant;
+ (S2) with young-of-the-year (YOTY) calf;
+ or (S3) non-breeding,
  i.e.,
  neither of the above.
  The Markov property assumes that next year's state depends only on this year's.
- 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Would it better just to point to the Diagram here?
- The written description gets hard-to-follow;
- it's written perfectly well,
- but it's simply difficult (for me) to 
-\end_layout
-
-\end_inset
-
-From state 1 (pregnant),
- next year's state must be 2 (with YOTY calf).
- From state 2,
- a female may next year either return to state 1 (become pregnant again),
+ From state S1 (pregnant),
+ next year's state must be S2 (with YOTY calf).
+ From state S2,
+ a female may next year either return to state S1 (become pregnant again),
  with probability 
 \begin_inset Formula $\psi_{2}$
 \end_inset
 
 ,
- or move to state 3 (neither pregnant nor with calf) with probability 
+ or move to state S3 (neither pregnant nor with calf) with probability 
 \begin_inset Formula $1-\psi_{2}$
 \end_inset
 
 .
- From state 3,
- she will either move to state 1 (become pregnant) with probability 
+ From state S3,
+ she will either move to state S1 (become pregnant) with probability 
 \begin_inset Formula $\psi_{3}$
 \end_inset
 
 ,
- or remain in state 3 with probability 
+ or remain in state S3 with probability 
 \begin_inset Formula $1-\psi_{3}$
 \end_inset
 
 .
- 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Next sentence to Intro?
-\end_layout
-
-\end_inset
-
-Due to long gestation times (~14 months),
+ Due to long gestation times (~14 months),
  walrus cannot give birth to calves in two consecutive years (CITE).
  We also allow 
 \begin_inset Formula $\psi_{2}\neq\psi_{3}$
@@ -641,7 +413,7 @@ nolink "false"
 
 .
  Survival is assumed to be independent of breeding state.
- Females enter state 3 (i.e.,
+ Females enter state S3 (i.e.,
  reach sexual maturity) on reaching age 4,
  and therefore can become pregnant at age 5 and give birth at age 6.
  Depending on the values of 
@@ -654,7 +426,7 @@ nolink "false"
 
 ,
  this leads to a ramping-up in effective fecundity (i.e.,
- probability of being in state 2) over the first few years of adult life.
+ probability of being in state S2) over the first few years of adult life.
  Both 
 \begin_inset Formula $\psi_{2}$
 \end_inset
@@ -664,21 +436,8 @@ nolink "false"
 \end_inset
 
  are estimated from the data.
- We do not use any data on whether females were with\SpecialChar breakableslash
-without calf when sampled,
- so the 
-\change_inserted 193499690 1737937163
-estimates 
-\change_deleted 193499690 1737937163
-information 
-\change_unchanged
-o
-\change_deleted 193499690 1737937165
-n
-\change_inserted 193499690 1737937165
-f
-\change_unchanged
- 
+ We do not use any data on whether females were with/without calf when sampled,
+ so the estimates of 
 \begin_inset Formula $\psi_{2}$
 \end_inset
 
@@ -686,14 +445,7 @@ f
 \begin_inset Formula $\psi_{3}$
 \end_inset
 
- 
-\change_deleted 193499690 1737937148
-comes indirectly,
- through 
-\change_inserted 193499690 1737937180
- are ultimately reliant on 
-\change_unchanged
-the distribution of birth-gaps between maternal half-sibling pairs.
+ are ultimately reliant on the distribution of birth-gaps between maternal half-sibling pairs.
 \end_layout
 
 \begin_layout Standard
@@ -887,7 +639,7 @@ Directed cyclic graph showing the breeding cycle for walrus as represented in ou
  with young-of-the-year (YOTY) calf,
  or non-breeding) and edges give the probabilities of transition between those states.
  Walrus reach sexual maturity at age 4,
- so enter the graph at node non-breeding.
+ so females enter the graph at node non-breeding.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -906,35 +658,62 @@ name "fig:Breeding-cycle"
 \end_inset
 
 
-\change_inserted 193499690 1737937466
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
+We will later use two quantities,
+ which are derived from the breeding cycle.
+ First,
+ we need to calculate the (average) proportion of adult females in S2,
+ 
+\begin_inset Formula $\bar{\beta}_{2}$
+\end_inset
 
-\begin_layout Plain Layout
-I reckon this should also include the calculation of mean-ppn-in-state S2 (
-\begin_inset Formula $\bar{\beta}$
+.
+ Let 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ be the (3
+\begin_inset Formula $\times$
+\end_inset
+
+3) transition matrix implied by Figure
+\begin_inset space ~
 \end_inset
 
 
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-
-) and the mean-fec-at-age vector.
- Saves diversions later.
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Breeding-cycle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
+.
+ Taking the the eigendecomposition of 
+\begin_inset Formula $\Psi$
+\end_inset
 
+,
+ we can extract the second element of the eigenvector with the largest eigenvalue to obtain 
+\begin_inset Formula $\bar{\beta}_{2}$
+\end_inset
+
+.
+ We can then define fecundity as a function of age
+\begin_inset Formula 
+\begin{gather}
+F\left(a\right)\triangleq\frac{\mathbb{P}\left[B\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
+\end{gather}
+
+\end_inset
+
+so that immature animals have fecundity 0,
+ and an average adult has fecundity 1.
 \end_layout
 
 \begin_layout Subsubsection
@@ -942,12 +721,8 @@ Formulating kinship probabilities
 \end_layout
 
 \begin_layout Standard
-We now need to formulate the demographic probabilities that two samples have a given kinship
-\change_inserted 193499690 1738061417
-,
- using the ERRO principle mentioned earlier
-\change_unchanged
-.
+We now need to formulate the demographic probabilities that two samples have a given kinship,
+ using the ERRO principle.
  We write the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
@@ -964,8 +739,7 @@ We now need to formulate the demographic probabilities that two samples have a g
  which in our case may be MOP,
  XmHSP,
  SP,
- or UP (i.e.
- none of the others).
+ or UP.
  In the case of MOPs and XmHSPs,
  we take care to use only one sample from each individual (so 
 \begin_inset Quotes eld
@@ -1034,43 +808,25 @@ Throughout we use the following notation:
 \begin_inset Formula $N$
 \end_inset
 
- 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-and other params?
-\end_layout
-
+ refers to females only.
+ When female abundance is considered for a given year (
+\begin_inset Formula $y$
 \end_inset
 
-refers to females only.
- When female abundance is considered for a given year and development stage (respectively),
- it is written with two arguments,
- 
-\begin_inset Formula $N_{y,\text{D}}$
+) and development stage (
+\begin_inset Formula $d=\text{A}$
 \end_inset
 
- (note that we use upright letters for development stages 
-\begin_inset Formula $\text{A}$
-\end_inset
-
- and 
+ or 
 \begin_inset Formula $\text{J}$
 \end_inset
 
-)
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $N_{y\text{A}}$
-\end_inset
-
- has already been used in the pop dyn bit,
- so sequence has gone awry
-\end_layout
-
+,
+ for adult or juvenile,
+ respectively),
+ it is written with two arguments,
+ 
+\begin_inset Formula $N_{y,d}$
 \end_inset
 
 .
@@ -1099,7 +855,7 @@ status open
 \end_inset
 
 and 
-\begin_inset Formula $N_{y_{0}\text{A}}$
+\begin_inset Formula $N_{y_{0},\text{A}}$
 \end_inset
 
 ;
@@ -1117,10 +873,6 @@ Mother-offspring pairs (MOPs)
 
 \begin_layout Standard
 Suppose we are about to compare a potential mother 
-\change_deleted 193499690 1737937315
-individual 
-\change_unchanged
-
 \emph on
 i
 \emph default
@@ -1172,22 +924,14 @@ j
 
 
 \emph default
- need not be)
-\change_deleted 193499690 1737937338
- (only female adult dynamics are being modelled)
-\change_unchanged
-;
+ need not be);
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $a_{j}\geqslant1$
 \end_inset
 
- (no calf samples
-\change_inserted 193499690 1737937344
- are used
-\change_unchanged
-);
+ (no calf samples are used);
 \end_layout
 
 \begin_layout Itemize
@@ -1208,7 +952,6 @@ We can now distinguish two cases:
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -1239,7 +982,11 @@ j
 \begin_inset Formula $i$
 \end_inset
 
-'s sampling must be non-lethal (
+'s sampling 
+\shape italic
+must
+\shape default
+ be non-lethal (
 \begin_inset Formula $L_{i}=0$
 \end_inset
 
@@ -1293,11 +1040,11 @@ Where
 
  is born,
  
-\begin_inset Formula $N_{b_{j},\text{A}}$
+\begin_inset Formula $N_{b_{j}\text{A}}$
 \end_inset
 
 ,
- multiplied by the proportion of females with calves (breeding state 2),
+ multiplied by the proportion of females with calves (breeding state S2),
  
 \begin_inset Formula $\bar{\beta_{2}}$
 \end_inset
@@ -1324,33 +1071,6 @@ There are two components to
 \end_inset
 
 :
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Where is 
-\begin_inset Formula $\bar{\beta}$
-\end_inset
-
-
-\begin_inset script subscript
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-
- calculated?
- Needs to be here...
- unless it's done earlier,
- in the breeding cycle bit.
- That would be better
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{gather}
 R_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(y_{i}-b_{j},a_{i}\right)\mathbb{P}\left[B\left(a_{i}+b_{j}-y_{i}\right)=2\right],\label{eq:MOP-RO}
@@ -1430,32 +1150,14 @@ annual juvenile and adult survival probabilities).
 \end_layout
 
 \begin_layout Standard
-Define fecundity as a function of age
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Move this earlier,
- to the breeding biol bit
-\change_deleted 193499690 1738110342
+Then,
+ using our definition of fecundity at age,
  
-\change_unchanged
-
-\end_layout
-
+\begin_inset Formula $F(a)$
 \end_inset
 
-
-\begin_inset Formula 
-\begin{gather}
-F\left(a\right)\triangleq\frac{\mathbb{P}\left[B\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
-\end{gather}
-
-\end_inset
-
-so that immature animals have fecundity 0,
- and an average adult has fecundity 1.
- Thus
+,
+ we have
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j},\theta\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
@@ -1500,45 +1202,10 @@ If
 \end_inset
 
  (walruses cannot breed before birth),
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-in this case we don't care if sampling is lethal??
-
-\change_inserted 193499690 1738110381
- Correct,
- but see below...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,b_{j}<y_{i},\theta\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
 \end{gather}
-
-\end_inset
-
-
-\change_inserted 193499690 1738110385
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Now add the lethal case (
-\begin_inset Formula $L=1)$
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1738,15 +1405,11 @@ Let
 \begin_inset Formula $\Delta t$
 \end_inset
 
- years from "now" and let 
+ years from "now" and recall 
 \begin_inset Formula $\Psi$
 \end_inset
 
- be the (3
-\begin_inset Formula $\times$
-\end_inset
-
-3) breeding cycle transition matrix.
+ is the breeding cycle transition matrix.
  The probability 3-vector of an animal being in each state (1,2,3) at time 
 \begin_inset Formula $t$
 \end_inset
@@ -1786,27 +1449,50 @@ which is the probability vector of
 \begin_inset Formula $\bar{\beta}_{2}$
 \end_inset
 
- is the proportion of adult females in state 2.
+ is the proportion of adult females in breeding state S2.
  Then:
-\change_inserted 193499690 1738064698
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1738064714
 Equation is wrong:
  needs to sum over all possible m's!
  See report (presumably)
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 
-\change_unchanged
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+this is exactly what is in the report!
+ eqn 2.7.
+ Text below that reads 
+\begin_inset Quotes eld
+\end_inset
+
+The walrus setting (or our assumptions about it) has actually made this probability rather simpler than it can be in other cases.
+ In particular,
+ all adult female walruses are assumed to have equal survival probabilities,
+ regardless of age and breeding phase;
+ and the breeding cycle is Markovian,
+ so that once a walrus has reached calving-phase (like Mary at Anna's birth) her age does not affect her subsequent breeding phases nor her survival.
+ In a "fish-like" situation,
+ Mary's age (and size) at Anna's birth would also be important,
+ because it affects both her subsequent future survival probabilities,
+ and her fecundity if she reaches Barry's birthdate.
+ Thus for "fish" it is necessary to sum across all the possible ages that Mary might have had,
+ weighted by the probability that she was that age given that she was Anna's mother.
+\begin_inset Quotes erd
+\end_inset
+
+ walrus aren't fish :)
+\end_layout
+
+\end_inset
+
 
 \begin_inset Formula 
 \begin{align}
@@ -1831,17 +1517,11 @@ m
 l
 \shape default
 's birth.
-\change_inserted 193499690 1736925431
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1738063601
-There is a practical complication with HSPs,
- in that we cannot identify them directly and unambiguously,
- for two reasons.
- First,
+In practice,
+ HSPs cannot be identified directly and unambiguously.
  HSPs are just one of several 
 \begin_inset Quotes eld
 \end_inset
@@ -1850,80 +1530,17 @@ second-order
 \begin_inset Quotes erd
 \end_inset
 
- kin-pairs that all have the same coefficient-of-kinship and that are practically indistinguishable genetically.
+ kin-pairs that are practically indistinguishable genetically.
  Fortunately,
  HSPs are demographically by far the most common when the birth-gap is short.
  When the birth-gap approaches twice the age-of-maturity,
  though,
  GGPs (Grandparent-Grandchild Pair) are more common.
  This can be dealt with either by also calculating GGP probabilities and adding to the HSP probabilities to give second-order kin probabilities,
- or by restricting the range of birth-gaps used in fitting the model to those where GGPs are very rare (e.g.
+ or by restricting the range of birth-gaps used in fitting the model to those where GGPs are very rare (e.g.,
  below twice the age at maturity).
  We opted for the latter,
  which is simpler.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738064114
-The second issue with all second-order kin,
- is that pairwise-kinship statistics are not currently powerful enough to completely distinguish them all from a few 
-\begin_inset Quotes eld
-\end_inset
-
-lucky
-\begin_inset Quotes erd
-\end_inset
-
- third-order kin such as Great-Gandparent-Grandchild.
- To handle this without bias,
- the best approach is set a threshold for the statistic that should almost completely exclude false-positives from third-order kin,
- then to estimate empirically the proportion of true second-order kin that will be lost below the threshold (i.e.,
- the false-negative rate) based on the observed distribution of kin-pair statistics.
- Only kin-pairs that are above the threshold will be treated as HSPs,
- but the probability formula can be multiplied by the complement of the false-negative probability to compensate.
- See 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington_close-kin_2016"
-literal "false"
-
-\end_inset
-
- or 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Hillary2018WS-CKMR"
-literal "false"
-
-\end_inset
-
- for more details.
- The false-negative rate depends both on the species and the genotyping method (in particular,
- the number of loci) and cannot be predicted in advance,
- but experience suggests that 15% is usually a safe upper limit.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738064669
-Finally,
- determining that a pair is HSP does not differentiate between mHSPs (maternal;
- shared mother) and pHSPs (paternal;
- shared father).
- However,
- this can be determined by genotyping the mitochondrial DNA (mtDNA;
- always inherited from the mother only) of known HSPs.
- If the genotypes are different,
- the descent must be paternal;
- if the same,
- descent is probably maternal,
- but could arise by chance in a few paternal-HSP cases.
- However,
- in our experience,
- except for very small populations (hundreds of adults),
- mtDNA diversity has always been high enough that shared-mtDNA HSPs might as well be treated as definite mHSPs.
- We assume as much here.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1941,25 +1558,9 @@ name "subsec:selfPs"
 Our stage-structured model keeps the population dynamics simple,
  but we do have to make extra assumptions about sampling selectivity to include the IMR data.
  Here,
- we assume that selectivity 
-\change_deleted 193499690 1738061668
-only 
-\change_unchanged
-varies 
-\change_inserted 193499690 1738061670
-only 
-\change_unchanged
-by stage (adults and juveniles),
+ we assume that selectivity varies only by stage (adults and juveniles),
  not by age within stage.
- We 
-\change_inserted 193499690 1738061694
-also just
-\change_deleted 193499690 1738061679
-only 
-\change_inserted 193499690 1738061682
- 
-\change_unchanged
-consider female samples for self-recapture,
+ We only consider female samples for self-recapture,
  since juvenile males are prone to "permanent emigration" (CITE) as well as true mortality,
  so do not yield readily-interpretable inferences.
 \end_layout
@@ -1971,7 +1572,11 @@ To compute stage-structured self-recapture probabilities,
 not
 \emph default
  explicitly on the age of the second sample;
- instead we condition on the second sample's developmental stage at sampling.
+ instead we condition on the second sample's developmental stage at sampling (
+\begin_inset Formula $d_{2}$
+\end_inset
+
+).
  If the first sample would have reached the right developmental stage (otherwise,
  the two cannot be the same animal),
  then we assume it is equally likely to be 
@@ -2035,7 +1640,7 @@ MVB:
 .
  We also condition on the first sample being non-lethal (else we'd have nothing to sample a second time).
  To obtain 
-\begin_inset Formula $N_{y_{2},d_{2}}$
+\begin_inset Formula $N_{y_{2}d_{2}}$
 \end_inset
 
 ,
@@ -2059,7 +1664,7 @@ nolink "false"
 \begin_layout Standard
 \begin_inset Formula 
 \[
-N_{y,\text{J}},=N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right),
+N_{y,\text{J}}=N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right),
 \]
 
 \end_inset
@@ -2069,389 +1674,33 @@ where
 \end_inset
 
  is the relative annual population increase/decrease.
-\change_inserted 193499690 1738061714
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
+Although it is easy to write a purely-age-structured version of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:self-staged"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
-\begin_layout Plain Layout
-I feel we need to say something about why such a weird SP model.
- Either here,
- or in Discussion.
- Putting it here seems to overload things a bit,
- because the logic is quite subtle (and by no means ironclad);
- however,
- deferring it to the Discussion is also quite a risk,
- because the alert reader will be thinking 
-\begin_inset Quotes eld
-\end_inset
-
-WTF is this crazy SP stage-structured model all about???
-\begin_inset Quotes erd
-\end_inset
-
-.
- And you really don't want readers to be doing too much thinking while they read the paper...
-\end_layout
-
-\begin_layout Plain Layout
-Anyway,
- I needed to write this para to get it off my chest—
- onto other people's!
-\change_inserted 193499690 1738064775
-
-\end_layout
-
-\end_inset
-
-
-\change_inserted 193499690 1738063356
-This is something of a compromise.
- With HSPs and MOPs,
- it is not necessary to explicitly consider the adult age distribution because the 
-\begin_inset Quotes eld
-\end_inset
-
-competition
-\begin_inset Quotes erd
-\end_inset
-
- (i.e.
- the alternatives to one particular sample being a 
-\begin_inset Quotes eld
-\end_inset
-
-recapture
-\begin_inset Quotes erd
-\end_inset
-
-) is always the total fecundity from all adults.
- With SPs,
- though,
- if we know that the first sample would be age 10 when the second sample is taken (and that the second sample really is age 10),
- then the only 
-\begin_inset Quotes eld
-\end_inset
-
-competition
-\begin_inset Quotes erd
-\end_inset
-
- comes from other 10yos in the population;
- it is restricted to one age class.
- Although it is easy to write a purely-age-structured version of eqn 
-\begin_inset Formula $\left(\ref{eq:self-staged}\right)$
 \end_inset
 
 ,
- the model would then needsto explicitly keep track of numbers-at-age,
- not just of total adults.
- Of course,
- we could get that by leaning more heavily on the quasi-equilibrium assumption;
- but to do so unrealistically optimistic,
- because that assumption directly constrains relative abundances-at-age.
+ the model would then needs to explicitly keep track of numbers-at-age,
+ not just of total adults (as it would be for the other kin types).
+ We could do this by leaning more heavily on the quasi-equilibrium assumption;
+ but that assumption directly constrains relative abundances-at-age.
  Thus,
  for example,
- the 10yo samples are somewhat magically providing direct estimates of the abundance of 30yos.
+ the age 10 samples would then provide direct estimates of the abundance of age 30 samples.
  In practice,
  if we do use a fully age-structured CKMR formulation on the real data,
  we will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
- and that will require estimating additional parameters.
- The statistical information unavoidably expended on estimating those parameters,
- would reduce the information available about abundance etc.
- We therefore opted for a stage- rather than age-structured SP model to match our simple stage-structured population dynamics model,
- in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated and flexible fully-age-structured population dynamics.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Subsubsection
-
-\change_inserted 193499690 1738109886
-Ageing error
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-This section ends up being fairly technical—
- because it just is,
- period.
- If we give any equations at all,
- then it's hard avoid giving the whole lot.
- I leave it to others to decide what to do about this (Rebecca was asking about it the other day,
- independently of the paper.)
-\end_layout
-
-\end_inset
-
-
-\change_inserted 193499690 1738110830
-Age estimates are likely to be subject to some error.
- Unless very small,
- such errors mean that the kinship probability formulae above should not generally be used as if the measured ages were exact.
- Nonsensical results can otherwise appear:
- for example,
- if an offspring's age at capture is under-estimated and its parent is caught lethally,
- it might appear that the parent was killed before the offspring was born,
- which of course is a zero-probability event from equation
-\begin_inset space ~
-\end_inset
-
-(**needs to be added for the lethal case**).
- Even with more subtle errors,
- parameter estimates would be biased by ignoring them;
- for example,
- average birth-gaps between HSPs will be systematically 
-\emph on
-increased
-\emph default
- by random errors in age,
- so that parents appear to survive longer than is really the case.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738111404
-Kinship probabilities ultimately need to be conditioned on 
-\emph on
-measured
-\emph default
- covariates,
- rather than ideal ones.
- To convert the formulae above to be conditioned on 
-\emph on
-measured
-\emph default
- age 
-\begin_inset Formula $\tilde{a}$
-\end_inset
-
- and year-of-sampling 
-\begin_inset Formula $y$
-\end_inset
-
-,
- we need weighted sums over the conditional probabilities of the ideal covariates,
- such as birth-year 
-\begin_inset Formula $b$
-\end_inset
-
-.
- For example,
- with equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:xmhsp"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-) we get
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{gather}
-\mathbb{P}\left[K_{k\ell}=\text{XmHSP}\vert\tilde{a}_{k},y_{k},\tilde{a}_{\ell},y_{\ell},\theta\right]=\nonumber \\
-\sum_{b_{k},b_{\ell}}\mathbb{P}\left[b_{k}|\tilde{a}_{k}y_{k}\right]\mathbb{P}\left[b_{\ell}|\tilde{a}_{\ell}y_{\ell}\right]\left[K_{k\ell}=\text{XmHSP}\vert b_{k},b_{\ell},\theta\right]\label{eq:hsp-agerr}
-\end{gather}
-
-\end_inset
-
-
-\change_inserted 193499690 1738111245
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738113067
-For the posterior distribution of birth-date 
-\begin_inset Formula $B,$
-\end_inset
-
-we must also condition on the fact 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $s$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- that the sample was collected (because selectivity may affect the distribution of true age among the samples).
- We apply Bayes' theorem.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{gather}
-\mathbb{P}[B=b|\tilde{a},y,s]=\mathbb{P}\left[A=y-b|\tilde{a},y,s\right]\nonumber \\
-=\frac{\mathbb{P}\left[\tilde{a}|A=y-b,\left\{ y,s\right\} \right]\mathbb{P}\left[A=y-b|y,s\right]}{\mathbb{P}\left[\tilde{a}|y,s\right]}\label{eq:post-b}
-\end{gather}
-
-\end_inset
-
-
-\change_inserted 193499690 1738113123
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738113785
-where the notation 
-\begin_inset Formula $\mathbb{P}\left[X|y,\left\{ z\right\} \right]$
-\end_inset
-
- means that a probability should formally depend on 
-\begin_inset Formula $z$
-\end_inset
-
- because of the mechanics of probability manipulation but,
- given the particular situation,
- 
-\begin_inset Formula $z$
-\end_inset
-
- is not actually relevant.
- (In this case,
- the extent of ageing error on a sample should independent of its year-of-collection and of the fact that it was collected at all.) The left-hand term in the numerator of equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:post-b"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-),
- 
-\begin_inset Formula $\mathbb{P}\left[\tilde{a}|a\right]$
-\end_inset
-
-,
- is the ageing error matrix,
- which would presumably be available from calibration studies.
- The right-hand term is the distribution of true age in the 
-\emph on
-samples
-\emph default
- from year 
-\begin_inset Formula $y$
-\end_inset
-
-.
- We cannot get that directly,
- but the denominator is the distribution of 
-\emph on
-measured
-\emph default
- age in the samples,
- which can be empirically estimated.
- We have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{gather}
-\mathbb{P}\left[\tilde{a}|y,s\right]=\sum_{a}\mathbb{P}\left[a|y,s\right]\mathbb{P}\left[\tilde{a}|a\right]\label{eq:predeconvo}
-\end{gather}
-
-\end_inset
-
-
-\change_inserted 193499690 1738113896
-so that 
-\begin_inset Formula $\mathbb{P}\left[a|y,s\right]$
-\end_inset
-
- can be estimated approximately by deconvolution or other methods.
- See 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Hillary2018WS-CKMR"
-literal "false"
-
-\end_inset
-
- for an example where length is used as an approximate predictor of age.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1738111750
-Similar adjustments apply directly to SPs if an age-based formulation is used.
- However,
- with the stage-based SP model,
- it is less obvious what to do at least with the recapture;
- in principle we should use a sum over true Development stage given measured age,
- but this gets pointlessly complicated.
- Instead,
- we have assumed that ageing error for walrus will be small enough that juvenile\SpecialChar breakableslash
-adult discrimination is accurate.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-This para to Discussion,
- or here..?
-\end_layout
-
-\end_inset
-
-
-\change_inserted 193499690 1738112548
-As a rule,
- the magnitude of epigenetic age errors tends to be less for younger ages (as in 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "Bors2021DNAge-beluga"
-literal "false"
-
-\end_inset
-
-,
- for example)
-\change_unchanged
-.
- 
-\change_inserted 193499690 1738112714
-Happily,
- for CKMR it is for younger animals (i.e.
- potential offspring) that precise age matters more,
- because probabilities are all conditioned on birth-date.
- The expected fecundity of most potential parents will not be affected as much by ageing error,
- especially for a long-lived species like walrus where fecundity does change much through adulthood (unlike,
- say,
- teleost fish).
- For this paper,
- we have assumed that ageing error is ignorable,
- so our variance predictions will be somewht over-optimistic.
- However,
- the equations and code are ready the results later in this paper all assume that ageing error is negligible,
- 
-\change_unchanged
-
+ and therefore additional parameters to estimate.
+ We therefore opted for a stage- rather than age-structured SP model in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated and flexible fully-age-structured population dynamics.
 \end_layout
 
 \begin_layout Subsection
@@ -2601,7 +1850,6 @@ nolink "false"
  her calf also dies.
  Individuals automatically die if they reach the maximum age.
  Living individuals then have their age incremented.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3408,10 +2656,6 @@ alignment document
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4988,11 +4232,7 @@ nolink "false"
 
 .
  For these simulations,
- we simulated historical sampling according to realized sample sizes by age and sex
-\change_inserted 193499690 1738064825
-,
-
-\change_unchanged
+ we simulated historical sampling according to realized sample sizes by age and sex,
  and future sampling by target sample sizes by age class.
  We simulated scenarios with (L2) and without (L1) the collection of 100 lethal samples per year in sampling years.
 \begin_inset Note Greyedout

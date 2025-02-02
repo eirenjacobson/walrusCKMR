@@ -237,6 +237,16 @@ name "sec:Skip-breeding"
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+this can go?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -661,7 +671,7 @@ lethal-sample
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Self-recapture when exact age is known
 \begin_inset CommandInset label
 LatexCommand label
@@ -998,6 +1008,346 @@ N_{y,\text{J}} & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Further HSP complications
+\end_layout
+
+\begin_layout Standard
+The second issue with all second-order kin,
+ is that pairwise-kinship statistics are not currently powerful enough to completely distinguish them all from a few 
+\begin_inset Quotes eld
+\end_inset
+
+lucky
+\begin_inset Quotes erd
+\end_inset
+
+ third-order kin such as Great-Gandparent-Grandchild.
+ To handle this without bias,
+ the best approach is set a threshold for the statistic that should almost completely exclude false-positives from third-order kin,
+ then to estimate empirically the proportion of true second-order kin that will be lost below the threshold (i.e.,
+ the false-negative rate) based on the observed distribution of kin-pair statistics.
+ Only kin-pairs that are above the threshold will be treated as HSPs,
+ but the probability formula can be multiplied by the complement of the false-negative probability to compensate.
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hillary2018WS-CKMR"
+literal "false"
+
+\end_inset
+
+ for more details.
+ The false-negative rate depends both on the species and the genotyping method (in particular,
+ the number of loci) and cannot be predicted in advance,
+ but experience suggests that 15% is usually a safe upper limit.
+\end_layout
+
+\begin_layout Standard
+Determining that a pair is HSP does not differentiate between mHSPs (maternal;
+ shared mother) and pHSPs (paternal;
+ shared father).
+ This can be determined by genotyping the mitochondrial DNA (mtDNA;
+ always inherited from the mother only) of known HSPs.
+ If the genotypes are different,
+ the descent must be paternal;
+ if the same,
+ descent is probably maternal,
+ but could arise by chance in a few paternal-HSP cases.
+ However,
+ in our experience,
+ except for very small populations (hundreds of adults),
+ mtDNA diversity has always been high enough that shared-mtDNA HSPs might as well be treated as definite mHSPs.
+ We assume as much here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ageing error
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+this can go
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+This section ends up being fairly technical—
+ because it just is,
+ period.
+ If we give any equations at all,
+ then it's hard avoid giving the whole lot.
+ I leave it to others to decide what to do about this (Rebecca was asking about it the other day,
+ independently of the paper.)
+\end_layout
+
+\end_inset
+
+Age estimates are likely to be subject to some error.
+ Unless very small,
+ such errors mean that the kinship probability formulae above should not generally be used as if the measured ages were exact.
+ Nonsensical results can otherwise appear:
+ for example,
+ if an offspring's age at capture is under-estimated and its parent is caught lethally,
+ it might appear that the parent was killed before the offspring was born,
+ which of course is a zero-probability event from equation
+\begin_inset space ~
+\end_inset
+
+(**needs to be added for the lethal case**).
+ Even with more subtle errors,
+ parameter estimates would be biased by ignoring them;
+ for example,
+ average birth-gaps between HSPs will be systematically 
+\emph on
+increased
+\emph default
+ by random errors in age,
+ so that parents appear to survive longer than is really the case.
+\end_layout
+
+\begin_layout Standard
+Kinship probabilities ultimately need to be conditioned on 
+\emph on
+measured
+\emph default
+ covariates,
+ rather than ideal ones.
+ To convert the formulae above to be conditioned on 
+\emph on
+measured
+\emph default
+ age 
+\begin_inset Formula $\tilde{a}$
+\end_inset
+
+ and year-of-sampling 
+\begin_inset Formula $y$
+\end_inset
+
+,
+ we need weighted sums over the conditional probabilities of the ideal covariates,
+ such as birth-year 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ For example,
+ with equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xmhsp"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{k\ell}=\text{XmHSP}\vert\tilde{a}_{k},y_{k},\tilde{a}_{\ell},y_{\ell},\theta\right]=\nonumber \\
+\sum_{b_{k},b_{\ell}}\mathbb{P}\left[b_{k}|\tilde{a}_{k}y_{k}\right]\mathbb{P}\left[b_{\ell}|\tilde{a}_{\ell}y_{\ell}\right]\left[K_{k\ell}=\text{XmHSP}\vert b_{k},b_{\ell},\theta\right]\label{eq:hsp-agerr}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the posterior distribution of birth-date 
+\begin_inset Formula $B,$
+\end_inset
+
+we must also condition on the fact 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $s$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ that the sample was collected (because selectivity may affect the distribution of true age among the samples).
+ We apply Bayes' theorem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}[B=b|\tilde{a},y,s]=\mathbb{P}\left[A=y-b|\tilde{a},y,s\right]\nonumber \\
+=\frac{\mathbb{P}\left[\tilde{a}|A=y-b,\left\{ y,s\right\} \right]\mathbb{P}\left[A=y-b|y,s\right]}{\mathbb{P}\left[\tilde{a}|y,s\right]}\label{eq:post-b}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the notation 
+\begin_inset Formula $\mathbb{P}\left[X|y,\left\{ z\right\} \right]$
+\end_inset
+
+ means that a probability should formally depend on 
+\begin_inset Formula $z$
+\end_inset
+
+ because of the mechanics of probability manipulation but,
+ given the particular situation,
+ 
+\begin_inset Formula $z$
+\end_inset
+
+ is not actually relevant.
+ (In this case,
+ the extent of ageing error on a sample should independent of its year-of-collection and of the fact that it was collected at all.) The left-hand term in the numerator of equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:post-b"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ 
+\begin_inset Formula $\mathbb{P}\left[\tilde{a}|a\right]$
+\end_inset
+
+,
+ is the ageing error matrix,
+ which would presumably be available from calibration studies.
+ The right-hand term is the distribution of true age in the 
+\emph on
+samples
+\emph default
+ from year 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ We cannot get that directly,
+ but the denominator is the distribution of 
+\emph on
+measured
+\emph default
+ age in the samples,
+ which can be empirically estimated.
+ We have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[\tilde{a}|y,s\right]=\sum_{a}\mathbb{P}\left[a|y,s\right]\mathbb{P}\left[\tilde{a}|a\right]\label{eq:predeconvo}
+\end{gather}
+
+\end_inset
+
+so that 
+\begin_inset Formula $\mathbb{P}\left[a|y,s\right]$
+\end_inset
+
+ can be estimated approximately by deconvolution or other methods.
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hillary2018WS-CKMR"
+literal "false"
+
+\end_inset
+
+ for an example where length is used as an approximate predictor of age.
+\end_layout
+
+\begin_layout Standard
+Similar adjustments apply directly to SPs if an age-based formulation is used.
+ However,
+ with the stage-based SP model,
+ it is less obvious what to do at least with the recapture;
+ in principle we should use a sum over true Development stage given measured age,
+ but this gets pointlessly complicated.
+ Instead,
+ we have assumed that ageing error for walrus will be small enough that juvenile\SpecialChar breakableslash
+adult discrimination is accurate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+This para to Discussion,
+ or here..?
+\end_layout
+
+\end_inset
+
+As a rule,
+ the magnitude of epigenetic age errors tends to be less for younger ages (as in 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Bors2021DNAge-beluga"
+literal "false"
+
+\end_inset
+
+,
+ for example).
+ Happily,
+ for CKMR it is for younger animals (i.e.
+ potential offspring) that precise age matters more,
+ because probabilities are all conditioned on birth-date.
+ The expected fecundity of most potential parents will not be affected as much by ageing error,
+ especially for a long-lived species like walrus where fecundity does change much through adulthood (unlike,
+ say,
+ teleost fish).
+ For this paper,
+ we have assumed that ageing error is ignorable,
+ so our variance predictions will be somewht over-optimistic.
+ However,
+ the equations and code are ready the results later in this paper all assume that ageing error is negligible,
+ 
 \end_layout
 
 \end_body
