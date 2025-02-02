@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \use_default_options true
 \begin_modules
@@ -93,19 +93,6 @@ knitr
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-CKMR design calculations
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Standard
 Our goal is to evaluate potential survey designs for a CKMR survey of walrus,
@@ -975,20 +962,11 @@ could
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-Some code I don't want to delete yet...
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-I ran these snippets inside add_data(),
+Some code I don't want to delete yet...I ran these snippets inside add_data(),
  using my debugger 
 \end_layout
 
@@ -997,41 +975,34 @@ I ran these snippets inside add_data(),
 \end_layout
 
 \begin_layout Plain Layout
-
 table( table( c( MOPs,
  XmHSPs,
  selfPs))
 \end_layout
 
 \begin_layout Plain Layout
-
 # 1 2 3 
 \end_layout
 
 \begin_layout Plain Layout
-
 # 1524 120 4
 \end_layout
 
 \begin_layout Plain Layout
-
 length( unique( samples$Me))
 \end_layout
 
 \begin_layout Plain Layout
-
 # 14385
 \end_layout
 
 \begin_layout Plain Layout
-
 length( unique( samples$Me)) - length( unique( c( MOPs,
  XmHSPs,
  selfPs)))
 \end_layout
 
 \begin_layout Plain Layout
-
 # 13187 this should go with 
 \begin_inset Quotes eld
 \end_inset
@@ -1048,7 +1019,6 @@ length( unique( samples$Me)) - length( unique( c( MOPs,
 \end_layout
 
 \begin_layout Plain Layout
-
 # So,
  quite a few:
  10% of samples are in pairs,
@@ -1056,27 +1026,22 @@ length( unique( samples$Me)) - length( unique( c( MOPs,
 \end_layout
 
 \begin_layout Plain Layout
-
 # Where are most of these triplets coming from?
 \end_layout
 
 \begin_layout Plain Layout
-
 table( table( c( XmHSPs)))
 \end_layout
 
 \begin_layout Plain Layout
-
 # 1  2
 \end_layout
 
 \begin_layout Plain Layout
-
 # 444 27
 \end_layout
 
 \begin_layout Plain Layout
-
 # ...
  so it's mostly not from the XmHSPs
 \end_layout
@@ -1086,22 +1051,18 @@ table( table( c( XmHSPs)))
 \end_layout
 
 \begin_layout Plain Layout
-
 table( metab) # SelfPs before trimming the xtuples
 \end_layout
 
 \begin_layout Plain Layout
-
 #    1    2    3 
 \end_layout
 
 \begin_layout Plain Layout
-
 # 9286  212    3 
 \end_layout
 
 \begin_layout Plain Layout
-
 # ...
  not them either
 \end_layout
@@ -1111,22 +1072,18 @@ table( metab) # SelfPs before trimming the xtuples
 \end_layout
 
 \begin_layout Plain Layout
-
 table( table( MOPs[,1]))
 \end_layout
 
 \begin_layout Plain Layout
-
 #   1   2 
 \end_layout
 
 \begin_layout Plain Layout
-
 # 419  13 
 \end_layout
 
 \begin_layout Plain Layout
-
 # ...
  so it's mostly not from multiple offspring of one mother...
 \end_layout
@@ -1136,22 +1093,18 @@ table( table( MOPs[,1]))
 \end_layout
 
 \begin_layout Plain Layout
-
 table( table( MOPs[,2]))
 \end_layout
 
 \begin_layout Plain Layout
-
 # 1
 \end_layout
 
 \begin_layout Plain Layout
-
 # 445
 \end_layout
 
 \begin_layout Plain Layout
-
 # ...
  good;
  no-one has >1 mother!
@@ -1162,7 +1115,6 @@ table( table( MOPs[,2]))
 \end_layout
 
 \begin_layout Plain Layout
-
 # Thus,
  the bulk of the 124 must be 
 \begin_inset Quotes eld
@@ -1176,7 +1128,6 @@ interference
 \end_layout
 
 \begin_layout Plain Layout
-
 # which is probably worth fixing,
  using the first lot of simple steps above.
 \end_layout

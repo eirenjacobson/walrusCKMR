@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \use_default_options true
 \begin_modules
@@ -105,10 +105,6 @@ model checking
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Checking model correctness by simulation
 \end_layout
 
 \begin_layout Standard

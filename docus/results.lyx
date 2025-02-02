@@ -109,25 +109,6 @@ RESULTS
 \end_layout
 
 \begin_layout Subsection
-Model checking
-\end_layout
-
-\begin_layout Standard
-obvs the checks passed (eventually...).
- Not much more to say!
- (I suspect it's not worth reporting the checks—
- where do you stop with that?
- but perhaps they should be available online,
- eg obs & exp kin-totals?
- maybe report the deriv checks for bias,
- dunno)
-\end_layout
-
-\begin_layout Subsection
-Survey design
-\end_layout
-
-\begin_layout Subsubsection
 Demographic parameters
 \end_layout
 
@@ -210,7 +191,7 @@ nolink "false"
  for expected CVs of life history parameters across all demographic and sampling scenarios with and without the use of lethal samples and ICKMR.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Adult female abundance
 \end_layout
 
@@ -586,6 +567,7 @@ nolink "false"
 ,
  bottom panel).
  This suggests that more years of effort with fewer samples collected per year could improve overall precision in estimates of adult female abundance.
+ [1204 words].
 \end_layout
 
 \end_body
