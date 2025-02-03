@@ -267,13 +267,13 @@ The success of CKMR and/or IMR depends on whether data collected contain suffici
  number of samples,
  composition,
  study duration,
- quality of covariate measurements) is crucial to avoid expensive,
+ type and quality of covariate measurements) is crucial to avoid expensive,
  embarrassing,
  and predictable failure.
  The pairwise-comparison framework leads to analytical results for expected number of kin-pairs and expected variance given expected number of samples (and associated covariates),
  so that simulation is not essential;
  nevertheless,
- simulation can sometimes be useful as a way to check the fairly complex code of kinship probabilities and design setup.
+ simulation can be useful as a way to check the fairly complex code of kinship probabilities and design setup.
  In this paper we show how to do and check the calculations using a case study on the Pacific walrus (
 \emph on
 Odobenus rosmarus divergens
@@ -295,141 +295,19 @@ literal "false"
 
 \end_inset
 
- and experience on numerous projects since),
+ and experience on projects since),
  and on walrus biology and the survey setup.
  In Methods,
  we describe our walrus population dynamics model,
  derive walrus-appropriate kinship probability formulae,
  and show how to analytically calculate the expected variances that might come from different survey designs.
- We also outline the simulation setup which we used to test our CKMR model.
+ We also outline the simulation setup which we used to test our ICKMR model.
  The Results section shows how different survey designs are likely to perform (e.g.,
  with\SpecialChar breakableslash
 without CKMR).
  In the Discussion,
  we summarize our conclusions for walrus,
  and also mention some modeling simplifications made for design purposes that we may wish to reconsider when working with real data.
-\end_layout
-
-\begin_layout Subsection
-Close-kin practicalities
-\end_layout
-
-\begin_layout Standard
-Most iteroparous species are potential candidates for CKMR,
- except for a few pathological cases such as those mentioned in 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington_close-kin_2016"
-literal "false"
-
-\end_inset
-
-.
- The data requirements are otherwise quite flexible;
- the kinships used in any particular study can vary depending on logistic and modeling considerations.
- Genotyping methods are beyond the scope of this paper but,
- given good-quality tissue samples,
- modern high-throughput sequencing and microarrays are cheap and reliable enough to permit reliable and (almost) unambiguous detection of small numbers of kin-pairs within large sample sizes [REF NEEDED].
- With current genetic methods,
- the the informative and usable types of 
-\begin_inset Quotes eld
-\end_inset
-
-close
-\begin_inset Quotes erd
-\end_inset
-
- kin are usually limited to:
- Parent-Offspring Pairs (POPs) and Half-Sibling Pairs (HSPs,
- which share one parent).
- In some applications,
- Full-Sibling Pairs (FSP),
- and other 
-\begin_inset Quotes eld
-\end_inset
-
-second-order kin
-\begin_inset Quotes erd
-\end_inset
-
- beside HSPs such as Grandparent-Grandchild Pairs (GGPs),
- may also be important.
- To deal with IMR in the same framework,
- we add the kinship category Self-Pair (SP).
- Any other kinship constitutes an 
-\begin_inset Quotes eld
-\end_inset
-
-Unrelated Pair
-\begin_inset Quotes erd
-\end_inset
-
- (UP) for modelling purposes,
- even if there is genetic evidence of weak relatedness.
-\end_layout
-
-\begin_layout Standard
-Some information about sample age is required.
- Often this comes from 
-\begin_inset Quotes eld
-\end_inset
-
-hard parts
-\begin_inset Quotes erd
-\end_inset
-
- such as teeth or otoliths (requiring lethal samples),
- or less accurately from covariates such as body size or from a visual assessment of life-stage.
- The advent of epigenetic ageing (e.g.
- 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "Weber2024DNAgeray,Robeck2023DNAgepinni,Peters2023DNAgebotdol"
-literal "false"
-
-\end_inset
-
-) makes it possible to use just the biopsy sample itself.
- Uncertainty in age and other covariate estimates can be accommodated within the CKMR model,
- though the precision of parameter estimates is of course linked to the accuracy of covariate measurements.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The basic principle behind kinship probabilities is 
-\begin_inset Quotes eld
-\end_inset
-
-ERRO
-\begin_inset Quotes erd
-\end_inset
-
- (Expected Relative Reproductive Output).
- Roughly:
- the chance of any particular adult sample being the parent of some offspring that was sampled independently,
- is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
- 
-\lang american
-Devising the formulae for the expected frequencies of kinships requires at least qualitative consideration to the life history and reproductive biology of the species,
- as well as aspects of the sampling.
- For example:
- does the population breed in one place and at one time?
- Does the species have a polygynous mating structure?
- Are breeding animals as likely to be sampled as 
-\begin_inset Quotes eld
-\end_inset
-
-resting
-\begin_inset Quotes erd
-\end_inset
-
- ones?
- Not everything matters,
- but anything that affects ERRO should,
- in principle,
- be allowed for in the model.
- We give walrus-specific examples in Methods.
 \end_layout
 
 \begin_layout Subsection
@@ -466,8 +344,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-***Walrus reprod biol summary should go here?
+***Walrus reprod biol summary could go here?
  Rather than putting it off until Methods.
+ See sec 2.1
 \end_layout
 
 \begin_layout Standard
@@ -689,7 +568,7 @@ literal "false"
  which,
  through CKMR,
  can substantially augment the information content of genetic IMR without increasing sampling effort.
- [2030 words].
+ [1526 words].
 \end_layout
 
 \end_body

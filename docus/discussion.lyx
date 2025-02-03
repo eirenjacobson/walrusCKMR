@@ -128,6 +128,10 @@ Ways to extend the model...
 \end_layout
 
 \begin_layout Itemize
+Something about adult males and paternal half-siblings (sec 2.1 refers to discussion)
+\end_layout
+
+\begin_layout Itemize
 Future utility of lethal samples (although my guess is:
  there won't be enough.
  Glass-half-full,
@@ -149,18 +153,6 @@ assumption
 \end_layout
 
 \begin_layout Itemize
-As should be evident from the preceding text and number of authors on this paper,
- building a close-kin model involves a high level of collaboration between statisticians,
- biologists and geneticists.
- CKMR is very much a multidisciplinary methodology and each discipline has a great deal to input into the process of model building.
-\end_layout
-
-\begin_layout Itemize
-Would be great to mention that CKMR was motivated by fisheries and is an example of a shared tool between fisheries scientists and ecologists,
- maybe cite Schaub et al 2024
-\end_layout
-
-\begin_layout Itemize
 on stage-structured dynamics:
  That assumption may turn out to be unreasonable for juveniles especially;
  but it will only be possible to check once enough sample-age-composition data become available.
@@ -176,10 +168,12 @@ on stage-structured dynamics:
 \end_layout
 
 \begin_layout Itemize
-appendix 
+
+\lang english
+A purely-age-structured version of 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "sec:Skip-breeding"
+reference "eq:self-staged"
 plural "false"
 caps "false"
 noprefix "false"
@@ -187,7 +181,14 @@ nolink "false"
 
 \end_inset
 
- discusses skip-breeding
+ would need to explicitly keep track of numbers-at-age,
+ not just adult abundance (as would the other kin types).
+ The quasi-equilibrium assumption might allow us to do this,
+ but that assumption directly constrains relative abundances-at-age.
+ In practice,
+ a fully age-structured CKMR formulation for walrus will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
+ and therefore additional parameters to estimate.
+ We therefore opted for a stage- rather than age-structured SP model in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model.
 \end_layout
 
 \begin_layout Itemize
@@ -200,6 +201,33 @@ it is perhaps a reasonable assumption for younger adults,
  A stable age composition for juveniles seems fairly reasonable,
  since "recruitment variability" cannot be high for an animal with a litter size of 1,
  and it only requires a few years for the juvenile distribution to settle down.
+\end_layout
+
+\begin_layout Itemize
+As should be evident from the preceding text and number of authors on this paper,
+ building a close-kin model involves a high level of collaboration between statisticians,
+ biologists and geneticists.
+ CKMR is very much a multidisciplinary methodology and each discipline has a great deal to input into the process of model building.
+\end_layout
+
+\begin_layout Itemize
+Could mention that CKMR was motivated by fisheries and is an example of a shared tool between fisheries scientists and ecologists,
+ maybe cite Schaub et al 2024
+\end_layout
+
+\begin_layout Itemize
+appendix 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Skip-breeding"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ discusses skip-breeding
 \end_layout
 
 \end_body

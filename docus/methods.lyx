@@ -133,7 +133,6 @@ ii
  Given a real dataset,
  we would estimate the parameters by maximizing the log-likelihood that combines the kinship probabilities with the actual outcomes of all pairwise comparisons.
  For design purposes,
- though,
  we instead use a computational shortcut to predict the precision of the estimates that would be expected under different sampling designs.
  Although it is not strictly necessary to simulate any data in this process,
  we did use simulations to check that our CKMR model was appropriately formulated.
@@ -166,9 +165,9 @@ nolink "false"
  Therefore,
  we restrict attention to female-only dynamics,
  and consider only three types of kinship:
- Mother-Offspring Pair (MOP),
- Cross-cohort maternal Half-Sibling Pair (XmHSP),
- and Self Pair (SP),
+ mother-offspring pair (MOP),
+ cross-cohort maternal half-sibling pair (XmHSP),
+ and self-pair (SP),
  i.e.
  recapture of an individual.
  Our samples comprise juvenile and adult females,
@@ -186,17 +185,27 @@ We assume that age estimates will be available for all samples,
  Our model is structured to allow for errors in estimated age (with standard deviation assumed known i.e.,
  after calibration of epigenetic against known-age samples),
  though the results here assume that there are no errors;
- see Discussion.
+ see Discussion
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Can we put Mark's section on age error in an appendix and reference it here?
 \end_layout
 
-\begin_layout Subsubsection
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Stage-structured quasi-equilibrium dynamics
 \end_layout
 
 \begin_layout Standard
 For our female-only population dynamics model,
  we opted for a stage-structured (juvenile/adult),
- rather than fully-age-structured approach.
+ rather than an age-structured approach.
  We did this because (
 \shape italic
 i
@@ -207,9 +216,8 @@ i
 \shape italic
 ii
 \shape default
-) stage-structured models are simpler to code for CKMR and require fewer parameters (the addition of IMR data makes things less simple).
- Stage-structured results should be quite adequate for design purposes;
- the fundamental role of total (non-age-specific) adult abundance and survival is very similar to fully-age-structured models.
+) stage-structured models are simpler to code for CKMR and require fewer parameters.
+ Stage-structured results should be adequate for design purposes.
 \end_layout
 
 \begin_layout Standard
@@ -323,7 +331,7 @@ this looks like (5.1.4) in K+C (2005)
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 The breeding cycle
 \begin_inset CommandInset label
 LatexCommand label
@@ -367,15 +375,7 @@ We use a Markov model to describe the walrus breeding cycle.
 \begin_inset Formula $1-\psi_{3}$
 \end_inset
 
-.
- Due to long gestation times (~14 months),
- walrus cannot give birth to calves in two consecutive years (CITE).
- We also allow 
-\begin_inset Formula $\psi_{2}\neq\psi_{3}$
-\end_inset
-
- as they are unlikely to give birth to calves every second year (CITE).
- This is shown in Figure
+ (Fig.
 \begin_inset space ~
 \end_inset
 
@@ -390,7 +390,14 @@ nolink "false"
 
 \end_inset
 
-.
+).
+ Due to long gestation times (~14 months),
+ walrus cannot give birth to calves in two consecutive years (CITE).
+ We also allow 
+\begin_inset Formula $\psi_{2}\neq\psi_{3}$
+\end_inset
+
+ as they are unlikely to give birth to calves every second year (CITE).
  Survival is assumed to be independent of breeding state.
  Females enter state S3 (i.e.,
  reach sexual maturity) on reaching age 4,
@@ -640,8 +647,18 @@ name "fig:Breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-We will later use two quantities,
- which are derived from the breeding cycle.
+We will later use two
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Only B2 is described?
+ What is the other thing we need?
+\end_layout
+
+\end_inset
+
+ quantities which are derived from the breeding cycle.
  First,
  we need to calculate the (average) proportion of adult females in S2,
  
@@ -657,7 +674,7 @@ We will later use two quantities,
 \begin_inset Formula $\times$
 \end_inset
 
-3) transition matrix implied by Figure
+3) transition matrix implied by Fig.
 \begin_inset space ~
 \end_inset
 
@@ -695,13 +712,15 @@ so that immature animals have fecundity 0,
  and an average adult has fecundity 1.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Formulating kinship probabilities
 \end_layout
 
 \begin_layout Standard
 We now need to formulate the demographic probabilities that two samples have a given kinship,
- using the ERRO principle.
+ using the principle of Effective Relative Reproductive Output (ERRO);
+ i.e.,
+ the chance of any particular adult sample being the parent of some offspring that was sampled independently is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
  We write the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
@@ -718,7 +737,7 @@ We now need to formulate the demographic probabilities that two samples have a g
  which in our case may be MOP,
  XmHSP,
  SP,
- or UP.
+ or unrelated pair (UP).
  In the case of MOPs and XmHSPs,
  we take care to use only one sample from each individual (so 
 \begin_inset Quotes eld
@@ -989,7 +1008,7 @@ Where
 \end_inset
 
 .
- ERO and TRO are in units of "number of calves" here (though generally their units are arbitrary but matching).
+ ERO and TRO are in units of "number of calves".
  TRO is the total number of adult females in the population when 
 \begin_inset Formula $j$
 \end_inset
@@ -1061,7 +1080,17 @@ where
 \begin_inset Formula $a$
 \end_inset
 
- (product of 
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Does (product...) indicate that an equation should go here or ...?
+\end_layout
+
+\end_inset
+
+(product of 
 \family default
 \series default
 \shape default
@@ -1176,14 +1205,11 @@ If
 \end_layout
 
 \begin_layout Subsubsection
-Maternal half-sibling pairs (XmHSPs)
+Cross-cohort maternal half-sibling pairs (XmHSPs)
 \end_layout
 
 \begin_layout Standard
-We now find the probabilities of cross-cohort (X),
- maternal (m),
- half-sibling pairs (HSP):
- XmHSPs.
+We now find the probabilities of cross-cohort maternal half-sibling pairs (XmHSPs).
  We want to compare individual 
 \emph on
 
@@ -1495,7 +1521,7 @@ second-order
  HSPs are demographically the most common when the birth-gap is short.
  When the birth-gap approaches twice the age-of-maturity,
  though,
- GGPs (Grandparent-Grandchild Pair) are more common.
+ GGPs (grandparent-grandchild pair) are more common.
  We deal with this by restricting the range of birth gaps used in the model to those where GGPs are very rare (e.g.,
  below twice the age at maturity).
 \end_layout
@@ -1610,31 +1636,6 @@ where
  is the relative annual population increase/decrease.
 \end_layout
 
-\begin_layout Standard
-A purely-age-structured version of 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:self-staged"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- would need to explicitly keep track of numbers-at-age,
- not just adult abundance (as would the other kin types).
- The quasi-equilibrium assumption might allow us to do this,
- but that assumption directly constrains relative abundances-at-age.
- Thus,
- for example,
- the age 10 samples would then provide direct estimates of the abundance of age 30 samples.
- In practice,
- a fully age-structured CKMR formulation for walrus will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
- and therefore additional parameters to estimate.
- We therefore opted for a stage- rather than age-structured SP model in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model.
-\end_layout
-
 \begin_layout Subsection
 Simulations
 \end_layout
@@ -1711,7 +1712,7 @@ nolink "false"
 \end_inset
 
 .
- Females that are in state 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio.
+ Females that are in state 2 of the breeding cycle produce a single offspring with 1:1 sex ratio.
  There is no systematic age-effect on female reproductive dynamics,
  except that they are guaranteed not-pregnant in the year immediately prior to maturity (Section
 \begin_inset space ~
@@ -1751,7 +1752,7 @@ nolink "false"
 \begin_inset Formula $r$
 \end_inset
 
-).
+) for the different demographic scenarios.
 \end_layout
 
 \begin_layout Standard
@@ -1807,11 +1808,12 @@ nolink "false"
  not the two constituent parameters.
  Males and females < 4 (or > the age of last reproduction;
  ALR) are exempt from this cycle.
- The simulation then proceeds to the following year.
+ 
 \end_layout
 
 \begin_layout Standard
-All simulations had a starting population size of 250,000 and were run from 1950 to 2030.
+The simulation then proceeds to the following year.
+ All simulations were run from 1950 to 2030.
  
 \end_layout
 
@@ -4119,7 +4121,7 @@ Model checking
 
 \begin_layout Standard
 To evaluate agreement between the simulation and CKMR model,
- we generated 50 replicate simulated datasets with demographic parameters under a null scenario as in Table 
+ we generated 50 replicate simulated datasets with demographic parameters under a null scenario (Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:demo-pars"
@@ -4130,8 +4132,8 @@ nolink "false"
 
 \end_inset
 
- demographic scenario D0 and simulated historical and future sampling according to realized or target sample sizes by age class,
- with effort per year from 2023 as in sampling scenario S0 in Table 
+ demographic scenario D0) and simulated historical and future sampling according to realized or target sample sizes by age class,
+ with effort per year from 2023 onwards as in sampling scenario S0 in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Sampling-scenarios"
@@ -4148,7 +4150,7 @@ nolink "false"
  and SPs),
  observed versus expected gaps between half-sibling pairs,
  and the log-likelihood derivatives at the true parameter values.
- See Section 
+ See Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Model-checking"
@@ -4159,7 +4161,7 @@ nolink "false"
 
 \end_inset
 
-for details.
+ for details.
 \end_layout
 
 \begin_layout Subsection
@@ -4186,16 +4188,6 @@ nolink "false"
  we simulated historical sampling according to realized sample sizes by age and sex,
  and future sampling by target sample sizes by age class.
  We simulated scenarios with (L2) and without (L1) the collection of 100 lethal samples per year in sampling years.
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-This is where we-all might wanna consider investigatin wotif a LOT more lethal ones;
- 100 is too small to help.
-\end_layout
-
-\end_inset
-
  We also simulated various reductions in sampling effort,
  either by reducing the number of sampling years or by reducing the amount of sampling effort within years (S1-S7;
  Table 
@@ -4267,18 +4259,7 @@ Let
 \begin_inset Formula $w=\left\{ w_{ijk};\forall i,j,k\right\} $
 \end_inset
 
- (in practice,
- some 
-\begin_inset Quotes eld
-\end_inset
-
-impossible
-\begin_inset Quotes erd
-\end_inset
-
- comparisons are excluded;
- e.g.,
- second-order kin born a long time apart).
+.
  Define 
 \begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)=\mathbb{P}\left[K_{ij}=k\vert z_{i},z_{j},\boldsymbol{\theta}\right]$
 \end_inset
@@ -4554,7 +4535,7 @@ design
 
 -categories.
  For example,
- the plan might be to sample 1000 adult walruses per year,
+ the plan might be to sample 1000 adults per year,
  but the age composition cannot be controlled directly.
  However,
  we still need to know 
@@ -4639,6 +4620,7 @@ nolink "false"
 \end_inset
 
  details some effective sample size adjustments to our calculations in order to account for the non-independence of the pairwise comparisons.
+ [3783 words].
 \end_layout
 
 \end_body

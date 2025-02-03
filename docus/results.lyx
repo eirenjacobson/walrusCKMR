@@ -177,7 +177,18 @@ Across all demographic and sampling scenarios,
 \end_layout
 
 \begin_layout Standard
-See Table 
+See Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Additional-results"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:LH_Expected-CVs"
@@ -265,7 +276,6 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../figures/EffortVCV.png
-	scale 70
 
 \end_inset
 
@@ -323,7 +333,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../figures/CVsSameEffort.png
-	scale 70
+	scale 90
 
 \end_inset
 
@@ -396,7 +406,18 @@ nolink "false"
  The mean gain in CV on adult female abundance in paired scenarios with and without ICKMR was 11% for a stable population,
  5% for a decreasing population,
  and 15% for an increasing population.
- See Table 
+ See Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Additional-results"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:N_Expected-CV"
@@ -457,7 +478,7 @@ nolink "false"
  2020,
  and 2025,
  all demographic and sampling scenarios resulted in sufficient precision when the population was decreasing,
- while scenarios including ICKMR would be required to achieve sufficient precision when the population was increasing.
+ while scenarios including ICKMR would be required to achieve sufficient precision when the population was stable or increasing.
  
 \end_layout
 
@@ -487,9 +508,9 @@ nolink "false"
 ).
  When the population was simulated to be stable or decreasing,
  sufficient precision in abundance estimates could be achieved with as few as 2.5 years of survey effort when ICKMR was applied and lethal samples were used.
- However,
- in scenarios when the population was increasing,
- 4-5 years of survey effort would be required even with the application of ICKMR and use of lethal samples.
+ In scenarios when the population was increasing,
+ at least 3 years of survey effort would be required even with the application of ICKMR and use of lethal samples.
+ IMR alone is expected to achieve sufficient precision only if the population were decreasing.
  
 \end_layout
 
@@ -567,7 +588,7 @@ nolink "false"
 ,
  bottom panel).
  This suggests that more years of effort with fewer samples collected per year could improve overall precision in estimates of adult female abundance.
- [1204 words].
+ [1178 words].
 \end_layout
 
 \end_body

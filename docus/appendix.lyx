@@ -1755,6 +1755,13 @@ literal "false"
 
 \begin_layout Section
 Additional results
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Additional-results"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1840,7 +1847,7 @@ name "tab:LH_Expected-CVs"
 \noun off
 \color none
 \lang american
-Demographic
+Demographic 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1993,7 +2000,7 @@ CKMR
 \noun off
 \color none
 \lang american
-Adult 
+Adult Female 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2012,7 +2019,7 @@ Adult
 \noun off
 \color none
 \lang american
-Female Survival
+Survival
 \end_layout
 
 \end_inset
@@ -2036,7 +2043,7 @@ Female Survival
 \noun off
 \color none
 \lang american
-Juvenile 
+Juvenile Female 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2055,7 +2062,7 @@ Juvenile
 \noun off
 \color none
 \lang american
-Female Survival
+Survival
 \end_layout
 
 \end_inset
