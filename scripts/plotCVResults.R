@@ -91,7 +91,7 @@ ggplot() +
   theme(legend.position = "bottom")
 
 ggsave(plot = last_plot(), file = "./figures/MegaResults.png", 
-       width = 10, height = 6, units = "in")
+       width = 8.5, height = 5.5, units = "in")
 
 ##################################### Plot of sampling effort v cv
 
@@ -121,7 +121,7 @@ ggplot(filter(cveffort, Year == 2025)) +
   theme(legend.position = "bottom")
 
 ggsave(plot = last_plot(), file = "./figures/EffortVCV.png", 
-       width = 8, height = 6, units = "in")
+       width = 4, height = 5, units = "in")
 
 
 # compare equal effort scenarios
@@ -139,8 +139,8 @@ p1 <- cveffort[which(cveffort$Effort==3),] %>%
   
   facet_wrap(~Year)+
   theme_bw()+
-  labs(x = "Expected CV on # Adult Females under Sampling Scenario 1",
-       y = "Expected CV on # Adult Females under Sampling Scenario 7",
+  labs(x = "Expected CV on # Adult Females under S1",
+       y = "Expected CV on # Adult Females under S7",
        title = "Three Years of Sampling Effort") +
   theme(legend.position = "none")
 
@@ -159,12 +159,12 @@ p2 <- cveffort[which(cveffort$Effort==4),] %>%
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
   facet_wrap(~Year)+
   theme_bw()+
-  labs(x = "Expected CV on # Adult Females under Sampling Scenario 2",
-       y = "Expected CV on # Adult Females under Sampling Scenario 6",
+  labs(x = "Expected CV on # Adult Females under S2",
+       y = "Expected CV on # Adult Females under S6",
        title = "Four Years of Sampling Effort") +
   theme(legend.position = "bottom")
 
 p <- ggarrange(p1, p2, nrow = 2)
 
 ggsave(plot = p, file = "./figures/CVsSameEffort.png", 
-       width = 8, height = 10, units = "in")
+       width = 7, height = 7, units = "in")

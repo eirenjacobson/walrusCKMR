@@ -7,6 +7,10 @@ Ss <- paste0("S", 1:7)
 
 scenarios <- data.frame(expand.grid(Ds, Ls, Ss))
 
+# load empty dataframes to hold design results
+load("./results/design_df.RData")
+load("./results/compdesign.RData")
+
 for (i in 1:nrow(scenarios)){
  
   TEST_CASE <- paste0(scenarios[i,1], "_", scenarios[i,2], "_", scenarios[i,3])

@@ -10,16 +10,28 @@ lhdf <- filter(design_df, Value == "Est") %>%
   select(ID, CKMR, Value, D, L, S, fadsurv, fjusurv, ppn_breedy) %>%
   pivot_longer(cols = c(fadsurv, fjusurv, ppn_breedy), names_to = "Par", 
                values_to = "Est") %>%
-  filter(Par == "ppn_breedy") %>%
-  group_by(D, S) %>%
+  filter(Par == "fadsurv") %>%
+  group_by(CKMR, L) %>%
   summarize(Mean = round(mean(Est, na.rm=TRUE), digits = 2)) 
 
 cvdf <- na.omit(filter(design_df, Value == "CV")) %>%
   select(ID, CKMR, Value, D, L, S, fadsurv, fjusurv, ppn_breedy) %>%
   pivot_longer(cols = c(fadsurv, fjusurv, ppn_breedy), names_to = "Par", 
-               values_to = "Est") %>%
+               values_to = "CV") %>%
   mutate(CKMR = as.factor(CKMR)) %>%
   mutate(L = factor(L, levels=2:1, labels=c("Yes", "No")))
+
+
+comparecvs <-  na.omit(filter(design_df, Value == "CV")) %>%
+  select(CKMR, Value, D, L, S, fadsurv, fjusurv, ppn_breedy) %>%
+  pivot_longer(cols = c(fadsurv, fjusurv, ppn_breedy), names_to = "Par", 
+               values_to = "CV") %>%
+  filter(Par == "ppn_breedy") %>%
+  group_by(CKMR) %>%
+#  pivot_wider(names_from = CKMR, values_from = CV) %>%
+#  mutate(Gain = Yes - No) %>%
+  group_by(D) %>%
+  summarize(mean(CV))
 
 ggplot(cvdf) +
   geom_point(aes(x=S, y = Est))+
