@@ -1,0 +1,220 @@
+\selectlanguage{american}%
+
+Estimation of abundance and of other demographic parameters such as
+survival is a key part of wildlife management and conservation. Traditional
+mark-recapture analysis \citep{williams_analysis_2002} can deliver
+estimates with low bias and uncertainty, provided that enough individual
+animals i) are naturally, artificially, or genetically “marked” and
+identifiable and ii) can be recaptured over time. If genotypes are
+used as the marks, as in genetic individual mark-recapture (IMR; \citealp{palsboll_genetic_1997}),
+then kinship patterns amongst the samples (parents, siblings, etc)
+contains additional information relevant to demographics \citep{skaug_allele-sharing_2001}.
+Close-kin mark-recapture (CKMR; see \citealp{bravington_close-kin_2016})
+is a framework for using these kinships, as inferred from genotypes,
+to estimate abundance and demographic parameters. CKMR provides additional
+flexibility compared with IMR since lethal samples (from sampling,
+hunting, natural mortality etc.) and/or non-lethal samples can be
+used; it also increases the effective sample size, since more types
+of ``recapture'' are possible. As of 2025, most CKMR projects have
+been for commercial fish (e.g., \citealp{Davies2020SBT2}) or sharks
+(e.g., \citealp{Hillary2018WS-CKMR}), but there are also some for
+mammals, including \citet{conn_robustness_2020}'s modeling study
+of bearded seals and its implementation by \citet{taras_estimating_2024},
+and \citet{lloyd-jones_close-kin_2023} for flying foxes.
+
+The principle behind CKMR is that every individual has (or had) one
+mother and one father; thus, for a given sample size, in a large population
+there will be few ``recaptures'' of parents or their other descendants,
+while in a small population there will be many. In practice, the data
+for CKMR comprise the outcome of pairwise kinship checks amongst samples,
+plus covariates associated with each sample such as its date of capture,
+age, size, sex etc. The CKMR model has two components: a population-dynamics
+part driven by the demographic parameters; and formulae for the expected
+frequencies of different kinship types in pairwise comparisons, conditional
+on sample covariates and population dynamics. By combining the kinship
+data with the model, parameters can be estimated using maximum-likelihood
+or Bayesian methods.
+
+CKMR has mostly been used in situations where self-recaptures are
+unlikely or impossible (e.g., because sampling is lethal). \citet{lloyd-jones_close-kin_2023}
+did include IMR results in a CKMR study but did not integrate both
+datasets into a single model. Here, we focus on a population where
+IMR was the original project goal; therefore we extend traditional
+CKMR to include IMR in the same model as an additional kinship type,
+whereby pairwise genetic comparison can show that two samples are
+from the same animal.
+
+The success of CKMR and/or IMR depends on whether data collected contain
+sufficient recaptures. Sampling design (e.g. number of samples, composition,
+study duration, quality of covariate measurements) is crucial to avoid
+expensive, embarrassing, and predictable failure. The pairwise-comparison
+framework leads to analytical results for expected number of kin-pairs
+and expected variance given expected number of samples (and associated
+covariates), so that simulation is not essential; nevertheless, simulation
+can sometimes be useful as a way to check the fairly complex code
+of kinship probabilities and design setup. In this paper we show how
+to do and check the calculations using a case study on the Pacific
+walrus (\emph{Odobenus rosmarus divergens}; hereafter, walrus) in
+the North Pacific. We explore different demographic and design scenarios
+for walrus using IMR alone versus CKMR + IMR = ICKMR, and demonstrate
+how the latter can be used to substantially reduce the overall amount
+of survey effort required for adequate monitoring.
+
+In the rest of this Introduction, we provide some background on CKMR
+(drawn from \citealt{bravington_close-kin_2016} and experience on
+numerous projects since), and on walrus biology and the survey setup.
+In Methods, we describe our walrus population dynamics model, derive
+walrus-appropriate kinship probability formulae, and show how to analytically
+calculate the expected variances that might come from different survey
+designs. We also outline the simulation setup which we used to test
+our CKMR model. The Results section shows how different survey designs
+are likely to perform (e.g., with\slash without CKMR). In the Discussion,
+we summarize our conclusions for walrus, and also mention some modeling
+simplifications made for design purposes that we may wish to reconsider
+when working with real data.
+
+\subsection{Close-kin practicalities}
+
+Most iteroparous species are potential candidates for CKMR, except
+for a few pathological cases such as those mentioned in \citet{bravington_close-kin_2016}.
+The data requirements are otherwise quite flexible; the kinships used
+in any particular study can vary depending on logistic and modeling
+considerations. Genotyping methods are beyond the scope of this paper
+but, given good-quality tissue samples, modern high-throughput sequencing
+and microarrays are cheap and reliable enough to permit reliable and
+(almost) unambiguous detection of small numbers of kin-pairs within
+large sample sizes {[}REF NEEDED{]}. With current genetic methods,
+the the informative and usable types of ``close'' kin are usually
+limited to: Parent-Offspring Pairs (POPs) and Half-Sibling Pairs (HSPs,
+which share one parent). In some applications, Full-Sibling Pairs
+(FSP), and other ``second-order kin'' beside HSPs such as Grandparent-Grandchild
+Pairs (GGPs), may also be important. To deal with IMR in the same
+framework, we add the kinship category Self-Pair (SP). Any other kinship
+constitutes an ``Unrelated Pair'' (UP) for modelling purposes, even
+if there is genetic evidence of weak relatedness.
+
+Some information about sample age is required. Often this comes from
+``hard parts'' such as teeth or otoliths (requiring lethal samples),
+or less accurately from covariates such as body size or from a visual
+assessment of life-stage. The advent of epigenetic ageing (e.g. \citealp{Weber2024DNAgeray,Robeck2023DNAgepinni,Peters2023DNAgebotdol})
+makes it possible to use just the biopsy sample itself. Uncertainty
+in age and other covariate estimates can be accommodated within the
+CKMR model, though the precision of parameter estimates is of course
+linked to the accuracy of covariate measurements.
+
+\selectlanguage{english}%
+The basic principle behind kinship probabilities is ``ERRO'' (Expected
+Relative Reproductive Output). Roughly: the chance of any particular
+adult sample being the parent of some offspring that was sampled independently,
+is the ratio of that adult's expected fecundity to the total fecundity
+of all parents at the time the offspring was born. \foreignlanguage{american}{Devising
+the formulae for the expected frequencies of kinships requires at
+least qualitative consideration to the life history and reproductive
+biology of the species, as well as aspects of the sampling. For example:
+does the population breed in one place and at one time? Does the species
+have a polygynous mating structure? Are breeding animals as likely
+to be sampled as ``resting'' ones? Not everything matters, but anything
+that affects ERRO should, in principle, be allowed for in the model.
+We give walrus-specific examples in Methods.}
+\selectlanguage{american}%
+
+\subsection{Walrus biology and background}
+
+The walrus is a gregarious, ice-associated pinniped inhabiting continental
+shelf waters of the Bering and Chukchi seas. During winter (when sea
+ice forms south of the Bering Strait) virtually all walruses occupy
+the Bering Sea \citep{fay_ecology_1982}. In summer (when sea ice
+is absent from the Bering Sea) almost all juvenile and adult female
+walruses, and some adult male walruses, migrate north to the Chukchi
+Sea. When walruses rest offshore on sea ice floes, their distribution
+is dynamic, because it generally follows the marginal ice zone (a
+moving, changing habitat which contains a mix of ice floes and water)
+but also concentrates in regions of high benthic productivity. This
+allows walruses to forage for benthic invertebrates while simultaneously
+having access to a nearby substrate for hauling out.
+
+{*}{*}{*}NEED something about walrus moving about all over the place,
+from IMR data and (more likely) sat tags :) Some of that {*}could{*}
+go to the Discussion, but I think at least a pre-mention here, coz
+it will otherwise be in the alert reader's mind as they look at the
+model structure
+
+{*}{*}{*}Walrus reprod biol summary should go here? Rather than putting
+it off until Methods.
+
+Sea ice has declined for decades \citep{perovich_loss_2009,stroeve_trends_2012,stroeve_changing_2018},
+and coupled global atmospheric-ocean general circulation models predict
+its continued decline \citep{arthun_seasonal_2021}. When sea ice
+recedes from the continental shelf, walruses come on shore to rest
+in large herds at sites termed haulouts, from which they make long
+trips to foraging hotspots \citep{jay_walrus_2012}. This change in
+their activity budgets \citep{jay_walrus_2017} may ultimately lead
+to a decline in body condition and an increase in mortality or a decrease
+in reproduction \citep{udevitz_forecasting_2017}. Furthermore, disturbance
+at haulouts can cause stampedes, resulting in mass calf and juvenile
+mortality. Continued sea-ice loss and a concomitant increase in the
+intensity and expansion of industrial and shipping activities in Pacific
+Arctic waters \citep{silber_vessel_2019} are expected to drive a
+substantial population decline \citep{garlich-miller_status_2011,maccracken_final_2017,johnson_assessing_2023,johnson_assessing_2024}.
+
+Range-wide abundance and demographic rate estimates are crucial for
+understanding population status, as well as for developing and implementing
+harvest management plans. In particular, subsistence walrus harvests
+in Alaska and Chukotka exceed 4,000 animals annually (USFWS, 2023),
+and indigenous peoples need information on the status of the walrus
+population in order to manage these harvests sustainably. Furthermore,
+in the United States, the Marine Mammal Protection Act (MMPA) requires
+a determination of potential biological removal for walrus, which
+in turn, requires a precise abundance estimate \citep{gilbert_review_1999,wade_determining_1999}.
+
+Scientists have attempted to ascertain walrus population size since
+at least 1880 \citep{fay_managing_1989}, and until very recently,
+unsuccessfully. The most concerted effort was the 1975-2006 range-wide
+airplane-based surveys conducted collaboratively with the Soviet Union
+and then Russian Federation. However, resulting estimates were biased
+and imprecise, and count-based methods were abandoned after the 2006
+survey which, despite a rigorous design, innovative field methods,
+and sophisticated analyses, yielded a 95\% confidence interval (CI)
+on the population size estimate of 55,000–507,000 animals (CV = 0.93).
+The extensive imprecision in the estimate resulted from the walrus
+population being widely dispersed with unpredictable local clumping
+\citep{speckman_results_2011,jay_walrus_2012}, which is, in turn,
+due to the large area of arctic and subarctic continental shelf over
+which they forage, their gregarious nature, and the dynamic nature
+of the marginal ice zone.
+
+The first rigorous walrus survival rate estimates were obtained within
+the past decade via Bayesian integrated population models (IPMs),
+which combined multiple data sources to estimate demographic rates
+and population trend over multiple decades \citep{taylor_demography_2015,taylor_demography_2018}.
+However, the original problems with the aerial survey data continued
+to preclude conclusions about population abundance in the IPMs \citep{taylor_demography_2015}.
+
+In 2013, the U.S. Fish and Wildlife Service (FWS) initiated a genetic
+IMR project to estimate walrus abundance and demographic rates. Under
+this approach, genetic ``marking'' via skin biopsy samples \citep{palsboll_genetic_1997}
+provided a major advantage over traditional marking techniques because
+walruses are extremely difficult to handle physically. Over five years
+of research cruises, biologists attempted to collect a representative
+sample of walruses in the accessible portion of the marginal ice zone
+in each year a cruise was conducted, although Russian waters were
+not accessible in all years. Sampling focused on groups of adult females
+and juveniles, as these classes are the demographically important
+population segments of this polygynous species \citep{fay_ecology_1982}.
+Further methods for the IMR study are detailed by Beatty et al. \citet{beatty_panmixia_2020}
+and \citet{beatty_estimating_2022}.
+
+Data analysis from the first generation of walrus research cruises
+(2013–2017) used a Cormack-Jolly-Seber multievent model to estimate
+survival rates, and a Horvitz-Thompson-like estimator to obtain population
+size. The total abundance of 257,000 had a 95\% credible interval
+(CrI) of 171,000–366,000 (CV=0.19; \citealt{beatty_estimating_2022}).
+Although the precision of the abundance estimate from the IMR study
+was much improved over the final aerial survey, the IMR study required
+extensive investment of human and financial resources (i.e, USD \$5,000,000).
+A more cost-effective approach is needed to assess the walrus population
+on a regular interval. As mentioned above, biopsy samples also contain
+information about kin relationships, which, through CKMR, can substantially
+augment the information content of genetic IMR without increasing
+sampling effort. {[}2030 words{]}.\selectlanguage{english}%
+

@@ -1,0 +1,16 @@
+NOTES ON CONVERSION TO MSWORD, 4/2/2025
+
+ - This is an "automatic" conversion done by my 'lyxport' R package. I haven't really checked the result! (Except that it is not obviously stupid.)
+ 
+ - I fixed a few bugs and features in 'lyxport' along the way. Please do give it another try (I've put a huge amount of work into it, and can only test it up to a point on my machines!); it should at least get past the installation glitch you found.
+
+ - The tikz figure didn't come out (yet). Paste in manually for now (I'll look into whether that can fixed to work automatically, but no promises.)
+ 
+ - Biblio format is whatever it happens to be. Actually 'lyxport' can produce any one you like, provided there's a CSL file, but I haven't bothered for now.
+ 
+ - Greyed-out isn't grey--- it's like normal text. IDNK if that's fixable; i'll look, but no promisesh. Up to you whether to tweak by hand...
+ 
+ - Not all the internal xrefs have resolved yet--- eg I see "Appendix [appendix:Adjustments-for-non-sparse]" and  "probabilities like [eq:MOP-past] are". They *should* work--- they did work for the (longer) SOWER paper! I will try to fix those, don't know exactly how quick that will be.
+ 
+ 
+

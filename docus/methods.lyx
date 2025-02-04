@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \begin_preamble
 
@@ -82,7 +82,7 @@ InStar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -91,9 +91,47 @@ InStar
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author 193499690 "mvb"
 \end_header
 
 \begin_body
+
+\begin_layout In Preamble
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Repeats stuff from master preamble
+\end_layout
+
+\begin_layout Plain Layout
+
+% I think that's OK...
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage{tikz}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usetikzlibrary{arrows,automata,positioning,arrows.meta}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
@@ -955,7 +993,13 @@ must
 
 \end_inset
 
-Where 
+
+\change_deleted 193499690 1738653724
+W
+\change_inserted 193499690 1738653724
+w
+\change_unchanged
+here 
 \begin_inset Formula $R_{i}(b_{j}\vert y_{i},a_{i})$
 \end_inset
 
@@ -1202,7 +1246,13 @@ We now find the probabilities of cross-cohort (X),
 \emph default
 ,
  to check whether they have the same mother.
- We impose the following criteria:
+ We 
+\change_inserted 193499690 1738653465
+restrict attention to comparisons that satisfy the 
+\change_deleted 193499690 1738653467
+impose the 
+\change_unchanged
+following criteria:
 \end_layout
 
 \begin_layout Itemize
@@ -1227,24 +1277,29 @@ We now find the probabilities of cross-cohort (X),
 \end_layout
 
 \begin_layout Standard
-If 
-\emph on
 
-\begin_inset Formula $m$
-\end_inset
-
-
-\emph default
- is the mother of 
+\change_inserted 193499690 1738653231
+We know that 
 \begin_inset Formula $k$
 \end_inset
 
-,
- what is the probability that 
+ definitely had a mother,
+ whom we shall call 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ 
+\change_unchanged
+What is the probability that 
 \begin_inset Formula $l$
 \end_inset
 
-'s mother was 
+'s mother was
+\change_inserted 193499690 1738653179
+ also
+\change_unchanged
+ 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1254,7 +1309,11 @@ If
 \end_inset
 
 ?
- The latter amounts to two things:
+ The latter 
+\change_inserted 193499690 1738653660
+is that 
+\change_deleted 193499690 1738653663
+amounts to two things:
 
 \emph on
  
@@ -1263,7 +1322,9 @@ If
 \shape default
 i
 \shape italic
-) 
+)
+\change_unchanged
+ 
 \shape default
 
 \begin_inset Formula $m$
@@ -1277,12 +1338,37 @@ i
 \begin_inset Formula $k$
 \end_inset
 
-'s birth and,
+'s birth
+\change_inserted 193499690 1738653669
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1738653500
+that's 3 things already ;) !
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+,
+
+\change_unchanged
+ and
+\change_deleted 193499690 1738653673
+,
  (
 \shape italic
 ii
 \shape default
-) 
+)
+\change_inserted 193499690 1738653675
+also
+\change_unchanged
+ 
 \emph on
 
 \begin_inset Formula $m$
@@ -1321,7 +1407,11 @@ ii
 \end_inset
 
 's mother,
- three things have to happen:
+ three 
+\change_inserted 193499690 1738653256
+more 
+\change_unchanged
+things have to happen:
 \end_layout
 
 \begin_layout Enumerate
@@ -1356,7 +1446,19 @@ amongst all the females that are alive and in the right breeding state in year
 \begin_inset Formula $m$
 \end_inset
 
- is the mother.
+ is the 
+\change_inserted 193499690 1738653281
+one who happens to be 
+\change_deleted 193499690 1738653281
+mother
+\change_inserted 193499690 1738653286
+
+\begin_inset Formula $l$
+\end_inset
+
+'s mother
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -1415,7 +1517,17 @@ which is the probability vector of
 \end_inset
 
  is the proportion of adult females in breeding state S2.
- Then:
+ Then
+\change_inserted 193499690 1738653404
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1738653390
+:
+\change_unchanged
+
 \begin_inset Note Note
 status open
 
@@ -1452,17 +1564,52 @@ The walrus setting (or our assumptions about it) has actually made this probabil
  walrus aren't fish :)
 \end_layout
 
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1738653858
+MVB response:
+ :) The key point is going from the 2nd to the 3rd line of report (2.7).
+ I do that in words.
+ That gets me out of the problem with your version,
+ which is:
+ in the middle you have the joint prob that m is *both* k's mum and l's mum.
+ It should be conditional on m already being k's mum.
+ In the version below I have made that explicit;
+ note I had to introduce a subscript B_m() to clarify that it's specifically m whose breeding state we care about (whereas plain old B(t) is already introduced earlier).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1738655405
+I'm having trouble with change-tracking and greyed-out with your old version of the eqn,
+ so I've deleted it...
+ sorry,
+ I would have left it commented-out if I could!
+\change_unchanged
+
+\end_layout
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\begin{align}
-\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert b_{\text{\emph{k}}},b_{\text{\emph{l}}},\boldsymbol{\theta}\right] & =\mathbb{P}\left[K_{km}=\text{MOP}\wedge K_{lm}=\text{MOP}\vert b_{\text{\emph{k}}},b_{l},\boldsymbol{\theta}\right]\nonumber \\
- & =\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
-\end{align}
+\begin{gather}
+\mathbb{P}\left[K_{k\ell}=\text{XmHSP}|b_{k},b_{\ell},\theta\right]\nonumber \\
+=\mathbb{P}\left[K_{km}=\text{MOP}|B_{m}\left(b_{k}\right)=\text{S2},m\text{ alive at }b_{k}+1,b_{\ell},\theta\right]\nonumber \\
+=\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
+\end{gather}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $\left[\right]_{2}$
 \end_inset
@@ -1473,7 +1620,7 @@ where
 \shape italic
 m
 \shape default
- (given she was alive) was in breeding state S2 at 
+ (given she was alive) was again in breeding state S2 at 
 \shape italic
 l
 \shape default
@@ -4403,12 +4550,31 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 
 .
  
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 using squared 1st derivatives is the Fisher information?
  Can we call this the pseudo-Fisher information?
+
+\change_inserted 193499690 1738626360
+ Oh,
+ sorry,
+ I always get confused by which one is the formal definition (2nd D,
+ or 1st D ^2).
+ The thing is that under 
+\begin_inset Quotes eld
+\end_inset
+
+sparse sampling
+\begin_inset Quotes erd
+\end_inset
+
+,
+ the two will be the same here anyway...
+ let's wing it ;)
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -4456,7 +4622,7 @@ where
 \end_inset
 
  respectively
-\begin_inset Note Note
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
@@ -4469,7 +4635,11 @@ The ordering
 \end_inset
 
 
-\begin_inset Formula $z_{1}<z_{2}"$
+\begin_inset Formula $z_{1}<z_{2}$
+\end_inset
+
+
+\begin_inset Quotes erd
 \end_inset
 
  is arbitrary,
@@ -4626,7 +4796,35 @@ literal "false"
 
 \end_inset
 
- is therefore not strictly justified leading to an underestimate of the variance (there is no effect on point estimates).
+ is therefore not strictly justified
+\change_inserted 193499690 1738656942
+,
+ so the variance might be slightly over- or under-estimated
+\change_deleted 193499690 1738656937
+ 
+\change_inserted 193499690 1738656962
+relative to our calculations here;
+ the direction is not obvious.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1738656979
+I am changing my thinking about this;
+ it's highly not obvious...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 193499690 1738656937
+leading to an underestimate of the variance
+\change_unchanged
+ (there is no effect on point estimates).
  Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref

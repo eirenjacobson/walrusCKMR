@@ -3,26 +3,8 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
-\begin_preamble
-
-% specify here the journal
-%\journal{Methods in Ecology and Evolution}
-% use this if you need line numbers
-%\usepackage{lineno}  %%% PROBABLY DON'T in LyX 2.4 where line nums are easier
-%\linenumbers
-\usepackage{tikz}
-\usetikzlibrary{arrows,automata,positioning,arrows.meta}
-\usepackage[utf8]{inputenc}
-\DeclareUnicodeCharacter{202A}{!!!FIX ME!!!}
-\DeclareUnicodeCharacter{202C}{!!!FIX ME!!!}
-
-% get rid of the note field (which has an eprint URL for most entries)
-%\AtEveryBibitem{\clearfield{note}\clearfield{addendum}}
-%\AtEveryCitekey{\clearfield{note}\clearfield{addendum}}
-%\DeclareFieldFormat*{note}{}
-\end_preamble
 \use_default_options false
 \begin_modules
 theorems-std
@@ -84,6 +66,11 @@ InStar
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 1
+\branch NFN
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -116,6 +103,153 @@ InStar
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MVB moved the 
+\begin_inset Quotes eld
+\end_inset
+
+Latex preamble
+\begin_inset Quotes erd
+\end_inset
+
+ into this ERT box in an 
+\begin_inset Quotes eld
+\end_inset
+
+In Preamble
+\begin_inset Quotes erd
+\end_inset
+
+ environment—
+ causes me less trouble this way!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout In Preamble
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% specify here the journal
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+journal{Methods in Ecology and Evolution}
+\end_layout
+
+\begin_layout Plain Layout
+
+% use this if you need line numbers
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+usepackage{lineno}  %%% PROBABLY DON'T in LyX 2.4 where line nums are easier
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+linenumbers
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage{tikz}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usetikzlibrary{arrows,automata,positioning,arrows.meta}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage[utf8]{inputenc}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareUnicodeCharacter{202A}{!!!FIX ME!!!}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareUnicodeCharacter{202C}{!!!FIX ME!!!}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% get rid of the note field (which has an eprint URL for most entries)
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AtEveryBibitem{
+\backslash
+clearfield{note}
+\backslash
+clearfield{addendum}}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AtEveryCitekey{
+\backslash
+clearfield{note}
+\backslash
+clearfield{addendum}}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+DeclareFieldFormat*{note}{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Title
 Combining individual and close-kin mark-recapture to design an effective survey for Pacific walrus 
@@ -500,14 +634,17 @@ encoding "default"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
+\start_of_appendix
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Appendices here...
+\end_layout
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Part*
-Appendix
 \end_layout
 
 \begin_layout Standard

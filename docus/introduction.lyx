@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
@@ -656,15 +656,53 @@ literal "false"
 
 .
  Further methods for the IMR study are detailed by Beatty et al.
- (
+ 
 \begin_inset CommandInset citation
-LatexCommand citeyear
-key "beatty_panmixia_2020,beatty_estimating_2022"
+LatexCommand citet
+key "beatty_panmixia_2020"
 literal "false"
 
 \end_inset
 
-).
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+My MSWord export can't handle the previous version,
+ which manually had 
+\begin_inset Quotes eld
+\end_inset
+
+Beatty et al.
+\begin_inset Quotes erd
+\end_inset
+
+ typed,
+ and used 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+cite*
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
