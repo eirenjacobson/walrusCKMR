@@ -1,3 +1,41 @@
+%% LyX 2.4.2.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[twoside]{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\pagestyle{headings}
+\usepackage{color}
+\definecolor{note_fontcolor}{rgb}{0.800781, 0.800781, 0.800781}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+% Repeats stuff from master preamble
+% I think that's OK...
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning,arrows.meta}
+
+
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+%% The greyedout annotation environment
+\newenvironment{lyxgreyedout}
+{\normalfont\normalsize\textcolor{note_fontcolor}\bgroup\ignorespaces}
+{\ignorespacesafterend\egroup}
+
+\makeatother
+
+\usepackage[english]{babel}
+\begin{document}
 To evaluate our proposed survey designs, we must first construct our
 ICKMR model for walrus. We encode our knowledge about walrus biology
 and life history to (\textit{i}) build a model of walrus population
@@ -220,8 +258,8 @@ and adult survival probabilities). $B\left(a\right)$ is an individual's
 breeding state in year $a$, which here is individual \emph{$i$}'s
 age at $b_{j}$ ($a_{i}+b_{j}-y_{i}$, assuming she survives).
 
-Then, using our definition of fecundity at age, \eqref{eq:fec-def},
-we have
+Then, using our definition of fecun\ref{eq:MOP-future}dity at age,
+\eqref{eq:fec-def}, we have
 \begin{gather}
 \mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j},\boldsymbol{\theta}\right]=\frac{\Phi\left(y_{i}-b_{j},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
 \end{gather}
@@ -575,7 +613,12 @@ of samples are self/kin-recaptures. This means that a comparable proportion
 of pairwise comparisons have predictable outcomes based on the results
 of other comparisons, breaking independence. The ``sparse sampling''
 assumption of \citet{bravington_close-kin_2016} is therefore not
-strictly justified leading to an underestimate of the variance (there
-is no effect on point estimates). Appendix \ref{appendix:Adjustments-for-non-sparse}
+strictly justified, so the variance might be slightly over- or under-estimatedrelative
+to our calculations here; the direction is not obvious. %
+\begin{lyxgreyedout}
+I am changing my thinking about this; it's highly not obvious...%
+\end{lyxgreyedout}
+{} (there is no effect on point estimates). Appendix \ref{appendix:Adjustments-for-non-sparse}
 details some effective sample size adjustments to our calculations
 in order to account for the non-independence of the pairwise comparisons.
+\end{document}

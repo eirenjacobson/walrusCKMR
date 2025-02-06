@@ -150,6 +150,13 @@ the other way round
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:self-backwards"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -691,7 +698,7 @@ lethal-sample
 Self-recapture when exact age is known
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:selfP-exact-age"
+name "sec:selfP-exact-age"
 
 \end_inset
 
@@ -1397,7 +1404,7 @@ literal "false"
 Adjustments for non-sparse sampling
 \begin_inset CommandInset label
 LatexCommand label
-name "appendix:Adjustments-for-non-sparse"
+name "sec:Adjustments-for-non-sparse"
 
 \end_inset
 

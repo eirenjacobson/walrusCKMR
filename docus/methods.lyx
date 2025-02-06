@@ -4825,10 +4825,20 @@ I am changing my thinking about this;
 leading to an underestimate of the variance
 \change_unchanged
  (there is no effect on point estimates).
- Appendix 
+ Appendix
+\change_inserted 193499690 1738811581
+
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted 193499690 1738811581
+ 
+\change_unchanged
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "appendix:Adjustments-for-non-sparse"
+reference "sec:Adjustments-for-non-sparse"
 plural "false"
 caps "false"
 noprefix "false"
