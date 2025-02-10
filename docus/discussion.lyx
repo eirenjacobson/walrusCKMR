@@ -176,6 +176,19 @@ on stage-structured dynamics:
 \end_layout
 
 \begin_layout Itemize
+A purely-age-structured version of 
+\backslash
+eqref{eq:self-staged} would need to explicitly keep track of numbers-at-age,
+ not just adult abundance (as would the other kin types).
+ The quasi-equilibrium assumption might allow us to do this,
+ but that assumption directly constrains relative abundances-at-age.
+ In practice,
+ a fully age-structured CKMR formulation for walrus will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
+ and therefore additional parameters to estimate.
+ We therefore opted for a stage- rather than age-structured SP model in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model.
+\end_layout
+
+\begin_layout Itemize
 appendix 
 \begin_inset CommandInset ref
 LatexCommand eqref

@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -82,7 +82,7 @@ InStar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -150,8 +150,8 @@ METHODS
 
 \begin_layout Standard
 To evaluate our proposed survey designs,
- we must first construct our ICKMR model for walrus.
- We encode our knowledge about walrus biology and life history to (
+ we first constructed our ICKMR model for walrus.
+ We encoded our knowledge about walrus biology and life history to (
 \shape italic
 i
 \shape default
@@ -162,17 +162,17 @@ i
 ii
 \shape default
 ) formulate kinship probabilities between pairs of samples.
- The population dynamics model incorporates demographic parameters that will need to be estimated:
+ The population dynamics model incorporates demographic parameters that need to be estimated:
  survival rates,
  adult abundance in some reference year,
  trend,
- and so on.
- The kinship probabilities depend on the population dynamics.
+ etc.
+ The kinship probabilities depend on population dynamics.
  Given a real dataset,
  we would estimate the parameters by maximizing the log-likelihood that combines the kinship probabilities with the actual outcomes of all pairwise comparisons.
  For design purposes,
  though,
- we instead use a computational shortcut to predict the precision of the estimates that would be expected under different sampling designs.
+ we instead use an analytical method to predict the precision of the estimates that would be expected under different sampling designs.
  Although it is not strictly necessary to simulate any data in this process,
  we did use simulations to check that our CKMR model was appropriately formulated.
  This section describes our population dynamics model,
@@ -186,7 +186,7 @@ Biological considerations
 \end_layout
 
 \begin_layout Standard
-Adult males are inaccessible to this study given seasonal sex-segregation and the geographical coverage of sampling effort (see Section 
+Adult males were not included in this study due to seasonal sex segregation and the geographical coverage of the sampling effort (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Introduction"
@@ -198,30 +198,29 @@ nolink "false"
 \end_inset
 
 ).
- They also form leks and compete for breeding access to females,
- so it is plausible that adult males might also exhibit persistent individual variability in breeding success,
- which would considerably complicate the interpretation of paternal half-sibling kinship data (see Discussion).
+ Additionally,
+ adult males form leks and compete for breeding access to females,
+ which suggests the potential for persistent individual variability in breeding success.
+ This variability could considerably complicate the interpretation of paternal half-sibling kinship data (see Discussion).
  Therefore,
- we restrict attention to female-only dynamics,
- and consider only three types of kinship:
- Mother-Offspring Pair (MOP),
- Cross-cohort maternal Half-Sibling Pair (XmHSP),
- and Self Pair (SP),
- i.e.
- recapture of an individual.
+ our analysis focuses exclusively on female-driven dynamics,
+ considering three types of kinship:
+ mother-offspring pair (MOP),
+ cross-cohort maternal half-sibling pair (XmHSP),
+ and self pair (SP),
+ which represents individual recaptures.
  Our samples comprise juvenile and adult females,
- plus juvenile males;
- the problems are with modelling males as parents,
- but we can safely use sampled juvenile males as potential offspring of females and as potential maternal half-siblings of other (female or male) samples.
- We do not expect females to vary much in terms of individual fecundity.
+ plus juvenile males.
+ While there challenges with modelling males as parents,
+ juvenile males can still be incorporated as potneital offsprning of females and as potential maternal half-siblings to other sampled individuals (female or male).
+ We assume that individual variation in female fecundity is minimal.
 \end_layout
 
 \begin_layout Standard
 We assume that age estimates will be available for all samples,
- based on epigenetic data (CITE).
- Visual classification is only accurate over the first couple of years of life (CITE),
- which could be problematic for CKMR.
- Our model is structured to allow for errors in estimated age (with standard deviation assumed known i.e.,
+ based on epigenetic aging data (CITE).
+ Our model is structured to allow for errors in estimated age (with standard deviation assumed known,
+ i.e.,
  after calibration of epigenetic against known-age samples),
  though the results here assume that there are no errors;
  see Discussion.
@@ -233,21 +232,49 @@ Stage-structured quasi-equilibrium dynamics
 
 \begin_layout Standard
 For our female-only population dynamics model,
- we opted for a stage-structured (juvenile/adult),
+ we adpoted a stage-structured (juvenile/adult),
  rather than fully-age-structured approach.
- We did this because (
+ This decision was based on two key considerations:
+ (
 \shape italic
 i
 \shape default
-) most female adults are expected to have similar reproductive capacity and chance of survival,
+) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Rebecca wanted to change this to 
+\begin_inset Quotes eld
+\end_inset
+
+most reproductive adult females are expected...
+\begin_inset Quotes erd
+\end_inset
+
+ since senescent animals have lower survival and fecundity.
+ I'm wondering if the 
+\begin_inset Quotes eld
+\end_inset
+
+most
+\begin_inset Quotes erd
+\end_inset
+
+ is meant to exclude senescent animals?
+\end_layout
+
+\end_inset
+
+most female adults are expected to have similar reproductive capacity and chance of survival,
  regardless of age;
  and (
 \shape italic
 ii
 \shape default
-) stage-structured models are simpler to code for CKMR and require fewer parameters (the addition of IMR data makes things less simple).
- Stage-structured results should be quite adequate for design purposes;
- the fundamental role of total (non-age-specific) adult abundance and survival is very similar to fully-age-structured models.
+) stage-structured models are simpler to implement for CKMR and require fewer parameters.
+ Given these advantages,
+ a stage-structured model should provide sufficient accuracy for study design purposes.
 \end_layout
 
 \begin_layout Standard
@@ -255,7 +282,7 @@ We used two stages:
  juveniles aged 1–5,
  and adults aged 6+ (the first age at which an accompanying calf is common) at sampling.
  We did not consider calves (age 0),
- to avoid complications around mother-calf sampling.
+ to avoid complications around simultaneous mother-calf sampling.
  We assume constant survival within each stage (
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
@@ -266,15 +293,24 @@ We used two stages:
 
 ),
  and that offspring survival from age 1 onwards is independent of its mother's survival,
- whether or not the offspring has weaned yet.
- We assume that adult female abundance is stable,
- increasing,
+ whether or not the offspring has fully weaned yet.
+ We assume that adult female abundance was either stable,
+ increasing exponentially,
  or decreasing exponentially over the period covered by the population dynamics (2000–2028;
  the lower limit of 
 \begin_inset Formula $y_{0}=$
 \end_inset
 
-2000 is set because there were fairly drastic changes in the population prior to that).
+2000 is set because there were large changes in the population prior to that;
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "taylor_demography_2015,taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+).
  We have
 \begin_inset Formula 
 \begin{align}
@@ -373,14 +409,67 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-We use a Markov model to describe the walrus breeding cycle.
+Walrus have a litter size of one,
+ and due to a 14-15 month gestation,
+ they cannot give birth in consecutive years
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Also CITE Katsumata et al.
+ 2020 here
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "fay_ecology_1982,Robeck2023DNAgepinni"
+literal "false"
+
+\end_inset
+
+.
+ In addition,
+ they are unlikely to give birth every second year 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2015,taylor_demography_2018,Robeck2023DNAgepinni"
+literal "false"
+
+\end_inset
+
+ except perhaps if the population is growing at a large exponential rate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+CITE Fay 1997
+\end_layout
+
+\end_inset
+
+ .
+ We used a first order Markov model to describe the walrus breeding cycle (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Breeding-cycle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
  We assume three breeding states:
  (S1) pregnant;
  (S2) with young-of-the-year (YOTY) calf;
  or (S3) non-breeding,
  i.e.,
  neither of the above.
- The Markov property assumes that next year's state depends only on this year's.
  From state S1 (pregnant),
  next year's state must be S2 (with YOTY calf).
  From state S2,
@@ -406,33 +495,20 @@ We use a Markov model to describe the walrus breeding cycle.
 \end_inset
 
 .
- Due to long gestation times (~14 months),
- walrus cannot give birth to calves in two consecutive years (CITE).
- We also allow 
-\begin_inset Formula $\psi_{2}\neq\psi_{3}$
-\end_inset
+\end_layout
 
- as they are unlikely to give birth to calves every second year (CITE).
- This is shown in Figure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Breeding-cycle"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+\begin_layout Standard
+Females enter state S3 (i.e.,
+ reach sexual maturity) at age 4,
+ and therefore can become pregnant at age 5 and give birth at age 6 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_ecology_1982"
+literal "false"
 
 \end_inset
 
 .
- Survival is assumed to be independent of breeding state.
- Females enter state S3 (i.e.,
- reach sexual maturity) on reaching age 4,
- and therefore can become pregnant at age 5 and give birth at age 6.
  Depending on the values of 
 \begin_inset Formula $\psi_{2}$
 \end_inset
@@ -442,7 +518,7 @@ nolink "false"
 \end_inset
 
 ,
- this leads to a ramping-up in effective fecundity (i.e.,
+ this leads to an increase in effective fecundity (i.e.,
  probability of being in state S2) over the first few years of adult life.
  Both 
 \begin_inset Formula $\psi_{2}$
@@ -453,7 +529,7 @@ nolink "false"
 \end_inset
 
  are estimated from the data.
- We do not use any data on whether females were with/without calf when sampled,
+ We do not use any data on whether females were with or without calf when sampled,
  so the estimates of 
 \begin_inset Formula $\psi_{2}$
 \end_inset
@@ -462,7 +538,15 @@ nolink "false"
 \begin_inset Formula $\psi_{3}$
 \end_inset
 
- are ultimately reliant on the distribution of birth-gaps between maternal half-sibling pairs.
+ rely on the distribution of birth-gaps between maternal half-sibling pairs.
+ In addition,
+ our data are not able to distinguish between fine-scale aspects of the reproductive cycle,
+ such as differences in fertilization/implantation rates versus pregnancy failures or neonatal deaths.
+ Thus,
+ reproductive failtures are subsumed by Eq.
+ X and X,
+ even though the transition from state S1 (pregnant) to S2 (with YOTY calf) is set to 1.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -654,8 +738,9 @@ end{tikzpicture}
 Directed cyclic graph showing the breeding cycle for walrus as represented in our Markov model.
  Nodes in the graph show the states (pregnant,
  with young-of-the-year (YOTY) calf,
- or non-breeding) and edges give the probabilities of transition between those states.
- Walrus reach sexual maturity at age 4,
+ or non-breeding) and edges give the transition probabilities between those states.
+ On average,
+ walrus reach sexual maturity at age 4,
  so females enter the graph at node non-breeding.
  
 \begin_inset CommandInset label
@@ -678,10 +763,10 @@ name "fig:Breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-We will later use two quantities,
+We later use two quantities,
  which are derived from the breeding cycle.
  First,
- we need to calculate the (average) proportion of adult females in S2,
+ we calculate the (average) proportion of adult females in S2 (with YOTY calf),
  
 \begin_inset Formula $\bar{\beta}_{2}$
 \end_inset
@@ -711,7 +796,7 @@ nolink "false"
 \end_inset
 
 .
- Taking the the eigendecomposition of 
+ Taking the eigendecomposition of 
 \begin_inset Formula $\Psi$
 \end_inset
 
@@ -721,7 +806,8 @@ nolink "false"
 \end_inset
 
 .
- We can then define fecundity as a function of age
+ Second,
+ we define fecundity as a function of age
 \begin_inset Formula 
 \begin{gather}
 F\left(a\right)\triangleq\frac{\mathbb{P}\left[B\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
@@ -738,9 +824,11 @@ Formulating kinship probabilities
 \end_layout
 
 \begin_layout Standard
-We now need to formulate the demographic probabilities that two samples have a given kinship,
- using the ERRO principle.
- We write the kinship for individuals 
+To establish the demographic probabilities of kinship between two sampled individuals,
+ we apply the principle of effective relative reproductive output (ERRO).
+ Specifically,
+ the probability that a given adult sample is the parent of an independently sampled offspring is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
+ We denote the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
 
@@ -756,9 +844,9 @@ We now need to formulate the demographic probabilities that two samples have a g
  which in our case may be MOP,
  XmHSP,
  SP,
- or UP.
+ or unrelated pair (UP).
  In the case of MOPs and XmHSPs,
- we take care to use only one sample from each individual (so 
+ we ensure that only one sample from each individual is used (so 
 \begin_inset Quotes eld
 \end_inset
 
@@ -796,8 +884,9 @@ individual
 \end_layout
 
 \begin_layout Standard
-Throughout we use the following notation:
- for individual 
+Throughout,
+ we use the following notation:
+ individual 
 \emph on
 
 \begin_inset Formula $i$
@@ -865,7 +954,7 @@ Throughout we use the following notation:
 \end_inset
 
  as an indicator function,
- giving 1 when the condition inside the brackets is true,
+ returning 1 when the condition inside the brackets is true,
  else 0.
  Kinship probabilities are functions of demographic parameters such as 
 \begin_inset Formula $\phi_{\text{A}}$
@@ -889,7 +978,7 @@ Mother-offspring pairs (MOPs)
 \end_layout
 
 \begin_layout Standard
-Suppose we are about to compare a potential mother 
+Consider a comparison between a potential mother 
 \emph on
 i
 \emph default
@@ -899,7 +988,17 @@ i
 j
 \emph default
 .
- We restrict attention to comparisons that satisfy the following:
+ We restrict our analysis to comparisons that satisfy the following:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Rebecca asks whether there was also a criterion that the potential mother and offspring were not sampled in the same year – I think the answer is that they can be sampled in the same year but not in the same event?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -988,18 +1087,12 @@ must
  The MOP probability is
 \begin_inset Formula 
 \[
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}.
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}
 \]
 
 \end_inset
 
-
-\change_deleted 193499690 1738653724
-W
-\change_inserted 193499690 1738653724
-w
-\change_unchanged
-here 
+where 
 \begin_inset Formula $R_{i}(b_{j}\vert y_{i},a_{i})$
 \end_inset
 
@@ -1124,7 +1217,7 @@ annual juvenile and adult survival probabilities).
 \begin_inset Formula $B\left(a\right)$
 \end_inset
 
- is an individual's breeding state in year 
+ is an individual's breeding state at age 
 \begin_inset Formula $a$
 \end_inset
 
@@ -1184,16 +1277,16 @@ If
 
 
 \emph default
- is sampled after 
+ is sampled after the birth of 
 \begin_inset Formula $j$
 \end_inset
 
-'s birth (
+ (
 \begin_inset Formula $b_{j}<y_{i}$
 \end_inset
 
-).
- We then know 
+),
+ then we can infer that 
 \emph on
 
 \begin_inset Formula $i$
@@ -1201,14 +1294,27 @@ If
 
 
 \emph default
- was alive (or not born yet),
- so there are no lethality nor survival terms to worry about,
- but she may not have been mature.
+ was alive at that time (or not yet been born),
+ eliminating the need to account for survival or lethality terms.
+ However,
+ 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+ may not have reach reproductive maturity by 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+.
  Letting 
 \begin_inset Formula $F\left(a\leqslant0\right)=0$
 \end_inset
 
- (walruses cannot breed before birth),
+,
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},b_{j}<y_{i},\boldsymbol{\theta}\right]=\frac{F\left(a_{i}-y_{i}-b_{j}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
@@ -1224,11 +1330,8 @@ Maternal half-sibling pairs (XmHSPs)
 \end_layout
 
 \begin_layout Standard
-We now find the probabilities of cross-cohort (X),
- maternal (m),
- half-sibling pairs (HSP):
- XmHSPs.
- We want to compare individual 
+To find probabilities of cross-cohort maternal half-sibling pairs (XmHSPs),
+ we check whether individual 
 \emph on
 
 \begin_inset Formula $k$
@@ -1236,7 +1339,7 @@ We now find the probabilities of cross-cohort (X),
 
 
 \emph default
- to individual 
+ and individual 
 \emph on
 
 \begin_inset Formula $l$
@@ -1244,15 +1347,8 @@ We now find the probabilities of cross-cohort (X),
 
 
 \emph default
-,
- to check whether they have the same mother.
- We 
-\change_inserted 193499690 1738653465
-restrict attention to comparisons that satisfy the 
-\change_deleted 193499690 1738653467
-impose the 
-\change_unchanged
-following criteria:
+ have the same mother.
+ We impose the following criteria:
 \end_layout
 
 \begin_layout Itemize
@@ -1277,53 +1373,27 @@ following criteria:
 \end_layout
 
 \begin_layout Standard
+If we call 
+\begin_inset Formula $m$
+\end_inset
 
-\change_inserted 193499690 1738653231
-We know that 
+ the mother of 
 \begin_inset Formula $k$
 \end_inset
 
- definitely had a mother,
- whom we shall call 
-\begin_inset Formula $m$
-\end_inset
-
-.
- 
-\change_unchanged
-What is the probability that 
+,
+ what is the probability that 
 \begin_inset Formula $l$
 \end_inset
 
-'s mother was
-\change_inserted 193499690 1738653179
- also
-\change_unchanged
- 
-\begin_inset Formula $m$
-\end_inset
-
-,
- given what we know about 
+'s mother was 
 \begin_inset Formula $m$
 \end_inset
 
 ?
- The latter 
-\change_inserted 193499690 1738653660
-is that 
-\change_deleted 193499690 1738653663
-amounts to two things:
-
+ We know that
+\shape italic
 \emph on
- 
-\shape italic
-(
-\shape default
-i
-\shape italic
-)
-\change_unchanged
  
 \shape default
 
@@ -1338,37 +1408,8 @@ i
 \begin_inset Formula $k$
 \end_inset
 
-'s birth
-\change_inserted 193499690 1738653669
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1738653500
-that's 3 things already ;) !
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-,
-
-\change_unchanged
- and
-\change_deleted 193499690 1738653673
-,
- (
-\shape italic
-ii
-\shape default
-)
-\change_inserted 193499690 1738653675
-also
-\change_unchanged
- 
+'s birth,
+ and that 
 \emph on
 
 \begin_inset Formula $m$
@@ -1402,16 +1443,12 @@ also
 
 
 \emph default
- to be 
+ to also be 
 \begin_inset Formula $l$
 \end_inset
 
 's mother,
- three 
-\change_inserted 193499690 1738653256
-more 
-\change_unchanged
-things have to happen:
+ three more things have to happen:
 \end_layout
 
 \begin_layout Enumerate
@@ -1437,7 +1474,7 @@ things have to happen:
 \end_layout
 
 \begin_layout Enumerate
-amongst all the females that are alive and in the right breeding state in year 
+amongst all the females that are alive and in breeding state S2 in year 
 \begin_inset Formula $b_{l}$
 \end_inset
 
@@ -1446,19 +1483,7 @@ amongst all the females that are alive and in the right breeding state in year
 \begin_inset Formula $m$
 \end_inset
 
- is the 
-\change_inserted 193499690 1738653281
-one who happens to be 
-\change_deleted 193499690 1738653281
-mother
-\change_inserted 193499690 1738653286
-
-\begin_inset Formula $l$
-\end_inset
-
-'s mother
-\change_unchanged
-.
+ is the mother.
 \end_layout
 
 \begin_layout Standard
@@ -1615,7 +1640,7 @@ where
 \end_inset
 
  gives the second element of the vector,
- i.e.
+ i.e.,
  the probability that 
 \shape italic
 m
@@ -1639,11 +1664,12 @@ second-order
  kin-pairs that are practically indistinguishable genetically,
  hence cannot be identified directly and unambiguously.
  Fortunately,
- HSPs are demographically the most common when the birth-gap is short.
+ HSPs are demographically by far the most common when the birth-gap is short.
  When the birth-gap approaches twice the age-of-maturity,
  though,
- GGPs (Grandparent-Grandchild Pair) are more common.
- We deal with this by restricting the range of birth gaps used in the model to those where GGPs are very rare (e.g.,
+ grandparent-grandchild pairs (GGPs) bcome more prevalent [Citation?].
+ To mitigate this issue,
+ we restrict the range of birth gaps considered in the model to those where GGPs are very rare (e.g.,
  below twice the age at maturity).
 \end_layout
 
@@ -1660,12 +1686,20 @@ name "subsec:selfPs"
 
 \begin_layout Standard
 Our stage-structured model keeps the population dynamics simple,
- but we do have to make extra assumptions about sampling selectivity to include the IMR data.
+ but we do have to make extra assumptions about sampling selectivity to include IMR data.
  Here,
  we assume that selectivity varies only by stage (adult/juvenile),
  not by age within stage.
  We only consider female samples for self-recapture,
- since juvenile males are prone to "permanent emigration" (CITE) as well as true mortality,
+ since males are prone to "permanent emigration" when they mature 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+,
  so do not yield readily-interpretable inferences.
 \end_layout
 
@@ -1676,20 +1710,24 @@ To compute stage-structured self-recapture probabilities,
 not
 \emph default
  explicitly on the age of the second sample;
- instead we condition on the second sample's developmental stage at sampling (
+ instead,
+ we condition on the second sample's developmental stage at sampling (
 \begin_inset Formula $d_{2}$
 \end_inset
 
 ).
- If the first sample would have reached the right developmental stage (otherwise,
- the two cannot be the same animal),
+ If the first sample would have reached the right developmental stage (i.e.,
+ the two could be the same animal),
  then we assume it is equally likely to be 
 \emph on
 any
 \emph default
- of the females in that developmental stage at that year (i.e.,
- sampling is unselective within developmental stage) and thus the chance it is the same as the second sample is the reciprocal of the developmental stage abundance.
- We must also include survival for the intervening years.
+ of the females in that developmental stage in the given year.
+ This implies that sampling is non-selective within each developmental stage.
+ Therefore,
+ the probability that the first sample is the same individual as the second sample is the reciprocal of the developmental stage abundance.
+ Additionally,
+ we account for survival over the intervening years.
  The self-recapture kinship probability between samples 1 and 2 is (where 
 \begin_inset Formula $y_{1}<y_{2}$
 \end_inset
@@ -1725,8 +1763,10 @@ where
 \end_inset
 
 ,
- adult abundance is part of the population dynamics model,
- but some more work is required to deduce juvenile abundance.
+ we need either adult or juvenile abundance.
+ Adult abundance is included in the population dynamics model,
+ however,
+ additional steps are required to deduce juvenile abundance.
  Assuming stable age composition,
  we show in Appendix 
 \begin_inset CommandInset ref
@@ -1757,31 +1797,6 @@ where
  is the relative annual population increase/decrease.
 \end_layout
 
-\begin_layout Standard
-A purely-age-structured version of 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:self-staged"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- would need to explicitly keep track of numbers-at-age,
- not just adult abundance (as would the other kin types).
- The quasi-equilibrium assumption might allow us to do this,
- but that assumption directly constrains relative abundances-at-age.
- Thus,
- for example,
- the age 10 samples would then provide direct estimates of the abundance of age 30 samples.
- In practice,
- a fully age-structured CKMR formulation for walrus will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
- and therefore additional parameters to estimate.
- We therefore opted for a stage- rather than age-structured SP model in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model.
-\end_layout
-
 \begin_layout Subsection
 Simulations
 \end_layout
@@ -1805,7 +1820,7 @@ https://github.com/SMBaylis/fishSim
 
 ).
  The simulation is stochastic and operates on an annual basis.
- Individuals are tracked through the use of unique identifiers so that kinship pairs can be identified in simulated samples.
+ Individuals are tracked using unique identifiers allowing for the identification of kinship pairs in simulated samples.
  We initialized the simulation in 1950 with a population of 250,000 animals.
  These individuals are considered 
 \begin_inset Quotes eld
@@ -1842,7 +1857,7 @@ literal "false"
 
 .
  Individuals that are at or beyond the age of first reproduction mate randomly and males can potentially father more than one calf.
- Females reproduction follows Section
+ Female reproduction follows Section
 \begin_inset space ~
 \end_inset
 
@@ -1858,7 +1873,15 @@ nolink "false"
 \end_inset
 
 .
- Females that are in state 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio.
+ Females that are in state 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_ecology_1982"
+literal "false"
+
+\end_inset
+
+.
  There is no systematic age-effect on female reproductive dynamics,
  except that they are guaranteed not-pregnant in the year immediately prior to maturity (Section
 \begin_inset space ~
@@ -1878,6 +1901,15 @@ nolink "false"
 ),
  which slightly lowers effective fecundity for the first few years of adulthood until the Markov chain reaches equilibrium.
  We did not include senescence in our CKMR model,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Why?
+\end_layout
+
+\end_inset
+
  but we do include it in our simulations.
  Parameters in Table
 \begin_inset space ~
@@ -1952,7 +1984,7 @@ nolink "false"
 
  nominal calf survival) affects the simulated samples,
  not the two constituent parameters.
- Males and females < 4 (or > the age of last reproduction;
+ Males and females less than 4 years old (or older than the age of last reproduction;
  ALR) are exempt from this cycle.
  The simulation then proceeds to the following year.
 \end_layout
@@ -2914,7 +2946,7 @@ S0
 \noun off
 \color none
 NULL:
- 100% effort 2023-20287
+ 100% effort 2023-2027
 \end_layout
 
 \end_inset
@@ -4451,7 +4483,8 @@ impossible
 \begin_inset Formula $z_{j}$
 \end_inset
 
- (computed from e.g.,
+ (computed from,
+ e.g.,
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -4464,7 +4497,8 @@ nolink "false"
 \end_inset
 
 ).
- In each case the probability that 
+ In each case,
+ the probability that 
 \begin_inset Formula $w_{ijk}=1$
 \end_inset
 
@@ -4753,7 +4787,7 @@ conditioned
 \emph default
  on sample age,
  but make no prediction about how many samples of each age there will be.
- It would be possible to calculate expected sample sizes based on quasi-stable age compositions and unselective sampling assumptions (assumptions that are implicit for the self-recapture probability 
+ It would be possible to calculate expected sample sizes based on quasi-stable age compositions and non-selective sampling assumptions (assumptions that are implicit for the self-recapture probability 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:self-staged"
@@ -4796,34 +4830,20 @@ literal "false"
 
 \end_inset
 
- is therefore not strictly justified
-\change_inserted 193499690 1738656942
-,
- so the variance might be slightly over- or under-estimated
-\change_deleted 193499690 1738656937
- 
-\change_inserted 193499690 1738656962
-relative to our calculations here;
+ is therefore not strictly justified,
+ so the variance might be slightly over- or under-estimated relative to our calculations here;
  the direction is not obvious.
  
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 193499690 1738656979
 I am changing my thinking about this;
  it's highly not obvious...
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_deleted 193499690 1738656937
-leading to an underestimate of the variance
-\change_unchanged
  (there is no effect on point estimates).
  Appendix
 \change_inserted 193499690 1738811581
@@ -4847,6 +4867,7 @@ nolink "false"
 \end_inset
 
  details some effective sample size adjustments to our calculations in order to account for the non-independence of the pairwise comparisons.
+ [~3950 words excluding big notes].
 \end_layout
 
 \end_body
