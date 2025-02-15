@@ -174,7 +174,7 @@ ii
  though,
  we instead use an analytical method to predict the precision of the estimates that would be expected under different sampling designs.
  Although it is not strictly necessary to simulate any data in this process,
- we did use simulations to check that our CKMR model was appropriately formulated.
+ we did use simulations to check that our ICKMR model was appropriately formulated.
  This section describes our population dynamics model,
  kinship probability formula,
  design calculations,
@@ -186,7 +186,7 @@ Biological considerations
 \end_layout
 
 \begin_layout Standard
-Adult males were not included in this study due to seasonal sex segregation and the geographical coverage of the sampling effort (see Section 
+Adult males were not included in this design project due to seasonal sex segregation and geographical coverage of sampling (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Introduction"
@@ -199,7 +199,15 @@ nolink "false"
 
 ).
  Additionally,
- adult males form leks and compete for breeding access to females,
+ adult males form leks and compete for breeding access to females 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_odobenus_1985"
+literal "false"
+
+\end_inset
+
+,
  which suggests the potential for persistent individual variability in breeding success.
  This variability could considerably complicate the interpretation of paternal half-sibling kinship data (see Discussion).
  Therefore,
@@ -211,18 +219,26 @@ nolink "false"
  which represents individual recaptures.
  Our samples comprise juvenile and adult females,
  plus juvenile males.
- While there challenges with modelling males as parents,
- juvenile males can still be incorporated as potneital offsprning of females and as potential maternal half-siblings to other sampled individuals (female or male).
+ While there are challenges with modelling males as parents,
+ juvenile males can still be incorporated as potential offspring of females and as potential maternal half-siblings to other sampled individuals (female or male).
  We assume that individual variation in female fecundity is minimal.
 \end_layout
 
 \begin_layout Standard
 We assume that age estimates will be available for all samples,
- based on epigenetic aging data (CITE).
- Our model is structured to allow for errors in estimated age (with standard deviation assumed known,
+ based on an epigenetic aging approach 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "polanowski_epigenetic_2014,robeck_multi-tissue_2023"
+literal "false"
+
+\end_inset
+
+.
+ Our model can incorporate errors in estimated age (with standard deviation assumed known,
  i.e.,
  after calibration of epigenetic against known-age samples),
- though the results here assume that there are no errors;
+ though the results here assume no errors;
  see Discussion.
 \end_layout
 
@@ -232,42 +248,14 @@ Stage-structured quasi-equilibrium dynamics
 
 \begin_layout Standard
 For our female-only population dynamics model,
- we adpoted a stage-structured (juvenile/adult),
+ we adopted a stage-structured (juvenile/adult),
  rather than fully-age-structured approach.
  This decision was based on two key considerations:
  (
 \shape italic
 i
 \shape default
-) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Rebecca wanted to change this to 
-\begin_inset Quotes eld
-\end_inset
-
-most reproductive adult females are expected...
-\begin_inset Quotes erd
-\end_inset
-
- since senescent animals have lower survival and fecundity.
- I'm wondering if the 
-\begin_inset Quotes eld
-\end_inset
-
-most
-\begin_inset Quotes erd
-\end_inset
-
- is meant to exclude senescent animals?
-\end_layout
-
-\end_inset
-
-most female adults are expected to have similar reproductive capacity and chance of survival,
- regardless of age;
+) most reproductive female adults are expected to have similar reproductive capacity and chance of survival;
  and (
 \shape italic
 ii
@@ -280,7 +268,7 @@ ii
 \begin_layout Standard
 We used two stages:
  juveniles aged 1–5,
- and adults aged 6+ (the first age at which an accompanying calf is common) at sampling.
+ and adults aged 6+ (the first age at which an accompanying calf is common).
  We did not consider calves (age 0),
  to avoid complications around simultaneous mother-calf sampling.
  We assume constant survival within each stage (
@@ -293,7 +281,7 @@ We used two stages:
 
 ),
  and that offspring survival from age 1 onwards is independent of its mother's survival,
- whether or not the offspring has fully weaned yet.
+ whether or not the offspring has fully weaned.
  We assume that adult female abundance was either stable,
  increasing exponentially,
  or decreasing exponentially over the period covered by the population dynamics (2000–2028;
@@ -304,7 +292,7 @@ We used two stages:
 2000 is set because there were large changes in the population prior to that;
  
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "taylor_demography_2015,taylor_demography_2018"
 literal "false"
 
@@ -333,24 +321,6 @@ where
 \end_inset
 
  is the rate of population increase.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-MARK:
- before you complain about the commas in the subscripts,
- these are necessary for later (esp.
- appendices) where we have quantities like 
-\begin_inset Formula $N_{y+1,A}$
-\end_inset
-
- etc and we need to make it clear what we're talking about.
- If we don't leave them in throughout some boring reviewer will tell us we're not being consistent.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -361,7 +331,11 @@ Age composition within stage does not matter for MOP and XmHSP probabilities,
 \begin_inset Quotes eld
 \end_inset
 
-quasi-equilibrium" distribution consistent with survival 
+quasi-equilibrium
+\begin_inset Quotes erd
+\end_inset
+
+ distribution consistent with survival 
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
 
@@ -381,16 +355,6 @@ literal "false"
 
  Chapter 5,
  this is 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-this looks like (5.1.4) in K+C (2005)
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Formula $N_{y,a}\propto N_{y,\text{A}}\phi_{\text{A}}^{a}e^{-ra}$
 \end_inset
 
@@ -411,21 +375,10 @@ name "subsec:The-breeding-cycle"
 \begin_layout Standard
 Walrus have a litter size of one,
  and due to a 14-15 month gestation,
- they cannot give birth in consecutive years
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Also CITE Katsumata et al.
- 2020 here
-\end_layout
-
-\end_inset
-
- 
+ they cannot give birth in consecutive years 
 \begin_inset CommandInset citation
-LatexCommand citet
-key "fay_ecology_1982,Robeck2023DNAgepinni"
+LatexCommand citep
+key "fay_ecology_1982,katsumata_growth_2020,robeck_growth_2022"
 literal "false"
 
 \end_inset
@@ -440,17 +393,15 @@ literal "false"
 
 \end_inset
 
- except perhaps if the population is growing at a large exponential rate
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-CITE Fay 1997
-\end_layout
+ except perhaps if the population is growing at a large exponential rate 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_status_1997"
+literal "false"
 
 \end_inset
 
- .
+.
  We used a first order Markov model to describe the walrus breeding cycle (Fig.
  
 \begin_inset CommandInset ref
@@ -543,7 +494,7 @@ literal "false"
  our data are not able to distinguish between fine-scale aspects of the reproductive cycle,
  such as differences in fertilization/implantation rates versus pregnancy failures or neonatal deaths.
  Thus,
- reproductive failtures are subsumed by Eq.
+ reproductive failures are subsumed by Eq.
  X and X,
  even though the transition from state S1 (pregnant) to S2 (with YOTY calf) is set to 1.
  
@@ -989,16 +940,6 @@ j
 \emph default
 .
  We restrict our analysis to comparisons that satisfy the following:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Rebecca asks whether there was also a criterion that the potential mother and offspring were not sampled in the same year – I think the answer is that they can be sampled in the same year but not in the same event?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -1024,7 +965,7 @@ Rebecca asks whether there was also a criterion that the potential mother and of
 \begin_inset Formula $a_{j}\geqslant1$
 \end_inset
 
- (no calf samples are used);
+ (no YOTY calf samples are used);
 \end_layout
 
 \begin_layout Itemize
@@ -1548,80 +1489,6 @@ which is the probability vector of
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 193499690 1738653390
-:
-\change_unchanged
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-MVB:
- Equation is wrong:
- needs to sum over all possible m's!
- See report (presumably) 
-\end_layout
-
-\begin_layout Plain Layout
-DLM response:
- this is exactly what is in the report!
- eqn 2.7.
- Text below (2.7) reads 
-\begin_inset Quotes eld
-\end_inset
-
-The walrus setting (or our assumptions about it) has actually made this probability rather simpler than it can be in other cases.
- In particular,
- all adult female walruses are assumed to have equal survival probabilities,
- regardless of age and breeding phase;
- and the breeding cycle is Markovian,
- so that once a walrus has reached calving-phase (like Mary at Anna's birth) her age does not affect her subsequent breeding phases nor her survival.
- In a "fish-like" situation,
- Mary's age (and size) at Anna's birth would also be important,
- because it affects both her subsequent future survival probabilities,
- and her fecundity if she reaches Barry's birthdate.
- Thus for "fish" it is necessary to sum across all the possible ages that Mary might have had,
- weighted by the probability that she was that age given that she was Anna's mother.
-\begin_inset Quotes erd
-\end_inset
-
- walrus aren't fish :)
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1738653858
-MVB response:
- :) The key point is going from the 2nd to the 3rd line of report (2.7).
- I do that in words.
- That gets me out of the problem with your version,
- which is:
- in the middle you have the joint prob that m is *both* k's mum and l's mum.
- It should be conditional on m already being k's mum.
- In the version below I have made that explicit;
- note I had to introduce a subscript B_m() to clarify that it's specifically m whose breeding state we care about (whereas plain old B(t) is already introduced earlier).
-\change_unchanged
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1738655405
-I'm having trouble with change-tracking and greyed-out with your old version of the eqn,
- so I've deleted it...
- sorry,
- I would have left it commented-out if I could!
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{k\ell}=\text{XmHSP}|b_{k},b_{\ell},\theta\right]\nonumber \\
@@ -1685,8 +1552,8 @@ name "subsec:selfPs"
 \end_layout
 
 \begin_layout Standard
-Our stage-structured model keeps the population dynamics simple,
- but we do have to make extra assumptions about sampling selectivity to include IMR data.
+Our stage-structured model simplifies population dynamics,
+ but we do have to make additional assumptions about sampling selectivity to include IMR data.
  Here,
  we assume that selectivity varies only by stage (adult/juvenile),
  not by age within stage.
@@ -1700,7 +1567,7 @@ literal "false"
 \end_inset
 
 ,
- so do not yield readily-interpretable inferences.
+ so do not yield readily interpretable inferences.
 \end_layout
 
 \begin_layout Standard
@@ -1802,7 +1669,10 @@ Simulations
 \end_layout
 
 \begin_layout Standard
-We developed an individual-based simulation with the life history and population dynamics of Pacific walrus to test our ICKMR model.
+To test our ICKMR model,
+ we developed an individual-based simulation with walrus life history that allowed for exponential growth,
+ exponential decline,
+ or a stationary population trajectory.
  The simulation was modified from the R package 
 \family typewriter
 fishSim
@@ -1821,7 +1691,8 @@ https://github.com/SMBaylis/fishSim
 ).
  The simulation is stochastic and operates on an annual basis.
  Individuals are tracked using unique identifiers allowing for the identification of kinship pairs in simulated samples.
- We initialized the simulation in 1950 with a population of 250,000 animals.
+ We ran the simulation from 1950 to 2030,
+ using an initial population of 250,000 animals.
  These individuals are considered 
 \begin_inset Quotes eld
 \end_inset
@@ -1847,17 +1718,18 @@ nolink "false"
 \end_inset
 
 ),
- which were based on rates reported in 
+ which were based on estimated 2015 rates 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "taylor_demography_2018"
 literal "false"
 
 \end_inset
 
 .
- Individuals that are at or beyond the age of first reproduction mate randomly and males can potentially father more than one calf.
- Female reproduction follows Section
+ Individuals that are at or beyond the age of first reproduction (i.e.,
+ first ovulation for females) mate randomly and males can potentially father more than one calf.
+ Female reproduction is as described in Section
 \begin_inset space ~
 \end_inset
 
@@ -1900,16 +1772,7 @@ nolink "false"
 
 ),
  which slightly lowers effective fecundity for the first few years of adulthood until the Markov chain reaches equilibrium.
- We did not include senescence in our CKMR model,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Why?
-\end_layout
-
-\end_inset
-
+ We did not include senescence in our ICKMR model,
  but we do include it in our simulations.
  Parameters in Table
 \begin_inset space ~
@@ -1938,9 +1801,17 @@ In sampling years,
  captures are simulated according to either historical or planned future sample sizes.
  Females are available to be sampled at any age,
  while only calf and juvenile males are available for sampling.
- For simulated captures between 2014 and 2017,
- we used the realized sample sizes by age or age class as the basis for simulation.
- For simulated captures between 2023 and 2027,
+ For simulated captures between 2013 and 2017 (when the first generation of research cruises took place),
+ we used the realized sample sizes by age or age class as the basis for simulation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+.
+ For simulated captures between 2023 and 2028,
  we used the target number of samples per age class as the basis for simulation.
  After sampling,
  some individuals die (according to age and/or sex specific mortality rates,
@@ -1963,20 +1834,8 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-The female breeding cycle is as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:The-breeding-cycle"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
- Although we assume in the simulation that all pregnancies result in live births,
- this rate is aliased with the nominal calf-survival probability,
+Although we assume in the simulation that all pregnancies result in live births,
+ this rate is confounded with the nominal calf-survival probability,
  since only samples from age 1 onwards are considered;
  only the product (nominal pregnancy success rate 
 \begin_inset Formula $\times$
@@ -1984,14 +1843,9 @@ nolink "false"
 
  nominal calf survival) affects the simulated samples,
  not the two constituent parameters.
- Males and females less than 4 years old (or older than the age of last reproduction;
+ Males of any age and females less than 4 years old (or older than the age of last reproduction;
  ALR) are exempt from this cycle.
  The simulation then proceeds to the following year.
-\end_layout
-
-\begin_layout Standard
-All simulations had a starting population size of 250,000 and were run from 1950 to 2030.
- 
 \end_layout
 
 \begin_layout Standard
@@ -2009,7 +1863,11 @@ status open
 Demographic parameters for simulation under four scenarios (D0,
  D1,
  D2,
- and D3)
+ and D3).
+ Scenario D0 was used to check the model code,
+ whereas the other scenarios included reproductive senescence and were used to evaluate study design for a population that was either stationary (D1),
+ decreasing (D2),
+ or increasing (D3).
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:demo-pars"
@@ -2226,7 +2084,7 @@ Maximum age (AMAX)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Age at first reproduction for females (AFR)
+Age at first birth for females (AFR)
 \end_layout
 
 \end_inset
@@ -2273,7 +2131,7 @@ Age at first reproduction for females (AFR)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Age of last reproduction for females (ALR)
+Age of last birth for females (ALR)
 \end_layout
 
 \end_inset
@@ -4297,8 +4155,9 @@ Model checking
 \end_layout
 
 \begin_layout Standard
-To evaluate agreement between the simulation and CKMR model,
- we generated 50 replicate simulated datasets with demographic parameters under a null scenario as in Table 
+To evaluate agreement between the simulation and ICKMR model,
+ we simulated 50 replicate datasets with demographic parameters under a null scenario (D0,
+ Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:demo-pars"
@@ -4309,8 +4168,9 @@ nolink "false"
 
 \end_inset
 
- demographic scenario D0 and simulated historical and future sampling according to realized or target sample sizes by age class,
- with effort per year from 2023 as in sampling scenario S0 in Table 
+) and simulated historical and future sampling according to realized or target sample sizes by age class,
+ with effort per year constant at the 2023 level (S0,
+ Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Sampling-scenarios"
@@ -4325,9 +4185,9 @@ nolink "false"
  We checked each of the simulated datasets against the CKMR model for observed and expected numbers of kin pairs in different categories (MOPs,
  XmHSPs,
  and SPs),
- observed versus expected gaps between half-sibling pairs,
+ observed versus expected year gaps between half-sibling pairs,
  and the log-likelihood derivatives at the true parameter values.
- See Section 
+ See Appendix Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Model-checking"
@@ -4346,10 +4206,9 @@ Survey design
 \end_layout
 
 \begin_layout Standard
-We were interested in evaluating the performance of CKMR under different demographic and sampling scenarios.
+We evaluated the performance of ICKMR under different demographic and sampling scenarios.
  The demographic scenarios were a stable population (D1),
- a slightly decreasing population (D2) and a slightly increasing population (D3).
- Demographic parameters for these simulated scenarios are shown in Table 
+ a slightly decreasing population (D2) and a slightly increasing population (D3) (Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:demo-pars"
@@ -4360,23 +4219,13 @@ nolink "false"
 
 \end_inset
 
-.
+).
  For these simulations,
  we simulated historical sampling according to realized sample sizes by age and sex,
  and future sampling by target sample sizes by age class.
- We simulated scenarios with (L2) and without (L1) the collection of 100 lethal samples per year in sampling years.
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-This is where we-all might wanna consider investigatin wotif a LOT more lethal ones;
- 100 is too small to help.
-\end_layout
-
-\end_inset
-
- We also simulated various reductions in sampling effort,
- either by reducing the number of sampling years or by reducing the amount of sampling effort within years (S1-S7;
+ We simulated scenarios with (L2) and without (L1) the collection of 100 lethal samples (from harvested walruses) per year in sampling years in addition to non-lethal samples.
+ We also simulated sampling effort reductions,
+ either by reducing number of sampling years or by reducing amount of sampling effort within years (S1-S7;
  Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4395,13 +4244,39 @@ nolink "false"
  this resulted in a total of 42 simulated datasets from which to evaluate survey design.
 \end_layout
 
+\begin_layout Standard
+We compared the estimated CVs for simulated point estimates of juvenile and adult female survival,
+ the proportion of adult females in breeding state 2,
+ and adult female abundance derived from IMR and ICKMR models to an arbitrary precision benchmark of CV = 0.20,
+ based on a CV of 0.19 for adult female abundance achieved by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+ in a five-year IMR study.
+\end_layout
+
 \begin_layout Subsection
 Design calculations
 \end_layout
 
 \begin_layout Standard
-CKMR sampling designs can often be evaluated by calculation alone.
- These calculations are based on adapting standard methods used to find the statistical information from the (pseudo-)likelihood (i.e.,
+CKMR sampling designs can often be evaluated by calculation alone (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model-checking"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ These calculations are adaptations of standard methods used to find the statistical information from the (pseudo-)likelihood (i.e.,
  its derivatives) and enumerating the pairwise comparisons that would be required based on covariate combinations (which are few,
  given we have a relatively small range of covariates;
  e.g.,
@@ -4446,7 +4321,7 @@ Let
 \begin_inset Formula $w=\left\{ w_{ijk};\forall i,j,k\right\} $
 \end_inset
 
- (in practice,
+ (although in practice,
  some 
 \begin_inset Quotes eld
 \end_inset
@@ -4573,7 +4448,7 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 \begin_inset Formula $\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)$
 \end_inset
 
- can be obtained efficiently for all 
+ can be obtained for all 
 \begin_inset Formula $(i,j,k)$
 \end_inset
 
@@ -4584,40 +4459,10 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 
 .
  
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-using squared 1st derivatives is the Fisher information?
- Can we call this the pseudo-Fisher information?
-
-\change_inserted 193499690 1738626360
- Oh,
- sorry,
- I always get confused by which one is the formal definition (2nd D,
- or 1st D ^2).
- The thing is that under 
-\begin_inset Quotes eld
-\end_inset
-
-sparse sampling
-\begin_inset Quotes erd
-\end_inset
-
-,
- the two will be the same here anyway...
- let's wing it ;)
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-We can now exploit the small range of possible covariates and group across all pairs with identical covariate values.
+We can now exploit the small range of possible covariates and group across pairs with identical covariate values.
  Let 
 \begin_inset Formula $m(\mathbf{z})$
 \end_inset
@@ -4655,45 +4500,7 @@ where
 \begin_inset Formula $\mathbf{z}_{2}$
 \end_inset
 
- respectively
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-The ordering 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $z_{1}<z_{2}$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- is arbitrary,
- included just to avoid double-counting.
- Sometimes it makes sense to also do comparisons with 
-\begin_inset Formula $z_{1}=z_{2}$
-\end_inset
-
-,
- in which case an extra factor of 1/2 is required.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
+ respectively.
  The set 
 \begin_inset Formula $\mathcal{Z}$
 \end_inset
@@ -4737,75 +4544,8 @@ nolink "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-While a 
-\begin_inset Quotes eld
-\end_inset
-
-design
-\begin_inset Quotes erd
-\end_inset
-
- must,
- by definition,
- include some specification of sample sizes,
- it may not specify the full breakdown of samples into specific 
-\begin_inset Formula $\mathbf{z}$
-\end_inset
-
--categories.
- For example,
- the plan might be to sample 1000 adult walruses per year,
- but the age composition cannot be controlled directly.
- However,
- we still need to know 
-\begin_inset Formula $m_{\mathcal{Z}}$
-\end_inset
-
-,
- so some extra assumptions and calculations might be required.
- For example,
- our population-dynamics model does not explicitly represent the adult age composition within the population,
- let alone within the samples;
- probabilities like 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:MOP-past"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- are 
-\emph on
-conditioned
-\emph default
- on sample age,
- but make no prediction about how many samples of each age there will be.
- It would be possible to calculate expected sample sizes based on quasi-stable age compositions and non-selective sampling assumptions (assumptions that are implicit for the self-recapture probability 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:self-staged"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-),
- but somewhat laborious.
- Since we are simulating sampled datasets in any case,
- the simulated sample composition can be used directly for 
-\begin_inset Formula $m_{\mathcal{Z}}$
-\end_inset
-
-.
+While the designs we specify include annual sample sizes and number of years of sampling,
+ the age-sex composition of the population and the samples come from our simulations.
 \end_layout
 
 \begin_layout Standard
@@ -4833,18 +4573,6 @@ literal "false"
  is therefore not strictly justified,
  so the variance might be slightly over- or under-estimated relative to our calculations here;
  the direction is not obvious.
- 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-I am changing my thinking about this;
- it's highly not obvious...
-\end_layout
-
-\end_inset
-
- (there is no effect on point estimates).
  Appendix
 \change_inserted 193499690 1738811581
 
@@ -4852,8 +4580,6 @@ I am changing my thinking about this;
 \end_inset
 
 
-\change_deleted 193499690 1738811581
- 
 \change_unchanged
 
 \begin_inset CommandInset ref
@@ -4867,7 +4593,7 @@ nolink "false"
 \end_inset
 
  details some effective sample size adjustments to our calculations in order to account for the non-independence of the pairwise comparisons.
- [~3950 words excluding big notes].
+ [3882 words].
 \end_layout
 
 \end_body

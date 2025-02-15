@@ -116,9 +116,9 @@ literal "false"
 \end_inset
 
  can deliver estimates with low bias and uncertainty,
- provided that enough individual animals i) are naturally,
+ provided that enough individual animals 1) are naturally,
  artificially,
- or genetically “marked” and identifiable and ii) can be recaptured over time.
+ or genetically “marked” and identifiable and 2) can be recaptured over time.
  If genotypes are used as marks,
  as in genetic individual mark-recapture (IMR;
  
@@ -132,7 +132,7 @@ literal "false"
 ),
  then kinship patterns amongst samples (parents,
  siblings,
- etc) contain additional demographic information 
+ etc.) contain additional demographic information 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "skaug_allele-sharing_2001"
@@ -153,12 +153,12 @@ literal "false"
 ) is a framework for using kinships,
  as inferred from genotypes,
  to estimate abundance and demographic parameters.
- CKMR provides additional flexibility and increased effective sample size compared with IMR since non-lethal and/or lethal samples (e.g.,
+ CKMR provides additional flexibility and increased effective sample size compared with IMR since lethal samples (e.g.,
  from sampling,
  hunting,
  or natural mortality) and/or non-lethal samples can be used.
  As of 2025,
- most CKMR projects have been for commercial fish (e.g.,
+ most CKMR projects have focused on commercial fish (e.g.,
  
 \begin_inset CommandInset citation
 LatexCommand citealp
@@ -177,7 +177,7 @@ literal "false"
 \end_inset
 
 ),
- but there have been some for mammals,
+ but some have been conducted for mammals,
  including 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -195,7 +195,7 @@ literal "false"
 \end_inset
 
 ,
- and 
+ as well as research on flying foxes by 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "lloyd-jones_close-kin_2023"
@@ -203,18 +203,18 @@ literal "false"
 
 \end_inset
 
- for flying foxes.
+.
 \end_layout
 
 \begin_layout Standard
-The principle behind CKMR is that every individual has (or had) one mother and one father;
+The principle behind CKMR is that every individual has one mother and one father;
  thus,
  for a given sample size,
  in a large population there will be few 
 \begin_inset Quotes eld
 \end_inset
 
-recaptures
+captures
 \begin_inset Quotes erd
 \end_inset
 
@@ -222,7 +222,7 @@ recaptures
  while in a small population there will be many.
  In practice,
  the data for CKMR comprise the outcome of pairwise kinship checks amongst samples,
- plus covariates associated with each sample such as its date of capture,
+ plus covariates associated with each sample such as date of capture,
  age,
  size,
  sex,
@@ -255,7 +255,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The success of CKMR and/or IMR depends on whether the data collected contain sufficient recaptures.
+The success of CKMR and/or IMR depends on whether the data collected contain sufficient (re)captures.
  Sampling design (i.e.,
  number of samples,
  sex and age composition of sampled individuals,
@@ -263,7 +263,18 @@ The success of CKMR and/or IMR depends on whether the data collected contain suf
  The pairwise-comparison framework leads to analytical results for the expected number of kin pairs and expected variance given number of samples (and associated covariates),
  so that simulation is not essential.
  Nevertheless,
- simulation can be useful as a way to check kinship probabilities and design setup.
+ simulation can be useful as a way to check kinship probabilities and design setup (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model-checking"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
  In this study,
  we show how to perform and verify the CKMR calculations using a case study on the Pacific walrus (
 \emph on
@@ -272,8 +283,7 @@ Odobenus rosmarus divergens
 ;
  hereafter,
  walrus).
- We explore different demographic and design scenarios for walrus using IMR alone versus a combined CKMR and IMR (ICKMR) approach,
- and demonstrate how the latter can be used to substantially reduce the amount of survey effort required for adequate monitoring.
+ We explore different demographic and design scenarios for walrus using IMR alone versus a combined CKMR and IMR (ICKMR) approach and demonstrate how the latter can be used to substantially reduce the amount of survey effort required for adequate monitoring.
 \end_layout
 
 \begin_layout Standard
@@ -288,7 +298,7 @@ In the rest of this Introduction,
  with\SpecialChar breakableslash
 without CKMR).
  In the Discussion,
- we summarize our conclusions for walrus and also mention modeling simplifications made for design purposes that we may reconsider when working with real data.
+ we summarize our conclusions for walrus surveys and also mention modeling simplifications made for design purposes that we may reconsider when working with real data.
 \end_layout
 
 \begin_layout Subsection
@@ -313,7 +323,7 @@ literal "false"
  When walruses rest offshore on sea-ice floes,
  their distribution is dynamic,
  because it generally follows the marginal ice zone (a moving,
- changing habitat which contains a mix of ice floes and water) but also concentrates in regions of high benthic productivity.
+ changing habitat which contains a mix of ice floes and open water) but also concentrates in regions of high benthic productivity.
  This allows walruses to forage for benthic invertebrates while simultaneously having access to a nearby substrate for hauling out.
  Adult walruses are considered a single,
  panmictic genetic stock (Beatty et al.
@@ -377,7 +387,15 @@ literal "false"
 .
  Furthermore,
  disturbance at haulouts can cause stampedes,
- resulting in mass calf and juvenile mortality.
+ resulting in mass calf and juvenile mortality 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "udevitz_potential_2013"
+literal "false"
+
+\end_inset
+
+.
  Continued sea-ice loss and a concomitant increase in the intensity and expansion of industrial and shipping activities in Pacific Arctic waters 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -399,7 +417,7 @@ literal "false"
 
 \begin_layout Standard
 Range-wide abundance and demographic rate estimates are crucial for understanding population status,
- as well as for developing and implementing harvest management plans.
+ as well as for co-developing harvest management plans.
  In particular,
  subsistence walrus harvests in Alaska and Chukotka exceed 4,000 animals annually (USFWS,
  2023);
@@ -432,7 +450,7 @@ literal "false"
 ,
  and until very recently,
  unsuccessfully.
- The most concerted effort were the 1975-2006 range-wide airplane-based surveys conducted collaboratively by the U.S.
+ The most concerted effort was the 1975-2006 range-wide airplane-based surveys conducted collaboratively by the U.S.
  and the Soviet Union and later Russian Federation.
  However,
  resulting estimates were biased and imprecise,
@@ -440,7 +458,7 @@ literal "false"
  despite a rigorous design,
  innovative field methods,
  and sophisticated analyses,
- yielded a 95% confidence interval (CI) on the population size estimate of 55,000–507,000 animals (CV = 0.93).
+ yielded a 95% confidence interval (CI) on the population size estimate of 55,000–507,000 animals (coefficient of variation (CV) = 0.93).
  The extensive imprecision in the estimate resulted from the walrus population being widely dispersed with unpredictable local clumping 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -537,7 +555,7 @@ literal "false"
 \begin_layout Standard
 Data analysis from the first generation of walrus research cruises (2013–2017) used a Cormack-Jolly-Seber multievent model to estimate survival rates,
  and a Horvitz-Thompson-like estimator to obtain population size.
- The total abundance of 257,000 had a 95% credible interval (CrI) of 171,000–366,000 (CV=0.19;
+ The total abundance estimate of 257,000 had a 95% credible interval (CrI) of 171,000–366,000 (CV=0.19;
  
 \begin_inset CommandInset citation
 LatexCommand citealt
@@ -547,7 +565,7 @@ literal "false"
 \end_inset
 
 ).
- Although the precision of the abundance estimate from the IMR study was much improved over the final aerial survey,
+ Although the precision of the abundance estimate from the IMR study was much improved over the 2006 aerial survey,
  the IMR study required extensive investment of human and financial resources (i.e,
  USD $5,000,000).
  A more cost-effective approach is needed to assess the walrus population on a regular interval.
@@ -556,7 +574,7 @@ literal "false"
  which,
  through CKMR,
  can substantially augment the information content of genetic IMR without increasing sampling effort.
- [1608 words].
+ [1618 words].
 \end_layout
 
 \end_body

@@ -492,20 +492,20 @@ The Pacific walrus
 \emph on
 (Odobenus rosmarus divergens) 
 \emph default
-is an ice-associated marine mammal found in the Bering and Chukchi Seas,
- where they are an important resource for indigenous peoples.
+is an ice-associated marine mammal found in the Bering and Chukchi seas,
+ where it is an important resource for indigenous peoples.
  In the late 20th century,
  the population declined,
- likely because it had overshot carrying capacity and was then subject to high subsistence harvests.
+ likely because it had overshot its carrying capacity and was then subject to high harvests.
  Currently,
- Pacific walrus is species of conservation concern due to potential impacts of climate change,
- particularly related to loss of sea ice.
- To reduce uncertainty population size estimates,
+ the Pacific walrus is species of conservation concern due to potential impacts of climate change,
+ particularly the loss of sea ice.
+ To reduce uncertainty in population size estimates,
  researchers undertook an individual genetic mark-recapture (IMR) sampling campaign from 2013-2017 and collected tissue samples from over 8,000 individuals.
  Another campaign of a similar scale is ongoing (2023-2027).
  While sample collection was designed for IMR,
- advances in close-kin mark-recapture (CKMR) methods and associated molecular techniques mean these samples could also be suitable for CKMR.
- The advantages of CKMR over IMR include increased effective sample size (since each individual tags not only itself,
+ advances in close-kin mark-recapture (CKMR) methods and associated molecular techniques mean that these samples could also be suitable for CKMR.
+ The advantages of CKMR over IMR include an increased effective sample size (since each individual tags not only itself,
  but also its parents,
  siblings,
  and offspring) and additional insights into demographic quantities of interest.
@@ -516,14 +516,14 @@ is an ice-associated marine mammal found in the Bering and Chukchi Seas,
  We implemented our model in R and used an individual-based simulation to test performance of the ICKMR model.
  We find that the expected precision of the ICKMR estimates of abundance are higher than those expected from IMR alone,
  and with ICKMR,
- 3 instead of 5 years of sampling can be conducted to obtain the same level of precision.
+ 3 instead of 5 years of sampling can be conducted to obtain similar precision.
  These results suggest that ICKMR is a promising approach for assessing population size and trend of species which have been difficult to survey using more traditional methods.
- [285/350]
+ [293/350]
 \end_layout
 
 \begin_layout Standard
 Keywords:
- Close-kin mark-recapture,
+ close-kin mark-recapture,
  individual genetic mark-recapture,
  survey design,
  walrus 
@@ -532,7 +532,7 @@ status open
 
 \begin_layout Plain Layout
 A list in alphabetical order not exceeding eight words or short phrases.
- (words should be different from the title?)
+ 
 \end_layout
 
 \end_inset
