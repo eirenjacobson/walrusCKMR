@@ -124,9 +124,9 @@ nolink "false"
 
 \end_inset
 
-) resulted in effective survival of 0.96,
+) resulted in effective survival from age 6-37 of 0.96,
  0.95,
- 0.96 for stable,
+ and 0.96 for stable,
  decreasing,
  and increasing populations respectively.
  The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.02).
@@ -141,7 +141,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-The simulated values of juvenile female survival were 0.9,
+The simulated values of juvenile female survival from age 1-5 were 0.9,
  0.85,
  and 0.925 (Table 
 \begin_inset CommandInset ref
@@ -168,7 +168,7 @@ nolink "false"
 Across all demographic and sampling scenarios,
  the simulated proportion of adult females in breeding state 2 was 0.26.
  The expected CVs varied greatly depending on both demographic and sampling scenario,
- but were notably lower when ICKMR was used compared to IMR (mean decrease in CV = 0.82).
+ but were notably lower when ICKMR was used compared with IMR (mean decrease in CV = 0.82).
  The mean expected CVs on the proportion of adult females in breeding state 2 were 0.54,
  0.31,
  and 0.66 for stable,
@@ -380,7 +380,7 @@ CV w/ same effort,
 
 \begin_layout Standard
 Across all demographic and sampling scenarios,
- the application of ICKMR resulted in lower expected precision in estimates of abundance compared to the application of IMR alone (Fig.
+ the application of ICKMR resulted in higher expected precision in estimates of abundance compared to the application of IMR alone (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -393,7 +393,7 @@ nolink "false"
 \end_inset
 
 ).
- The mean gain in CV on adult female abundance in paired scenarios with and without ICKMR was 11% for a stable population,
+ The mean decrease in CV on adult female abundance in paired scenarios with and without CKMR was 11% for a stable population,
  5% for a decreasing population,
  and 15% for an increasing population.
  See Table 
@@ -422,7 +422,12 @@ nolink "false"
 
 \end_inset
 
-) affected expected precision of simulated survey designs in that a decreasing population resulted in a smaller population size in the years of desired inference (2015-2025) and therefore the number of kin pairs was higher (and expected precision was lower) given a set number of samples (Fig.
+) affected expected precision of simulated survey designs.
+ A declining population led to smaller population size during the target inference years (2015-2025).
+ As a result,
+ the number of kin pairs increased,
+ reducing the expected CV for a given sample size.
+ in that a decreasing population resulted in a smaller population size in the years of desired inference (2015-2025) and therefore the number of kin pairs was higher (and expected precision was lower) given a set number of samples (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -439,7 +444,7 @@ nolink "false"
  Conversely,
  with an increasing population size,
  the number of kin pairs resulting from a set number of samples was lower,
- and therefore expected precision was higher (Fig.
+ and therefore the expected CV was higher (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -462,17 +467,16 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Lethal samples provided greater gains in precision on abundance estimates when only IMR was used;
- the mean gain in precision was 2% when only IMR was used but 1% when ICKMR was applied.
- Note that when lethal samples were included,
- we simulated the collection of 100 lethal samples per year.
+A simulated addition of 100 lethal samples per sampling year provided greater gains in precision on abundance estimates when only IMR was used;
+ the mean gain in precision was 2% for IMR alone but 1% when ICKMR was applied.
  We would expect the gain in precision for both IMR and ICKMR to increase with an increased number of lethal samples.
  
 \end_layout
 
 \begin_layout Standard
-The simulated sampling scenarios resulted in between 2.5 and 5 years of survey effort,
- where 5 years of survey effort was the original plan for IMR (Fig.
+The simulated sampling scenarios resulted in between 2.5 and 5 years of total survey effort (where total survey effort is a combination of years of effort and effort per year,
+ and where 5 years of survey effort over 5 years was the original plan for IMR;
+ Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -485,11 +489,11 @@ nolink "false"
 \end_inset
 
 ).
- When the population was simulated to be stable or decreasing,
+ When the population was stable or decreasing,
  sufficient precision in abundance estimates could be achieved with as few as 2.5 years of survey effort when ICKMR was applied and lethal samples were used.
- However,
- in scenarios when the population was increasing,
- 4-5 years of survey effort would be required even with the application of ICKMR and use of lethal samples.
+ In scenarios when the population was increasing,
+ 2.5 years of survey effort would be sufficient if ICKMR was used with lethal samples,
+ or 3 or more years of survey effort without lethal samples.
  
 \end_layout
 
@@ -527,7 +531,7 @@ nolink "false"
 \end_inset
 
 ).
- The expected CVs on estimates of adult female abundance in 2025,
+ The expected CVs on estimates of adult female abundance in 2015,
  2020,
  and 2025 were comparable between these sampling scenarios (Fig.
  
