@@ -60,6 +60,11 @@
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\branch NFN
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -1400,6 +1405,11 @@ literal "false"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch NFN
+inverted 0
+status open
+
 \begin_layout Section
 Adjustments for non-sparse sampling
 \begin_inset CommandInset label
@@ -1412,6 +1422,24 @@ name "sec:Adjustments-for-non-sparse"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+I now think this should not be made into an Appendix.
+ I've inserted a much briefer comment into the main text,
+ at the end of section 2.5.
+ The code actually does that as well as something a bit more complicated to deal with 3peats in SelfPs and in XmHSPs,
+ but I'm no longer sure that complication is wise.
+ However,
+ nor do I think it matters for Design purposes,
+ anyway,
+ so no need to re-run!
+ I think the obvious adjustments listed in 2.5 are fine...
+\end_layout
+
+\end_inset
+
 Use of the pseudo-log-likelihood Hessian to approximate the inverse variance is not strictly justified in a mathematical sense,
  because the pairwise comparisons are not fully mutually independent.
  The 
@@ -1513,7 +1541,7 @@ This deals with the implications of one type of kinship for the others,
  There are simple ways to handle that with real datasets,
  as long as age is known fairly accurately.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Note Greyedout
@@ -1717,6 +1745,11 @@ I think...
 
 ,
  so the effect on standard deviations would presumably not exceed 5%.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

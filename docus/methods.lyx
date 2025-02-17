@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/r2.0/eirenwal/docus/
 \textclass article
 \begin_preamble
 
@@ -82,7 +82,7 @@ InStar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -1478,6 +1478,19 @@ which is the probability vector of
 \end_inset
 
 's birth (certain state 2),
+ let 
+\begin_inset Formula $B_{m}\left(y\right)$
+\end_inset
+
+ be 
+\begin_inset Formula $m$
+\end_inset
+
+'s actual breeding state in any year 
+\begin_inset Formula $y$
+\end_inset
+
+,
  and recall 
 \begin_inset Formula $\bar{\beta}_{2}$
 \end_inset
@@ -1492,8 +1505,8 @@ which is the probability vector of
 \begin_inset Formula 
 \begin{gather}
 \mathbb{P}\left[K_{k\ell}=\text{XmHSP}|b_{k},b_{\ell},\theta\right]\nonumber \\
-=\mathbb{P}\left[K_{km}=\text{MOP}|B_{m}\left(b_{k}\right)=\text{S2},m\text{ alive at }b_{k}+1,b_{\ell},\theta\right]\nonumber \\
-=\frac{\Phi\left(b_{l}-b_{k}-1\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
+=\mathbb{P}\left[K_{\ell m}=\text{MOP}|B_{m}\left(b_{k}\right)=\text{S2},m\text{ alive at }b_{k}+1,b_{\ell},\theta\right]\nonumber \\
+=\frac{\Phi\left(b_{l}-b_{k}\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
 \end{gather}
 
 \end_inset
@@ -4182,12 +4195,55 @@ nolink "false"
 \end_inset
 
 ).
- We checked each of the simulated datasets against the CKMR model for observed and expected numbers of kin pairs in different categories (MOPs,
+ 
+\change_inserted 193499690 1739791084
+The population dynamics model in the simulations is close to the ICKMR model,
+ but not quite identical:
+ e.g.,
+ senescence starting in late 30s,
+ and definite maximum age.
+ 
+\change_deleted 193499690 1739791086
+We 
+\change_inserted 193499690 1739791103
+We 
+\change_unchanged
+checked each of the simulated datasets against the CKMR model for:
+ observed and expected numbers of kin pairs in different categories (MOPs,
  XmHSPs,
- and SPs),
- observed versus expected year gaps between half-sibling pairs,
- and the log-likelihood derivatives at the true parameter values.
- See Appendix Section 
+ and SPs);
+ observed versus expected year gaps between half-sibling pairs;
+ 
+\change_inserted 193499690 1739791122
+unbiasedness of the 
+\change_deleted 193499690 1739791123
+and the 
+\change_unchanged
+log-likelihood derivatives at the true parameter values
+\change_inserted 193499690 1739791146
+ (which should be close to zero on average);
+ and parameter bias
+\change_unchanged
+.
+
+\change_inserted 193499690 1739791163
+ These comparisons are both 
+\change_deleted 193499690 1739791164
+ 
+\change_inserted 193499690 1739791217
+a check on code validity,
+ and a way to examine whether simplifications made in the ICKMR code are 
+\begin_inset Quotes eld
+\end_inset
+
+too simple
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\change_unchanged
+See Appendix Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Model-checking"
@@ -4264,7 +4320,32 @@ Design calculations
 \end_layout
 
 \begin_layout Standard
-CKMR sampling designs can often be evaluated by calculation alone (
+
+\change_inserted 193499690 1739791940
+The parameter uncertainly likely to result from some proposed 
+\change_unchanged
+CKMR sampling design
+\change_deleted 193499690 1739791942
+s
+\change_unchanged
+ can often be evaluated by calculation alone (
+\change_inserted 193499690 1739792303
+
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ section
+\begin_inset space ~
+\end_inset
+
+5
+\change_deleted 193499690 1739792266
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Model-checking"
@@ -4275,22 +4356,95 @@ nolink "false"
 
 \end_inset
 
+
+\change_unchanged
 ).
  These calculations are adaptations of standard methods used to find the statistical information from the (pseudo-)likelihood (i.e.,
- its derivatives) and enumerating the pairwise comparisons that would be required based on covariate combinations (which are few,
- given we have a relatively small range of covariates;
- e.g.,
- age,
+ its derivatives) and enumerating the pairwise comparisons that would be 
+\change_inserted 193499690 1739791981
+available
+\change_deleted 193499690 1739791984
+required
+\change_unchanged
+ 
+\change_inserted 193499690 1739792003
+per
+\change_deleted 193499690 1739792006
+based on
+\change_unchanged
+ covariate combination
+\change_deleted 193499690 1739792007
+s
+\change_unchanged
+ (which are 
+\change_inserted 193499690 1739792015
+limited
+\change_deleted 193499690 1739792016
+few
+\change_unchanged
+,
+ given we have a 
+\change_inserted 193499690 1739792021
+modest 
+\change_deleted 193499690 1739792025
+relatively small range
+\change_inserted 193499690 1739792027
+set
+\change_unchanged
+ of covariates;
+ 
+\change_deleted 193499690 1739792034
+e.g.,
+ 
+\change_unchanged
+age,
  year of sample,
  etc).
+\change_inserted 193499690 1739793179
+
 \end_layout
 
 \begin_layout Standard
-Let 
+
+\change_inserted 193499690 1739793253
+The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
+ In brief,
+ 
+\change_deleted 193499690 1739793210
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1739793212
+L
+\change_inserted 193499690 1739793212
+l
+\change_unchanged
+et 
 \begin_inset Formula $w_{ijk}$
 \end_inset
 
- be the kinship outcome for samples 
+ be 
+\change_inserted 193499690 1739794547
+
+\begin_inset Quotes eld
+\end_inset
+
+the data
+\begin_inset Quotes erd
+\end_inset
+
+,
+ i.e.
+ 
+\change_unchanged
+the kinship outcome
+\change_inserted 193499690 1739794549
+,
+
+\change_unchanged
+ for samples 
 \begin_inset Formula $i$
 \end_inset
 
@@ -4333,7 +4487,30 @@ impossible
  comparisons are excluded;
  e.g.,
  second-order kin born a long time apart).
- Define 
+ 
+\change_inserted 193499690 1739793148
+As shown in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ for 
+\begin_inset Quotes eld
+\end_inset
+
+sparse sampling
+\begin_inset Quotes erd
+\end_inset
+
+ CKMR where the population is large and the sampling fraction is correspondingly small,
+ the comparisons are approximately (though not exactly) statistically independent.
+ 
+\change_unchanged
+Define 
 \begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)=\mathbb{P}\left[K_{ij}=k\vert z_{i},z_{j},\boldsymbol{\theta}\right]$
 \end_inset
 
@@ -4383,7 +4560,12 @@ nolink "false"
 \end_inset
 
 .
- The pseudo-log-likelihood is:
+ The pseudo-log-likelihood 
+\change_inserted 193499690 1739793577
+(i.e.
+ treating the comparisons as if truly independent) 
+\change_unchanged
+is:
 \end_layout
 
 \begin_layout Standard
@@ -4406,34 +4588,94 @@ where
 \end_layout
 
 \begin_layout Standard
-We use 
+
+\change_inserted 193499690 1739793015
+Following standard statistical practice,
+ 
+\change_deleted 193499690 1739792475
+W
+\change_inserted 193499690 1739793019
+we approximate the parameter variance using the inverse of 
+\change_deleted 193499690 1739792498
+e 
+\change_inserted 193499690 1739792369
+the (pseudo) Fisher Information 
+\change_deleted 193499690 1739792379
+use 
+\change_unchanged
+
 \begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)$
 \end_inset
 
 =
-\begin_inset Formula $d^{2}\Lambda\left(\boldsymbol{\theta}_{0};\mathbf{W}\right)/d\boldsymbol{\theta}^{2}$
+\begin_inset Formula $-\mathbb{E}_{W}\left[d^{2}\Lambda\left(\boldsymbol{\theta}_{0};\mathbf{W}\right)/d\boldsymbol{\theta}^{2}\right]$
 \end_inset
 
- (the expected Hessian) over datasets 
+ (the 
+\change_inserted 193499690 1739791844
+negative 
+\change_unchanged
+expected Hessian
+\change_deleted 193499690 1739792506
+)
+\change_unchanged
+ over datasets 
 \begin_inset Formula $\mathbf{W}$
 \end_inset
 
- at true parameter values 
+ 
+\change_inserted 193499690 1739793058
+evaluated 
+\change_unchanged
+at true parameter values 
 \begin_inset Formula $\boldsymbol{\theta}_{0}$
 \end_inset
 
+
+\change_inserted 193499690 1739793060
+)
+\change_unchanged
 .
  As 
 \begin_inset Formula $\Lambda$
 \end_inset
 
  is a sum of individual comparison terms,
- so is 
+ 
+\change_inserted 193499690 1739793226
+we can al
+\change_unchanged
+so 
+\change_inserted 193499690 1739793230
+write 
+\change_deleted 193499690 1739793228
+is 
+\change_unchanged
+
 \begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)=\sum_{i<j;k\in\mathcal{K}}h_{ijk}\left(\boldsymbol{\theta}_{0}\right)$
 \end_inset
 
 ,
  where
+\change_inserted 193499690 1739793288
+ 
+\begin_inset Formula $h_{ijk}\left(\theta_{0}\right)$
+\end_inset
+
+ is the expected Fisher Information matrix from a single comparison of type 
+\begin_inset Formula $\left(i,j,k\right)$
+\end_inset
+
+.
+ Further,
+ **Skaug&Bravington(Arxiv2025notyetout)** show that for Poisson random variables such as 
+\begin_inset Formula $w_{ijk}$
+\end_inset
+
+,
+ we have
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -4448,7 +4690,11 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 \begin_inset Formula $\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)$
 \end_inset
 
- can be obtained for all 
+ can 
+\change_inserted 193499690 1739793300
+therefore 
+\change_unchanged
+be obtained for all 
 \begin_inset Formula $(i,j,k)$
 \end_inset
 
@@ -4462,7 +4708,20 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 \end_layout
 
 \begin_layout Standard
-We can now exploit the small range of possible covariates and group across pairs with identical covariate values.
+We can now exploit the 
+\change_inserted 193499690 1739793316
+limited 
+\change_deleted 193499690 1739793316
+small 
+\change_unchanged
+range of possible covariate
+\change_inserted 193499690 1739793323
+ combinations,
+ 
+\change_deleted 193499690 1739793324
+s 
+\change_unchanged
+and group across pairs with identical covariate values.
  Let 
 \begin_inset Formula $m(\mathbf{z})$
 \end_inset
@@ -4476,18 +4735,30 @@ We can now exploit the small range of possible covariates and group across pairs
 \begin_inset Formula $m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)$
 \end_inset
 
+
+\change_inserted 193499690 1739793441
+ (ignoring double-counting for the moment)
+\change_unchanged
 .
- The grouped version of the expected Hessian can be written as 
+ The grouped version of the 
+\change_inserted 193499690 1739793549
+pseudo-Fisher Information 
+\change_deleted 193499690 1739793545
+expected Hessian 
+\change_unchanged
+can be written as 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-H\left(m_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1}<\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h\left(\mathbf{z}_{1},\mathbf{z}_{2},k\right),\label{eq:H-grouped}
+H\left(m_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1},\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}\left(I\left(z_{1}<z_{2}\right)+\frac{1}{2}I\left(z_{1}=z_{2}\right)\right)m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h_{z_{1}z_{2}k}\left(\theta_{0}\right)\label{eq:H-grouped}
 \end{gather}
 
 \end_inset
 
+
+\change_deleted 193499690 1739793594
 where 
 \begin_inset Formula $h\left(\mathbf{z}_{1},\mathbf{z}_{2},k\right)$
 \end_inset
@@ -4514,7 +4785,17 @@ where
  year,
  age,
  sex).
- We can then invert 
+ 
+\change_unchanged
+We can then invert
+\change_inserted 193499690 1739793602
+ 
+\begin_inset Formula $H$
+\end_inset
+
+ from
+\change_unchanged
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:H-grouped"
@@ -4525,7 +4806,19 @@ nolink "false"
 
 \end_inset
 
- to give the average predicted variance 
+ to 
+\change_inserted 193499690 1739793610
+approximate 
+\change_deleted 193499690 1739793614
+give 
+\change_unchanged
+the 
+\change_inserted 193499690 1739793621
+expected 
+\change_deleted 193499690 1739793622
+average predicted 
+\change_unchanged
+variance 
 \begin_inset Formula $V\left(m_{\mathcal{Z}};\theta_{0}\right)$
 \end_inset
 
@@ -4545,13 +4838,47 @@ nolink "false"
 \end_inset
 
 While the designs we specify include annual sample sizes and number of years of sampling,
- the age-sex composition of the population and the samples come from our simulations.
+ 
+\change_inserted 193499690 1739793651
+since these are variables that we can control directly,
+ 
+\change_unchanged
+the age-sex composition of the 
+\change_deleted 193499690 1739793659
+population and the 
+\change_unchanged
+samples come from our simulations.
+
+\change_inserted 193499690 1739795627
+ (We could have calculated expected age-sex breakdowns analytically,
+ but it is easier to use a simulation if one is already available.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-The proposed walrus sample size (about 15,000 in total) is large relative to adult female abundance (~70,000;
- effectively more because of turnover during the years modelled),
- so ~10% of samples are self/kin-recaptures.
+The proposed walrus sample size (about 15,000 in total
+\change_inserted 193499690 1739794483
+,
+ although only about **** adults <someone else to fill in>
+\change_unchanged
+) is large 
+\change_inserted 193499690 1739794499
+enough 
+\change_unchanged
+relative to adult female abundance (~70,000;
+ effectively more because of turnover during the years modelled)
+\change_inserted 193499690 1739794505
+ that about 
+\change_deleted 193499690 1739794505
+,
+ so 
+\change_unchanged
+~
+\change_inserted 193499690 1739794797
+ that 5–
+\change_unchanged
+10% of samples are self/kin-recaptures.
  This means that a comparable proportion of pairwise comparisons have predictable outcomes based on the results of other comparisons,
  breaking independence.
  The 
@@ -4571,17 +4898,111 @@ literal "false"
 \end_inset
 
  is therefore not strictly justified,
- so the variance might be slightly over- or under-estimated relative to our calculations here;
- the direction is not obvious.
- Appendix
-\change_inserted 193499690 1738811581
-
-\begin_inset space ~
-\end_inset
-
+ so the variance might be slightly over- or under-estimated relative to our calculations here
+\change_deleted 193499690 1739795656
+;
+\change_inserted 193499690 1739795657
+.
 
 \change_unchanged
+ 
+\change_inserted 193499690 1739795662
+The
+\change_deleted 193499690 1739795664
+the
+\change_unchanged
+ direction is not 
+\change_inserted 193499690 1739794812
+entirely 
+\change_unchanged
+obvious
+\change_inserted 193499690 1739795726
+,
+ because Finite Population Corrections will also affect the true variance,
+ but we chose to eliminate some obviously redundant comparisons to err on the side of over-estimating true variance.
+ Specifically:
+\change_deleted 193499690 1739795136
+.
+ 
+\change_inserted 193499690 1739794890
 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 193499690 1739795035
+If an animal 
+\begin_inset Formula $i$
+\end_inset
+
+ was recaptured multiple times,
+ we only used 
+\begin_inset Formula $i$
+\end_inset
+
+'s last recapture in MOP and XmHSP comparisons;
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 193499690 1739795146
+If a sample 
+\begin_inset Formula $j$
+\end_inset
+
+ was identified as the offspring in a MOP,
+ we did not use it in XmHSP comparisons (because the outcome of an XmHSP comparison between 
+\begin_inset Formula $j$
+\end_inset
+
+ and any other sample 
+\begin_inset Formula $k$
+\end_inset
+
+ could be deduced from 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+'s MOP results;
+ 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are XmHSP if-and-only-if 
+\begin_inset Formula $k$
+\end_inset
+
+ was another offspring of 
+\begin_inset Formula $j$
+\end_inset
+
+'s mother).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1739795745
+To adjust the sample sizes 
+\begin_inset Formula $m_{\mathcal{Z}}$
+\end_inset
+
+ accordingly,
+ we used simulation results on the frequency of self-recaptures and MOPs.
+ The effect is not particularly large at the proposed sample sizes.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1739795194
+Appendix
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Adjustments-for-non-sparse"
@@ -4593,6 +5014,27 @@ nolink "false"
 \end_inset
 
  details some effective sample size adjustments to our calculations in order to account for the non-independence of the pairwise comparisons.
+\change_inserted 193499690 1739795197
+
+\begin_inset Note Greyedout
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1739795510
+I've had some offline correspondence with Rebecca and done some more thinking,
+ and I now reckon we should omit that Appendix section.
+ I've placed it inside a not-used LyX branch,
+ so that it does not disappear forever for us (for me);
+ but it won't appear in PDF nor MSWord unless the branch gets switched on.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  [3882 words].
 \end_layout
 
