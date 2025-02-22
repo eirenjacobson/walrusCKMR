@@ -16,7 +16,7 @@ cvdf <- na.omit(filter(design_df, Value == "CV")) %>%
   pivot_longer(cols = c(Nfad_2015, Nfad_2020, Nfad_2025), names_to = "Year", values_to = "CV") %>%
   mutate(Year = substr(Year, 6, 9)) %>%
   mutate(CKMR = as.factor(CKMR)) %>%
-  mutate(L = factor(L, levels=2:1, labels=c("Yes", "No")))
+  mutate(L = factor(L, levels=paste0("L", 4:1), labels=c("1000", "500", "100", "0")))
 
 sedf <- na.omit(filter(design_df, Value == "SE")) %>%
   select(ID, CKMR, Value, D, L, S, Nfad_2015, Nfad_2020, Nfad_2025) %>%
@@ -81,7 +81,7 @@ plot_labeller <- function(variable,value){
 pal <- pnw_palette("Starfish", 2)
 
 ggplot() +
-  geom_point(data = cvdf, aes(x=Year, y = CV, color = L, shape = CKMR))+
+  geom_point(data = filter(cvdf, L %in% c(0,500)), aes(x=Year, y = CV, color = L, shape = CKMR))+
   facet_grid(D~S, labeller = plot_labeller) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV # Adult Females") +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
@@ -95,7 +95,7 @@ ggsave(plot = last_plot(), file = "./figures/MegaResults.png",
 
 ##################################### Plot of sampling effort v cv
 
-effort <- data.frame("S" = c(1:7),
+effort <- data.frame("S" = paste0("S", c(1:7)),
                      "Effort" = c(3, 4, 5, 2.5, 3.25, 4, 3 ))
 
 cveffort <- left_join(cvdf, effort, by = "S")
@@ -108,7 +108,7 @@ plot_labeller <- function(variable,value){
   }
 }
 
-ggplot(filter(cveffort, Year == 2025)) + 
+ggplot(filter(cveffort, Year == 2025, L %in% c(0, 500))) + 
   geom_point(aes(x=Effort, y = CV, color = as.factor(L), shape = as.factor(CKMR))) +
   facet_wrap(~D, nrow = 3, labeller = plot_labeller) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
