@@ -6,6 +6,12 @@ library(PNWColors)
 
 load("./results/design_df_filled.RData")
 
+# take out scenario 7
+design_df <- design_df[-which(design_df$S == "S7"),]
+
+# filter to keep L1 and L3
+design_df <- design_df %>% filter(L == "L1" | L == "L3")
+
 lhdf <- filter(design_df, Value == "Est") %>%
   select(ID, CKMR, Value, D, L, S, fadsurv, fjusurv, ppn_breedy) %>%
   pivot_longer(cols = c(fadsurv, fjusurv, ppn_breedy), names_to = "Par", 
@@ -19,7 +25,7 @@ cvdf <- na.omit(filter(design_df, Value == "CV")) %>%
   pivot_longer(cols = c(fadsurv, fjusurv, ppn_breedy), names_to = "Par", 
                values_to = "CV") %>%
   mutate(CKMR = as.factor(CKMR)) %>%
-  mutate(L = factor(L, levels=2:1, labels=c("Yes", "No")))
+  mutate(L = factor(L, levels=c("L1", "L3"), labels=c("No", "Yes")))
 
 
 comparecvs <-  na.omit(filter(design_df, Value == "CV")) %>%
@@ -28,10 +34,12 @@ comparecvs <-  na.omit(filter(design_df, Value == "CV")) %>%
                values_to = "CV") %>%
   filter(Par == "ppn_breedy") %>%
   group_by(CKMR) %>%
-#  pivot_wider(names_from = CKMR, values_from = CV) %>%
-#  mutate(Gain = Yes - No) %>%
-  group_by(D) %>%
-  summarize(mean(CV))
+  pivot_wider(names_from = CKMR, values_from = CV) %>%
+  mutate(Gain = Yes - No) %>%summarize(mean(Gain))
+  group_by(D) %>% 
+  summarize(Mean = round(mean(CV), digits = 2), 
+            Min = round(min(CV), digits = 2), 
+            Max = round(max(CV), digits = 2))
 
 ggplot(cvdf) +
   geom_point(aes(x=S, y = Est))+
@@ -41,12 +49,12 @@ ggplot(cvdf) +
 cvdf %>% filter(Par == "fadsurv") %>% 
   group_by(D) %>%
   ggplot() + 
-  geom_point(aes(x=S,y=Est,color = L, shape = CKMR)) + 
+  geom_point(aes(x=S,y=CV,color = L, shape = CKMR)) + 
   facet_wrap(~D)
 
 lhappendix <- na.omit(filter(design_df, Value == "CV")) %>%
   select(D, L, S, CKMR, fadsurv, fjusurv, ppn_breedy) %>%
-  mutate(L = factor(L, levels=2:1, labels=c("Yes", "No"))) %>%
+  mutate(L = factor(L, levels=c("L3", "L1"), labels=c("Yes", "No"))) %>%
   rename("Lethal Samples" = L, "Sampling Scenario" = S,
          "Demographic Scenario" = D) %>%
   mutate(fadsurv = round(fadsurv, digits = 2),
@@ -60,7 +68,7 @@ write.csv(lhappendix, file = "./results/lhappendix.csv")
 
 Nappendix <- na.omit(filter(design_df, Value == "CV")) %>%
   select(D, L, S, CKMR, Nfad_2015, Nfad_2020, Nfad_2025) %>%
-  mutate(L = factor(L, levels=2:1, labels=c("Yes", "No"))) %>%
+  mutate(L = factor(L, levels=c("L3", "L1"), labels=c("Yes", "No"))) %>%
   rename("Lethal Samples" = L, "Sampling Scenario" = S,
          "Demographic Scenario" = D) %>%
   mutate(Nfad_2015 = round(Nfad_2015, digits = 2),
