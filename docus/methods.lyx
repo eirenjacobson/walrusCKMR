@@ -4302,7 +4302,7 @@ Design calculations
 \end_layout
 
 \begin_layout Standard
-The parameter uncertainly likely to result from proposed CKMR sampling designs can often be evaluated by calculation alone (
+The parameter uncertainty likely to result from proposed CKMR sampling designs can often be evaluated by calculation alone (
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "bravington_close-kin_2016"
@@ -4325,7 +4325,8 @@ literal "false"
 
 \begin_layout Standard
 The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
- In brief,let 
+ In brief,
+ let 
 \begin_inset Formula $w_{ijk}$
 \end_inset
 
@@ -4357,32 +4358,20 @@ the data
 \begin_inset Formula $w_{ijk}=1$
 \end_inset
 
- if their actual kinship 
+ if the actual kinship 
 \begin_inset Formula $K_{ij}=k$
 \end_inset
 
 ,
- or 0 if 
+ or 
+\begin_inset Formula $w_{ijk}=0$
+\end_inset
+
+ if 
 \begin_inset Formula $K_{ij}\neq k$
 \end_inset
 
-;
- and let 
-\begin_inset Formula $w=\left\{ w_{ijk};\forall i,j,k\right\} $
-\end_inset
-
- (although in practice,
- some 
-\begin_inset Quotes eld
-\end_inset
-
-impossible
-\begin_inset Quotes erd
-\end_inset
-
- comparisons are excluded;
- e.g.,
- second-order kin born a long time apart).
+.
  As shown in 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -4453,14 +4442,14 @@ nolink "false"
 \end_inset
 
 .
- The pseudo-log-likelihood (i.e.
- treating the comparisons as if truly independent) is:
+ The pseudo-log-likelihood (i.e.,
+ treating the comparisons as independent) is:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\Lambda\left(\boldsymbol{\theta};\mathbf{w}\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} ,
+\Lambda\left(\boldsymbol{\theta};w\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} ,
 \]
 
 \end_inset
@@ -4474,6 +4463,23 @@ where
 \end_inset
 
  are the kinship relationships being considered.
+ Let 
+\begin_inset Formula $w=\left\{ w_{ijk};\forall i,j,k\right\} $
+\end_inset
+
+,
+ the possible combinations of samples and kin relationships;
+ although in practice,
+ some 
+\begin_inset Quotes eld
+\end_inset
+
+impossible
+\begin_inset Quotes erd
+\end_inset
+
+ comparisons are excluded (e.g.,
+ second-order kin born a long time apart).
 \end_layout
 
 \begin_layout Standard
@@ -4483,11 +4489,11 @@ Following standard statistical practice,
 \end_inset
 
 =
-\begin_inset Formula $-\mathbb{E}_{W}\left[d^{2}\Lambda\left(\boldsymbol{\theta}_{0};\mathbf{W}\right)/d\boldsymbol{\theta}^{2}\right]$
+\begin_inset Formula $-\mathbb{E}_{W}\left[d^{2}\Lambda\left(\boldsymbol{\theta}_{0};W\right)/d\boldsymbol{\theta}^{2}\right]$
 \end_inset
 
  (the negative expected Hessian over datasets 
-\begin_inset Formula $\mathbf{W}$
+\begin_inset Formula $W$
 \end_inset
 
  evaluated at true parameter values 
@@ -4509,7 +4515,7 @@ Following standard statistical practice,
 \begin_inset Formula $h_{ijk}\left(\theta_{0}\right)$
 \end_inset
 
- is the expected Fisher Information matrix from a single comparison of type 
+ is the expected Fisher information matrix from a single comparison of type 
 \begin_inset Formula $\left(i,j,k\right)$
 \end_inset
 
@@ -4564,7 +4570,7 @@ We can now exploit the limited range of possible covariate combinations,
 \end_inset
 
  (ignoring double-counting for the moment).
- The grouped version of the pseudo-Fisher Information can be written as
+ The grouped version of the pseudo-Fisher information can be written as
 \end_layout
 
 \begin_layout Standard
@@ -4639,7 +4645,7 @@ literal "false"
  is therefore not strictly justified,
  so the variance might be slightly over- or under-estimated relative to our calculations here.
  The direction is not entirely obvious,
- because Finite Population Corrections will also affect the true variance,
+ because finite population corrections will also affect the true variance,
  but we chose to eliminate some obviously redundant comparisons to err on the side of over-estimating true variance.
  Specifically:
 \end_layout
