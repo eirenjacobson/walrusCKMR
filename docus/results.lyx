@@ -201,7 +201,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -220,8 +220,8 @@ status collapsed
 Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different demographic (panel rows) and sampling (panel column) scenarios.
  Triangular points represent expected CVs from IMR alone,
  while circular points show expected CVs with ICKMR.
- The inclusion of lethal samples is indicated by green (lethal samples included) or purple (no lethal samples included in sampling years) points.
- The horizontal dashed line at CV = 0.2 represents an arbitrary threshold for decision making.
+ The inclusion of lethal samples is indicated by green (lethal samples included) or purple (no lethal samples) points.
+ The horizontal dashed line at CV = 0.2 represents a decision-making threshold.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:megaCV"
@@ -275,13 +275,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Sampling effort (in number of years,
- horizontal axis) versus expected CV for adult female abundance in 2025 with IMR alone (triangular points) or with ICKMR (round points) and with (green points) and without (purple points) the inclusion of lethal samples in sampling years.
+Total survey effort (in number of years,
+ horizontal axis) versus expected CV for adult female abundance in 2025 with IMR alone (triangular points) or with ICKMR (round points) and with (green points) and without (purple points) the inclusion of lethal samples.
  The three panels represent demographic scenarios of a stable population,
  decreasing population,
  and increasing population,
  respectively.
- The horizontal dashed line at CV = 0.2 represents an arbitrary threshold for decision making.
+ The horizontal dashed line at CV = 0.2 represents a decision-making threshold.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:effVcv"
@@ -342,7 +342,7 @@ Expected CV on the number of adult females with four years of total survey effor
  with (green) and without (purple) the inclusion of lethal samples,
  and with (round points) and without (triangular points) the use of CKMR (versus IMR alone).
  The solid grey line is 1:1.
- The horizontal dashed grey line represents a threshold CV of 0.2.
+ The horizontal dashed grey line represents a decision-making threshold CV of 0.2.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:cvWsameeff"
@@ -375,7 +375,7 @@ CV w/ same effort,
 
 \begin_layout Standard
 Across all demographic and sampling scenarios,
- the application of ICKMR resulted in higher expected precision in estimates of abundance compared to the application of IMR alone (Fig.
+ the application of ICKMR resulted in higher expected precision in abundance estimates compared to the application of IMR alone (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -497,9 +497,9 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Some scenarios resulted in the same number of years of total survey effort but in different configurations (i.e.,
- some had more calendar years of sampling with less effort each year,
- whereas others had fewer calendar years of sampling with more effort each year).
+Some scenarios resulted in the same total number of years of survey effort but in different configurations (i.e.,
+ some had more sampling years of with less effort each year,
+ whereas others had fewer years of sampling with more effort each year).
  Sampling scenarios 2 and 6 both resulted in four years total survey effort (Fig.
  
 \begin_inset CommandInset ref
@@ -522,7 +522,7 @@ nolink "false"
  2027,
  and 2028.
  Expected precision of abundance estimates was greater for scenario 6 than for scenario 2 in all years of desired inference,
- with the greatest gains in the 2025 estimate (Fig.
+ with the largest difference in the 2025 estimate (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -536,8 +536,7 @@ nolink "false"
 
 ,
  bottom panel).
- This suggests that more years of total survey effort with fewer samples collected per calendar year could improve overall precision in estimates of adult female abundance.
- [1160 words].
+ This indicates that fewer sampling years with 100% effort per year resulted in the most precise adult female abundance estimates [1139 words].
 \end_layout
 
 \end_body
