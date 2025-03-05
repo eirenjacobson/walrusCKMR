@@ -128,15 +128,14 @@ nolink "false"
  0.95,
  and 0.96 for stable,
  decreasing,
- and increasing populations respectively.
+ and increasing populations,
+ respectively.
  The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.02).
  The mean expected CVs were 0.02 (range 0.01-0.04),
  0.01 (range 0.01-0.02),
  and 0.03 (0.01-0.06) for stable,
  decreasing,
  and increasing populations respectively.
- Expected CVs were less than 0.2 for all scenarios where CKMR was applied,
- but as high as 0.06 when it was not.
  
 \end_layout
 
@@ -166,14 +165,15 @@ nolink "false"
 
 \begin_layout Standard
 Across all demographic and sampling scenarios,
- the simulated proportion of adult females in breeding state 2 was 0.26.
+ the simulated proportion of adult females in breeding state 2 (with YOTY) was 0.26.
  The expected CVs varied greatly depending on both demographic and sampling scenario,
  but were notably lower when ICKMR was used compared with IMR (mean decrease in CV = 0.82).
  The mean expected CVs on the proportion of adult females in breeding state 2 were 0.54,
  0.31,
  and 0.66 for stable,
  decreasing,
- and increasing populations respectively.
+ and increasing populations,
+ respectively.
 \end_layout
 
 \begin_layout Standard
@@ -318,7 +318,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -334,11 +334,8 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Expected CV on the number of adult females with three years of sampling (top panels) and four years of sampling (bottom panel).
- In the top panel,
- the horizontal axis shows expected CVs under sampling scenario 1 and the vertical axis shows expected CVs under sampling scenario 7.
- In the bottom panels,
- the horizontal axis shows expected CVs under sampling scenario 2 and the vertical axis shows expected CVs under sampling scenario 7.
+Expected CV on the number of adult females with four years of total survey effort.
+ The horizontal axis shows expected CVs under sampling scenario 2 (Reality + 100% effort 2025-2027)  and the vertical axis shows expected CVs under sampling scenario 6 (Reality + 75% effort through 2028).
  From left to right,
  panels indicate expected CVs in 2015,
  2020,
@@ -393,7 +390,7 @@ nolink "false"
 \end_inset
 
 ).
- The mean decrease in CV on adult female abundance in paired scenarios with and without CKMR was 11% for a stable population,
+ The mean decrease in CV on adult female abundance in paired scenarios without and with CKMR was 11% for a stable population,
  5% for a decreasing population,
  and 15% for an increasing population.
  See Table 
@@ -407,7 +404,7 @@ nolink "false"
 
 \end_inset
 
- for expected CVs of adult female abundance across all demographic and sampling scenarios with and without the use of ICKMR.
+ for expected CVs of adult female abundance across all demographic and sampling scenarios with and without the use of CKMR.
 \end_layout
 
 \begin_layout Standard
@@ -458,7 +455,15 @@ nolink "false"
 
 ,
  third row).
- With an arbitrary target CV of 0.2 on estimates of adult female abundance in 2015,
+ With a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+) on estimates of adult female abundance in 2015,
  2020,
  and 2025,
  all demographic and sampling scenarios resulted in sufficient precision when the population was decreasing,
@@ -498,10 +503,10 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Some scenarios resulted in the same total number of years of sampling but in different configurations (i.e.,
- some had more calendar years with less effort each year whereas others had fewer calendar years with more effort each year).
- Scenarios 1 and 7 both resulted in 3 years of survey effort,
- while sampling scenarios 2 and 6 both resulted in four years of sampling effort (Fig.
+Some scenarios resulted in the same number of years of total survey effort but in different configurations (i.e.,
+ some had more calendar years of sampling with less effort each year,
+ whereas others had fewer calendar years of sampling with more effort each year).
+ Sampling scenarios 2 and 6 both resulted in four years total survey effort (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -514,39 +519,6 @@ nolink "false"
 \end_inset
 
 ).
- Scenario 1 included sampling effort in 2023,
- 2025,
- and 2026,
- while scenario 7 included sampling in 2023,
- 2024,
- and 2025 (see Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Sampling-scenarios"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-).
- The expected CVs on estimates of adult female abundance in 2015,
- 2020,
- and 2025 were comparable between these sampling scenarios (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:cvWsameeff"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-,
- top panel).
  Scenario 2 included sampling in 2023,
  2025,
  2026,
@@ -570,8 +542,8 @@ nolink "false"
 
 ,
  bottom panel).
- This suggests that more years of effort with fewer samples collected per year could improve overall precision in estimates of adult female abundance.
- [1204 words].
+ This suggests that more years of total survey effort with fewer samples collected per calendar year could improve overall precision in estimates of adult female abundance.
+ [1137 words].
 \end_layout
 
 \end_body

@@ -163,7 +163,7 @@ ii
 ) formulate kinship probabilities between pairs of samples.
  The population dynamics model incorporated demographic parameters to be estimated:
  juvenile and adult survival rates,
- adult female abundance in some reference year,
+ adult female abundance in a reference year,
  and population trend.
  The kinship probabilities depend on population dynamics.
  Given a real dataset,
@@ -222,7 +222,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-We assume that age estimates will be available for all samples,
+We also assume that age estimates will be available for all samples,
  based on an epigenetic aging approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -279,7 +279,7 @@ We used two stages:
 ),
  and that offspring survival from age 1 onwards is independent of its mother's survival,
  whether or not the offspring has fully weaned.
- We assume that adult female abundance was either stable,
+ Our model assumed that adult female abundance was either stable,
  increasing exponentially,
  or decreasing exponentially over the period covered by the population dynamics (2000–2028;
  the lower limit of 
@@ -296,7 +296,16 @@ literal "false"
 \end_inset
 
 ).
- We have
+ Thus,
+ adult female abundance in year 
+\begin_inset Formula $y$
+\end_inset
+
+ (
+\begin_inset Formula $N_{y,\text{A}}$
+\end_inset
+
+) is described by
 \begin_inset Formula 
 \begin{align}
 N_{y,\text{A}} & =N_{y_{0},\text{A}}e^{r(y-y_{0})}\label{popdyn}
@@ -317,14 +326,14 @@ where
 \begin_inset Formula $e^{r}$
 \end_inset
 
- is the rate of population increase.
+ is the rate of population change.
 \end_layout
 
 \begin_layout Standard
 Age composition within stage does not matter for MOP and XmHSP probabilities,
- but is relevant for SPs.
+ but it is relevant for SPs.
  For that purpose,
- we assume that age composition over the period is adequately described by the stable-age or 
+ we assume that age composition over the modeled period is adequately described by the stable-age or 
 \begin_inset Quotes eld
 \end_inset
 
@@ -336,7 +345,7 @@ quasi-equilibrium
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
 
- and rate-of-increase 
+ and rate of change 
 \begin_inset Formula $e^{r}$
 \end_inset
 
@@ -489,8 +498,19 @@ literal "false"
  our data are not able to distinguish between fine-scale aspects of the reproductive cycle,
  such as differences in fertilization/implantation rates versus pregnancy failures or neonatal deaths.
  Thus,
- reproductive failures are subsumed by Eq.
- X and X,
+ reproductive failures are subsumed into the overall rate of change in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "popdyn"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
  even though the transition from state S1 (pregnant) to S2 (with YOTY calf) is set to 1.
  
 \end_layout
@@ -961,6 +981,18 @@ j
 \end_inset
 
  (no YOTY calf samples are used);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{i}\neq y_{j}\vert a_{j}>a_{w}$
+\end_inset
+
+ (if the age of the juvenile is less than the maximum age at weaning 
+\begin_inset Formula $a_{w}$
+\end_inset
+
+,
+ do not use comparisons to possible mothers sampled in the same year);
 \end_layout
 
 \begin_layout Itemize
@@ -1540,7 +1572,7 @@ second-order
  HSPs are demographically by far the most common when the birth-gap is short.
  When the birth-gap approaches twice the age-of-maturity,
  though,
- grandparent-grandchild pairs (GGPs) become more prevalent [Citation?].
+ grandparent-grandchild pairs (GGPs) become more prevalent.
  To mitigate this issue,
  we restrict the range of birth gaps considered in the model to those where GGPs are very rare (e.g.,
  below twice the age at maturity).
@@ -2364,7 +2396,7 @@ Juvenile survival (Ages 1 to 5)
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.9
+0.925
 \end_layout
 
 \end_inset
@@ -4157,7 +4189,7 @@ literal "false"
  and two lethality scenarios,
  this resulted in a total of 36 simulated datasets from which to evaluate survey design.
  Given the relatively large population size and large number of samples,
- we did not expect key properties of simulated datasets to differ due to random variation.
+ we did not expect key properties of simulated datasets to differ substantially due to random variation.
  This was confirmed by model checking (see 
 \begin_inset CommandInset ref
 LatexCommand ref

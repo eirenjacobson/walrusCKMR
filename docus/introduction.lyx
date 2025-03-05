@@ -106,7 +106,7 @@ INTRODUCTION
 \end_layout
 
 \begin_layout Standard
-Estimation of abundance and other demographic parameters such as survival is a key part of wildlife management and conservation.
+Estimation of abundance and other demographic parameters such as survival are a key part of wildlife management and conservation.
  Traditional mark-recapture analysis 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -127,9 +127,9 @@ i
 \shape default
 )
 \lang american
- are naturally,
- artificially,
- or genetically “marked” and identifiable and 
+ are identifiable by natural,
+ artificial,
+ or genetic “marks” and 
 \lang english
 (
 \shape italic
@@ -196,7 +196,7 @@ literal "false"
 
 ),
  but some have been conducted for mammals,
- including 
+ including the
 \begin_inset CommandInset citation
 LatexCommand citet
 key "conn_robustness_2020"
@@ -204,7 +204,7 @@ literal "false"
 
 \end_inset
 
-'s modeling study of bearded seals and its implementation by 
+ modeling study of bearded seals and its implementation by 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "taras_estimating_2024"
@@ -239,14 +239,14 @@ captures
  of parents or their other descendants,
  while in a small population there will be many.
  In practice,
- CKMR data is derived from pairwise comparisons among samples while considering covariates such as age,
+ CKMR data are derived from pairwise comparisons among samples while considering covariates such as age,
  size,
  and sex.
  Each pairwise comparison is then tested for a series of kinship relationships such as parent-offspring,
  half-sibling,
  or self.
  The CKMR model has two components:
- a population-dynamics part driven by the demographic parameters;
+ a population-dynamics model driven by the demographic parameters;
  and formulae for expected frequencies of different kinship types in pairwise comparisons,
  conditional on sample covariates and population dynamics.
  By combining the kinship data with the population dynamics model,
@@ -254,7 +254,7 @@ captures
 \end_layout
 
 \begin_layout Standard
-In most applications of CKMR to date,
+In most CKMR applications to date,
  self-recaptures were unlikely or impossible (e.g.,
  because sampling is lethal).
  
@@ -280,7 +280,7 @@ The success of CKMR and/or IMR depends on whether the data collected contain suf
  and physiology while evaluating effects of sample size,
  sex/age composition of sampled animals,
  and study duration can increase the chances of project success.
- The pairwise comparison framework whereby samples are compared to one another and tested for kinship relationships leads to analytical results for the expected number of kin pairs and expected variance given number of samples (and associated covariates),
+ The pairwise comparison framework whereby samples are compared to one another and tested for kinship relationships leads to analytical results for the expected number of kin pairs and expected variance given the number of samples (and associated covariates),
  so that simulation is not essential.
  Nevertheless,
  simulation can be used to evaluate kinship probabilities and design setup (
@@ -303,7 +303,8 @@ Odobenus rosmarus divergens
 ;
  hereafter,
  walrus) to demonstrate the utility of CKMR study design.
- We explore different demographic and design scenarios for walrus using IMR alone versus a combined CKMR and IMR (ICKMR) approach and demonstrate how the latter can be used to substantially reduce the amount of survey effort required for adequate monitoring.
+ We explore different demographic and design scenarios for walrus using IMR alone versus a combined CKMR and IMR (ICKMR) approach,
+ and we demonstrate how the latter can be used to substantially reduce the amount of survey effort required for adequate monitoring.
  We intend our work to provide a roadmap to other researchers considering CKMR as a tool to estimate population parameters.
  
 \end_layout
@@ -317,7 +318,7 @@ In the rest of this Introduction,
  and show how to analytically calculate the expected variances that might come from different survey designs.
  We also outline the simulation we used to test our ICKMR model.
  The Results section shows how different survey designs are likely to perform (e.g.,
- with\SpecialChar breakableslash
+ IMR with\SpecialChar breakableslash
 without CKMR).
  In the Discussion,
  we summarize our conclusions for walrus surveys and mention modeling simplifications made for design purposes that we may reconsider when working with real data.
@@ -597,7 +598,8 @@ literal "false"
  IN 2013,
  2014,
  and 2016,
- biopsy samples were collected in US waters whereas in 2015 and 2017 biopsy samples were collected in both US and Russian waters 
+ biopsy samples were collected in US waters;
+ whereas in 2015 and 2017 biopsy samples were collected in both US and Russian waters 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "beatty_estimating_2022"
