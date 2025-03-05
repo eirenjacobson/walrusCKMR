@@ -488,9 +488,20 @@ Statement on inclusion (optional)
 \end_layout
 
 \begin_layout Abstract
-The Pacific walrus 
+CKMR is a promising approach for assessing population size of species which have been difficult to survey using more traditional methods.
+ Here,
+ we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and provide an example of study design using this approach for Pacific walrus 
 \emph on
-(Odobenus rosmarus divergens) 
+(Odobenus rosmarus divergens).
+ 
+\emph default
+We develop the ICKMR model and test it using simulated datasets,
+ then use information from the pseudo-likelihood to investigate the expected precision in estimates of abundance with different proposed survey designs.
+ Our motivating example,
+ the Pacific walrus,
+
+\emph on
+ 
 \emph default
 is an ice-associated marine mammal found in the Bering and Chukchi seas,
  where it is an important resource for indigenous peoples.
@@ -509,16 +520,14 @@ is an ice-associated marine mammal found in the Bering and Chukchi seas,
  but also its parents,
  siblings,
  and offspring) and additional insights into demographic quantities of interest.
- Here,
- we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and investigate whether different sampling strategies can increase precision in estimates of abundance and trend.
+ To make best use of genetic samples,
+ we combine IMR with CKMR and investigate whether different sampling strategies can increase precision in estimates of abundance.
  Our modelling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We implemented our model in R and used an individual-based simulation to test performance of the ICKMR model.
  We find that the expected precision of the ICKMR estimates of abundance are higher than those expected from IMR alone,
  and with ICKMR,
- 3 instead of 5 years of sampling can be conducted to obtain similar precision.
- These results suggest that ICKMR is a promising approach for assessing population size and trend of species which have been difficult to survey using more traditional methods.
- [293/350]
+ 2.5 instead of 5 years of sampling can be conducted to obtain sufficient precision in estimates of abundance.
+ [330/350]
 \end_layout
 
 \begin_layout Standard

@@ -168,6 +168,12 @@ To our knowledge,
  sufficient precision (defined as a CV of 0.2) in estimates of adult female population size given planned biopsy sample sizes per year could be achieved with as little as 2.5 years of total survey effort if the population was stable or decreasing or with 4 years if the population was increasing.
  Given our knowledge of walrus ecology and anticipated declines in sea ice over,
  an increase in population size is unlikely and 2.5 years of total survey effort would likely lead to sufficient precision in abundance estimates.
+ We considered scenarios with up to 1400 biopsy samples collected per year;
+ in practice,
+ this number may be higher (e.g.,
+ mean = 1633,
+ range 1356-1820 Beatty et al.
+ 2022) resulting in even greater precision in estimates of abundance.
  
 \end_layout
 
@@ -203,6 +209,11 @@ easy win
  opportunity to involve stakeholder communities in the monitoring program,
  etc.
  Bill/Rebecca to draft something sensitive/appropriate?
+\end_layout
+
+\begin_layout Standard
+Some sort of concluding paragraph.
+ Input welcome/appreciated here.
 \end_layout
 
 \end_body

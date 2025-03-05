@@ -521,7 +521,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -706,7 +706,7 @@ Directed cyclic graph showing the breeding cycle for walrus as represented in ou
  with young-of-the-year (YOTY) calf,
  or non-breeding) and edges give the transition probabilities between those states.
  On average,
- walrus reach sexual maturity at age 4,
+ female walrus reach sexual maturity (age of first ovulation) at age 4,
  so females enter the graph at node non-breeding.
  
 \begin_inset CommandInset label
@@ -746,7 +746,7 @@ We later use two quantities,
 \begin_inset Formula $\times$
 \end_inset
 
-3) transition matrix implied by Figure
+3) transition matrix implied by the breeding cycle (Figure
 \begin_inset space ~
 \end_inset
 
@@ -761,7 +761,7 @@ nolink "false"
 
 \end_inset
 
-.
+).
  Taking the eigendecomposition of 
 \begin_inset Formula $\Psi$
 \end_inset
@@ -910,7 +910,7 @@ Throughout,
 \begin_inset Formula $L_{i}=1$
 \end_inset
 
- indicating lethal sampling for individual 
+ indicates lethal sampling for individual 
 \begin_inset Formula $i$
 \end_inset
 
@@ -984,15 +984,14 @@ j
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $y_{i}\neq y_{j}\vert a_{j}>a_{w}$
+\begin_inset Formula $y_{i}\neq y_{j}\vee a>a_{w}$
 \end_inset
 
- (if the age of the juvenile is less than the maximum age at weaning 
+ (do not use comparisons to possible mothers sampled in the same year unless the age of the juvenile is greater than the maximum age at weaning 
 \begin_inset Formula $a_{w}$
 \end_inset
 
-,
- do not use comparisons to possible mothers sampled in the same year);
+ = 5);
 \end_layout
 
 \begin_layout Itemize
@@ -1330,7 +1329,7 @@ To find probabilities of cross-cohort maternal half-sibling pairs (XmHSPs),
 \begin_inset Formula $b_{k}\neq b_{l}$
 \end_inset
 
- (walrus give birth to a single offspring at a time);
+ (since walrus give birth to a single offspring at a time);
 \end_layout
 
 \begin_layout Itemize
@@ -1492,7 +1491,7 @@ Let
 \begin_inset Formula $p^{\left[0\right]}=\left(0,1,0\right)^{\top}$
 \end_inset
 
-which is the probability vector of 
+which is the three-element probability vector of 
 \emph on
 
 \begin_inset Formula $m$
@@ -1569,12 +1568,12 @@ second-order
  kin-pairs that are practically indistinguishable genetically,
  hence cannot be identified directly and unambiguously.
  Fortunately,
- HSPs are demographically by far the most common when the birth-gap is short.
+ HSPs are demographically by far the most common when the birth-gap used for comparing samples is short.
  When the birth-gap approaches twice the age-of-maturity,
  though,
  grandparent-grandchild pairs (GGPs) become more prevalent.
  To mitigate this issue,
- we restrict the range of birth gaps considered in the model to those where GGPs are very rare (e.g.,
+ we restricted the range of birth gaps considered in the model to those where GGPs are very rare (e.g.,
  below twice the age at maturity).
 \end_layout
 
@@ -1609,8 +1608,10 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-To compute stage-structured self-recapture probabilities,
- we condition on the age of the first sample but 
+To compute stage-structured self-recapture probabilities in a manner analogous to kin capture probabilities,
+ we retain only the first and last capture of each individual.
+ This is a reasonable approximation for walrus because the self-recapture rate is relatively low.
+ We condition on the age of the first sample but 
 \emph on
 not
 \emph default
@@ -1810,7 +1811,7 @@ nolink "false"
 ),
  which slightly lowers effective fecundity for the first few years of adulthood until the Markov chain reaches equilibrium.
  We did not include senescence in our ICKMR model,
- but we do include it in our simulations so that we could investigate the effects of violating the assumption of 
+ but we did include it in our simulations so we could investigate effects of violating the assumption of 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1897,8 +1898,7 @@ literal "false"
 \end_inset
 
 ).
- We estimated that 75% effort (a three-week research cruise) would result in an expected sample size of 1200.
- The number of samples per age class was then estimated based on ?
+ We estimated that 75% effort (a three-week research cruise) would result in an expected sample size of 1050.
  Planned sampling went ahead in 2023 but not in 2024,
  so we modified simulated sampling scenarios 1-6 to reflect the “reality” of 100% effort in 2023 and 0% effort in 2024.
  After sampling,
@@ -4097,7 +4097,8 @@ nolink "false"
 
 \end_inset
 
-) and simulated historical and future sampling according to realized or target sample sizes by age class,
+),
+ and we simulated historical and future sampling according to realized or target sample sizes by age class,
  with effort per year constant at the 2023 level (S0,
  Table 
 \begin_inset CommandInset ref
@@ -4111,8 +4112,8 @@ nolink "false"
 \end_inset
 
 ).
- The population dynamics model in the simulations is close to the ICKMR model,
- but not identical since the model includes senescence starting in late 30s and a definite maximum age.
+ The population dynamics model in the simulations is close (but not identical) to the ICKMR model,
+ since the simulation includes senescence and a definite maximum age.
  We checked each of the simulated datasets against the ICKMR model for:
  observed and expected numbers of kin pairs in different categories (MOPs,
  XmHSPs,
@@ -4154,6 +4155,15 @@ nolink "false"
 \end_inset
 
 ).
+ These values were chosen because they represent the credibility limits and point estimate for the 2015 walrus population growth rate based on an integrated population model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+.
  For these simulations,
  we simulated historical sampling according to realized sample sizes by age and sex,
  and future sampling by target sample sizes by age class.
@@ -4241,12 +4251,11 @@ literal "false"
 \end_inset
 
 5).
- These calculations are adaptations of standard methods used to find the statistical information from the (pseudo-)likelihood (i.e.,
- its derivatives) and enumerating the pairwise comparisons that would be available per covariate combination (which are limited,
- given we have a modest set of covariates:
- age,
+ These calculations are adaptations of standard methods used to find the statistical information (i.e.,
+ derivatives) from the (pseudo-)likelihood combined with enumerating the pairwise comparisons that would be available per covariate combination (which are limited here to:
+ age or stage,
  year of sample,
- etc).
+ and sex).
 \end_layout
 
 \begin_layout Standard
@@ -4327,7 +4336,7 @@ sparse sampling
 \end_inset
 
  CKMR where the population is large and the sampling fraction is correspondingly small,
- the comparisons are approximately (though not exactly) statistically independent.
+ the comparisons are approximately statistically independent.
  Define 
 \begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)=\mathbb{P}\left[K_{ij}=k\vert z_{i},z_{j},\boldsymbol{\theta}\right]$
 \end_inset
@@ -4372,8 +4381,9 @@ nolink "false"
 \begin_inset Formula $w_{ijk}=1$
 \end_inset
 
- is on the order of the reciprocal of adult abundance (very small),
- and is well approximated by a Poisson distribution with mean 
+ is on the order of the reciprocal of adult abundance,
+ which is very small,
+ and therefore the pseudo-likelihood is well approximated by a Poisson distribution with mean 
 \begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)$
 \end_inset
 
@@ -4464,8 +4474,8 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 \begin_inset Formula $(i,j,k)$
 \end_inset
 
- by numerical differentiation of the probabilities calculated by the ICKMR model,
- using some reasonable guess about 
+ by numerical differentiation of the probabilities calculated by the ICKMR model.
+ We use values from the simulation as that guess about 
 \begin_inset Formula $\boldsymbol{\theta}_{0}$
 \end_inset
 
@@ -4632,7 +4642,7 @@ To adjust the sample sizes
  accordingly,
  we used simulation results on the frequency of self-recaptures and MOPs.
  The effect is not particularly large at the proposed sample sizes.
- [3882 words].
+ [4517 words].
 \end_layout
 
 \end_body
