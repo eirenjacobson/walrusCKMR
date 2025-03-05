@@ -103,32 +103,6 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-0.
- summary of what we did
-\end_layout
-
-\begin_layout Standard
-1.
- assumptions made and things we didn't do
-\end_layout
-
-\begin_layout Standard
-2.
- lessons learned re CKMR in general
-\end_layout
-
-\begin_layout Standard
-3.
- lessons learned re.
- walrus in particular
-\end_layout
-
-\begin_layout Standard
-4.
- future directions (include DNAge here)
-\end_layout
-
-\begin_layout Standard
 In this paper,
  we demonstrate how CKMR can be combined with IMR (ICKMR) to improve precision in estimates of population size while also estimating other quantities of interest.
  We provide an example of ICKMR study design,

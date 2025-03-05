@@ -2694,7 +2694,7 @@ Details of sampling scenarios.
  Effort per year is indicated as either 0,
  0.75 (75%),
  or 1 (100%) effort as described in section 2.2.
- Each scenario was evaluated with and without the addition of 100 lethal samples per year
+ Each scenario was evaluated with and without the addition of 500 lethal samples per year
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Sampling-scenarios"
@@ -4183,7 +4183,7 @@ literal "false"
 .
  WHMP collects demographic data and biological samples from harvest animals.
  Consequently,
- we simulated each scenario (S1-S6) without (L1) and with (L2) 100 lethal samples per year.
+ we simulated each scenario (S1-S6) without (L1) and with (L2) 500 lethal samples per year.
  With three demographic scenarios,
  six sampling scenarios,
  and two lethality scenarios,
