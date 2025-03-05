@@ -242,7 +242,7 @@ captures
  CKMR data are derived from pairwise comparisons among samples while considering covariates such as age,
  size,
  and sex.
- Each pairwise comparison is then tested for a series of kinship relationships such as parent-offspring,
+ Each pairwise comparison is tested for a series of kinship relationships such as parent-offspring,
  half-sibling,
  or self.
  The CKMR model has two components:
@@ -305,7 +305,6 @@ Odobenus rosmarus divergens
  walrus) to demonstrate the utility of CKMR study design.
  We explore different demographic and design scenarios for walrus using IMR alone versus a combined CKMR and IMR (ICKMR) approach,
  and we demonstrate how the latter can be used to substantially reduce the amount of survey effort required for adequate monitoring.
- We intend our work to provide a roadmap to other researchers considering CKMR as a tool to estimate population parameters.
  
 \end_layout
 

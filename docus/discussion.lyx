@@ -102,117 +102,133 @@ Discussion
 
 \end_layout
 
-\begin_layout Itemize
-We show how sample collection plans could be modified to achieve desired monitoring goals with less sampling effort.
+\begin_layout Standard
+0.
+ summary of what we did
 \end_layout
 
-\begin_layout Itemize
-We didn't bother doing X coz IJAD
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-It's Just A Design
+\begin_layout Standard
+1.
+ assumptions made and things we didn't do
 \end_layout
 
-\end_inset
-
-.
- For real data analysis,
- we might do Y instead.
+\begin_layout Standard
+2.
+ lessons learned re CKMR in general
 \end_layout
 
-\begin_layout Itemize
-Ways to extend the model...
- impact of DNAge
+\begin_layout Standard
+3.
+ lessons learned re.
+ walrus in particular
 \end_layout
 
-\begin_layout Itemize
-Future utility of lethal samples (although my guess is:
- there won't be enough.
- Glass-half-full,
- or glass-half-empty,
- if you're a walrus?)
+\begin_layout Standard
+4.
+ future directions (include DNAge here)
 \end_layout
 
-\begin_layout Itemize
-The full ramifications of opting for a stage-structured quasi-equilibrium model,
- which avoids having to model age composition but does entail an 
-\emph on
-assumption
-\emph default
- about selectivity,
- are not at all obvious,
- but the model seems to us fairly reasonable;
- it might be worth revisiting when large numbers of DNAge samples become available.
- At that point it would be possible to compare the actual age compositions with the predicted compositions assuming partly-unselective sampling and quasi-equilibrium.
+\begin_layout Standard
+In this paper,
+ we demonstrate how CKMR can be combined with IMR (ICKMR) to improve precision in estimates of population size while also estimating other quantities of interest.
+ We provide an example of ICKMR study design,
+ including model development,
+ model checking,
+ and design calculations,
+ and show how simulated data can be used to evaluate different proposed survey designs.
+ While we used walrus as a motivating example,
+ we intend our work to provide a roadmap to other researchers considering CKMR as a tool to estimate population parameters across a range of taxa.
 \end_layout
 
-\begin_layout Itemize
-As should be evident from the preceding text and number of authors on this paper,
- building a close-kin model involves a high level of collaboration between statisticians,
- biologists and geneticists.
- CKMR is very much a multidisciplinary methodology and each discipline has a great deal to input into the process of model building.
-\end_layout
-
-\begin_layout Itemize
-Would be great to mention that CKMR was motivated by fisheries and is an example of a shared tool between fisheries scientists and ecologists,
- maybe cite Schaub et al 2024
-\end_layout
-
-\begin_layout Itemize
-on stage-structured dynamics:
- That assumption may turn out to be unreasonable for juveniles especially;
- but it will only be possible to check once enough sample-age-composition data become available.
- However,
- if it does turn out to be the case that (say) 2yo are disproportionately likely to be sampled (given their estimated abundance from the fitted model),
- then it would not be hard to adjust the stage-structured IMR equations to incorporate sample-composition-data and (estimated) selectivity.
- Sample sizes in this project are large enough that selectivity (i.e.,
- the ratio of age-specific sample compositions to model-estimated population age compositions) should be estimated with respectable precision and without "propagating" a lot of uncertainty into other parameter estimates.
- We therefore think that our current somewhat crude IMR sub-model should give a reasonable guide to ultimate precision,
- even if it gets adjusted somewhat in the cold light of real data.
- Note that similar assumptions appear to be made in Beatty et al.
- 202 (to be confirmed).
-\end_layout
-
-\begin_layout Itemize
-A purely-age-structured version of 
-\backslash
-eqref{eq:self-staged} would need to explicitly keep track of numbers-at-age,
- not just adult abundance (as would the other kin types).
- The quasi-equilibrium assumption might allow us to do this,
- but that assumption directly constrains relative abundances-at-age.
+\begin_layout Standard
+Here,
+ we made some simplifying assumptions in order to make the model more tractable.
+ For example,
+ we chose to develop a stage-structured (rather than fully age-structured) model.
+ The stage-structuring implies that sampling is unselective within age classes.
+ For walrus,
+ researchers in the field are able to distinguish between ages of juvenile walrus and could target sampling accordingly.
+ When we have sufficient samples available,
+ we will be able to compare the actual age distribution of the samples to the predicted compositions assumping unselective sampling.
  In practice,
- a fully age-structured CKMR formulation for walrus will need something more sophisticated and time-varying than a quasi-equilibrium age distribution,
+ sample sizes in this project are large enough that any violations in our assumptions about selectivity should not generate notable uncertainty into other parameter estimates.
+ A fully age-structured CKMR formulation for walrus will require something more sophisticated and time-varying than a quasi-equilibrium age distribution,
  and therefore additional parameters to estimate.
- We therefore opted for a stage- rather than age-structured SP model in the hope that the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model.
+ While we believe the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model,
+ in future,
+ we may extend our model to allow for age-based selectivity and/or to be fully age structured;
+ this may also allow the ICKMR model to be incorporated into e.g.,
+ integrated population models for walrus (cite Taylor paper).
+ 
 \end_layout
 
-\begin_layout Itemize
-appendix 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "sec:Skip-breeding"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+\begin_layout Standard
+We also assumed quasi-equilibrium population dynamics.
+ This included assuming a constant rate of population change over the period 2000-2028,
+ as well as constant survival and fecundity rates and a stable age composition.
+ While the assumption of stable age composition over this time period is likely not valid—
+since older adults would have experienced periods of increased mortality from hunting—
+it is probably reasonable for younger adults,
+ which are the most important cohort for the model,
+ since they are responsible for producing most juveniles.
+ The stable age composition is probably reasonable for juveniles,
+ since recruitment variability for animals with a litter size of 1 is very small.
+ 
+\end_layout
 
+\begin_layout Standard
+Our ICKMR model relies on accurate age estimates for sampled animals.
+ We did not include age uncertainty in the current model,
+ but it could be implemented (see Appendix X).
+ Need some info here about DNAge,
+ precision.
+ 
+\end_layout
+
+\begin_layout Standard
+To our knowledge,
+ this paper presents the first integration of IMR into CKMR (ICKMR).
+ This integration allowed us to make use of both individual and close-kin recaptures in the walrus dataset.
+ The walrus project was initially envisioned and planned as an IMR project with five years of total survey effort between 2013 and 2017 and another five years planned between 2023 and 2027.
+ Our results indicate that with the addition of CKMR,
+ sufficient precision (defined as a CV of 0.2) in estimates of adult female population size given planned biopsy sample sizes per year could be achieved with as little as 2.5 years of total survey effort if the population was stable or decreasing or with 4 years if the population was increasing.
+ Given our knowledge of walrus ecology and anticipated declines in sea ice over,
+ an increase in population size is unlikely and 2.5 years of total survey effort would likely lead to sufficient precision in abundance estimates.
+ 
+\end_layout
+
+\begin_layout Standard
+The walrus case study is also interesting because of the potential to collect samples from harvested animals.
+ In previous years,
+ 50 samples per year were collected in collaboration with the 
+\lang english
+US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP)
+\lang british
+.
+ However,
+ the total harvest in Alaska (or more specific region) is estimated to number XXXX (750?
+ 1000?) per year.
+ Increased collaboration and collection of samples from harvested animals could further improve precision in abundance estimates.
+ For IMR alone,
+ the addition of 500 lethal samples per year would make achieving sufficient precision possible with as few as 2.5 years of total survey effort for a decreasing population,
+ 3 years for a stable population,
+ and 5 years for an increasing population.
+ For ICKMR,
+ the addition of 500 lethal samples per year improves already acceptable precision under all demographic and sampling scenarios.
+ Something here like:
+ if the WHMP program could collect more samples,
+ this seems like an 
+\begin_inset Quotes eld
 \end_inset
 
- discusses skip-breeding
-\end_layout
+easy win
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Itemize
-
-\lang english
-While a stable-age-composition between 2000–2027 is probably not valid for the entire range of adult ages—
-since older adults would have experienced long periods of increased mortality from hunting—
-it is perhaps a reasonable assumption for younger adults,
- and it is only younger adults that matter here because they indirectly determine the number of juveniles.
- A stable age composition for juveniles seems fairly reasonable,
- since "recruitment variability" cannot be high for an animal with a litter size of 1,
- and it only requires a few years for the juvenile distribution to settle down.
+,
+ opportunity to involve stakeholder communities in the monitoring program,
+ etc.
+ Bill/Rebecca to draft something sensitive/appropriate?
 \end_layout
 
 \end_body
