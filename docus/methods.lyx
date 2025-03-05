@@ -541,7 +541,7 @@ begin{tikzpicture}[
 
 \begin_layout Plain Layout
 
-node distance = 1cm and 4cm,
+node distance = 0.5cm and 2cm,
 \end_layout
 
 \begin_layout Plain Layout
@@ -565,11 +565,11 @@ node distance = 1cm and 4cm,
 
 \backslash
 node (q0) [state,
- align = center]             {Pregnant 
+ align = center]             {Pregnant
 \backslash
 
 \backslash
- Female};
+Female};
 \end_layout
 
 \begin_layout Plain Layout
@@ -577,11 +577,15 @@ node (q0) [state,
 
 \backslash
 node (q1) [state,right=of q0,
- align = center] {Adult Female 
+ align = center] {Adult Female
 \backslash
 
 \backslash
-with YOTY Calf};
+with
+\backslash
+
+\backslash
+YOTY Calf};
 \end_layout
 
 \begin_layout Plain Layout
@@ -593,7 +597,7 @@ node (q2) [state,right=of q1,
 \backslash
 
 \backslash
- Female};
+Female};
 \end_layout
 
 \begin_layout Plain Layout
@@ -651,9 +655,9 @@ psi_2$}  (q0)
 
 
 \backslash
-draw[->,>= {Stealth[length=3mm]}]      (q2)  edge [loop below] node[el,below] {$(1-
+draw[->,>= {Stealth[length=3mm]}]      (q2)  edge [loop below] node[el,below] {$1-
 \backslash
-psi_3)$}   (q2);
+psi_3$}   (q2);
 \end_layout
 
 \begin_layout Plain Layout
@@ -683,13 +687,67 @@ node (e3) [above=of q2] {State 3};
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{tikzpicture}
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+node (mat) [right=of q2,
+ xshift=-1.5cm ] {$
+\backslash
+Psi = 
+\backslash
+begin{pmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+                           0 & 1 & 0
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+                           
+\backslash
+psi_2 & 0 & 1-
+\backslash
+psi_2
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+                           
+\backslash
+psi_3 & 0 & 1-
+\backslash
+psi_3& 
+\end_layout
+
+\begin_layout Plain Layout
+
+						   
+\backslash
+end{pmatrix}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
 \end_layout
 
 \end_inset
@@ -708,6 +766,13 @@ Directed cyclic graph showing the breeding cycle for walrus as represented in ou
  On average,
  female walrus reach sexual maturity (age of first ovulation) at age 4,
  so females enter the graph at node non-breeding.
+ On the right is the transition matrix,
+ 
+\begin_inset Formula $\Psi$
+\end_inset
+
+,
+ where cells indicate probabilities of transition from row state to columns state.
  
 \begin_inset CommandInset label
 LatexCommand label
