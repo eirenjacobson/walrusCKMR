@@ -31,9 +31,7 @@
         (bc+AMAT <= bj) * # gotta be mature
         fec_a[ clippo( bj-bc, FECAGES)] * # cow's ERO (cf avg adult)
         recip_Nfad_y[ bj] *   # competition
-        # lethal sample must not be before juv birth year & 
-        # if juv is > 0, pot mom can't have died in its birth year
-        ifelse((bj > yc) | (aj > 0 & yc == bj), 0, 1) 
+        (bj > yc)    # lethal sample must be strictly after birth year; simplified by RT
     })
   
   Pr_MOP_bybyl <- offarray( 0, dimseq=list( 
