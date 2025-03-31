@@ -2,14 +2,13 @@
 # script to run fit_walrus_ckmr and design_eg
 
 Ds <- c("D1", "D2", "D3")
-Ls <- c("L1", "L2")
-Ss <- paste0("S", 1:7)
+Ls <- c("L1", "L3")
+Ss <- paste0("S", 1:9)
 
 scenarios <- data.frame(expand.grid(Ds, Ls, Ss))
 
 # load empty dataframes to hold design results
-load("./results/design_df.RData")
-load("./results/compdesign.RData")
+source("./scripts/createArrays.R")
 
 for (i in 1:nrow(scenarios)){
  

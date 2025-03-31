@@ -6,8 +6,8 @@ library(PNWColors)
 
 load("./results/design_df_filled.RData")
 
-# take out scenario 7
-design_df <- design_df[-which(design_df$S == "S7"),]
+# take out scenario 9
+design_df <- design_df[-which(design_df$S == "S9"),]
 
 # filter to keep L1 and L3
 design_df <- design_df %>% filter(L == "L1" | L == "L3")
@@ -33,15 +33,10 @@ alldf <- left_join(estdf, sedf, by = c("ID", "CKMR", "D", "L", "S", "Year")) %>%
   mutate(LCI = Est - 1.96*SE) %>%
   mutate(UCI = Est + 1.96*SE)
 
-
-ggplot() +
-  geom_point(data = filter(estdf, D == "D1"), aes(x=Year, y = Est))+
-  geom_line(data = filter(estdf, D == "D1"), aes(x=Year, y = Est))+
-  geom_errorbar(data = filter(alldf, D == "D1"), aes(x=Year, ymin = LCI, ymax = UCI)) +
-  facet_grid(~S)
+# RESULTS TEXT 
 
 # check mean gain in CV with CKMR
-
+# mean decrease in CV on Nfad w/ w/o CKMR, by Demo
 cvdf %>% 
   pivot_wider(names_from = CKMR, values_from = CV) %>%
   mutate(Difference = Yes - No) %>%
@@ -55,20 +50,33 @@ cvdf %>%
 cvdf %>% 
   select(-ID) %>%
   pivot_wider(names_from = L, values_from = CV) %>%
-  mutate(Difference = Yes - No) %>%
-#  group_by(interaction(D, CKMR)) %>%
+  mutate(Difference = `500` - `0`) %>%
+  #  group_by(interaction(D, CKMR)) %>%
   group_by(CKMR) %>%
   summarize(MeanD = round(mean(Difference), digits = 2))
+
+###
+
+
+
+
+ggplot() +
+  geom_point(data = filter(estdf, D == "D1"), aes(x=Year, y = Est))+
+  geom_line(data = filter(estdf, D == "D1"), aes(x=Year, y = Est))+
+  geom_errorbar(data = filter(alldf, D == "D1"), aes(x=Year, ymin = LCI, ymax = UCI)) +
+  facet_grid(~S)
 
 ############### Plot of CVs on N across years, sampling, demo scen, lethal, ckmr
 
 sampling_names <- list(
-  '1'="+ 100% '25-'26",
-  '2'="+ 100% '25-'27",
-  '3'="+ 100% '25-'28",
-  '4'="+ 75% '25-'26",
-  '5'="+ 75% '25-'27",
-  '6'="+ 75% '25- '28")
+  '1'="+ 100% '25",
+  '2'="+ 100% '25-'26",
+  '3'="+ 100% '25-'27",
+  '4'="+ 100% '25-'28",
+  '5'="+ 75% '25",
+  '6'="+ 75% '25-'26",
+  '7'="+ 75% '25-'27",
+  '8'="+ 75% '25-'28")
 
 demo_names <- list(
   '1' = "Stable Population",
@@ -101,33 +109,39 @@ ggsave(plot = last_plot(), file = "./figures/MegaResults.png",
 
 ##################################### Plot of sampling effort v cv
 
-effort <- data.frame("S" = paste0("S", c(1:6)),
-                     "Effort" = c(3, 4, 5, 2.5, 3.25, 4))
+sampling_names <- list(
+  '2015'="2015",
+  '2020'="2020",
+  '2025'="2025")
 
-cveffort <- left_join(cvdf, effort, by = "S")
+demo_names <- list(
+  '1' = "Stable Population",
+  '2' = "Decreasing Population",
+  '3' = "Increasing Population"
+)
 
 plot_labeller <- function(variable,value){
-  if (variable=='S') {
+  if (variable=='Year') {
     return(sampling_names[value])
   } else {
     return(demo_names[value])
   }
 }
 
-ggplot(filter(cveffort, Year == 2025)) +
+ggplot(filter(cveffort)) +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
   geom_point(aes(x=Effort, y = CV, color = as.factor(L), shape = as.factor(CKMR))) +
-  facet_wrap(~D, nrow = 3, labeller = plot_labeller) +
+  facet_grid(D~Year, labeller = plot_labeller) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
   scale_color_manual(values = c("#105b58", "#ba7999")) +
-  ylab("Expected CV for # Adult Females in 2025")+
-  xlab("Total Survey Effort (Years)")+
+  ylab("Expected CV for # Adult Females")+
+  xlab("Total Future Survey Effort (Years)")+
   ylim(c(0, 0.5))+
   theme_bw() +
   theme(legend.position = "bottom")
 
 ggsave(plot = last_plot(), file = "./figures/EffortVCV.png", 
-       width = 4, height = 5, units = "in")
+       width = 8.5, height = 5.5, units = "in")
 
 
 # compare equal effort scenarios
@@ -159,7 +173,7 @@ p2 <- cveffort[which(cveffort$Effort==4),] %>%
   ggplot() +
   geom_abline(intercept = 0, slope = 1, color = "grey") +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
-  geom_point(aes(x=`S2`, y=`S6`, color = as.factor(L), shape = as.factor(CKMR))) +
+  geom_point(aes(x=`S3`, y=`S8`, color = as.factor(L), shape = as.factor(CKMR))) +
   scale_color_manual(values = c("#105b58", "#ba7999")) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
   facet_wrap(~Year)+

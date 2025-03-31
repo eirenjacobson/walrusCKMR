@@ -5,7 +5,7 @@
 
 source("./scripts/subsample.R")
 
-Ls <- c("L1", "L2")
+Ls <- c("L1", "L3")
 Ds <- c("D1", "D2", "D3")
 
 sdf <- expand.grid(Ds, Ls)
@@ -21,5 +21,7 @@ for (i in 1:nrow(sdf)){
   subsample(suffix, 5)
   subsample(suffix, 6)
   subsample(suffix, 7)
+  subsample(suffix, 8)
+  subsample(suffix, 9)
   
 }
