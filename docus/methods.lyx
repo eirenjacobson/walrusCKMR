@@ -1941,31 +1941,6 @@ nolink "false"
 ).
  Females are available to be sampled at any age 1+,
  while males are available for sampling from ages 1-5 only.
- For simulated captures between 2013 and 2017 (when the first generation of research cruises took place),
- we used the realized sample sizes by age or age class as the basis for simulation 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "beatty_estimating_2022"
-literal "false"
-
-\end_inset
-
-.
- For simulated captures between 2023 and 2028,
- we estimated an expected overall sample size of 1400 per year with 100% effort (i.e.,
- a four-week research cruise;
- 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "beatty_estimating_2022"
-literal "false"
-
-\end_inset
-
-).
- We estimated that 75% effort (a three-week research cruise) would result in an expected sample size of 1050.
- Planned sampling went ahead in 2023 but not in 2024,
- so we modified simulated sampling scenarios 1-6 to reflect the “reality” of 100% effort in 2023 and 0% effort in 2024.
  After sampling,
  some individuals die (according to age and/or sex specific mortality rates,
  Table 
@@ -2755,11 +2730,11 @@ status open
 \begin_layout Plain Layout
 Details of sampling scenarios.
  For reference,
- scenarios are labelled S0-S6 with a description of effort.
+ scenarios are labelled S0-S8 with a description of effort.
  Effort per year is indicated as either 0,
  0.75 (75%),
  or 1 (100%) effort as described in section 2.2.
- Each scenario was evaluated with and without the addition of 500 lethal samples per year
+ Each scenario was evaluated with and without the substitution of 500 lethal samples per year
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Sampling-scenarios"
@@ -2776,7 +2751,7 @@ name "tab:Sampling-scenarios"
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="8">
+<lyxtabular version="3" rows="11" columns="8">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3107,6 +3082,80 @@ S1
 \begin_inset Text
 
 \begin_layout Plain Layout
+Reality + 100% effort 2025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3270,7 +3319,7 @@ Reality + 100% effort 2025-2026
 \begin_inset Text
 
 \begin_layout Plain Layout
-S2
+S3
 \end_layout
 
 \end_inset
@@ -3442,7 +3491,7 @@ Reality + 100% effort 2025-2027
 \begin_inset Text
 
 \begin_layout Plain Layout
-S3
+S4
 \end_layout
 
 \end_inset
@@ -3614,7 +3663,81 @@ Reality + 100% effort 2025-2028
 \begin_inset Text
 
 \begin_layout Plain Layout
-S4
+S5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reality + 75% effort 2025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S6
 \end_layout
 
 \end_inset
@@ -3786,7 +3909,7 @@ Reality + 75% effort 2025-2026
 \begin_inset Text
 
 \begin_layout Plain Layout
-S5
+S7
 \end_layout
 
 \end_inset
@@ -3958,7 +4081,7 @@ Reality + 75% effort through 2027
 \begin_inset Text
 
 \begin_layout Plain Layout
-S6
+S8
 \end_layout
 
 \end_inset
@@ -4230,10 +4353,18 @@ literal "false"
 
 .
  For these simulations,
- we simulated historical sampling according to realized sample sizes by age and sex,
- and future sampling by target sample sizes by age class.
- We also simulated sampling effort reductions,
- either by reducing number of sampling years or by reducing amount of sampling effort within years (S1-S6;
+ we simulated historical sampling (2013-2017,
+ when the first generation of research cruises took place) according to realized sample sizes by age and sex 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+.
+ We simulated possible reductions in future sampling effort,
+ either by reducing the number of sampling years or by reducing the amount of sampling effort within years (S1-S8;
  Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4246,7 +4377,17 @@ nolink "false"
 \end_inset
 
 ).
- The US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP) monitors the walrus harvest each year in two coastal communities in Alaska,
+ For simulated captures between 2023 and 2028,
+ we estimated an expected overall sample size of 1600 per year with 100% effort (i.e.,
+ a four-week research cruise).
+ We estimated that 75% effort (a three-week research cruise) would result in an expected sample size of 1200.
+ Planned sampling went ahead in 2023 but not in 2024,
+ so we modified simulated sampling scenarios 1-8 to reflect the “reality” of 100% effort in 2023 and 0% effort in 2024.
+ 
+\end_layout
+
+\begin_layout Standard
+The US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP) monitors the walrus harvest each year in two coastal communities in Alaska,
  which comprises 84% of total Alaska Native subsistence harvest 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -4257,12 +4398,16 @@ literal "false"
 
 .
  WHMP collects demographic data and biological samples from harvest animals.
- Consequently,
- we simulated each scenario (S1-S6) without (L1) and with (L2) 500 lethal samples per year.
- With three demographic scenarios,
- six sampling scenarios,
+ To assess the relative value of samples from harvested animals (versus biopsy samples from live individuals),
+ we simulated each scenario without (L1) and with (L2) the substitution of 500 lethal samples in sampling years 2023-2028.
+ 
+\end_layout
+
+\begin_layout Standard
+With three demographic scenarios,
+ eight sampling scenarios,
  and two lethality scenarios,
- this resulted in a total of 36 simulated datasets from which to evaluate survey design.
+ this resulted in a total of 48 simulated datasets from which to evaluate survey design.
  Given the relatively large population size and large number of samples,
  we did not expect key properties of simulated datasets to differ substantially due to random variation.
  This was confirmed by model checking (see 
@@ -4646,7 +4791,7 @@ literal "false"
  so the variance might be slightly over- or under-estimated relative to our calculations here.
  The direction is not entirely obvious,
  because finite population corrections will also affect the true variance,
- but we chose to eliminate some obviously redundant comparisons to err on the side of over-estimating true variance.
+ but we chose to eliminate redundant comparisons to err on the side of over-estimating true variance.
  Specifically:
 \end_layout
 
@@ -4713,7 +4858,7 @@ To adjust the sample sizes
  accordingly,
  we used simulation results on the frequency of self-recaptures and MOPs.
  The effect is not particularly large at the proposed sample sizes.
- [4517 words].
+ [4595 words].
 \end_layout
 
 \end_body

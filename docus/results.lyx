@@ -130,12 +130,12 @@ nolink "false"
  decreasing,
  and increasing populations,
  respectively.
- The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.01).
- The mean expected CVs were 0.02 (range 0.01-0.04),
- 0.01 (range 0-0.02),
- and 0.03 (0.01-0.05) for stable,
+ The mean expected CVs were 0.01 (range 0-0.02),
+ 0.01 (range 0.01-0.03),
+ and 0.02 (0.01-0.03) for stable,
  decreasing,
  and increasing populations respectively.
+ The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.01).
  
 \end_layout
 
@@ -154,26 +154,28 @@ nolink "false"
 \end_inset
 
 ).
- Again,
- the expected CVs on juvenile survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.01).
- The mean expected CVs on juvenile female survival were 0.05 (range 0.03-0.08),
- 0.03 (range 0.02-0.05),
- and 0.05 (range 0.04-0.08) for stable,
+ The mean expected CVs on juvenile female survival were 0.03 (range 0.02-0.05),
+ 0.04 (range 0.03-0.07),
+ and 0.05 (range 0.03-0.07) for stable,
  decreasing,
  and increasing populations respectively.
+ Again,
+ the expected CVs on juvenile survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.01).
+ 
 \end_layout
 
 \begin_layout Standard
 Across all demographic and sampling scenarios,
  the simulated proportion of adult females in breeding state 2 (with YOTY) was 0.26.
- The expected CVs varied greatly depending on both demographic and sampling scenario,
- but were notably lower when ICKMR was used compared with IMR (mean decrease in CV = 0.85).
- The mean expected CVs on the proportion of adult females in breeding state 2 were 0.55 (range 0.08-1.31),
- 0.31 (range (0.04-0.73),
- and 0.69 (range 0.1-1.62) for stable,
+ The mean expected CVs on the proportion of adult females in breeding state 2 were 0.31 (range 0.05-0.69),
+ 0.45 (range (0.07-1),
+ and 0.53 (range 0.08-1.19) for stable,
  decreasing,
  and increasing populations,
  respectively.
+ The expected CVs on the proportion of adult females in breeding state 2 varied greatly depending on both demographic and sampling scenario,
+ but were notably lower when ICKMR was used compared with IMR (mean decrease in CV = 0.71).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -188,7 +190,7 @@ nolink "false"
 
 \end_inset
 
- for expected CVs of life history parameters across all demographic and sampling scenarios with and without the use of lethal samples and ICKMR.
+ for expected CVs of life history parameters across all demographic and sampling scenarios with and without the substitution of lethal samples and use of ICKMR.
 \end_layout
 
 \begin_layout Subsection
@@ -206,6 +208,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../figures/MegaResults.png
+	lyxscale 25
 	scale 70
 
 \end_inset
@@ -265,6 +268,8 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../figures/EffortVCV.png
+	lyxscale 25
+	scale 70
 
 \end_inset
 
@@ -276,12 +281,14 @@ status open
 
 \begin_layout Plain Layout
 Total survey effort (in number of years,
- horizontal axis) versus expected CV for adult female abundance in 2025 with IMR alone (triangular points) or with ICKMR (round points) and with (green points) and without (purple points) the inclusion of lethal samples.
- The three panels represent demographic scenarios of a stable population,
+ horizontal axis) versus expected CV for adult female abundance in 2015,
+ 2020,
+ and 2025 (columns) with IMR alone (triangular points) or with ICKMR (round points) and with (green points) and without (purple points) the inclusion of lethal samples.
+ The three rows represent demographic scenarios of a stable population,
  decreasing population,
  and increasing population,
  respectively.
- The horizontal dashed line at CV = 0.2 represents a decision-making threshold.
+ The horizontal dashed line at CV = 0.2 is a decision-making threshold.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:effVcv"
@@ -312,68 +319,6 @@ Effort v CV
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement document
-alignment document
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../figures/CVw4YrsEff.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Expected CV on the number of adult females with four years of total survey effort.
- The horizontal axis shows expected CVs under sampling scenario 2 (Reality + 100% effort 2025-2027)  and the vertical axis shows expected CVs under sampling scenario 6 (Reality + 75% effort through 2028).
- From left to right,
- panels indicate expected CVs in 2015,
- 2020,
- and 2025.
- Individual points represent expected CVs under different possible demographic scenarios,
- with (green) and without (purple) the inclusion of lethal samples,
- and with (round points) and without (triangular points) the use of CKMR (versus IMR alone).
- The solid grey line is 1:1.
- The horizontal dashed grey line represents a decision-making threshold CV of 0.2.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:cvWsameeff"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-CV w/ same effort,
- different sampling
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Across all demographic and sampling scenarios,
  the application of ICKMR resulted in higher expected precision in abundance estimates compared to the application of IMR alone (Fig.
  
@@ -388,9 +333,9 @@ nolink "false"
 \end_inset
 
 ).
- The mean decrease in CV on adult female abundance in paired scenarios without and with CKMR was 10% for a stable population,
- 4% for a decreasing population,
- and 13% for an increasing population.
+ The mean decrease in CV on adult female abundance in paired scenarios without and with CKMR was 4% for a stable population,
+ 7% for a decreasing population,
+ and 8% for an increasing population.
  See Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -402,7 +347,7 @@ nolink "false"
 
 \end_inset
 
- for expected CVs of adult female abundance across all demographic and sampling scenarios with and without the use of CKMR.
+ for expected CVs of adult female abundance across all demographic and sampling scenarios with and without the substitution of lethal samples and use of CKMR.
 \end_layout
 
 \begin_layout Standard
@@ -421,8 +366,7 @@ nolink "false"
  A declining population led to smaller population size during the target inference years (2015-2025).
  As a result,
  the number of kin pairs increased,
- reducing the expected CV for a given sample size.
- in that a decreasing population resulted in a smaller population size in the years of desired inference (2015-2025) and therefore the number of kin pairs was higher (and expected precision was lower) given a set number of samples (Fig.
+ reducing the expected CV for a given sample size (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -453,27 +397,12 @@ nolink "false"
 
 ,
  third row).
- With a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "beatty_estimating_2022"
-literal "false"
-
-\end_inset
-
-) on estimates of adult female abundance in 2015,
- 2020,
- and 2025,
- sampling scenarios with 3 or more years of total sampling effort resulted in sufficient precision when the population was decreasing,
- while scenarios including ICKMR and the use of lethal samples would be required to achieve sufficient precision when the population was increasing.
- A simulated addition of 500 lethal samples per sampling year provided greater gains in precision on abundance estimates when only IMR was used;
- across demographic and sampling scenarios the mean decrease in CV was 11% for IMR alone and 1% when ICKMR was applied.
  
 \end_layout
 
 \begin_layout Standard
-The simulated sampling scenarios resulted in between 2.5 and 5 years of total survey effort (where total survey effort is a combination of years of effort and effort per year,
- and where 5 years of survey effort over 5 years was the original plan for IMR;
+The simulated sampling scenarios resulted in between 1.75 and 5 years of total future survey effort (where total future survey effort is a combination of years of effort and effort per year,
+ and where 5 years of future survey effort over 5 years was the original plan for IMR;
  Fig.
  
 \begin_inset CommandInset ref
@@ -487,56 +416,29 @@ nolink "false"
 \end_inset
 
 ).
- When the population was stable or decreasing,
- sufficient precision could be achieved with 2.5 years of total survey effort when ICKMR was used or with IMR alone if lethal samples were used.
- In scenarios when the population was increasing,
- 2.5 years of survey effort would be sufficient if ICKMR was used with lethal samples,
- or 4 or more years of survey effort without lethal samples.
- IMR alone would achieve sufficient precision with 5 years of total survey effort and the use of lethal samples.
+ With a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+) on estimates of adult female abundance in 2015,
+ 2020,
+ and 2025,
+ at least 3 years of total future survey effort would be required to achieve sufficient precision with IMR alone,
+ while scenarios with ICKMR achieved sufficient precision with as few as 1.75 years of total future survey effort.
  
 \end_layout
 
 \begin_layout Standard
-Some scenarios resulted in the same total number of years of survey effort but in different configurations (i.e.,
- some had more sampling years of with less effort each year,
- whereas others had fewer years of sampling with more effort each year).
- Sampling scenarios 2 and 6 both resulted in four years total survey effort (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:cvWsameeff"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-).
- Scenario 2 included sampling in 2023,
- 2025,
- 2026,
- and 2027,
- while scenario 6 included sampling in 2023 and a lower level of sampling (75% effort) in 2025,
- 2026,
- 2027,
- and 2028.
- Expected precision of abundance estimates was greater for scenario 6 than for scenario 2 in all years of desired inference,
- with the largest difference in the 2025 estimate (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:cvWsameeff"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-,
- bottom panel).
- This indicates that fewer sampling years with 100% effort per year resulted in the most precise adult female abundance estimates [1139 words].
+The simulated substitution of 500 lethal samples per sampling year did not notably change expected precision in abundance estimates (the mean difference with versus without lethal samples was 0% across all demographic and sampling scenarios).
+ However,
+ it appears that for abundance estimates late in the time series with fewer years of total future survey effort (e.g.,
+ the number of adult females in 2025 with 1.75 year of total survey effort) the substitution of lethal samples leads to lower precision,
+ particularly when only IMR is used.
+ [817 words].
 \end_layout
 
 \end_body

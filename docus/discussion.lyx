@@ -153,9 +153,8 @@ it is probably reasonable for younger adults,
 \begin_layout Standard
 Our ICKMR model relies on accurate age estimates for sampled animals.
  We did not include age uncertainty in the current model,
- but it could be implemented (see Appendix X).
- Need some info here about DNAge,
- precision.
+ but it could be added (see Appendix X).
+ Need some info here about DNAge and how we expect it to affect precision.
  
 \end_layout
 
@@ -165,20 +164,22 @@ To our knowledge,
  This integration allowed us to make use of both individual and close-kin recaptures in the walrus dataset.
  The walrus project was initially envisioned and planned as an IMR project with five years of total survey effort between 2013 and 2017 and another five years planned between 2023 and 2027.
  Our results indicate that with the addition of CKMR,
- sufficient precision (defined as a CV of 0.2) in estimates of adult female population size given planned biopsy sample sizes per year could be achieved with as little as 2.5 years of total survey effort if the population was stable or decreasing or with 4 years if the population was increasing.
- Given our knowledge of walrus ecology and anticipated declines in sea ice over,
- an increase in population size is unlikely and 2.5 years of total survey effort would likely lead to sufficient precision in abundance estimates.
- We considered scenarios with up to 1400 biopsy samples collected per year;
+ sufficient precision (defined as a CV of 0.2) in estimates of adult female population size given planned biopsy sample sizes per year could be achieved with as little as 1.75 years of total future survey effort.
+ Estimates of adult female and juvenile female survival,
+ and of the proportion of adult females in breeding state 2 (with YOTY calf),
+ were also improved with the addition of CKMR.
+ We considered scenarios with up to 1600 biopsy samples collected per year;
  in practice,
  this number may be higher (e.g.,
  mean = 1633,
- range 1356-1820 Beatty et al.
+ range 1356-1820 in Beatty et al.
  2022) resulting in even greater precision in estimates of abundance.
  
 \end_layout
 
 \begin_layout Standard
-The walrus case study is also interesting because of the potential to collect samples from harvested animals.
+In the walrus case study,
+ there is potential to use genetic samples from harvested animals.
  In previous years,
  50 samples per year were collected in collaboration with the 
 \lang english
@@ -186,15 +187,10 @@ US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WH
 \lang british
 .
  However,
- the total harvest in Alaska (or more specific region) is estimated to number XXXX (750?
- 1000?) per year.
- Increased collaboration and collection of samples from harvested animals could further improve precision in abundance estimates.
- For IMR alone,
- the addition of 500 lethal samples per year would make achieving sufficient precision possible with as few as 2.5 years of total survey effort for a decreasing population,
- 3 years for a stable population,
- and 5 years for an increasing population.
- For ICKMR,
- the addition of 500 lethal samples per year improves already acceptable precision under all demographic and sampling scenarios.
+ the total harvest in Alaska (or more specific region) is estimated to number XXXX per year.
+ Substitution of lethal samples for non-lethal (biopsy) samples resulted in similar precision on abundance estimates.
+ In future,
+ increased collaboration and collection of samples from harvested animals could further improve precision in abundance estimates.
  Something here like:
  if the WHMP program could collect more samples,
  this seems like an 

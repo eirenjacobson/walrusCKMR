@@ -524,10 +524,13 @@ is an ice-associated marine mammal found in the Bering and Chukchi seas,
  we combine IMR with CKMR and investigate whether different sampling strategies can increase precision in estimates of abundance.
  Our modelling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We find that the expected precision of the ICKMR estimates of abundance are higher than those expected from IMR alone,
+ We find that the expected CVs of the ICKMR estimates of abundance,
+ adult female survival,
+ juvenile female survival,
+ and proportion of breeding females are lower than those expected from IMR alone,
  and with ICKMR,
- 2.5 instead of 5 years of sampling can be conducted to obtain sufficient precision in estimates of abundance.
- [330/350]
+ 1.75 instead of 3 years of future sampling can be conducted to obtain sufficient precision in estimates of abundance.
+ [343/350]
 \end_layout
 
 \begin_layout Standard
