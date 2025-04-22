@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/r2.0/eirenwal/docus/
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
@@ -94,47 +94,10 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-model checking
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-I have an open mind about how much of this should go in the main MS (first para only?),
- how much in an Apx,
- and how much not at all—
- but it'd be kind-of a shame to miss this chance to showcase a practical benefit of CKMR simulations,
- especially since I have frequently maintained that simulations are *not* necessary in CKMR (true,
- but as we see here they can still be very *useful*).
- The other Q is how much to mix in the results of the checks (once everything worked...) with the description of them;
- it doesn't make sense to me to have this as a Methods section,
- then a huge gap with a tonne of other results,
- then return to this with a small set of results pertaining to an aspect of methods that all readers will by that point have forgotten.
- So again an Apx could be the place for much of it.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Close-kin pairwise probability formulae are usually quite simple,
  at least with hindsight,
- but they still can be awkard to get right in the first place.
- One way to reduce the risk of mistakes is to generate simulated datasets,
- and check that the CKMR code is giving the expected results when known parameter values are inserted.
+ but they can be awkward to get right in the first place.
+ One way to reduce the risk of mistakes is to generate simulated datasets and check that the CKMR code is giving the expected results when known parameter values are inserted.
  CKMR simulation code looks utterly different from kinship-probability code,
  and the chance of 
 \begin_inset Quotes eld
@@ -157,42 +120,19 @@ making the same mistake twice
 
 \begin_layout Standard
 The obvious question is how to approach CKMR model-checking when simulated datasets are available.
- There are various options and no .
- One thing to avoid,
- if possible,
- is the naive and laborious approach of actually 
+ There are various options but the naive and laborious approach of actually 
 \emph on
 fitting
 \emph default
  a CKMR to each simulated dataset,
- which can be painfully slow.
+ which can be painfully slow,
+ should be avoided.
  
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-(Note,
- perhaps for discussion:
- We started this project before RTMB became available,
- expecting that the actual model-fitting code for real data would eventually have to be written in TMB itself,
- but keen to avoid the complexity of TMB at the design stage.
- In contrast,
- design calculations are quick because it is only necessary to calculate probability arrays once,
- and R alone is adequately fast,
- without TMB or RTMB.
- However,
- it would not be practical to fit even our simple model to multiple datasets without RTMB;
- and even with RTMB,
- repeated fitting of a more complicted model,
- e.g.
- with copious random effects,
- might be a challenge.)
 \end_layout
 
-\end_inset
-
- We used several checks.
- All are aimed at detecting gross errors (and we did find some);
+\begin_layout Standard
+We used several checks.
+ All are aimed at detecting gross errors;
  power to detect subtle mistakes is lower,
  but in our experience subtle mistakes are actually less likely than big ones.
  The first two checks are based on single realizations of simulated data,
@@ -200,32 +140,11 @@ status open
  the last two require multiple simulated datasets.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-One option is to include final result(s) for each check right here,
- after describing the check.
- Otherwise,
- if this section goes mainly into Methods,
- the results of each little check will be a long way from the text describing it,
- and the reader will have forgotten what the check is by the time they see its results.
- I absolutely hate papers like that :) But,
- it might depend;
- needs Zoom.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Observed and expected totals of sampled kin-pairs of each type.
  Clearly,
  unless these match reasonably well,
- there must be a major inconsistency between model and simulationg.
+ there must be a major inconsistency between model and simulations.
  The definition of 
 \begin_inset Quotes eld
 \end_inset
@@ -248,11 +167,50 @@ reasonably well
  Clearly,
  the expected total needs to be fairly large for this to have much power,
  so it might be useful to increase the simulated sample size for checking purposes.
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/ej45/Documents/walrusCKMR/figures/ObsVExpKinPairs_wBounds.png
+	lyxscale 50
+	scale 80
+
 \end_inset
 
-**OPTION**list the totals here (for first test dataset,
- chosen so that sim matches CK code as closely as possible)
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Number of kin pairs (horizontal axis) in 50 observed (simulated) datasets (vertical axis,
+ grey bars) with the expected (modeled) number of kin pairs (red vertical line) and the expected number of kin pairs +/- 95% confidence intervals (red vertical dashed lines) for mother-offspring pairs (MOP),
+ self-pairs (SelfP),
+ and half-sibling pairs (XmHSP).
+ The observed numbers of kin pairs mostly fall within the 95% confidence intervals of the expected values.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -273,7 +231,49 @@ Breakdown of observed and expected kin-pair totals across some covariate of inte
 \begin_inset Newline newline
 \end_inset
 
-**OPTION** show the 2 graphs here.
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/ej45/Documents/walrusCKMR/figures/ObsVExp_MatAge.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Expected (modeled,
+ red points) versus observed (simulated,
+ blue points) number of mother-offspring pairs (vertical axis) given mother's age at time of offspring's birth (horizontal axis).
+ The observed number of pairs is not systematically higher or lower than expected,
+ indicating that the treatment of the breeding cycle is consistent between the simulation and model.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -288,7 +288,41 @@ P-values of observed kin-totals by type,
 \begin_inset Newline newline
 \end_inset
 
-**OPTION** show 4 histos here (instead of box'n'whiska)
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/ej45/Documents/walrusCKMR/figures/comphist_D0_L1_S0.png
+	lyxscale 25
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Histogram of p-values representing the probability of observing a number of kin pairs as or more extreme than the observed (simulated) value,
+ given the expected (modeled) value generated given the sample size and age/sex composition,
+ across 50 simulated datasets.
+ The p-values are approximately uniformly distributed,
+ indicating that there is no systematic difference in production of kin pairs in the simulation versus the model.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -319,11 +353,252 @@ unbiased estimating equation
  including maximum-likelihood.
  If UEE does not hold,
  then by definition there is a mismatch between simulation and model.
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mean and variance of the derivative of the pseudo-log-likelihood at the true parameter values for model parameters across 50 simulated datasets.
+ log_Nfad_y0 is the log number of adult females in 2015,
+ RoI is the rate of increase of the population,
+ lg_fadsurv is the logit of adult female survival,
+ diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
+ lpsi1 is the (log?
+ or logit?) probability of breeding on a two-year interval,
+ lpsi2 is the (log?
+ or logit?) probability of breeding on a three-or-greater year interval.
+\end_layout
+
 \end_inset
 
-**OPTION** there's some numbers printeed at the end of compare2sims.R,
- I thnk.
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+log_Nfad_y0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RoI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lgt_fadsurv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diff_lgt_fadsurv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lpsi1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lpsi2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-9.28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-156
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.13
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+708
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+46591
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+171
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.60
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19.90
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -380,7 +655,7 @@ too simple to be useful
 \end_layout
 
 \begin_layout Standard
-The square-bracketed term can be replaced (to the same order of accuracy as the rest of the approxmation) by the 
+The square-bracketed term can be replaced (to the same order of accuracy as the rest of the approximation) by the 
 \emph on
 expected
 \emph default
@@ -455,11 +730,315 @@ th
 \end_layout
 
 \begin_layout Standard
-**OPTION** stuff from the end of compare2sims.R
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mean absolute bias and bias relative to SD for model parameters across 50 simulated datasets.
+ log_Nfad_y0 is the log number of adult females in 2015,
+ RoI is the rate of increase of the population,
+ lg_fadsurv is the logit of adult female survival,
+ diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
+ lpsi1 is the (log?
+ or logit?) probability of breeding on a two-year interval,
+ lpsi2 is the (log?
+ or logit?) probability of breeding on a three-or-greater year interval.
 \end_layout
 
-\begin_layout Standard
-**DISCUSSION?**
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+log_Nfad_y0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RoI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lgt_fadsurv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diff_lgt_fadsurv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lpsi1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lpsi2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Absolute bias
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.004
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.083
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.585
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.146
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.045
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bias relative to SD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.086
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.166
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.455
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.393
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.154
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bias relative to SD (w/ exp.
+ Hessian)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.330
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.750
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.105
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.042
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.353
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.032
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -464,6 +464,13 @@ Corresponding author email:
 Acknowledgments
 \end_layout
 
+\begin_layout Standard
+The findings and conclusions in this article are those of the authors and do not necessarily represent the views of the FWS.
+ Any use of trade,
+ product or firm names is for descriptive purposes only and does not imply endorsement by the United States Government.
+ 
+\end_layout
+
 \begin_layout Subsection*
 Data availability
 \end_layout
@@ -507,7 +514,7 @@ is an ice-associated marine mammal found in the Bering and Chukchi seas,
  where it is an important resource for indigenous peoples.
  In the late 20th century,
  the population declined,
- likely because it had overshot its carrying capacity and was then subject to high harvests.
+ likely because it had overshot carrying capacity and was then subject to high harvests.
  Currently,
  the Pacific walrus is species of conservation concern due to potential impacts of climate change,
  particularly the loss of sea ice.
@@ -524,13 +531,13 @@ is an ice-associated marine mammal found in the Bering and Chukchi seas,
  we combine IMR with CKMR and investigate whether different sampling strategies can increase precision in estimates of abundance.
  Our modelling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We find that the expected CVs of the ICKMR estimates of abundance,
+ We found that expected CVs of the ICKMR estimates of abundance,
  adult female survival,
  juvenile female survival,
  and proportion of breeding females are lower than those expected from IMR alone,
  and with ICKMR,
  1.75 instead of 3 years of future sampling can be conducted to obtain sufficient precision in estimates of abundance.
- [343/350]
+ [341/350]
 \end_layout
 
 \begin_layout Standard
@@ -595,7 +602,7 @@ name "sec:Methods"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "methods.lyx"
+filename "methods_v2.lyx"
 literal "false"
 
 \end_inset
@@ -647,14 +654,7 @@ encoding "default"
 \end_layout
 
 \begin_layout Standard
-\start_of_appendix
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Appendices here...
-\end_layout
-
+\begin_inset Newpage pagebreak
 \end_inset
 
 

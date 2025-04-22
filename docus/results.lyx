@@ -126,13 +126,13 @@ nolink "false"
 
 ) resulted in effective survival from age 6-37 of 0.96,
  0.95,
- and 0.96 for stable,
+ and 0.96 for stationary,
  decreasing,
  and increasing populations,
  respectively.
  The mean expected CVs were 0.01 (range 0-0.02),
  0.01 (range 0.01-0.03),
- and 0.02 (0.01-0.03) for stable,
+ and 0.02 (0.01-0.03) for stationary,
  decreasing,
  and increasing populations respectively.
  The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.01).
@@ -156,7 +156,7 @@ nolink "false"
 ).
  The mean expected CVs on juvenile female survival were 0.03 (range 0.02-0.05),
  0.04 (range 0.03-0.07),
- and 0.05 (range 0.03-0.07) for stable,
+ and 0.05 (range 0.03-0.07) for stationary,
  decreasing,
  and increasing populations respectively.
  Again,
@@ -166,10 +166,10 @@ nolink "false"
 
 \begin_layout Standard
 Across all demographic and sampling scenarios,
- the simulated proportion of adult females in breeding state 2 (with YOTY) was 0.26.
+ the simulated proportion of adult females in breeding state 2 (calving) was 0.26.
  The mean expected CVs on the proportion of adult females in breeding state 2 were 0.31 (range 0.05-0.69),
  0.45 (range (0.07-1),
- and 0.53 (range 0.08-1.19) for stable,
+ and 0.53 (range 0.08-1.19) for stationary,
  decreasing,
  and increasing populations,
  respectively.
@@ -221,9 +221,9 @@ status open
 
 \begin_layout Plain Layout
 Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different demographic (panel rows) and sampling (panel column) scenarios.
- Triangular points represent expected CVs from IMR alone,
+ Circular points represent expected CVs from IMR alone,
  while circular points show expected CVs with ICKMR.
- The inclusion of lethal samples is indicated by green (lethal samples included) or purple (no lethal samples) points.
+ The inclusion of lethal samples is indicated by green (lethal samples included) or purple (no lethal samples).
  The horizontal dashed line at CV = 0.2 represents a decision-making threshold.
 \begin_inset CommandInset label
 LatexCommand label
@@ -283,8 +283,8 @@ status open
 Total survey effort (in number of years,
  horizontal axis) versus expected CV for adult female abundance in 2015,
  2020,
- and 2025 (columns) with IMR alone (triangular points) or with ICKMR (round points) and with (green points) and without (purple points) the inclusion of lethal samples.
- The three rows represent demographic scenarios of a stable population,
+ and 2025 (columns) with IMR (circular points) or with ICKMR (triangular points) and with (green points) and without (purple points) the inclusion of lethal samples.
+ The three rows represent demographic scenarios of a stationary population,
  decreasing population,
  and increasing population,
  respectively.
@@ -333,7 +333,7 @@ nolink "false"
 \end_inset
 
 ).
- The mean decrease in CV on adult female abundance in paired scenarios without and with CKMR was 4% for a stable population,
+ The mean decrease in CV on adult female abundance in paired scenarios without and with CKMR was 4% for a stationary population,
  7% for a decreasing population,
  and 8% for an increasing population.
  See Table 
@@ -434,11 +434,14 @@ literal "false"
 
 \begin_layout Standard
 The simulated substitution of 500 lethal samples per sampling year did not notably change expected precision in abundance estimates (the mean difference with versus without lethal samples was 0% across all demographic and sampling scenarios).
+ This suggests that lethal samples are approximately equally valuable for ICKMR,
+ and the substitution of lethal samples for live biopsy samples could reduce required cruise length (500 samples = approx.
+ 1/3 of samples expected during a 4-week cruise).
  However,
  it appears that for abundance estimates late in the time series with fewer years of total future survey effort (e.g.,
  the number of adult females in 2025 with 1.75 year of total survey effort) the substitution of lethal samples leads to lower precision,
  particularly when only IMR is used.
- [817 words].
+ This is likely because the lethal samples were simulated to consist almost entirely of adult females [875 words].
 \end_layout
 
 \end_body

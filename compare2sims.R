@@ -124,7 +124,7 @@ plot( 1:37, fcEnl, ylim=c( 0, ylimmo), col='blue',
 points( 1:37, fcOnl, col='orange')
 # NB _no_ sim parents at age 6..?
 # Fec in E swings heavily over early years of adulthood.
-
+# 
 
 
 #### Now check bias, based on lglk derivs at true pars

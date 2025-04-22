@@ -103,51 +103,159 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-In this paper,
- we demonstrate how CKMR can be combined with IMR (ICKMR) to improve precision in estimates of population size while also estimating other quantities of interest.
- We provide an example of ICKMR study design,
- including model development,
- model checking,
- and design calculations,
- and show how simulated data can be used to evaluate different proposed survey designs.
- While we used walrus as a motivating example,
- we intend our work to provide a roadmap to other researchers considering CKMR as a tool to estimate population parameters across a range of taxa.
+We developed an ICKMR study design,
+ with walrus as a case study,
+ as an example for other researchers embarking on this evolving type of study.
+\end_layout
+
+\begin_layout Paragraph
+Specific implications of the design for walruses (most of this is in current paragraph 2).
 \end_layout
 
 \begin_layout Standard
-Here,
- we made some simplifying assumptions in order to make the model more tractable.
+Stepped through a design process for walruses
+\end_layout
+
+\begin_layout Standard
+Added self-recapture as a new relationship
+\end_layout
+
+\begin_layout Standard
+Walk through walrus-specific results
+\end_layout
+
+\begin_layout Standard
+Results demonstrate that all CVs for AF abundance in 2025 less than the “decision-making” threshold for CKMR.
+\end_layout
+
+\begin_layout Standard
+Results demonstrate that all CVs for AF abundance in 2025 less than 0.15 for all scenarios with more than 2 years of TOTAL effort (list scenarios).
+\end_layout
+
+\begin_layout Standard
+Decision-makers may desire a CV of <0.10 to account for uncertainty in taking adult female abundance to TOTAL abundance so for that we need 4 years of total effort (S3,
+ S4,
+ S9)_
+\end_layout
+
+\begin_layout Standard
+Precision for S3 and S8 is comparable but there is some indication that S8 is more precise.
+\end_layout
+
+\begin_layout Standard
+Should we speculate this pattern might hold if we spread out sampling effort over a longer period.
+\end_layout
+
+\begin_layout Standard
+The walrus project was initially planned as an IMR project with five years of total survey effort between 2013 and 2017 and another five years planned between 2023 and 2027.
+ Our results indicated that by adding CKMR,
+ sufficient precision (defined as a CV of 0.2) in estimates of adult female population size (with planned sample sizes per year of 1600) could be achieved with as little as 1.75 years of total future survey effort (i.e.
+ 2800 new samples).
+ Estimates of adult female and juvenile female survival,
+ and of the proportion of adult females in breeding state 2 (calving),
+ were also improved with the addition of CKMR.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Harvest + lethal samples (need to start broadening it here)
+\end_layout
+
+\begin_layout Standard
+First sentence that says something broad about combining lethal and live samples
+\end_layout
+
+\begin_layout Standard
+Then link to this study - we considered lethal samples as replacement for live samples
+\end_layout
+
+\begin_layout Standard
+We see some slight differences in precision.
+ Speculate whether this this is due to the simulation or is there something real here?
+\end_layout
+
+\begin_layout Standard
+Is there a difference?
+ In terms of the equations,
+ I don’t see a difference,
+ but I might be missing something
+\end_layout
+
+\begin_layout Standard
+We also considered using genetic samples from harvested animals within the ICKMR framework.
+ In previous years,
+ 50 samples per year were collected by the US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP).
+ However,
+ the total harvest in Alaska is estimated to number ~4,210 walruses per year (mean for 2016-2020;
+ USFWS,
+ 2023).
+ Partial substitution of non-lethal samples (biopsy) for lethal samples resulted in similar precision on abundance estimates.
+ Approximately <insert number> harvested samples would be needed to reduce each cruise by one week or <insert number> samples would be needed to remove the need for an entire cruise.
+\end_layout
+
+\begin_layout Standard
+Using samples from harvested walruses in combination with non-lethal samples collected from wild animals during research cruises can improve cost efficiency by reducing the need for extended at-sea operations,
+ thereby lowering logistical expenses associated with vessel charters and personnel time.
+ Additionally,
+ partial reliance on harvested samples mitigates disturbance to live walruses by decreasing the need for direct interactions with animals in the wild.
+ This approach also strengthens collaboration with Alaska Native hunters and co-management partners,
+ fostering cooperative research efforts that align with subsistence practices and local ecological knowledge.
+ Such partnerships are essential for long-term monitoring and effective management of the species.
+ Furthermore,
+ the ongoing contribution of the WHMP to walrus abundance estimation provides a strong justification for maintaining the program,
+ ensuring that robust population assessments continue to inform conservation and management decisions.
+\end_layout
+
+\begin_layout Paragraph
+Simplifying assumptions – current paragraph 3 basically.
+\end_layout
+
+\begin_layout Standard
+We made simplifying assumptions to make the model tractable.
  For example,
- we chose to develop a stage-structured (rather than fully age-structured) model.
- The stage-structuring implies that sampling is unselective within age classes.
- For walrus,
- researchers in the field are able to distinguish between ages of juvenile walrus and could target sampling accordingly.
- When we have sufficient samples available,
- we will be able to compare the actual age distribution of the samples to the predicted compositions assumping unselective sampling.
- In practice,
- sample sizes in this project are large enough that any violations in our assumptions about selectivity should not generate notable uncertainty into other parameter estimates.
- A fully age-structured CKMR formulation for walrus will require something more sophisticated and time-varying than a quasi-equilibrium age distribution,
- and therefore additional parameters to estimate.
- While we believe the overall statistical information content about total abundance is reasonably realistic compared to what we might get from a more complicated population dynamics model,
- in future,
- we may extend our model to allow for age-based selectivity and/or to be fully age structured;
- this may also allow the ICKMR model to be incorporated into e.g.,
- integrated population models for walrus (cite Taylor paper).
+ we developed a stage-structured (rather than age-structured) model.
+ The stage-structuring implies that sampling is unselective with respect to age classes within each stage.
+ In addition,
+ we assumed quasi-equilibrium population dynamics.
+ This included a constant rate of population change,
+ demographic rates and age composition from 2000-2028,
+ which are simplifications during at least part of the time frame (Taylor et al.
+ 2018).
+ Nevertheless,
+ with the large sample sizes in this study,
+ and the need for general targets for design purposes,
+ we believe our simplifications were reasonable.
  
 \end_layout
 
+\begin_layout Paragraph
+Simplifying assumptions – DNA age
+\end_layout
+
 \begin_layout Standard
-We also assumed quasi-equilibrium population dynamics.
- This included assuming a constant rate of population change over the period 2000-2028,
- as well as constant survival and fecundity rates and a stable age composition.
- While the assumption of stable age composition over this time period is likely not valid—
-since older adults would have experienced periods of increased mortality from hunting—
-it is probably reasonable for younger adults,
- which are the most important cohort for the model,
- since they are responsible for producing most juveniles.
- The stable age composition is probably reasonable for juveniles,
- since recruitment variability for animals with a litter size of 1 is very small.
- 
+Remind reader why age is so important
+\end_layout
+
+\begin_layout Standard
+Answer question reader might be asking:
+ what happens if we don’t have age or if our age information is very imprecise?
+\end_layout
+
+\begin_layout Standard
+How would an epigenetic age estimate with low precision impact analysis?
+\end_layout
+
+\begin_layout Standard
+How would an epigenetic age estimate with high precision impact analysis?
+\end_layout
+
+\begin_layout Standard
+At what point can we just use epigenetic age point estimates and ignore uncertainty?
+\end_layout
+
+\begin_layout Standard
+Does existing CKMR literature do this already?
+ I think the answer is yes.
 \end_layout
 
 \begin_layout Standard
@@ -155,61 +263,57 @@ Our ICKMR model relies on accurate age estimates for sampled animals.
  We did not include age uncertainty in the current model,
  but it could be added (see Appendix X).
  Need some info here about DNAge and how we expect it to affect precision.
- 
+\end_layout
+
+\begin_layout Paragraph
+Adding self-recapture to CKMR
 \end_layout
 
 \begin_layout Standard
-To our knowledge,
- this paper presents the first integration of IMR into CKMR (ICKMR).
- This integration allowed us to make use of both individual and close-kin recaptures in the walrus dataset.
- The walrus project was initially envisioned and planned as an IMR project with five years of total survey effort between 2013 and 2017 and another five years planned between 2023 and 2027.
- Our results indicate that with the addition of CKMR,
- sufficient precision (defined as a CV of 0.2) in estimates of adult female population size given planned biopsy sample sizes per year could be achieved with as little as 1.75 years of total future survey effort.
- Estimates of adult female and juvenile female survival,
- and of the proportion of adult females in breeding state 2 (with YOTY calf),
- were also improved with the addition of CKMR.
- We considered scenarios with up to 1600 biopsy samples collected per year;
- in practice,
- this number may be higher (e.g.,
- mean = 1633,
- range 1356-1820 in Beatty et al.
- 2022) resulting in even greater precision in estimates of abundance.
- 
+We fully leveraged all data collected in live CKMR projects – this is first to date to do this fully within CKMR pseudo-likelihood framework.
 \end_layout
 
 \begin_layout Standard
-In the walrus case study,
- there is potential to use genetic samples from harvested animals.
- In previous years,
- 50 samples per year were collected in collaboration with the 
-\lang english
-US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP)
-\lang british
-.
- However,
- the total harvest in Alaska (or more specific region) is estimated to number XXXX per year.
- Substitution of lethal samples for non-lethal (biopsy) samples resulted in similar precision on abundance estimates.
- In future,
- increased collaboration and collection of samples from harvested animals could further improve precision in abundance estimates.
- Something here like:
- if the WHMP program could collect more samples,
- this seems like an 
-\begin_inset Quotes eld
-\end_inset
-
-easy win
-\begin_inset Quotes erd
-\end_inset
-
-,
- opportunity to involve stakeholder communities in the monitoring program,
- etc.
- Bill/Rebecca to draft something sensitive/appropriate?
+MR body of literature is huge.
+ MR has lots of different types of models for different situations.
 \end_layout
 
 \begin_layout Standard
-Some sort of concluding paragraph.
- Input welcome/appreciated here.
+So why use CKMR rather than MR?
+\end_layout
+
+\begin_layout Standard
+Low recap rate.
+\end_layout
+
+\begin_layout Standard
+Limited ability (or no ability at all) to sample live animals.
+\end_layout
+
+\begin_layout Standard
+There has to be more reasons?
+\end_layout
+
+\begin_layout Standard
+Why not use CKMR.
+\end_layout
+
+\begin_layout Standard
+Its hard and broadly explain why (its takes a village).
+\end_layout
+
+\begin_layout Standard
+CKMR is a major advance in population ecology,
+ and this paper provides a significant step towards fully leveraging this new method.
+ We are the first to demonstrate how CKMR can be combined with IMR into a unified model.
+ Our method improves precision in estimates of population size and demographic parameters compared to IMR alone.
+ We provide an example of ICKMR study design,
+ including model development,
+ model checking,
+ and design calculations,
+ and show how simulated data can be used to evaluate different proposed survey designs.
+ While we used walrus as a motivating example,
+ we intend our work to provide a roadmap to other researchers considering ICKMR as a tool to estimate population parameters across a range of taxa.
 \end_layout
 
 \end_body
