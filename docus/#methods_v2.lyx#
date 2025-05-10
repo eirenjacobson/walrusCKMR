@@ -1769,40 +1769,8 @@ Pseudo-likelihood
 \begin_layout Standard
 Given a real dataset,
  we would maximize the pseudo-log-likelihood that combines kinship probabilities and actual outcomes of all pairwise comparisons to estimate demographic parameters.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Design calculations
-\end_layout
-
-\begin_layout Standard
-For design purposes,
- we instead use an analytical method to predict precision of the estimates expected under different sampling designs.
- The parameter uncertainty likely to result from proposed CKMR sampling designs can often be evaluated by calculation alone (
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "bravington_close-kin_2016"
-literal "false"
-
-\end_inset
-
-,
- section
-\begin_inset space ~
-\end_inset
-
-5).
- These calculations are adaptations of standard methods used to find the statistical information (i.e.,
- derivatives) from the (pseudo-)likelihood combined with enumerating the pairwise comparisons that would be available per covariate combination (which are limited here to:
- age or stage,
- year of sample,
- and sex).
-\end_layout
-
-\begin_layout Standard
-The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
- In brief,
+ To define the pseudo-log-likelihood,
+ in brief,
  let 
 \begin_inset Formula $w_{ijk}$
 \end_inset
@@ -1959,8 +1927,37 @@ impossible
  second-order kin born a long time apart).
 \end_layout
 
+\begin_layout Subsubsection
+Design calculations
+\end_layout
+
 \begin_layout Standard
-Following standard statistical practice,
+For design purposes,
+ we instead use an analytical method to predict precision of the estimates expected under different sampling designs.
+ The parameter uncertainty likely to result from proposed CKMR sampling designs can often be evaluated by calculation alone (
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ section
+\begin_inset space ~
+\end_inset
+
+5).
+ These calculations are adaptations of standard methods used to find the statistical information (i.e.,
+ derivatives) from the (pseudo-)likelihood combined with enumerating the pairwise comparisons that would be available per covariate combination (which are limited here to:
+ age or stage,
+ year of sample,
+ and sex).
+\end_layout
+
+\begin_layout Standard
+The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
+ Following standard statistical practice,
  we approximate the parameter variance using the inverse of the (pseudo) Fisher Information 
 \begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)$
 \end_inset
@@ -1990,10 +1987,14 @@ Following standard statistical practice,
 
 ,
  where 
-\begin_inset Formula $h_{ijk}\left(\theta_{0}\right)$
+\begin_inset Formula $h_{ijk}\left(\boldsymbol{\theta}_{0}\right)$
 \end_inset
 
- is the expected Fisher information matrix from a single comparison of type 
+ is the expected Fisher information 
+\shape italic
+matrix
+\shape default
+ from a single comparison of type 
 \begin_inset Formula $\left(i,j,k\right)$
 \end_inset
 
@@ -2015,7 +2016,7 @@ h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\bol
 
 \end_inset
 
-
+The vector
 \begin_inset Formula $\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)$
 \end_inset
 
@@ -2049,29 +2050,64 @@ We can now exploit the limited range of possible covariate combinations,
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{gather}
-H\left(m_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1},\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}\left(I\left(z_{1}<z_{2}\right)+\frac{1}{2}I\left(z_{1}=z_{2}\right)\right)m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h_{z_{1}z_{2}k}\left(\theta_{0}\right)\label{eq:H-grouped}
-\end{gather}
+\begin{gather*}
+H\left(\boldsymbol{m}_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1},\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}\left(\mathbb{I}\left(\mathbf{z}_{1}<\mathbf{z}_{2}\right)+\frac{1}{2}\mathbb{I}\left(\mathbf{z}_{1}=\mathbf{z}_{2}\right)\right)m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h_{\mathbf{z}_{1}\mathbf{z}_{2}k}\left(\boldsymbol{\theta}_{0}\right),
+\end{gather*}
 
 \end_inset
 
-We can then invert 
-\begin_inset Formula $H$
+where the first brackets with indicators in them handle double counting in the 
+\begin_inset Formula $m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)$
 \end_inset
 
- from 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:H-grouped"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+ product and 
+\begin_inset Formula $h_{\mathbf{z}_{1}\mathbf{z}_{2}k}\left(\boldsymbol{\theta}_{0}\right)$
+\end_inset
 
+ gives the Fisher information matrix for two samples with covariates 
+\begin_inset Formula $\mathbf{z}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{z}_{2}$
+\end_inset
+
+ and kinship 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathcal{Z}$
+\end_inset
+
+ gives the collection of covariate combinations we're considering (equivalent to 
+\begin_inset Formula $\mathcal{K}$
+\end_inset
+
+ for the kinships) and 
+\begin_inset Formula $\boldsymbol{m}_{\mathcal{Z}}$
+\end_inset
+
+ gives the sample sizes for those combinations (i.e.,
+ 
+\begin_inset Formula $\boldsymbol{m}_{\mathcal{Z}}$
+\end_inset
+
+ is a vector as long as there are covariate combinations in 
+\begin_inset Formula $\mathcal{Z}$
+\end_inset
+
+ and each element is the number of samples for that covariate combination).
+\end_layout
+
+\begin_layout Standard
+We can then invert the matrix 
+\begin_inset Formula $H\left(\boldsymbol{m}_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)$
 \end_inset
 
  to approximate the expected variance 
-\begin_inset Formula $V\left(m_{\mathcal{Z}};\theta_{0}\right)$
+\begin_inset Formula $V\left(\boldsymbol{m}_{\mathcal{Z}};\theta_{0}\right)$
 \end_inset
 
  of a parameter estimate.
@@ -2084,7 +2120,7 @@ nolink "false"
  can then be approximated by the delta method:
 \begin_inset Formula 
 \[
-\mathbb{V}\left[g\left(\boldsymbol{\theta}\right);m_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right]\approx\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]V\left(m_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right)\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{\top}.
+\mathbb{V}\left[g\left(\boldsymbol{\theta}\right);\boldsymbol{m}_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right]\approx\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]V\left(\boldsymbol{m}_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right)\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{\top}.
 \]
 
 \end_inset
@@ -2168,7 +2204,7 @@ If a sample
 \begin_inset Formula $j$
 \end_inset
 
- are XmHSP if-and-only-if 
+ are XmHSP iff 
 \begin_inset Formula $k$
 \end_inset
 
@@ -2180,12 +2216,12 @@ If a sample
 \end_layout
 
 \begin_layout Standard
-To adjust the sample sizes 
-\begin_inset Formula $m_{\mathcal{Z}}$
+Eliminating these comparisons means that we must adjust the sample sizes 
+\begin_inset Formula $\boldsymbol{m}_{\mathcal{Z}}$
 \end_inset
 
- accordingly,
- we used simulation results on the frequency of self-recaptures and MOPs.
+ accordingly when making the above calculations.
+ We used simulation results on the frequency of self-recaptures and MOPs to determine the number of e.
  The effect is not particularly large at the proposed sample sizes.
  
 \end_layout
@@ -4843,11 +4879,7 @@ literal "false"
  in a five-year IMR study.
  Thus,
  we evaluated performance of our IMR and ICKMR models relative to performance of an IMR model with sampling effort over five years (2013-2017).
- 
-\end_layout
-
-\begin_layout Standard
-[4553 words].
+ [4591 words].
 \end_layout
 
 \end_body
