@@ -1654,7 +1654,7 @@ Our stage-structured model simplifies population dynamics,
  Here,
  we assume selectivity varies only by stage (adult/juvenile),
  not by age within stage.
- (We only consider female samples for self-recapture,
+ We only consider female samples for self-recapture,
  since males are prone to "permanent emigration" when they mature 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1664,7 +1664,7 @@ literal "false"
 \end_inset
 
 ,
- so do not yield readily interpretable inferences.)
+ so do not yield readily interpretable inferences.
 \end_layout
 
 \begin_layout Standard

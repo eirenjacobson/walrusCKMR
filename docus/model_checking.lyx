@@ -179,7 +179,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Users/ej45/Documents/walrusCKMR/figures/ObsVExpKinPairs_wBounds.png
+	filename ../figures/ObsVExpKinPairs_wBounds.png
 	lyxscale 50
 	scale 80
 
@@ -241,7 +241,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Users/ej45/Documents/walrusCKMR/figures/ObsVExp_MatAge.png
+	filename ../figures/ObsVExp_MatAge.png
 	lyxscale 50
 	scale 80
 
@@ -298,7 +298,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Users/ej45/Documents/walrusCKMR/figures/comphist_D0_L1_S0.png
+	filename ../figures/comphist_D0_L1_S0.png
 	lyxscale 25
 	scale 80
 

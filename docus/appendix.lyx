@@ -145,6 +145,10 @@ numberwithin{equation}{section}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Section
 Derivation of self-recapture 
 \begin_inset Quotes eld
@@ -162,9 +166,19 @@ name "sec:self-backwards"
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+do we actually want to keep this?
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 As discussed in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -225,7 +239,7 @@ appears
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 However,
  the results are readily seen to be identical because,
  by definition of "survival",
@@ -234,6 +248,11 @@ However,
 \begin{gather}
 N\left(y+t,a+t\right)\equiv N\left(y,a\right)\Phi\left(t,a\right).\label{eq:cons-of-nums}
 \end{gather}
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
