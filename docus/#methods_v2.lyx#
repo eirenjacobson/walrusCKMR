@@ -1,0 +1,4854 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-std
+InStar
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout In Preamble
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Repeats stuff from master preamble
+\end_layout
+
+\begin_layout Plain Layout
+
+% I think that's OK...
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage{tikz}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usetikzlibrary{arrows,automata,positioning,arrows.meta}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Section*
+
+\series bold
+METHODS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The methods consist of two main components:
+ (2.1) ICKMR model development and (2.2) simulation for model checking and design scenarios.
+ To develop the ICKMR model,
+ we (2.1.1) used our knowledge of walrus biology and life history to build a model of walrus population dynamics,
+ including relevant life history,
+ (2.1.2) identified relevant kinship pairs and formulated kinship probabilities between pairs of sample,
+ (2.1.3) defined the pseudolikelihood,
+ and (2.1.4) formulated design calculations with adjustments for non-sparse sampling.
+ We then (2.2.1) developed an individual-based simulation with walrus life history,
+ (2.2.2) used this simulation to check our ICKMR model,
+ and (2.2.3) generated simulated datasets from different demographic and sampling scenarios of interest.
+\end_layout
+
+\begin_layout Subsection
+ICKMR model development
+\end_layout
+
+\begin_layout Subsubsection
+Life history and population dynamics
+\end_layout
+
+\begin_layout Standard
+Our first objective was to develop a shared understanding of walrus life history that could inform model development.
+ We decided that adult males would not be included in this design project due to seasonal sex segregation and geographical coverage of sampling (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Introduction"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Additionally,
+ adult males form leks and compete for breeding access to females 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_odobenus_1985"
+literal "false"
+
+\end_inset
+
+,
+ which suggests the potential for persistent individual variability in breeding success.
+ This variability could considerably complicate the interpretation of paternal half-sibling kinship.
+ Therefore,
+ our analysis focused exclusively on female-driven dynamics,
+ Our samples comprise juvenile and adult females,
+ plus juvenile males.
+ While there are challenges with modelling males as parents,
+ juvenile males can still be incorporated as potential offspring of females and as potential maternal half-siblings to other sampled individuals (female or male).
+ We assumed that individual variation in female fecundity is minimal.
+\end_layout
+
+\begin_layout Paragraph
+Stage-structured quasi-equilibrium dynamics
+\end_layout
+
+\begin_layout Standard
+For our female-only population dynamics model,
+ we adopted a stage-structured (juvenile/adult),
+ rather than fully-age-structured approach.
+ This decision was based on two key considerations:
+ (
+\shape italic
+i
+\shape default
+) most reproductive female adults are expected to have similar reproductive capacity and chance of survival;
+ and (
+\shape italic
+ii
+\shape default
+) stage-structured models are simpler to implement for CKMR and require fewer parameters.
+ Given these advantages,
+ a stage-structured model should provide sufficient accuracy for study design purposes.
+\end_layout
+
+\begin_layout Standard
+The population dynamics model incorporated demographic parameters to be estimated:
+ juvenile and adult survival rates,
+ adult female abundance in a reference year,
+ and population trend.
+ We used two stages:
+ juveniles aged 1–5,
+ and adults aged 6+ (the first age at which an accompanying calf is common).
+ We did not consider calves (age 0),
+ to avoid complications around simultaneous sampling of mothers with dependent calves.
+ We assumed constant survival within each stage (
+\begin_inset Formula $\phi_{\text{A}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{\text{J}}$
+\end_inset
+
+),
+ and that offspring survival from age 1 onwards is independent of its mother's survival,
+ whether or not the offspring has fully weaned.
+ Our model assumed that adult female abundance was either stationary,
+ increasing exponentially,
+ or decreasing exponentially over the period covered by the population dynamics (2000–2028;
+ the lower limit of 
+\begin_inset Formula $y_{0}=$
+\end_inset
+
+2000 is set because there were large changes in the population prior to that 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2015,taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+).
+ Thus,
+ adult female abundance in year 
+\begin_inset Formula $y$
+\end_inset
+
+ (
+\begin_inset Formula $N_{y,\text{A}}$
+\end_inset
+
+) is described by
+\begin_inset Formula 
+\begin{align}
+N_{y,\text{A}} & =N_{y_{0},\text{A}}e^{r(y-y_{0})}\label{popdyn}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $e^{r}$
+\end_inset
+
+ is the rate of population change.
+\end_layout
+
+\begin_layout Standard
+Age composition within stage does not matter for MOP and XmHSP probabilities,
+ but it is relevant for SPs.
+ For that purpose,
+ we assume that age composition over the modeled period is adequately described by the stable-age or 
+\begin_inset Quotes eld
+\end_inset
+
+quasi-equilibrium
+\begin_inset Quotes erd
+\end_inset
+
+ distribution consistent with survival 
+\begin_inset Formula $\phi_{\text{A}}$
+\end_inset
+
+ and rate of change 
+\begin_inset Formula $e^{r}$
+\end_inset
+
+.
+ As shown in e.g.,
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "keyfitz2005applied"
+literal "false"
+
+\end_inset
+
+ Chapter 5,
+ this is 
+\begin_inset Formula $N_{y,a}\propto N_{y,\text{A}}\phi_{\text{A}}^{a}e^{-ra}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+The breeding cycle
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-breeding-cycle"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Walrus have a litter size of one,
+ and due to a 14-15 month gestation,
+ they cannot give birth in consecutive years 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_ecology_1982,katsumata_growth_2020,robeck_growth_2022"
+literal "false"
+
+\end_inset
+
+.
+ In addition,
+ they are unlikely to give birth every second year 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2015,taylor_demography_2018,Robeck2023DNAgepinni"
+literal "false"
+
+\end_inset
+
+ except perhaps if the population is growing at a large exponential rate 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_status_1997"
+literal "false"
+
+\end_inset
+
+.
+ We used a first order Markov model to describe the walrus breeding cycle (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Breeding-cycle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ We assume three breeding states:
+ (S1) pregnant;
+ (S2) with young-of-the-year (YOTY) calf;
+ or (S3) mature and not in S1 or S2.
+ From state S1 (pregnant),
+ next year's state must be S2 (with YOTY calf).
+ From state S2,
+ a female may next year either return to state S1 (become pregnant again),
+ with probability 
+\begin_inset Formula $\psi_{2}$
+\end_inset
+
+,
+ or move to state S3 (quiescent:
+ neither pregnant nor with calf) with probability 
+\begin_inset Formula $1-\psi_{2}$
+\end_inset
+
+.
+ From state S3,
+ she will either move to state S1 (become pregnant) with probability 
+\begin_inset Formula $\psi_{3}$
+\end_inset
+
+,
+ or remain in state S3 with probability 
+\begin_inset Formula $1-\psi_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Females enter the breeding cycle at state S3 (i.e.,
+ reach sexual maturity) at age 4,
+ and therefore can become pregnant at age 5 and give birth at age 6 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_ecology_1982"
+literal "false"
+
+\end_inset
+
+.
+ Depending on the values of 
+\begin_inset Formula $\psi_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{3}$
+\end_inset
+
+,
+ this leads to an increase in effective fecundity (i.e.,
+ probability of being in state S2) over the first few years of adult life.
+ Both 
+\begin_inset Formula $\psi_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{3}$
+\end_inset
+
+ are estimated from the data.
+ We do not use any data on whether females were with or without calf when sampled,
+ so the estimates of 
+\begin_inset Formula $\psi_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{3}$
+\end_inset
+
+ rely on the distribution of birth-gaps between maternal half-sibling pairs.
+ In addition,
+ our data are not able to distinguish between fine-scale aspects of the reproductive cycle,
+ such as differences in fertilization/implantation rates versus pregnancy failures or neonatal deaths.
+ Thus,
+ because the transition from S1 (pregnant) to S2 (with YOTY calf) is set to 1,
+ reproductive failures are subsumed by the fecundity rate.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[
+\end_layout
+
+\begin_layout Plain Layout
+
+    shorten > = 1pt,
+\end_layout
+
+\begin_layout Plain Layout
+
+node distance = 0.5cm and 2cm,
+\end_layout
+
+\begin_layout Plain Layout
+
+    el/.style = {inner sep=2pt,
+ align=left,
+ sloped}
+\end_layout
+
+\begin_layout Plain Layout
+
+                    ]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (q0) [state,
+ align = center]             {Pregnant
+\backslash
+
+\backslash
+Female};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (q1) [state,right=of q0,
+ align = center] {Adult Female
+\backslash
+
+\backslash
+with
+\backslash
+
+\backslash
+YOTY Calf};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (q2) [state,right=of q1,
+ align = center] {Non-breeding
+\backslash
+
+\backslash
+Female};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[arrows=-{Stealth[length=3mm]}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+    (q0)  edge [bend left=10]  node[el,above]  {$1$}         (q1)
+\end_layout
+
+\begin_layout Plain Layout
+
+    (q1)  edge [bend left=10]  node[el,above]  {$1-
+\backslash
+psi_2$}         (q2)
+\end_layout
+
+\begin_layout Plain Layout
+
+    (q2)  edge [bend left=50]  node[el,below]  {$
+\backslash
+psi_3$}         (q0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    (q1)  edge [bend left=30]  node[el,
+ below] {$
+\backslash
+psi_2$}  (q0)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    ;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,>= {Stealth[length=3mm]}]      (q2)  edge [loop below] node[el,below] {$1-
+\backslash
+psi_3$}   (q2);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (e1)  [above=of q0] {State 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node  (e2) [above=of q1] {State 2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (e3) [above=of q2] {State 3};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (mat) [right=of q2,
+ xshift=-1.5cm ] {$
+\backslash
+Psi = 
+\backslash
+begin{pmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+                           0 & 1 & 0
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+                           
+\backslash
+psi_2 & 0 & 1-
+\backslash
+psi_2
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+                           
+\backslash
+psi_3 & 0 & 1-
+\backslash
+psi_3& 
+\end_layout
+
+\begin_layout Plain Layout
+
+						   
+\backslash
+end{pmatrix}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Directed cyclic graph showing the breeding cycle for walrus as represented in our Markov model.
+ Nodes show the states (pregnant,
+ with young-of-the-year (YOTY),
+ or quiescent) and edges give transition probabilities between those states.
+ On average,
+ female walrus reach sexual maturity (age of first ovulation) at age 4,
+ so females enter the graph at the quiescent node.
+ On the right is the transition matrix,
+ 
+\begin_inset Formula $\Psi$
+\end_inset
+
+,
+ where cells indicate transition probabilities from row state to column state.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Breeding-cycle"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We later use two quantities,
+ which are derived from the breeding cycle.
+ First,
+ we calculated the (average) proportion of adult females in S2 (with YOTY),
+ 
+\begin_inset Formula $\bar{\beta}_{2}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ be the (3
+\begin_inset Formula $\times$
+\end_inset
+
+3) transition matrix implied by the breeding cycle (Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Breeding-cycle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Taking the eigendecomposition of 
+\begin_inset Formula $\Psi$
+\end_inset
+
+,
+ we extracted the second element of the eigenvector with the largest eigenvalue to obtain 
+\begin_inset Formula $\bar{\beta}_{2}$
+\end_inset
+
+.
+ Second,
+ we defined fecundity as a function of age,
+ where the numerator in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fec-def"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ gives the probability that any female of age 
+\begin_inset Formula $a$
+\end_inset
+
+ is in state S2.
+ Thus,
+\begin_inset Formula 
+\begin{gather}
+F\left(a\right)\triangleq\frac{\mathbb{P}\left[B\left(a\right)=2\right]}{\bar{\beta}_{2}},\label{eq:fec-def}
+\end{gather}
+
+\end_inset
+
+immature animals have fecundity 0,
+ and an average adult has fecundity 1.
+\end_layout
+
+\begin_layout Subsubsection
+Kinship probabilities
+\end_layout
+
+\begin_layout Standard
+Something here about a pairwise comparison/pseudolikelihood framework.
+ We considered three types of kinship:
+ mother-offspring pair (MOP),
+ cross-cohort maternal half-sibling pair (XmHSP),
+ and self-pair (SP),
+ which represents individual recaptures.
+\end_layout
+
+\begin_layout Standard
+To establish demographic kinship probabilities between two sampled individuals,
+ we apply the principle of effective relative reproductive output (ERRO).
+ Specifically,
+ the probability that a given adult female sample is the parent of an independently sampled offspring is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
+ We denote the kinship for individuals 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ as 
+\begin_inset Formula $K_{ij}$
+\end_inset
+
+,
+ which in our case may be MOP,
+ XmHSP,
+ SP,
+ or unrelated pair (UP).
+ In the case of MOPs and XmHSPs,
+ we ensure that only one sample from each individual is used (so 
+\begin_inset Quotes eld
+\end_inset
+
+sample
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+individual
+\begin_inset Quotes erd
+\end_inset
+
+ are interchangeable terms),
+ whereas for SPs we need to consider multiple samples from one individual (in which case,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+sample
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+individual
+\begin_inset Quotes erd
+\end_inset
+
+ have different meanings).
+\end_layout
+
+\begin_layout Standard
+We assumed that age estimates will be available for all samples,
+ based on an epigenetic aging approach 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "polanowski_epigenetic_2014,robeck_multi-tissue_2023"
+literal "false"
+
+\end_inset
+
+.
+ Our model can incorporate errors in estimated age (with standard deviation assumed known,
+ i.e.,
+ after calibration of epigenetic against known-age samples),
+ though the results here assume no errors;
+ see Discussion.
+\end_layout
+
+\begin_layout Standard
+Throughout,
+ we use the following notation:
+ individual 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+,
+ sampled at age 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ in year 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ with birth year 
+\begin_inset Formula $b_{i}\triangleq y_{i}-a_{i}$
+\end_inset
+
+.
+ As noted above,
+ we only consider female abundance,
+ so throughout,
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ refers to females only.
+ When female abundance is considered for a given year (
+\begin_inset Formula $y$
+\end_inset
+
+) and development stage (
+\begin_inset Formula $d=\text{A}$
+\end_inset
+
+ or 
+\begin_inset Formula $\text{J}$
+\end_inset
+
+,
+ for adult or juvenile,
+ respectively),
+ it is written with two arguments,
+ 
+\begin_inset Formula $N_{y,d}$
+\end_inset
+
+.
+ We define the binary variable 
+\begin_inset Formula $L$
+\end_inset
+
+ to indicate lethality of sampling (
+\begin_inset Formula $L_{i}=1$
+\end_inset
+
+ indicates lethal sampling for sample 
+\begin_inset Formula $i$
+\end_inset
+
+).
+ We use 
+\begin_inset Formula $\mathbb{I}()$
+\end_inset
+
+ as an indicator function,
+ returning 1 when the condition inside the brackets is true,
+ else 0.
+ Kinship probabilities are functions of demographic parameters such as 
+\begin_inset Formula $\phi_{\text{A}}$
+\end_inset
+
+and 
+\begin_inset Formula $N_{y_{0},\text{A}}$
+\end_inset
+
+;
+ we use 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+ as shorthand for this set of parameters,
+ which become explicit in later iterations of the formulae.
+\end_layout
+
+\begin_layout Paragraph
+Mother-offspring pairs (MOPs)
+\end_layout
+
+\begin_layout Standard
+Consider a comparison between a potential mother 
+\emph on
+i
+\emph default
+,
+ to a potential offspring 
+\emph on
+j
+\emph default
+.
+ We restrict our analysis to comparisons that satisfy the following:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+ is female (though 
+\emph on
+
+\begin_inset Formula $j$
+\end_inset
+
+
+\emph default
+ need not be);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{j}\geqslant1$
+\end_inset
+
+ (no YOTY samples are used);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{i}\neq y_{j}\vee a_{j}\geq a_{b}$
+\end_inset
+
+ (do not compare possible offspring and mothers sampled in the same year unless offspring age is at least the age of first birth,
+ 
+\begin_inset Formula $a_{b}$
+\end_inset
+
+ = 6);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{j}\geqslant2000$
+\end_inset
+
+ (population dynamics starts at year 2000).
+\end_layout
+
+\begin_layout Standard
+We can now distinguish two cases:
+ 
+\begin_inset Formula $y_{i}<b_{j}$
+\end_inset
+
+ (potential mother sampled before potential offspring birth) and 
+\begin_inset Formula $y_{i}\geqslant b_{j}$
+\end_inset
+
+ (potential mother sampled after potential offspring birth).
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $y_{i}<b_{j}$
+\end_inset
+
+,
+ individual 
+\emph on
+i
+\emph default
+ still has to survive several years in order to be individual 
+\emph on
+j
+\emph default
+'s mother (note that 
+\emph on
+i
+\emph default
+ may be immature when sampled,
+ but mature by the time of 
+\emph on
+j
+\emph default
+'s birth).
+ In this case 
+\begin_inset Formula $i$
+\end_inset
+
+'s sampling 
+\shape italic
+must
+\shape default
+ be non-lethal (
+\begin_inset Formula $L_{i}=0$
+\end_inset
+
+).
+ The MOP probability is
+\begin_inset Formula 
+\[
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $R_{i}(b_{j}\vert y_{i},a_{i})$
+\end_inset
+
+ is the expected reproductive output (ERO) of individual 
+\begin_inset Formula $i$
+\end_inset
+
+ in year 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+ given 
+\begin_inset Formula $i$
+\end_inset
+
+ is age 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ in year 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+.
+ For the denominator,
+ 
+\begin_inset Formula $R^{+}(b_{j})$
+\end_inset
+
+ is the total reproductive output (TRO) of the whole population in year 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+.
+ ERO and TRO are in units of "number of calves" here (though generally their units are arbitrary but matching).
+ TRO is the total number of adult females in the population when 
+\begin_inset Formula $j$
+\end_inset
+
+ is born,
+ 
+\begin_inset Formula $N_{b_{j}\text{A}}$
+\end_inset
+
+,
+ multiplied by the proportion of females with calves (breeding state S2),
+ 
+\begin_inset Formula $\bar{\beta_{2}}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $R^{+}(b_{j})=\bar{\beta_{2}}N_{b_{j},\text{A}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the numerator,
+ 
+\begin_inset Formula $i$
+\end_inset
+
+'s ERO has two components:
+ first,
+ she has to survive;
+ second,
+ she has to be calving (breeding state 2) in 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+R_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(b_{j}-y_{i},a_{i}\right)\mathbb{P}\left[B\left(a_{i}+b_{j}-y_{i}\right)=2\right],
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Phi\left(\Delta t,a\right)$
+\end_inset
+
+ gives the
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ probability of survival for 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ years,
+ starting from age 
+\begin_inset Formula $a$
+\end_inset
+
+ (product of 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+annual juvenile and adult survival probabilities).
+ 
+\begin_inset Formula $B\left(a\right)$
+\end_inset
+
+ is an individual's breeding state at age 
+\begin_inset Formula $a$
+\end_inset
+
+,
+ which here is individual 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+'s age at 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+ (
+\begin_inset Formula $a_{i}+b_{j}-y_{i}$
+\end_inset
+
+,
+ assuming she survives).
+\end_layout
+
+\begin_layout Standard
+Then,
+ using our definition of fecundity at age,
+ Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fec-def"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,y_{i}<b_{j},\boldsymbol{\theta}\right]=\frac{\Phi\left(b_{j}-y_{i},a_{i}\right)F\left(a_{i}+b_{j}-y_{i}\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-future}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+ is sampled after the birth of 
+\begin_inset Formula $j$
+\end_inset
+
+ (
+\begin_inset Formula $b_{j}<y_{i}$
+\end_inset
+
+),
+ then 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+ was either alive at that time or not yet been born,
+ eliminating the need to account for survival or lethality terms.
+ However,
+ 
+\emph on
+
+\begin_inset Formula $i$
+\end_inset
+
+
+\emph default
+ may not have reach reproductive maturity by 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+.
+ Letting 
+\begin_inset Formula $F\left(a\leqslant0\right)=0$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},b_{j}<y_{i},\boldsymbol{\theta}\right]=\frac{F\left(a_{i}-(y_{i}-b_{j})\right)}{N_{b_{j},\text{A}}}.\label{eq:MOP-past}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Maternal half-sibling pairs (XmHSPs)
+\end_layout
+
+\begin_layout Standard
+To find probabilities of cross-cohort maternal half-sibling pairs (XmHSPs),
+ we check whether individual 
+\emph on
+
+\begin_inset Formula $k$
+\end_inset
+
+
+\emph default
+ and individual 
+\emph on
+
+\begin_inset Formula $l$
+\end_inset
+
+
+\emph default
+ have the same mother.
+ We impose the following criteria:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{l}>b_{k}$
+\end_inset
+
+ (avoiding double-counting);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{k}\neq b_{l}$
+\end_inset
+
+ (since walrus give birth to a single offspring at a time);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{k}\geqslant2000$
+\end_inset
+
+ (population dynamics starts at 2000).
+\end_layout
+
+\begin_layout Standard
+If we call 
+\begin_inset Formula $m$
+\end_inset
+
+ the mother of 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ what is the probability that 
+\begin_inset Formula $l$
+\end_inset
+
+'s mother was 
+\begin_inset Formula $m$
+\end_inset
+
+?
+ We know that
+\shape italic
+\emph on
+ 
+\shape default
+
+\begin_inset Formula $m$
+\end_inset
+
+
+\emph default
+ was alive,
+ mature,
+ and in breeding state S2 at 
+\begin_inset Formula $k$
+\end_inset
+
+'s birth,
+ and that 
+\emph on
+
+\begin_inset Formula $m$
+\end_inset
+
+
+\emph default
+ survived at least one more year after
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $k$
+\end_inset
+
+'s birth,
+ otherwise 
+\emph on
+
+\begin_inset Formula $k$
+\end_inset
+
+
+\emph default
+ would not have lived long enough to be sampled.
+ In order for 
+\emph on
+
+\begin_inset Formula $m$
+\end_inset
+
+
+\emph default
+ to also be 
+\begin_inset Formula $l$
+\end_inset
+
+'s mother,
+ three conditions must be met:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m$
+\end_inset
+
+ survives until 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m$
+\end_inset
+
+ is in breeding state S2 in 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+amongst all the females that are alive and in breeding state S2 in year 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $m$
+\end_inset
+
+ is the mother.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Phi\left(\Delta t\right)$
+\end_inset
+
+ be the adult probability of surviving another 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ years,
+ and recall 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is the breeding cycle transition matrix.
+ The three-element probability vector of an animal being in each state (S1,
+ S2,
+ S3) at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is 
+\begin_inset Formula $p^{\left[t\right]}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $p^{\left[t+1\right]}=\Psi p^{\left[t\right]}$
+\end_inset
+
+.
+ Now define 
+\begin_inset Formula $p^{\left[0\right]}=\left(0,1,0\right)^{\top}$
+\end_inset
+
+which is the three-element probability vector of 
+\emph on
+
+\begin_inset Formula $m$
+\end_inset
+
+
+\emph default
+'s breeding state at 
+\begin_inset Formula $k$
+\end_inset
+
+'s birth (certain state 2),
+ let 
+\begin_inset Formula $B_{m}\left(y\right)$
+\end_inset
+
+ be 
+\begin_inset Formula $m$
+\end_inset
+
+'s actual breeding state in any year 
+\begin_inset Formula $y$
+\end_inset
+
+,
+ and recall 
+\begin_inset Formula $\bar{\beta}_{2}$
+\end_inset
+
+ is the proportion of adult females in breeding state S2.
+ Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{k\ell}=\text{XmHSP}|b_{k},b_{\ell},\theta\right]\nonumber \\
+=\mathbb{P}\left[K_{\ell m}=\text{MOP}|B_{m}\left(b_{k}\right)=\text{S2},m\text{ alive at }b_{k}+1,b_{\ell},\theta\right]\nonumber \\
+=\frac{\Phi\left(b_{l}-b_{k}\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}$
+\end_inset
+
+ is the second element of the vector,
+ i.e.,
+ the probability that 
+\shape italic
+m
+\shape default
+ (given she was alive) was again in breeding state S2 at 
+\shape italic
+l
+\shape default
+'s birth.
+\end_layout
+
+\begin_layout Standard
+HSPs are one of several 
+\begin_inset Quotes eld
+\end_inset
+
+second-order
+\begin_inset Quotes erd
+\end_inset
+
+ kin-pairs that are practically indistinguishable genetically,
+ hence cannot be identified directly and unambiguously.
+ Fortunately,
+ HSPs are demographically by far the most common when the birth-gap used for comparing samples is short.
+ When the birth-gap approaches twice the age-of-maturity,
+ though,
+ grandparent-grandchild pairs (GGPs) become more prevalent.
+ To mitigate this issue,
+ we restricted the range of birth gaps considered in the model to those where GGPs are very rare (i.e.,
+ below twice the age at maturity).
+\end_layout
+
+\begin_layout Paragraph
+Self-recaptures (SPs)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:selfPs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our stage-structured model simplifies population dynamics,
+ but we do have to make an additional assumption about sampling selectivity to include IMR data.
+ Here,
+ we assume selectivity varies only by stage (adult/juvenile),
+ not by age within stage.
+ (We only consider female samples for self-recapture,
+ since males are prone to "permanent emigration" when they mature 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+,
+ so do not yield readily interpretable inferences.)
+\end_layout
+
+\begin_layout Standard
+To compute stage-structured self-recapture probabilities in a manner analogous to kin capture probabilities,
+ we retain only the first and last capture of each individual.
+ This is a reasonable approximation for walrus because the self-recapture rate is relatively low.
+ We condition on age of the first sample but 
+\emph on
+not
+\emph default
+ explicitly on age of the second sample;
+ instead,
+ we condition on the second sample's developmental stage at sampling (
+\begin_inset Formula $d_{2}$
+\end_inset
+
+).
+ If the first sample would have reached the right developmental stage (i.e.,
+ the two could be the same animal),
+ then we assume it is equally likely to be 
+\emph on
+any
+\emph default
+ of the females in that developmental stage in that year.
+ Therefore,
+ the probability that the first sample is the same individual as the second sample is the reciprocal of the developmental stage abundance.
+ Additionally,
+ we account for survival over the intervening years.
+ The self-recapture kinship probability between samples 1 and 2 (where 
+\begin_inset Formula $y_{1}<y_{2}$
+\end_inset
+
+) is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\mathbb{P}\left[K_{12}=\text{SP}\vert a_{1},y_{1},d_{2},y_{2},L_{1}=0,\boldsymbol{\theta}\right]=\frac{\mathbb{I}\left[d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}\right]\Phi\left(y_{2}-y_{1},a_{1}\right)}{N_{y_{2},d_{2}}},\label{eq:self-staged}
+\end{gather}
+
+\end_inset
+
+where 
+\begin_inset Formula $d\left(a\right)$
+\end_inset
+
+ is the function that maps age to developmental stage,
+ with 
+\begin_inset Formula $d\left(a<6\right)=\text{"juvenile"}$
+\end_inset
+
+ and 
+\begin_inset Formula $d\left(a\geqslant6\right)=\text{"adult"}$
+\end_inset
+
+.
+ We also condition on the first sample being non-lethal (since the individual was subsequently recaptured).
+ To obtain 
+\begin_inset Formula $N_{y_{2},d_{2}}$
+\end_inset
+
+,
+ we need either adult or juvenile abundance.
+ Adult abundance is included in the population dynamics model,
+ however,
+ additional steps are required to deduce juvenile abundance.
+ Assuming stable age composition,
+ we show in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Deriv-Njy"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ that for walrus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N_{y,\text{J}}=N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\rho=e^{r}$
+\end_inset
+
+ is the relative annual population increase/decrease.
+\end_layout
+
+\begin_layout Subsubsection
+Pseudo-likelihood
+\end_layout
+
+\begin_layout Standard
+Given a real dataset,
+ we would maximize the pseudo-log-likelihood that combines kinship probabilities and actual outcomes of all pairwise comparisons to estimate demographic parameters.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Design calculations
+\end_layout
+
+\begin_layout Standard
+For design purposes,
+ we instead use an analytical method to predict precision of the estimates expected under different sampling designs.
+ The parameter uncertainty likely to result from proposed CKMR sampling designs can often be evaluated by calculation alone (
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ section
+\begin_inset space ~
+\end_inset
+
+5).
+ These calculations are adaptations of standard methods used to find the statistical information (i.e.,
+ derivatives) from the (pseudo-)likelihood combined with enumerating the pairwise comparisons that would be available per covariate combination (which are limited here to:
+ age or stage,
+ year of sample,
+ and sex).
+\end_layout
+
+\begin_layout Standard
+The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
+ In brief,
+ let 
+\begin_inset Formula $w_{ijk}$
+\end_inset
+
+ be 
+\begin_inset Quotes eld
+\end_inset
+
+the data
+\begin_inset Quotes erd
+\end_inset
+
+,
+ i.e.
+ the kinship outcome,
+ for samples 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ and target kinship 
+\begin_inset Formula $k$
+\end_inset
+
+:
+ 
+\begin_inset Formula $w_{ijk}=1$
+\end_inset
+
+ if the actual kinship 
+\begin_inset Formula $K_{ij}=k$
+\end_inset
+
+,
+ or 
+\begin_inset Formula $w_{ijk}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $K_{ij}\neq k$
+\end_inset
+
+.
+ As shown in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ for 
+\begin_inset Quotes eld
+\end_inset
+
+sparse sampling
+\begin_inset Quotes erd
+\end_inset
+
+ CKMR where the population is large and the sampling fraction is correspondingly small,
+ the comparisons are approximately statistically independent.
+ Define 
+\begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)=\mathbb{P}\left[K_{ij}=k\vert z_{i},z_{j},\boldsymbol{\theta}\right]$
+\end_inset
+
+ to be the kinship probability for samples 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+,
+ parameter values 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+ and covariates 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_{j}$
+\end_inset
+
+ (computed from,
+ e.g.,
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:MOP-future"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ In each case,
+ the probability that 
+\begin_inset Formula $w_{ijk}=1$
+\end_inset
+
+ is on the order of the reciprocal of adult abundance,
+ which is very small,
+ and therefore the pseudo-likelihood is well approximated by a Poisson distribution with mean 
+\begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+.
+ The pseudo-log-likelihood (i.e.,
+ treating the comparisons as independent) is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Lambda\left(\boldsymbol{\theta};w\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ is a constant and 
+\begin_inset Formula $\mathcal{K}$
+\end_inset
+
+ are the kinship relationships being considered.
+ Let 
+\begin_inset Formula $w=\left\{ w_{ijk};\forall i,j,k\right\} $
+\end_inset
+
+,
+ the possible combinations of samples and kin relationships;
+ although in practice,
+ some 
+\begin_inset Quotes eld
+\end_inset
+
+impossible
+\begin_inset Quotes erd
+\end_inset
+
+ comparisons are excluded (e.g.,
+ second-order kin born a long time apart).
+\end_layout
+
+\begin_layout Standard
+Following standard statistical practice,
+ we approximate the parameter variance using the inverse of the (pseudo) Fisher Information 
+\begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)$
+\end_inset
+
+=
+\begin_inset Formula $-\mathbb{E}_{W}\left[d^{2}\Lambda\left(\boldsymbol{\theta}_{0};W\right)/d\boldsymbol{\theta}^{2}\right]$
+\end_inset
+
+ (the negative expected Hessian over datasets 
+\begin_inset Formula $W$
+\end_inset
+
+ evaluated at true parameter values 
+\begin_inset Formula $\boldsymbol{\theta}_{0}$
+\end_inset
+
+,
+ which are taken from the simulation).
+ As 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is a sum of individual comparison terms,
+ we can also write 
+\begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)=\sum_{i<j;k\in\mathcal{K}}h_{ijk}\left(\boldsymbol{\theta}_{0}\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $h_{ijk}\left(\theta_{0}\right)$
+\end_inset
+
+ is the expected Fisher information matrix from a single comparison of type 
+\begin_inset Formula $\left(i,j,k\right)$
+\end_inset
+
+.
+ Further,
+ **Skaug&Bravington(Arxiv2025notyetout)** show that for Poisson random variables such as 
+\begin_inset Formula $w_{ijk}$
+\end_inset
+
+,
+ we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}_{0}\right)\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}_{0}\right)^{\top}\qquad\text{where }\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)=\frac{d\sqrt{p_{ijk}\left(\boldsymbol{\theta}\right)}}{d\boldsymbol{\theta}}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+ can therefore be obtained for all 
+\begin_inset Formula $(i,j,k)$
+\end_inset
+
+ by numerical differentiation of the probabilities calculated by the ICKMR model.
+ 
+\end_layout
+
+\begin_layout Standard
+We can now exploit the limited range of possible covariate combinations,
+ and group across pairs with identical covariate values.
+ Let 
+\begin_inset Formula $m(\mathbf{z})$
+\end_inset
+
+ denote the number of samples with covariate combination 
+\begin_inset Formula $\mathbf{z}$
+\end_inset
+
+;
+ the number of comparisons between two samples is 
+\begin_inset Formula $m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)$
+\end_inset
+
+ (ignoring double-counting for the moment).
+ The grouped version of the pseudo-Fisher information can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+H\left(m_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1},\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}\left(I\left(z_{1}<z_{2}\right)+\frac{1}{2}I\left(z_{1}=z_{2}\right)\right)m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h_{z_{1}z_{2}k}\left(\theta_{0}\right)\label{eq:H-grouped}
+\end{gather}
+
+\end_inset
+
+We can then invert 
+\begin_inset Formula $H$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:H-grouped"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ to approximate the expected variance 
+\begin_inset Formula $V\left(m_{\mathcal{Z}};\theta_{0}\right)$
+\end_inset
+
+ of a parameter estimate.
+ Uncertainty from any function of the parameters,
+ 
+\begin_inset Formula $g\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+,
+ can then be approximated by the delta method:
+\begin_inset Formula 
+\[
+\mathbb{V}\left[g\left(\boldsymbol{\theta}\right);m_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right]\approx\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]V\left(m_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right)\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{\top}.
+\]
+
+\end_inset
+
+While the designs we specify include annual sample sizes and number of years of sampling,
+ since these are variables that we can control directly,
+ the age-sex composition of the samples come from our simulations.
+\end_layout
+
+\begin_layout Standard
+The realized walrus sample size of adults (about 1,100 per year for 2013-2017 and 2023,
+ or 6,600 total to date) is large enough relative to adult female abundance (~70,000;
+ effectively more because of turnover during the years modelled) that ~5–10% of samples are self/kin-recaptures.
+ This means that a comparable proportion of pairwise comparisons have predictable outcomes based on the results of other comparisons,
+ breaking independence.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+sparse sampling
+\begin_inset Quotes erd
+\end_inset
+
+ assumption of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+ is therefore not strictly justified,
+ so the variance might be slightly over- or under-estimated relative to our calculations here.
+ The direction is not entirely obvious,
+ because finite population corrections will also affect the true variance,
+ but we chose to eliminate redundant comparisons to err on the side of over-estimating true variance.
+ Specifically:
+\end_layout
+
+\begin_layout Enumerate
+If an animal 
+\begin_inset Formula $i$
+\end_inset
+
+ was recaptured multiple times,
+ we only used 
+\begin_inset Formula $i$
+\end_inset
+
+'s last recapture in MOP and XmHSP comparisons;
+\end_layout
+
+\begin_layout Enumerate
+If a sample 
+\begin_inset Formula $j$
+\end_inset
+
+ was identified as the offspring in a MOP,
+ we did not use it in XmHSP comparisons (because the outcome of an XmHSP comparison between 
+\begin_inset Formula $j$
+\end_inset
+
+ and any other sample 
+\begin_inset Formula $k$
+\end_inset
+
+ could be deduced from 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+'s MOP results;
+ 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are XmHSP if-and-only-if 
+\begin_inset Formula $k$
+\end_inset
+
+ was another offspring of 
+\begin_inset Formula $j$
+\end_inset
+
+'s mother).
+\end_layout
+
+\begin_layout Standard
+To adjust the sample sizes 
+\begin_inset Formula $m_{\mathcal{Z}}$
+\end_inset
+
+ accordingly,
+ we used simulation results on the frequency of self-recaptures and MOPs.
+ The effect is not particularly large at the proposed sample sizes.
+ 
+\end_layout
+
+\begin_layout Subsection
+Simulation for model checking and design scenarios
+\end_layout
+
+\begin_layout Subsubsection
+Simulations
+\end_layout
+
+\begin_layout Standard
+To test our ICKMR model,
+ we developed an individual-based simulation with walrus life history that allowed for exponential growth,
+ exponential decline,
+ or a stationary population trajectory.
+ The simulation was modified from the R package 
+\family typewriter
+fishSim
+\family default
+ by Shane Baylis (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/SMBaylis/fishSim
+\end_layout
+
+\end_inset
+
+).
+ The simulation is stochastic and operates on an annual basis.
+ Individuals are tracked using unique identifiers allowing for identification of kinship pairs in simulated samples.
+ We ran the simulation from 1950 to 2030,
+ using an initial population of 250,000 animals.
+ These individuals are considered 
+\begin_inset Quotes eld
+\end_inset
+
+founders
+\begin_inset Quotes erd
+\end_inset
+
+ and do not have mothers or fathers.
+ The age and sex structure of the initial population is determined by survival rates used in the simulation (Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ which were based on estimated 2015 rates 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+.
+ Parameters in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ were adjusted to maintain the desired population rate of increase (
+\begin_inset Formula $r$
+\end_inset
+
+).
+ Individuals of breeding age mate randomly and males can potentially father more than one calf.
+ Female reproduction is as described in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-breeding-cycle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Females that are in state 2 of the breeding cycle give birth to a single offspring with 1:1 sex ratio 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_ecology_1982"
+literal "false"
+
+\end_inset
+
+.
+ There is no systematic age-effect on female reproductive dynamics,
+ except that they are guaranteed not-pregnant at 4 years of age when they enter the breeding cycle (Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-breeding-cycle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ which slightly lowers effective fecundity for the first few years of adulthood until the Markov chain reaches equilibrium.
+ We did not include senescence in our ICKMR model,
+ but we did include it in our simulations so we could investigate effects of violating the assumption of 
+\begin_inset Quotes eld
+\end_inset
+
+no senescence
+\begin_inset Quotes erd
+\end_inset
+
+ in the ICKMR model.
+ 
+\end_layout
+
+\begin_layout Standard
+In sampling years,
+ captures are simulated according to either historical or planned future sample sizes (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sampling-scenarios"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Females are available to be sampled at any age 1+,
+ while males are available for sampling from ages 1-5 only.
+ After sampling,
+ some individuals die (according to age and/or sex specific mortality rates,
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ If a female with a YOTY dies,
+ her calf also dies.
+ Individuals automatically die if they reach the maximum age.
+ Living individuals then have their age incremented.
+\end_layout
+
+\begin_layout Standard
+The breeding probability/birth rate is confounded with the YOTY survival rate.
+ Since only samples from age 1 onwards are considered,
+ only the product (nominal breeding probability rate 
+\begin_inset Formula $\times$
+\end_inset
+
+ nominal YOTY survival) affects the simulated samples,
+ not the two constituent parameters.
+ Males of any age and females less than 4 years old (or older than the age of last reproduction;
+ ALR) are exempt from this cycle.
+ The simulation then proceeds to the following year.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Demographic parameters for simulation under four scenarios (D0,
+ D1,
+ D2,
+ and D3).
+ Scenario D0 was used to check the model code,
+ whereas the other scenarios included reproductive senescence and were used to evaluate study design for a population that was either stationary (D1),
+ decreasing (D2),
+ or increasing (D3).
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:demo-pars"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demographic Scenario
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NULL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stationary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Decreasing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Increasing
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum age (AMAX)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age at first birth for females (AFB)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age of last birth for females (ALB)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age of first fertility for males (AFF)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Young-of-the-year (Age 0 calf) survival
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.66
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Juvenile survival (Ages 1 to 5)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.85
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.925
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reproductive adult female survival (Ages 6 to ALR)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.9622
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.99
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.985
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.99
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Non-reproductive adult female survival (Ages ALR to AMAX)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.55
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Probability of breeding at 2-yr interval (
+\emph on
+ψ
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Probability of breeding at 3-yr+ interval (
+\emph on
+ψ
+\emph default
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Resulting rate of increase (
+\emph on
+r
+\emph default
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++0.01
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Details of sampling scenarios.
+ For reference,
+ scenarios are labelled S0-S8 with a description of effort.
+ Effort per year is indicated as either 0,
+ 0.75 (75%),
+ or 1 (100%) effort as described in section 2.2.
+ Each scenario was evaluated with and without the substitution of 500 lethal samples per year
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Sampling-scenarios"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="8">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Effort per Year
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sampling Scenario
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2023
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2024
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2026
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2027
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2028
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+NULL:
+ 100% effort 2023-2027
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reality + 100% effort 2025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Reality + 100% effort 2025-2026
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Reality + 100% effort 2025-2027
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Reality + 100% effort 2025-2028
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reality + 75% effort 2025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Reality + 75% effort 2025-2026
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Reality + 75% effort through 2027
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Reality + 75% effort through 2028
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.75
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Model checking
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Model-checking"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To evaluate agreement between the simulation and ICKMR model,
+ we simulated 50 replicate datasets with demographic parameters under a null scenario (D0,
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ and we simulated historical and future sampling according to realized or target sample sizes by age class,
+ with effort per year constant at the 2023 level (S0,
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sampling-scenarios"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ The population dynamics model in the simulations is close (but not identical) to the ICKMR model,
+ since the simulation includes senescence and a definite maximum age.
+ We checked each of the simulated datasets against the ICKMR model for:
+ observed and expected numbers of kin pairs in different categories (MOPs,
+ XmHSPs,
+ and SPs);
+ observed versus expected year gaps between half-sibling pairs,
+ unbiasedness of the log-likelihood derivatives at the true parameter values,
+ and parameter bias.
+ These comparisons enabled us to evaluate whether the simulation and ICKMR models were consistent and whether simplifications made in the ICKMR model were acceptable.
+ See Appendix Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model-checking"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+for details.
+\end_layout
+
+\begin_layout Subsubsection
+Scenarios
+\end_layout
+
+\begin_layout Standard
+We evaluated the performance of ICKMR under different demographic and sampling scenarios.
+ The demographic scenarios were a stationary population (D1),
+ a slightly decreasing population (D2) and a slightly increasing population (D3) (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ These values were chosen because they represent the credibility limits and point estimate for the 2015 walrus population growth rate based on an integrated population model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+.
+ For these simulations,
+ we simulated historical sampling (2013-2017,
+ when the first generation of research cruises took place) according to realized sample sizes by age and sex 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+.
+ We simulated possible reductions in future sampling effort,
+ either by reducing the number of sampling years or by reducing the amount of sampling effort within years (S1-S8;
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sampling-scenarios"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ For simulated captures between 2023 and 2028,
+ we estimated an expected overall sample size of 1600 per year with 100% effort (i.e.,
+ a four-week research cruise).
+ We estimated that 75% effort (a three-week research cruise) would result in an expected sample size of 1200.
+ Planned sampling went ahead in 2023 but not in 2024,
+ so we modified simulated sampling scenarios 1-8 to reflect the “reality” of 100% effort in 2023 and 0% effort in 2024.
+ 
+\end_layout
+
+\begin_layout Standard
+The US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP) monitors the walrus harvest each year in two coastal communities in Alaska,
+ which comprises 84% of total Alaska Native subsistence harvest 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "maccracken_final_2017"
+literal "false"
+
+\end_inset
+
+.
+ WHMP collects demographic data and biological samples from harvest animals.
+ To assess the relative value of samples from harvested animals (versus biopsy samples from live individuals),
+ we simulated each scenario without (L1) and with (L2) the substitution of 500 live biopsy samples with 500 lethal samples in sampling years 2023-2028.
+ 
+\end_layout
+
+\begin_layout Standard
+With three demographic scenarios,
+ eight sampling scenarios,
+ and two lethality scenarios,
+ this resulted in a total of 48 simulated datasets from which to evaluate survey design.
+ Given the relatively large population size and large number of samples,
+ we did not expect key properties of simulated datasets to differ substantially due to random variation.
+ This was confirmed by model checking (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Model-checking"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Therefore,
+ we evaluated a single realization of each simulated scenario.
+\end_layout
+
+\begin_layout Standard
+We compared the estimated CVs for adult female abundance derived from IMR and ICKMR models to a precision benchmark of CV = 0.20,
+ based on a CV of 0.19 for adult female abundance achieved by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "beatty_estimating_2022"
+literal "false"
+
+\end_inset
+
+ in a five-year IMR study.
+ Thus,
+ we evaluated performance of our IMR and ICKMR models relative to performance of an IMR model with sampling effort over five years (2013-2017).
+ 
+\end_layout
+
+\begin_layout Standard
+[4553 words].
+\end_layout
+
+\end_body
+\end_document
