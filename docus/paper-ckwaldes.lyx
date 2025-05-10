@@ -504,40 +504,19 @@ CKMR is a promising approach for assessing population size of species which have
 \emph default
 We develop the ICKMR model and test it using simulated datasets,
  then use information from the pseudo-likelihood to investigate the expected precision in estimates of abundance with different proposed survey designs.
- Our motivating example,
- the Pacific walrus,
-
-\emph on
- 
-\emph default
-is an ice-associated marine mammal found in the Bering and Chukchi seas,
- where it is an important resource for indigenous peoples.
- In the late 20th century,
- the population declined,
- likely because it had overshot carrying capacity and was then subject to high harvests.
- Currently,
- the Pacific walrus is species of conservation concern due to potential impacts of climate change,
- particularly the loss of sea ice.
- To reduce uncertainty in population size estimates,
- researchers undertook an individual genetic mark-recapture (IMR) sampling campaign from 2013-2017 and collected tissue samples from over 8,000 individuals.
- Another campaign of a similar scale is ongoing (2023-2027).
- While sample collection was designed for IMR,
- advances in close-kin mark-recapture (CKMR) methods and associated molecular techniques mean that these samples could also be suitable for CKMR.
  The advantages of CKMR over IMR include an increased effective sample size (since each individual tags not only itself,
  but also its parents,
  siblings,
  and offspring) and additional insights into demographic quantities of interest.
- To make best use of genetic samples,
- we combine IMR with CKMR and investigate whether different sampling strategies can increase precision in estimates of abundance.
  Our modelling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We found that expected CVs of the ICKMR estimates of abundance,
+ We found that expected CVs of the ICKMR estimates of adult female abundance,
  adult female survival,
  juvenile female survival,
  and proportion of breeding females are lower than those expected from IMR alone,
  and with ICKMR,
- 1.75 instead of 3 years of future sampling can be conducted to obtain sufficient precision in estimates of abundance.
- [341/350]
+ fewer years of future sampling can be conducted to obtain sufficient precision in estimates of adult female walrus abundance.
+ [183/200]
 \end_layout
 
 \begin_layout Standard

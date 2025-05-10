@@ -53,7 +53,7 @@ cvdf %>%
   mutate(Difference = `500` - `0`) %>%
   #  group_by(interaction(D, CKMR)) %>%
   group_by(CKMR) %>%
-  summarize(MeanD = round(mean(Difference), digits = 2))
+  summarize(MeanD = round(mean(Difference), digits = 4))
 
 ###
 
@@ -79,7 +79,7 @@ sampling_names <- list(
   '8'="+ 75% '25-'28")
 
 demo_names <- list(
-  '1' = "Stable Population",
+  '1' = "Stationary Population",
   '2' = "Decreasing Population",
   '3' = "Increasing Population"
 )
@@ -107,6 +107,52 @@ ggplot() +
 ggsave(plot = last_plot(), file = "./figures/MegaResults.png", 
        width = 8.5, height = 5.5, units = "in")
 
+#### FIgure 2 with subset of scenarios
+
+
+sampling_ids <- list(
+  '1'="S1",
+  '2'="S2",
+  '3'="S3",
+  '4'="S4",
+  '5'="S5",
+  '6'="S6",
+  '7'="S7",
+  '8'="S8")
+
+plot_labeller <- function(variable,value){
+  if (variable=='S') {
+    return(sampling_names[value])
+  } else {
+    return(sampling_ids[value])
+  }
+}
+
+sub.df <- cvdf %>%
+  filter(D=="D1" & S %in% c("S1", "S2", "S3", "S4") ) %>%
+  mutate(Group = factor(paste0(L, CKMR), levels = c("0No", "0Yes", "500No", "500Yes"))) %>%
+  mutate(S2 = S)
+
+ggplot() +
+  geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
+  geom_point(data = sub.df, 
+                           aes(x=Year, y = CV, color = Group, shape = Group, group = Group))+
+  facet_wrap(S2~S, labeller = plot_labeller, nrow = 1) +
+  labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV # Adult Females") +
+  theme(axis.text.x = element_text(angle = -70,vjust = 0.3, hjust=0)) +
+  scale_colour_manual(name = NULL,
+                      labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
+                      values = c(c("#ba7999", "#ba7999"), c("#105b58", "#105b58"))) +   
+  scale_shape_manual(name = NULL,
+                     labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
+                     values = c(19, 17, 19, 17))+
+#  theme(legend.position = "bottom") +
+  ylim(c(0, NA))+
+  theme_bw()
+
+ggsave(plot = last_plot(), file = "./figures/ResultsS1toS4Stationary.png", 
+       width = 8.5, height = 4, units = "in")
+
 ##################################### Plot of sampling effort v cv
 
 sampling_names <- list(
@@ -115,7 +161,7 @@ sampling_names <- list(
   '2025'="2025")
 
 demo_names <- list(
-  '1' = "Stable Population",
+  '1' = "Stationary Population",
   '2' = "Decreasing Population",
   '3' = "Increasing Population"
 )
@@ -128,20 +174,33 @@ plot_labeller <- function(variable,value){
   }
 }
 
-ggplot(filter(cveffort)) +
+effort <- data.frame("S" = c("S1", "S2", "S3", "S4", 
+                             "S5", "S6", "S7", "S8", "S9"),
+                     "Effort" = c(2, 3, 4, 5, 1.75, 2.5, 3.25, 4, 3))
+
+cveffort <- cvdf %>%
+  left_join(effort, by = "S") %>%
+  mutate(Group = factor(paste0(L, CKMR), levels = c("0No", "0Yes", "500No", "500Yes")))
+  
+
+ggplot(filter(cveffort, D == "D1" & Year == 2025)) +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
-  geom_point(aes(x=Effort, y = CV, color = as.factor(L), shape = as.factor(CKMR))) +
-  facet_grid(D~Year, labeller = plot_labeller) +
+  geom_point(aes(x=Effort, y = CV, color = Group, shape = Group, group = Group)) +
+  scale_colour_manual(name = NULL,
+                      labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
+                      values = c(c("#ba7999", "#ba7999"), c("#105b58", "#105b58"))) +   
+  scale_shape_manual(name = NULL,
+                     labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
+                     values = c(19, 17, 19, 17))+
+#  facet_grid(D~Year, labeller = plot_labeller) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
-  scale_color_manual(values = c("#105b58", "#ba7999")) +
-  ylab("Expected CV for # Adult Females")+
+  ylab("Expected CV for # Adult Females in 2025")+
   xlab("Total Future Survey Effort (Years)")+
-  ylim(c(0, 0.5))+
-  theme_bw() +
-  theme(legend.position = "bottom")
+  ylim(c(0, NA))+
+  theme_bw() 
 
 ggsave(plot = last_plot(), file = "./figures/EffortVCV.png", 
-       width = 8.5, height = 5.5, units = "in")
+       width = 8.5, height = 4, units = "in")
 
 
 # compare equal effort scenarios
