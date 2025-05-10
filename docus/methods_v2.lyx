@@ -209,10 +209,10 @@ Stage-structured quasi-equilibrium dynamics
 \end_layout
 
 \begin_layout Standard
-For our female-only population dynamics model,
- we adopted a stage-structured (juvenile/adult),
- rather than fully-age-structured approach.
- This decision was based on two key considerations:
+CKMR requires a population dynamics model.
+ Using our knowledge of walrus life history we developed a simplified model of female-only population dynamics.
+ We adopted a stage-structured (juvenile/adult),
+ rather than fully-age-structured approach because:
  (
 \shape italic
 i
@@ -338,7 +338,9 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-Walrus have a litter size of one,
+In addition to the number of females in the population,
+ the model also needs to keep track of the number of potential mothers by year and age.
+ Walrus have a litter size of one,
  and due to a 14-15 month gestation,
  they cannot give birth in consecutive years 
 \begin_inset CommandInset citation
@@ -349,8 +351,7 @@ literal "false"
 \end_inset
 
 .
- In addition,
- they are unlikely to give birth every second year 
+ They are also unlikely to give birth every second year 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "taylor_demography_2015,taylor_demography_2018,Robeck2023DNAgepinni"
@@ -367,6 +368,8 @@ literal "false"
 \end_inset
 
 .
+ Because of this multi-year breeding cycle,
+ the model needs to estimate the number of animals in each life stage and in each possible breeding state.
  We used a first order Markov model to describe the walrus breeding cycle (Fig.
  
 \begin_inset CommandInset ref
@@ -821,18 +824,64 @@ Kinship probabilities
 \end_layout
 
 \begin_layout Standard
-Something here about a pairwise comparison/pseudolikelihood framework.
- We considered three types of kinship:
+Having resolved our population dynamics model,
+ we now quantify the probability of relatedness between individuals.
+ These probabilities will be used in the pairwise comparison terms summed in the pseudo-log-likelihood.
+ The kinship probabilities are linked to the population dynamics model by shared parameters.
+ For walrus,
+ we considered three types of kinship:
  mother-offspring pair (MOP),
  cross-cohort maternal half-sibling pair (XmHSP),
  and self-pair (SP),
  which represents individual recaptures.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+First,
+ we consider which types of kinship may occur and are possible to detect in the population of interest given our knowledge of life history,
+ resolution of genetic methods,
+ and survey design.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We did not include within-cohort half-sibling pairs (HSPs) or full-sibling pairs (FSPs),
+ because walrus have a litter size of one and female walrus are unlikely to repeatedly mate with the same male (CITATION?).
+ Similarly,
+ we did not consider full-thiatic pairs (FTPs).
+ Grandparent-grandchild pairs (GGPs) are difficult to distinguish from HSPs,
+ but we assume that they would be rare in our survey sample and could be excluded (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Further-HSP-complications"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 To establish demographic kinship probabilities between two sampled individuals,
  we apply the principle of effective relative reproductive output (ERRO).
- Specifically,
+ For example,
  the probability that a given adult female sample is the parent of an independently sampled offspring is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
  We denote the kinship for individuals 
 \begin_inset Formula $i$
@@ -1882,23 +1931,55 @@ nolink "false"
 
  is on the order of the reciprocal of adult abundance,
  which is very small,
- and therefore the pseudo-likelihood is well approximated by a Poisson distribution with mean 
+ and therefore the pseudo-likelihood
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $L$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is well approximated by a Poisson distribution with mean 
 \begin_inset Formula $p_{ijk}\left(\boldsymbol{\theta}\right)$
 \end_inset
 
-.
- The pseudo-log-likelihood (i.e.,
- treating the comparisons as independent) is:
-\end_layout
-
-\begin_layout Standard
+:
 \begin_inset Formula 
-\[
-\Lambda\left(\boldsymbol{\theta};w\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} ,
-\]
+\begin{align*}
+w_{ijk} & \sim\text{Poisson}(p_{ijk}(\boldsymbol{\theta}))\\
+L(\boldsymbol{\theta};w) & =C\prod_{i<j;k\in\mathcal{K}}e^{-p_{ijk}\left(\boldsymbol{\theta}\right)}p_{ijk}\left(\boldsymbol{\theta}\right)^{w_{ijk}},
+\end{align*}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $C$
 \end_inset
@@ -1925,6 +2006,19 @@ impossible
 
  comparisons are excluded (e.g.,
  second-order kin born a long time apart).
+ Then,
+ the pseudo-log-likelihood is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\log_{e}L\left(\boldsymbol{\theta};w\right)=\Lambda\left(\boldsymbol{\theta};w\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} .
+\]
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1933,7 +2027,7 @@ Design calculations
 
 \begin_layout Standard
 For design purposes,
- we instead use an analytical method to predict precision of the estimates expected under different sampling designs.
+ we use an analytical method to predict precision of the estimates expected under different sampling scenarios.
  The parameter uncertainty likely to result from proposed CKMR sampling designs can often be evaluated by calculation alone (
 \begin_inset CommandInset citation
 LatexCommand citealp
@@ -2236,10 +2330,8 @@ Simulations
 
 \begin_layout Standard
 To test our ICKMR model,
- we developed an individual-based simulation with walrus life history that allowed for exponential growth,
- exponential decline,
- or a stationary population trajectory.
- The simulation was modified from the R package 
+ we developed an individual-based simulation with walrus life history,
+ modified from the R package 
 \family typewriter
 fishSim
 \family default
@@ -4879,7 +4971,7 @@ literal "false"
  in a five-year IMR study.
  Thus,
  we evaluated performance of our IMR and ICKMR models relative to performance of an IMR model with sampling effort over five years (2013-2017).
- [4591 words].
+ [4767 words]
 \end_layout
 
 \end_body

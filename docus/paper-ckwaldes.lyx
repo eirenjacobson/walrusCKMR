@@ -497,7 +497,7 @@ Statement on inclusion (optional)
 \begin_layout Abstract
 CKMR is a promising approach for assessing population size of species which have been difficult to survey using more traditional methods.
  Here,
- we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and provide an example of study design using this approach for Pacific walrus 
+ we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and provide an example of study design for Pacific walrus 
 \emph on
 (Odobenus rosmarus divergens).
  
@@ -516,7 +516,8 @@ We develop the ICKMR model and test it using simulated datasets,
  and proportion of breeding females are lower than those expected from IMR alone,
  and with ICKMR,
  fewer years of future sampling can be conducted to obtain sufficient precision in estimates of adult female walrus abundance.
- [183/200]
+ This work demonstrates the utility of combining IMR with CKMR and is applicable across a variety of taxa.
+ [198/200]
 \end_layout
 
 \begin_layout Standard

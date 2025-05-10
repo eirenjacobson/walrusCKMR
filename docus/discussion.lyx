@@ -106,14 +106,34 @@ Discussion
 We developed an ICKMR study design,
  with walrus as a case study,
  as an example for other researchers embarking on this evolving type of study.
+ 
+\end_layout
+
+\begin_layout Standard
+We investigated whether using CKMR could improve expected precision in estimates of adult female walrus population size.
+ To do this,
+ we developed a CKMR model with individual recaptures as a kin type,
+ in addition to mother-offspring and half-sibling pairs.
+ In our model development process,
+ we made simplifying assumptions to make the model tractable.
+ For example,
+ we developed a stage-structured (rather than age-structured) model.
+ The stage-structuring implies that sampling is unselective with respect to age classes within each stage.
+ In addition,
+ we assumed quasi-equilibrium population dynamics.
+ This included a constant rate of population change,
+ demographic rates and age composition from 2000-2028,
+ which are simplifications during at least part of the time frame (Taylor et al.
+ 2018).
+ Nevertheless,
+ with the large sample sizes in this study,
+ and the need for general targets for design purposes,
+ we believe our simplifications were reasonable.
+ 
 \end_layout
 
 \begin_layout Standard
 The walrus project was initially planned as an IMR project with five years of total survey effort between 2013 and 2017 and another five years planned between 2023 and 2027.
- We investigated whether using CKMR could improve expected precision in resulting estimates of adult female population size.
- To do this,
- we developed a CKMR model with individual recaptures as a kin type,
- in addition to mother-offspring and half-sibling pairs.
  We found that expected CVs on adult female abundance were consistently lower when using ICKMR than when using IMR.
  Our results indicated that by adding CKMR,
  sufficient precision (defined as a CV of 0.2) in estimates of adult female population size (with planned sample sizes per year of 1600) could be achieved with 1.75 years of total future survey effort (i.e.
@@ -156,25 +176,6 @@ Using samples from harvested walruses in combination with non-lethal samples col
  Furthermore,
  the ongoing contribution of the WHMP to walrus abundance estimation provides a strong justification for maintaining the program,
  ensuring that robust population assessments continue to inform conservation and management decisions.
-\end_layout
-
-\begin_layout Standard
-In our model development process,
- we made simplifying assumptions to make the model tractable.
- For example,
- we developed a stage-structured (rather than age-structured) model.
- The stage-structuring implies that sampling is unselective with respect to age classes within each stage.
- In addition,
- we assumed quasi-equilibrium population dynamics.
- This included a constant rate of population change,
- demographic rates and age composition from 2000-2028,
- which are simplifications during at least part of the time frame (Taylor et al.
- 2018).
- Nevertheless,
- with the large sample sizes in this study,
- and the need for general targets for design purposes,
- we believe our simplifications were reasonable.
- 
 \end_layout
 
 \begin_layout Paragraph
@@ -238,6 +239,7 @@ CKMR is a major advance in population ecology,
  and show how simulated data can be used to evaluate different proposed survey designs.
  While we used walrus as a motivating example,
  we intend our work to provide a roadmap to other researchers considering ICKMR as a tool to estimate population parameters across a range of taxa.
+ [847 words]
 \end_layout
 
 \end_body

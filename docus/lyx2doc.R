@@ -10,3 +10,5 @@ lick_my_doc <- function(file){
     stop("oh no, something bad happened!")
   }
 }
+
+lick_my_doc("docus/paper-ckwaldes.lyx")

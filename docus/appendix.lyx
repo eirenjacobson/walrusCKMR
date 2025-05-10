@@ -897,7 +897,14 @@ N_{y,\text{J}} & =N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\te
 \end_layout
 
 \begin_layout Section
-Further HSP complications
+Further HSP complications 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Further-HSP-complications"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
