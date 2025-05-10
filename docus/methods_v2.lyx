@@ -1750,13 +1750,13 @@ nolink "false"
 \begin_layout Standard
 \begin_inset Formula 
 \[
-N_{y,\text{J}}=N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right),
+N_{y,\text{J}}=N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\text{J}}}\left(\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{5}-1\right),
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\rho=e^{r}$
+\begin_inset Formula $\lambda=e^{r}$
 \end_inset
 
  is the relative annual population increase/decrease.

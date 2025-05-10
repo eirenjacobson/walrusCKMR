@@ -730,11 +730,11 @@ Following notation from the rest of the paper,
 
  or older.
  The number next year will be 
-\begin_inset Formula $\rho N_{\text{A},y+1}$
+\begin_inset Formula $\lambda N_{\text{A},y+1}$
 \end_inset
 
  where 
-\begin_inset Formula $\rho=e^{r}$
+\begin_inset Formula $\lambda=e^{r}$
 \end_inset
 
  and 
@@ -767,7 +767,7 @@ nolink "false"
  Thus
 \begin_inset Formula 
 \begin{gather}
-N_{y+1,\text{A}}=\rho N_{y,\text{A}}=\phi_{\text{A}}N_{y,\text{A}}+\phi_{\text{J}}N_{y,\alpha-1}.\label{eq:mvb-nj-1}
+N_{y+1,\text{A}}=\lambda N_{y,\text{A}}=\phi_{\text{A}}N_{y,\text{A}}+\phi_{\text{J}}N_{y,\alpha-1}.\label{eq:mvb-nj-1}
 \end{gather}
 
 \end_inset
@@ -776,7 +776,7 @@ Rearranging,
  we have
 \begin_inset Formula 
 \begin{gather}
-N_{y,\alpha-1}=\frac{\rho-\phi_{\text{A}}}{\phi_{\text{J}}}N_{y,\text{A}}.\label{eq:mvb-nj-final-juve}
+N_{y,\alpha-1}=\frac{\lambda-\phi_{\text{A}}}{\phi_{\text{J}}}N_{y,\text{A}}.\label{eq:mvb-nj-final-juve}
 \end{gather}
 
 \end_inset
@@ -792,8 +792,8 @@ We now need to infer the numbers in the other juvenile age-classes (not just
 \begin_inset Formula 
 \begin{align*}
 N_{y,\alpha-1} & =\phi_{\text{J}}N_{y-1,\alpha-2} & \text{ (survival)}\\
-N_{y,\alpha-1} & =\rho N_{y-1,\alpha-1} & \text{ (population growth)}\\
-\implies N_{y,\alpha-2} & =\frac{\rho}{\phi_{\text{J}}}N_{y,\alpha-1}.
+N_{y,\alpha-1} & =\lambda N_{y-1,\alpha-1} & \text{ (population growth)}\\
+\implies N_{y,\alpha-2} & =\frac{\lambda}{\phi_{\text{J}}}N_{y,\alpha-1}.
 \end{align*}
 
 \end_inset
@@ -817,9 +817,9 @@ Similar relationships apply to each preceding juvenile age class,
  down to age 1:
 \begin_inset Formula 
 \begin{align}
-N_{y,\text{J}}=\sum_{x=1}^{\alpha-1}N_{y,\alpha-x} & =\sum_{x=1}^{\alpha-1}N_{y,\alpha-1}\left(\frac{\rho}{\phi_{\text{J}}}\right)^{x-1}\nonumber \\
- & =N_{y,\alpha-1}\sum_{x'=0}^{\alpha-2}\left(\frac{\rho}{\phi_{\text{J}}}\right)^{x'}\nonumber \\
- & =N_{y,\alpha-1}\frac{1-\left(\rho/\phi_{\text{J}}\right)^{\alpha-1}}{1-\rho/\phi_{\text{J}}},\label{eq:mvb-nj-totjuve}
+N_{y,\text{J}}=\sum_{x=1}^{\alpha-1}N_{y,\alpha-x} & =\sum_{x=1}^{\alpha-1}N_{y,\alpha-1}\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{x-1}\nonumber \\
+ & =N_{y,\alpha-1}\sum_{x'=0}^{\alpha-2}\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{x'}\nonumber \\
+ & =N_{y,\alpha-1}\frac{1-\left(\lambda/\phi_{\text{J}}\right)^{\alpha-1}}{1-\lambda/\phi_{\text{J}}},\label{eq:mvb-nj-totjuve}
 \end{align}
 
 \end_inset
@@ -849,8 +849,8 @@ nolink "false"
  we have
 \begin_inset Formula 
 \begin{align*}
-N_{y,\text{J}} & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\phi_{\text{J}}}\frac{1-\left(\frac{\rho}{\phi_{\text{J}}}\right)^{\alpha-1}}{1-\frac{\rho}{\phi_{\text{J}}}}\\
- & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{\alpha-1}-1\right).
+N_{y,\text{J}} & =N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\phi_{\text{J}}}\frac{1-\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{\alpha-1}}{1-\frac{\lambda}{\phi_{\text{J}}}}\\
+ & =N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\text{J}}}\left(\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{\alpha-1}-1\right).
 \end{align*}
 
 \end_inset
@@ -865,7 +865,7 @@ Now,
  so:
 \begin_inset Formula 
 \begin{align*}
-N_{y,\text{J}} & =N_{y,\text{A}}\frac{\rho-\phi_{\text{A}}}{\rho-\phi_{\text{J}}}\left(\left(\frac{\rho}{\phi_{\text{J}}}\right)^{5}-1\right).
+N_{y,\text{J}} & =N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\text{J}}}\left(\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{5}-1\right).
 \end{align*}
 
 \end_inset
