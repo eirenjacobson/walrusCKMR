@@ -207,7 +207,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../figures/MegaResults.png
+	filename ../figures/ResultsS1toS4Stationary.png
 	lyxscale 25
 	scale 70
 
@@ -220,14 +220,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different demographic (panel rows) and sampling (panel column) scenarios.
+Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different sampling scenarios (panel columns) for a simulated stationary population.
  Circular points represent expected CVs from IMR alone,
- while circular points show expected CVs with ICKMR.
- The inclusion of lethal samples is indicated by green (lethal samples included) or purple (no lethal samples).
+ while triangular points show expected CVs with ICKMR.
+ The inclusion of lethal samples is indicated by green (lethal samples substituted) or purple (no lethal samples).
  The horizontal dashed line at CV = 0.2 represents a decision-making threshold.
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:megaCV"
+name "fig:stationaryCV"
 
 \end_inset
 
@@ -246,8 +246,7 @@ name "fig:megaCV"
 status open
 
 \begin_layout Plain Layout
-Megafigure:
- all sampling and demo scenarios,
+stationary demo scenario,
  lethal/non,
  ckmr yes/no
 \end_layout
@@ -280,14 +279,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Total survey effort (in number of years,
- horizontal axis) versus expected CV for adult female abundance in 2015,
- 2020,
- and 2025 (columns) with IMR (circular points) or with ICKMR (triangular points) and with (green points) and without (purple points) the inclusion of lethal samples.
- The three rows represent demographic scenarios of a stationary population,
- decreasing population,
- and increasing population,
- respectively.
+Total future survey effort (in number of years,
+ horizontal axis) versus expected CV for adult female abundance in 2025 with IMR (circular points) or with ICKMR (triangular points) and with (green) and without (purple) the substitution of lethal samples for a simulated stationary population.
  The horizontal dashed line at CV = 0.2 is a decision-making threshold.
 \begin_inset CommandInset label
 LatexCommand label
@@ -310,7 +303,7 @@ name "fig:effVcv"
 status open
 
 \begin_layout Plain Layout
-Effort v CV
+Effort v CV in 2025 for stationary pop
 \end_layout
 
 \end_inset
@@ -319,12 +312,24 @@ Effort v CV
 \end_layout
 
 \begin_layout Standard
-Across all demographic and sampling scenarios,
+Across all sampling scenarios,
  the application of ICKMR resulted in higher expected precision in abundance estimates compared to the application of IMR alone (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:megaCV"
+reference "fig:stationaryCV"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ This was also true across demographic scenarios (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:N_Expected-CV"
 plural "false"
 caps "false"
 noprefix "false"
@@ -366,37 +371,11 @@ nolink "false"
  A declining population led to smaller population size during the target inference years (2015-2025).
  As a result,
  the number of kin pairs increased,
- reducing the expected CV for a given sample size (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:megaCV"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-,
- second row).
+ reducing the expected CV for a given sample size.
  Conversely,
  with an increasing population size,
  the number of kin pairs resulting from a set number of samples was lower,
- and therefore the expected CV was higher (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:megaCV"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-,
- third row).
+ and therefore the expected CV was higher.
  
 \end_layout
 
@@ -416,7 +395,20 @@ nolink "false"
 \end_inset
 
 ).
- With a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
+ In general,
+ expected CVs on adult female abundance decreased with increasing number of future sampling years (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:N_Expected-CV"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ For a simulated stationary population and with a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "beatty_estimating_2022"
@@ -424,11 +416,21 @@ literal "false"
 
 \end_inset
 
-) on estimates of adult female abundance in 2015,
- 2020,
- and 2025,
- at least 3 years of total future survey effort would be required to achieve sufficient precision with IMR alone,
- while scenarios with ICKMR achieved sufficient precision with as few as 1.75 years of total future survey effort.
+) on estimates of adult female abundance in 2025,
+ sufficient precision with IMR could be achieved with 1.75-2 years of future survey effort,
+ while with ICKMR sufficient precision could be achieved with less than 1.75 years of total future survey effort (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:effVcv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -438,10 +440,11 @@ The simulated substitution of 500 lethal samples per sampling year did not notab
  and the substitution of lethal samples for live biopsy samples could reduce required cruise length (500 samples = approx.
  1/3 of samples expected during a 4-week cruise).
  However,
- it appears that for abundance estimates late in the time series with fewer years of total future survey effort (e.g.,
- the number of adult females in 2025 with 1.75 year of total survey effort) the substitution of lethal samples leads to lower precision,
- particularly when only IMR is used.
- This is likely because the lethal samples were simulated to consist almost entirely of adult females [875 words].
+ for IMR,
+ particularly with fewer years of future survey effort,
+ the substitution of lethal samples leads to lower precision,
+ since individuals that are lethally sampled cannot be recaptured.
+ [888 words].
 \end_layout
 
 \end_body
