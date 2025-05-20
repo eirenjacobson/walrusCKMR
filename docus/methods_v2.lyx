@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/docs/genetics/alaska-2017/walrus/ms/
 \textclass article
 \begin_preamble
 
@@ -82,7 +82,7 @@ InStar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -91,6 +91,7 @@ InStar
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author 193499690 "mvb"
 \end_header
 
 \begin_body
@@ -151,25 +152,501 @@ METHODS
 The methods consist of two main components:
  (2.1) ICKMR model development and (2.2) simulation for model checking and design scenarios.
  To develop the ICKMR model,
- we (2.1.1) used our knowledge of walrus biology and life history to build a model of walrus population dynamics,
- including relevant life history,
- (2.1.2) identified relevant kinship pairs and formulated kinship probabilities between pairs of sample,
- (2.1.3) defined the pseudolikelihood,
- and (2.1.4) formulated design calculations with adjustments for non-sparse sampling.
+ 
+\change_inserted 193499690 1747697791
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747719950
+This order is slightly wrong,
+ I think.
+ First we identified useful kinships within the available data.
+ Then we developed a pop dyn model capable of computing those kinship probabilities within the available samples.
+ That's why we didn't bother with males except as 
+\begin_inset Quotes eld
+\end_inset
+
+markers of mothers
+\begin_inset Quotes erd
+\end_inset
+
+.
+ That's what the sequence *should* have been,
+ anyway!
+ Also,
+ we expect reasonably good ages—
+ that is a priori relevant to what we consider,
+ because without age some of the kinships would not be useful..
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+we 
+\change_inserted 193499690 1747719972
+(2.xx) selected the kinship categories that should be common in the samples as well as informative about recent abundance,
+ 
+\end_layout
+
+\begin_layout Standard
+(2.
+\change_inserted 193499690 1747698158
+.yy
+\change_deleted 193499690 1747698159
+1.1
+\change_unchanged
+) 
+\change_inserted 193499690 1747698166
+built a walrus-specific population dynamics model capable of handling those kinships
+\change_deleted 193499690 1747698175
+used our knowledge of walrus biology and life history to build a model of walrus population dynamics,
+ including relevant life history
+\change_unchanged
+,
+ (2.1.2) 
+\change_deleted 193499690 1747698182
+identified relevant kinship pairs and
+\change_unchanged
+ formulated 
+\change_inserted 193499690 1747470209
+pairwise 
+\change_unchanged
+kinship probabilities
+\change_deleted 193499690 1747470212
+ between pairs of sample
+\change_unchanged
+,
+ (2.1.3) defined the pseudo
+\change_inserted 193499690 1747470221
+-
+\change_unchanged
+likelihood
+\change_inserted 193499690 1747697965
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747720087
+That's completely generic,
+ though;
+ you'd use the same basic PSLGLK for any non-weird CKMR project.
+ Does it need a separate section,
+ or should it be merged with the Design stuff?
+ Doesn't really matter,
+ I guess.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+,
+ and (2.1.4) formulated
+\change_inserted 193499690 1747698239
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747698266
+Did we just formulate them,
+ or actually do them (at that stage)?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ design calculations
+\change_deleted 193499690 1747470255
+ with adjustments for non-sparse sampling
+\change_inserted 193499690 1747470257
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747470279
+Let's omit that at this point,
+ otherwise we have to explain it...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
  We then (2.2.1) developed an individual-based simulation with walrus life history,
  (2.2.2) used this simulation to check our ICKMR model,
  and (2.2.3) generated simulated datasets from different demographic and sampling scenarios of interest.
+\change_inserted 193499690 1747698214
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747720107
+Then what did we do with those simulated datasets?
+ Left dangling...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
 ICKMR model development
+\change_inserted 193499690 1747720846
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747720848
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747728636
+Especially since this has now become a paper with general ambitions,
+ I think we need some blurb on what might be possible in general,
+ then narrowing it down to walrus and explaining why we did what we did.
+ I also strongly think that we should use the active voice—
+ 
+\begin_inset Quotes eld
+\end_inset
+
+we chose to do X
+\begin_inset Quotes erd
+\end_inset
+
+—
+ rather than the passive a la 
+\begin_inset Quotes eld
+\end_inset
+
+Adult males were not included
+\begin_inset Quotes erd
+\end_inset
+
+ in Rebecca's edits,
+ because the choices were subjective (rather than 100% inevitable) and we made them!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747733291
+CKMR datasets often contain multiple genetically-detectable kinships,
+ all potentially providing some information about population dynamics.
+ Nevertheless,
+ it is not always wise to try to model everything.
+ Some kinships among some samples (for example,
+ Parent-Offspring Pairs between old adults) might be more trouble than they are worth,
+ needing some or all of:
+ extra parameters;
+ population dynamics extended to longer time-periods where simple approximations become unreliable;
+ expenditure of precious modeling effort on phenomena that are unimportant to the main questions of interest.
+ Those questions will vary slightly between applications,
+ but usually it is recent adult abundance,
+ mortality rate,
+ and trend that are the focus.
+ In the largest complete CKMR to date,
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Davies2020SBT2"
+literal "false"
+
+\end_inset
+
+ use only Adult-Juvenile POPs and Juvenile-Juvenile HSPs,
+ even though there are numerous other close-kin pairs of various types within the dataset,
+ because those categories are easy to model and yield all the information desired.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747728884
+Genetic detectability limits the potential kinships to three basic categories (though see Discussion):
+ Parent-Offspring Pairs (POPs);
+ Full-Sibling Pairs (FSPs);
+ and Second-order Kin Pairs (2KPs,
+ comprising Half-Sibling Pairs or HSPs,
+ Grandparent-Grandchild Pairs or GGPs,
+ and Full-Thiatic Pairs or FTPs,
+ such as Aunt-Nephew;
+ the various 2KPs cannot be distinguished genetically).
+ Parental sex in a POP can usually be determined either genetically or more directly (it is obvious with walrus),
+ and the sex of the shared parent in an HSP can usually be determined by comparing mitochondrial DNA of the siblings (e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Hillary2018WS-CKMR"
+literal "false"
+
+\end_inset
+
+).
+ In addition,
+ with live-release,
+ Self Pairs or SPs are effectively another 
+\begin_inset Quotes eld
+\end_inset
+
+kinship
+\begin_inset Quotes erd
+\end_inset
+
+ and of course are genetically unambiguous.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747728700
+Not all those possible kinships would be informative about the most important aspects of walrus dynamics:
+ abundance,
+ trend,
+ and mortality.
+ We decided to entirely ignore paternal HSPs and Father-Offspring Pairs,
+ and indeed not to model male adults at all,
+ essentially because of irresolvable confounding between adult male abundance and persistent variability in breeding success (which is qualitatively likely,
+ given lek-based breeding),
+ with no ability to estimate the latter in the absence of large numbers of male adult samples.
+ (For a fuller explanation,
+ see 
+\begin_inset Quotes eld
+\end_inset
+
+Why males are more trouble than they're worth
+\begin_inset Quotes erd
+\end_inset
+
+,
+ in the Supplement.)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747734219
+Of the remaining kinships,
+ we do not expect FSPs to be common in walrus,
+ since litter-size is only 1 and any FSP would mean that a female has returned to the same lek site and blah **BIOLOGISTS CHIP IN HERE PLEASE!
+ NB walrus are different to eg sealions where females return to exactly the same stretch of beach every year,
+ subject to the same blubbery emperor,
+ and where FSPs will be annoyingly common**.
+ (Any FSPs that are found can be treated as maternal HSPs,
+ since we are ignoring male ancestry.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747731561
+that sentence could go to Discussion 
+\begin_inset Quotes eld
+\end_inset
+
+what if...
+\begin_inset Quotes erd
+\end_inset
+
+ bits
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) If FSPs are rare amongst adults,
+ then FTPs will be rare too,
+ so that the only relevant 2KPs are GGPs and cross-cohort maternal HSPs or XmHSPs.
+ Provided the two members of the pair are born within two generations (strictly,
+ within twice the minimum age at maturity,
+ and allowing for ageing error),
+ then GGPs are also ruled out.
+ We are thus left with three useful kinships:
+ Mother-Offspring Pairs or MOPs,
+ XmHSPs,
+ and SPs where either the animal is juvenile on both occasions,
+ or it is female,
+ in which case it can be recaptured as an adult.
+ Note that male juvenile samples,
+ which are common,
+ are still used as potential offspring or XmHSP members (i.e.
+ they mark their mothers),
+ but not as potential SPs or future Fathers in FOPs,
+ 
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 193499690 1747721494
+Why males are more trouble than they're worth (for Supplement)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747721571
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747731473
+The reason I suggest putting this in,
+ but in a Supplement,
+ is that dropping male adult dynamics is a Big Decision and the reasons aren't super obvious.
+ But we also don't want to clutter the main MS with elaborate explanations of why we didn't do certain stuff!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747727823
+Walrus mating is lek-based,
+ and walrus are strongly sexually dimorphic with males much larger.
+ It is quite plausible that some males dominate the reproductive output,
+ and may do so for several years in a row.
+ We will not have useful numbers of adult male samples for individual recapture,
+ nor for directly finding FOPs.
+ Without FOPs,
+ there is no way to link any measurable characteristic of adult males to their reproductive output (whereas with fish,
+ for example,
+ there is often a clear empirical relationship between adult size and POP probability,
+ so that a size-fecundity relationship can be fitted within the CKMR model;
+ see 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Davies2020SBT2"
+literal "false"
+
+\end_inset
+
+).
+ Thus,
+ we do not know how many adult males are likely to under-breeding,
+ nor whether it is a lifelong or transitory condition (e.g.
+ if just a few males perpetually dominate mating,
+ or if most males do eventually become superstars of the lek but only for a few years).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747727782
+There will still be plenty of cross-cohort paternal HSPs (XpHSPs) in our samples,
+ but the unknown persistent variability again ruins the picture.
+ The only male adults that are visible thru XpHSPs are the ones that are breeding successfully,
+ and in the absence of any independent information on which ones those are (e.g.
+ size composition in fish,
+ linked to empirical evidence of size-fecundity relationship) then there is no way of relating the number of successful breeders to overall male abundance.
+ And while XHSPs are often informative about mortality (as for female walrus),
+ based on finding fewer HSPs separated by longer gaps,
+ for male walrus the rate that would be captured is actually the rate of leaving the pool of successful breeders—
+ which depends not just on mortality but also on persistence of individual status.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747733591
+The only remaining source of information about male adult abundance might come from juvenile male samples that later go on to father other samples,
+ of which there will be a few.
+ Again,
+ the problem is that only some of the surviving male adults might be reproductively active,
+ so there is confounding between abundance and variability in individual persistent breeding success.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747734471
+The situation is quite different with females,
+ who are biologically constrained to produce at most one offspring every two-plus years.
+ There is little reason to expect big and persistent differences in individual reproductive output;
+ any short-term differences due purely to age and maturity can be accommodated within the model,
+ since adult age is measured and can be tracked in the population dynamics.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747732166
+While there might be some biological insights to be gained from inspection of male-parent close-kin pairs when the full samples are available,
+ there is unlikely to be any useful signal about overall population dynamics per se,
+ especially abundance.
+ Thus,
+ and certainly at the design stage,
+ it seems best just to omit adult male dynamics entirely,
+ avoid XpHSPs and FOPs by not even consider them when checking kin-pairs,
+ and save a lot of trouble.
 \end_layout
 
 \begin_layout Subsubsection
 Life history and population dynamics
+\change_inserted 193499690 1747736365
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 193499690 1747736367
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747736541
+I've provisionally deleted this,
+ given that some of it is covered above.
+ Again,
+ I think that the shift from odobenocentric to universal perspective means that more things might need to be introduced as general considerations,
+ rather than added as afterthoughts:
+ eg duration of pop dy.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1747736363
 Our first objective was to develop a shared understanding of walrus life history that could inform model development.
  We decided that adult males would not be included in this design project due to seasonal sex segregation and geographical coverage of sampling (see Section 
 \begin_inset CommandInset ref
@@ -202,6 +679,8 @@ literal "false"
  While there are challenges with modelling males as parents,
  juvenile males can still be incorporated as potential offspring of females and as potential maternal half-siblings to other sampled individuals (female or male).
  We assumed that individual variation in female fecundity is minimal.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Paragraph
@@ -209,9 +688,30 @@ Stage-structured quasi-equilibrium dynamics
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 193499690 1747736573
+In order to formulae kinship probability equations,
+ 
+\change_unchanged
 CKMR requires a population dynamics model.
- Using our knowledge of walrus life history we developed a simplified model of female-only population dynamics.
- We adopted a stage-structured (juvenile/adult),
+ 
+\change_inserted 193499690 1747736619
+In this case,
+ we only needed to model females.
+ 
+\change_deleted 193499690 1747736590
+Using our knowledge of walrus life history we developed a simplified model of female-only population dynamics.
+ W
+\change_inserted 193499690 1747736590
+W
+\change_unchanged
+e 
+\change_inserted 193499690 1747736595
+used 
+\change_deleted 193499690 1747736595
+adopted 
+\change_unchanged
+a stage-structured (juvenile/adult),
  rather than fully-age-structured approach because:
  (
 \shape italic
@@ -224,19 +724,94 @@ ii
 \shape default
 ) stage-structured models are simpler to implement for CKMR and require fewer parameters.
  Given these advantages,
- a stage-structured model should provide sufficient accuracy for study design purposes.
+ 
+\change_inserted 193499690 1747736450
+and the broad goal of estimating female adult abundance,
+ 
+\change_unchanged
+a stage-structured model should 
+\change_inserted 193499690 1747736462
+be adequate 
+\change_deleted 193499690 1747736464
+provide sufficient accuracy 
+\change_inserted 193499690 1747736466
+at least for 
+\change_deleted 193499690 1747736468
+for study 
+\change_unchanged
+design purposes.
+
+\change_inserted 193499690 1747736718
+ We also opted not to include calves in the model,
+ since early-life-history survival (before animals are easily sampled) would require extra parameters that are hard to estimate directly.
+ In effect,
+ calf survival and birth rate are combined into overall rate-of-change in abundance,
+ which becomes a single parameter to be estimated.
 \end_layout
 
 \begin_layout Standard
-The population dynamics model incorporated demographic parameters to be estimated:
- juvenile and adult survival rates,
- adult female abundance in a reference year,
- and population trend.
+The 
+\change_deleted 193499690 1747734487
+population dynamics model incorporated demographic 
+\change_unchanged
+parameters to be estimated
+\change_inserted 193499690 1747734491
+ are
+\change_unchanged
+:
+ 
+\change_inserted 193499690 1747734497
+female 
+\change_unchanged
+juvenile and adult survival rates
+\change_deleted 193499690 1747734506
+,
+\change_inserted 193499690 1747734506
+;
+
+\change_unchanged
+ adult female abundance in 
+\change_inserted 193499690 1747734510
+some
+\change_deleted 193499690 1747734511
+a
+\change_unchanged
+ reference year
+\change_deleted 193499690 1747734504
+,
+\change_inserted 193499690 1747734504
+;
+
+\change_unchanged
+ and population trend
+\change_inserted 193499690 1747736666
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747736679
+Could introduce the symbols here,
+ rather than piecemeal later
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
  We used two stages:
  juveniles aged 1–5,
  and adults aged 6+ (the first age at which an accompanying calf is common).
- We did not consider calves (age 0),
+ 
+\change_deleted 193499690 1747734672
+We did not consider calves (age 0),
  to avoid complications around simultaneous sampling of mothers with dependent calves.
+
+\change_unchanged
  We assumed constant survival within each stage (
 \begin_inset Formula $\phi_{\text{A}}$
 \end_inset
@@ -248,14 +823,64 @@ The population dynamics model incorporated demographic parameters to be estimate
 ),
  and that offspring survival from age 1 onwards is independent of its mother's survival,
  whether or not the offspring has fully weaned.
- Our model assumed that adult female abundance was either stationary,
- increasing exponentially,
- or decreasing exponentially over the period covered by the population dynamics (2000–2028;
+ Our model assumed that adult female abundance 
+\change_deleted 193499690 1747734691
+was either stationary,
+ 
+\change_unchanged
+increas
+\change_deleted 193499690 1747734696
+ing
+\change_inserted 193499690 1747734696
+ed
+\change_unchanged
+ 
+\change_inserted 193499690 1747734699
+or decreased 
+\change_unchanged
+exponentially
+\change_deleted 193499690 1747734652
+,
+ or decreasing exponentially 
+\change_unchanged
+over the period covered by the population dynamics
+\change_inserted 193499690 1747737498
+,
+ which we set at 
+\change_deleted 193499690 1747737472
+ (
+\change_unchanged
+2000–2028
+\change_inserted 193499690 1747737594
+.
+ The model needs to cover all birth-dates of samples that are used as potential offspring,
+ XmHSPs,
+ or SPs;
+ choosing a lower limit of 2000 thus discards a few samples,
+ 
+\change_deleted 193499690 1747737480
+;
  the lower limit of 
 \begin_inset Formula $y_{0}=$
 \end_inset
 
-2000 is set because there were large changes in the population prior to that 
+2000 is set 
+\change_inserted 193499690 1747737604
+but is advisable 
+\change_unchanged
+because there 
+\change_inserted 193499690 1747737623
+was heavy harvesting prior to that and 
+\change_deleted 193499690 1747737623
+were 
+\change_unchanged
+large changes in 
+\change_inserted 193499690 1747737626
+abundance
+\change_deleted 193499690 1747737628
+the population prior to that 
+\change_unchanged
+
 \begin_inset CommandInset citation
 LatexCommand citep
 key "taylor_demography_2015,taylor_demography_2018"
@@ -263,7 +888,12 @@ literal "false"
 
 \end_inset
 
-).
+)
+\change_inserted 193499690 1747737641
+,
+ so that age composition becomes hard to model
+\change_unchanged
+.
  Thus,
  adult female abundance in year 
 \begin_inset Formula $y$
@@ -274,6 +904,33 @@ literal "false"
 \end_inset
 
 ) is described by
+\change_inserted 193499690 1747734579
+
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747734640
+I doubt you'll agree,
+ but I vote to omit commas in subscripts wherever reasonable.
+ They're bloody hard to read.
+ 
+\begin_inset Formula $N_{y\text{A}}$
+\end_inset
+
+ is unambiguous,
+ and if it's good enough for quantum physics,
+ it's probably OK for ecology...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \begin_inset Formula 
 \begin{align}
 N_{y,\text{A}} & =N_{y_{0},\text{A}}e^{r(y-y_{0})}\label{popdyn}
@@ -285,7 +942,16 @@ where
 \begin_inset Formula $e^{r}$
 \end_inset
 
- is the rate of population change.
+ is the rate of population change
+\change_inserted 193499690 1747734736
+,
+ and 
+\begin_inset Formula $r=0$
+\end_inset
+
+ corresponds to stasis
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -324,6 +990,12 @@ literal "false"
 \end_inset
 
 .
+
+\change_inserted 193499690 1747737777
+ Stable-age-composition is a powerful assumption that might need revisiting when the real data arrives (i.e.
+ by developing a fully age-structured model),
+ but for design purposes it should be enough to capture the main determinant of abundance precision:
+ the number of (kin or self) recaptures.
 \end_layout
 
 \begin_layout Paragraph
@@ -335,11 +1007,93 @@ name "subsec:The-breeding-cycle"
 \end_inset
 
 
+\change_inserted 193499690 1747737958
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 193499690 1747737969
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747737962
+I feel we need some more explanation here.
+ It's not a complete crime to ignore skip-breeding;
+ for some reason,
+ we just went fancy in this case.
+ (sorry...)!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747739208
+Female walrus,
+ like many other animals,
+ exhibit 
+\begin_inset Quotes eld
+\end_inset
+
+skip-breeding
+\begin_inset Quotes erd
+\end_inset
+
+,
+ taking gaps of one or years between births.
+ Skip-breeding can have some impact on kinship probabilities,
+ although the effects are not enormous and can often be ignored.
+ The rationale for ignoring it is as follows:
+ even if a female is only reproductively active in half the years and so has zero probability of being a mother in the rest,
+ in the years when she is breeding she only has to compete against half the females for the prize of being the mother of any particular sample,
+ so she then has twice the chance.
+ Therefore,
+ to zeroth-order the effects of skip-breeding cancel out across even and odd years.
+ However,
+ a more detailed analysis (see Supplement) shows that there can be some bias in XHSP probabilities if skip-breeding is ignored,
+ because of adult mortality.
+ Since XHSPs will be important for walrus,
+ we decided to avoid any risk of bias by including a sub-model for skip-breeding,
+ with parameters to be estimated from the CKMR data.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747738770
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747738847
+In the Supplementary stuff,
+ I'd like to include the section of report that shows roughly what the HSP bias is.
+ It's not published anywhere else—
+ not even in a fisheries report—
+ and it probably won't be unless it crops up here.
+ It's a nice bit of maths and makes its point accurately...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1747739155
 In addition to the number of females in the population,
  the model also needs to keep track of the number of potential mothers by year and age.
+
+\change_unchanged
  Walrus have a litter size of one,
  and due to a 14-15 month gestation,
  they cannot give birth in consecutive years 
@@ -350,8 +1104,16 @@ literal "false"
 
 \end_inset
 
+
+\change_inserted 193499690 1747739513
 .
- They are also unlikely to give birth every second year 
+ Offspring often continue to suckle and accompany their mother after the first year of life,
+ and there is rarely just a two-year gap between births
+\change_deleted 193499690 1747739412
+.
+ They are also unlikely to give birth every second year
+\change_unchanged
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "taylor_demography_2015,taylor_demography_2018,Robeck2023DNAgepinni"
@@ -359,7 +1121,31 @@ literal "false"
 
 \end_inset
 
- except perhaps if the population is growing at a large exponential rate 
+ 
+\change_inserted 193499690 1747737792
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747737859
+The rest of the sentence reads oddly...
+ rapid growth is a consequence of rapid breeding,
+ not the other way round!
+ Can you delete it,
+ and just stick the Fay reference onto the others?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 193499690 1747739519
+except perhaps if the population is growing at a large exponential rate 
+\change_unchanged
+
 \begin_inset CommandInset citation
 LatexCommand citep
 key "fay_status_1997"
@@ -368,9 +1154,48 @@ literal "false"
 \end_inset
 
 .
- Because of this multi-year breeding cycle,
+ 
+\change_inserted 193499690 1747737870
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1747739433
+Because of this multi-year breeding cycle,
  the model needs to estimate the number of animals in each life stage and in each possible breeding state.
- We used a first order Markov model to describe the walrus breeding cycle (Fig.
+\change_inserted 193499690 1747739436
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747739443
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Because
+\begin_inset Quotes erd
+\end_inset
+
+ isn't really true...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 193499690 1747739426
+ 
+\change_unchanged
+We used a first order Markov model to describe the walrus breeding cycle (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -418,7 +1243,15 @@ nolink "false"
 \begin_layout Standard
 Females enter the breeding cycle at state S3 (i.e.,
  reach sexual maturity) at age 4,
- and therefore can become pregnant at age 5 and give birth at age 6 
+ and therefore 
+\change_inserted 193499690 1747740336
+sometimes
+\change_deleted 193499690 1747740336
+can 
+\change_inserted 193499690 1747740338
+ 
+\change_unchanged
+become pregnant at age 5 and give birth at age 6 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "fay_ecology_1982"
@@ -436,7 +1269,17 @@ literal "false"
 \end_inset
 
 ,
- this leads to an increase in effective fecundity (i.e.,
+ this leads to 
+\change_inserted 193499690 1747740359
+fluctuations 
+\change_deleted 193499690 1747740360
+an 
+\change_inserted 193499690 1747740360
+in 
+\change_deleted 193499690 1747740362
+increase in 
+\change_unchanged
+effective fecundity (i.e.,
  probability of being in state S2) over the first few years of adult life.
  Both 
 \begin_inset Formula $\psi_{2}$
@@ -446,8 +1289,19 @@ literal "false"
 \begin_inset Formula $\psi_{3}$
 \end_inset
 
- are estimated from the data.
- We do not use any data on whether females were with or without calf when sampled,
+ are estimated 
+\change_inserted 193499690 1747740519
+automatically within the CKMR model,
+ 
+\change_deleted 193499690 1747740520
+from the data
+\change_inserted 193499690 1747740529
+ultimately based on the observed distribution of birth-gaps between XmHSPs
+\change_unchanged
+.
+ We do not use any data on whether females were with or without calf when sampled
+\change_deleted 193499690 1747740480
+,
  so the estimates of 
 \begin_inset Formula $\psi_{2}$
 \end_inset
@@ -458,7 +1312,16 @@ literal "false"
 
  rely on the distribution of birth-gaps between maternal half-sibling pairs.
  In addition,
- our data are not able to distinguish between fine-scale aspects of the reproductive cycle,
+ our data are not
+\change_inserted 193499690 1747740483
+,
+ and we cannot
+\change_deleted 193499690 1747740485
+ able to 
+\change_inserted 193499690 1747740485
+ 
+\change_unchanged
+distinguish between fine-scale aspects of the reproductive cycle,
  such as differences in fertilization/implantation rates versus pregnancy failures or neonatal deaths.
  Thus,
  because the transition from S1 (pregnant) to S2 (with YOTY calf) is set to 1,
@@ -745,8 +1608,14 @@ name "fig:Breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-We later use two quantities,
- which are derived from the breeding cycle.
+We later use two quantities
+\change_deleted 193499690 1747740541
+,
+ which are 
+\change_inserted 193499690 1747740542
+ 
+\change_unchanged
+derived from the breeding cycle.
  First,
  we calculated the (average) proportion of adult females in S2 (with YOTY),
  
@@ -936,6 +1805,63 @@ individual
 \end_inset
 
  have different meanings).
+\change_inserted 193499690 1747740577
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747740579
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747740647
+The assumption of 
+\begin_inset Quotes eld
+\end_inset
+
+reasaonably accurate age
+\begin_inset Quotes erd
+\end_inset
+
+ needs to be mentioned higher up,
+ coz (in genearal CKMR work) it's fundamental to whether you can or cannot do CKMR,
+ and to which comparisons it's worth bothering to do—
+ if age is too vague,
+ there's not point.
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747740724
+Also,
+ the flow should be clarified.
+ First,
+ always,
+ devise the prob formula conditioned on exact age etc.
+ Then,
+ if neessarly,
+ take a second step to 
+\begin_inset Quotes eld
+\end_inset
+
+blur
+\begin_inset Quotes erd
+\end_inset
+
+ the probs so they are conditioned on observables.
+ that's the CKMR course mantra ;)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1666,6 +2592,25 @@ l
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 193499690 1747739576
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747739611
+Again,
+ I think this needs to be up-front,
+ not an afterthought.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 HSPs are one of several 
 \begin_inset Quotes eld
 \end_inset
@@ -1684,6 +2629,25 @@ second-order
  To mitigate this issue,
  we restricted the range of birth gaps considered in the model to those where GGPs are very rare (i.e.,
  below twice the age at maturity).
+\change_inserted 193499690 1747739623
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747739650
+I don't agree with Rebecca that this needs citation or explanation.
+ It's pretty clear from a moment's thought!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Paragraph
@@ -1704,7 +2668,52 @@ Our stage-structured model simplifies population dynamics,
  we assume selectivity varies only by stage (adult/juvenile),
  not by age within stage.
  We only consider female samples for self-recapture,
- since males are prone to "permanent emigration" when they mature 
+ since 
+\change_inserted 193499690 1747732657
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747732671
+I think this should come earlier,
+ and have put something in 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+males are prone to "permanent emigration" when they mature
+\change_inserted 193499690 1747732675
+
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747732736
+It's often before they mature,
+ though;
+ they are drifting away whenever they get kicked out by Mum,
+ or just when they want to do boy stuff.
+ I 
+\emph on
+think
+\emph default
+ frequency of males amongst juve samps declines progressively with age.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "beatty_estimating_2022"
@@ -2051,7 +3060,29 @@ literal "false"
 
 \begin_layout Standard
 The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
- Following standard statistical practice,
+ 
+\change_inserted 193499690 1747739803
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747739900
+Hans & I are working on it.
+ This paper can go to internal review before Hans & I put the other one on Arxiv.
+ If that's still not happened when this one is finally ready for submission,
+ then we can probably find another reference (or worst case stick in Supplement),
+ but there's no need to panic yet.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+Following standard statistical practice,
  we approximate the parameter variance using the inverse of the (pseudo) Fisher Information 
 \begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)$
 \end_inset
@@ -2060,17 +3091,50 @@ The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
 \begin_inset Formula $-\mathbb{E}_{W}\left[d^{2}\Lambda\left(\boldsymbol{\theta}_{0};W\right)/d\boldsymbol{\theta}^{2}\right]$
 \end_inset
 
- (the negative expected Hessian over datasets 
+ (the negative expected Hessian over datasets
+\change_deleted 193499690 1747739766
+ 
 \begin_inset Formula $W$
 \end_inset
 
+
+\change_unchanged
  evaluated at true parameter values 
 \begin_inset Formula $\boldsymbol{\theta}_{0}$
 \end_inset
 
 ,
  which are taken from the simulation).
- As 
+ 
+\change_inserted 193499690 1747739741
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747739782
+Rebecca asks about lower and upper case 
+\begin_inset Quotes eld
+\end_inset
+
+w
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Upper-case denotes a random variable,
+ so it's what appears in an expectation formula.
+ J 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+As 
 \begin_inset Formula $\Lambda$
 \end_inset
 
@@ -2310,14 +3374,66 @@ If a sample
 \end_layout
 
 \begin_layout Standard
-Eliminating these comparisons means that we must adjust the sample sizes 
+Eliminating these comparisons means that we must adjust the 
+\change_inserted 193499690 1747740104
+effective 
+\change_unchanged
+sample sizes 
 \begin_inset Formula $\boldsymbol{m}_{\mathcal{Z}}$
 \end_inset
 
- accordingly when making the above calculations.
- We used simulation results on the frequency of self-recaptures and MOPs to determine the number of samples that would need to be eliminated.
- The effect is not particularly large at the proposed sample sizes.
+ accordingly
+\change_deleted 193499690 1747740111
+ when making the above calculations
+\change_unchanged
+.
+ We used simulation results on the frequency of self-recaptures and MOPs to determine 
+\change_inserted 193499690 1747740118
+how many 
+\change_deleted 193499690 1747740119
+the number of 
+\change_unchanged
+samples 
+\change_deleted 193499690 1747740122
+that 
+\change_unchanged
+would need to be eliminated.
+ The 
+\change_inserted 193499690 1747740131
+effect
+\change_deleted 193499690 1747740016
+effect
+\change_unchanged
+ is 
+\change_inserted 193499690 1747740055
+small for the scenarios we considered,
+ and with hindsight we might not have bothered with the adjustment at all.
+\change_deleted 193499690 1747740060
+not particularly large at the proposed sample sizes.
+
+\change_unchanged
  
+\change_inserted 193499690 1747739994
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747740158
+Rebecca didn't like this,
+ but I think it's OK to be a bit vague here.
+ However,
+ my suggested final change above would probably just kill discussion quite effectively :)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -2505,6 +3621,24 @@ The breeding probability/birth rate is confounded with the YOTY survival rate.
  not the two constituent parameters.
  Males of any age and females less than 4 years old (or older than the age of last reproduction;
  ALR) are exempt from this cycle.
+\change_inserted 193499690 1747740215
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747740229
+Eh?
+ I don't understand that at all (and nor did Rebecca).
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  The simulation then proceeds to the following year.
 \end_layout
 

@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin D:/docs/genetics/alaska-2017/walrus/ms/
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
@@ -79,7 +79,7 @@ Provides natbib 1
 \papersides 1
 \paperpagestyle default
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content true
@@ -88,6 +88,7 @@ Provides natbib 1
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author 193499690 "mvb"
 \end_header
 
 \begin_body
@@ -168,10 +169,19 @@ literal "false"
 
 \end_inset
 
-) is a framework for using kinships,
+) is a framework for using 
+\change_inserted 193499690 1747464120
+pairwise 
+\change_unchanged
+kinships,
  as inferred from genotypes,
  to estimate abundance and demographic parameters.
- CKMR provides additional flexibility compared to IMR because only lethal samples (e.g.,
+ CKMR provides additional flexibility compared to IMR because 
+\change_inserted 193499690 1747465265
+it is not essential to recapture individuals,
+ so that 
+\change_unchanged
+only lethal samples (e.g.,
  from sampling,
  hunting,
  or natural mortality),
@@ -197,7 +207,17 @@ literal "false"
 \end_inset
 
 ),
- but some have been conducted for mammals,
+ but 
+\change_inserted 193499690 1747463863
+there have also been 
+\change_unchanged
+some 
+\change_deleted 193499690 1747463872
+have been conducted for
+\change_inserted 193499690 1747463872
+on
+\change_unchanged
+ mammals,
  including the 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -228,7 +248,26 @@ literal "false"
 
 \begin_layout Standard
 The principle behind CKMR is that every individual has one mother and one father.
- Thus,
+ 
+\change_inserted 193499690 1747464195
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747464474
+This next sentence is a pretty big mental leap from the previous one...
+ expand slightly?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+Thus,
  for a given sample size,
  a large population will have fewer 
 \begin_inset Quotes eld
@@ -238,49 +277,317 @@ captures
 \begin_inset Quotes erd
 \end_inset
 
- of parents or their other descendants compared to a small population.
+ of parents or their other descendants
+\change_inserted 193499690 1747464249
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747464267
+\begin_inset Quotes eld
+\end_inset
+
+or...descendants
+\begin_inset Quotes erd
+\end_inset
+
+ doesn't make sense
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ compared to a small population.
  In practice,
  CKMR data are derived from pairwise comparisons among samples while considering covariates such as age,
  size,
  and sex.
- Each pairwise comparison is tested for a series of kinship relationships such as parent-offspring,
+ Each 
+\change_deleted 193499690 1747464505
+pairwise comparison 
+\change_inserted 193499690 1747464508
+pair of samples 
+\change_unchanged
+is tested for a series of kinship relationships such as parent-offspring,
  half-sibling,
- or self.
+ or self
+\change_inserted 193499690 1747465098
+—
+ the alternative being 
+\begin_inset Quotes eld
+\end_inset
+
+unrelated
+\begin_inset Quotes erd
+\end_inset
+
+,
+ i.e.
+ none of the above
+\change_unchanged
+.
  The CKMR model has two components:
  a population-dynamics model driven by the demographic parameters;
  and formulae for expected frequencies of different kinship types in pairwise comparisons,
- conditional on sample covariates and population dynamics.
+ conditional on sample covariates and 
+\change_inserted 193499690 1747464530
+demographic parameters
+\change_deleted 193499690 1747464531
+population dynamics
+\change_unchanged
+.
  By combining the kinship data with the population dynamics model,
  parameters can be estimated using maximum likelihood or Bayesian methods.
 \end_layout
 
 \begin_layout Standard
-The success of CKMR depends on whether the data collected contain sufficient (re)captures.
- A study design that accounts for species life history,
- ecology,
- and physiology while evaluating effects of sample size,
+The success of CKMR depends 
+\change_inserted 193499690 1747464553
+above all 
+\change_unchanged
+on whether the data collected contain 
+\change_inserted 193499690 1747464958
+enough close-kin pairs to yield useful precision
+\change_deleted 193499690 1747464561
+sufficient (re)captures
+\change_unchanged
+.
+ 
+\change_inserted 193499690 1747464925
+The chance of success is greatly increased by 
+\change_deleted 193499690 1747464925
+A
+\change_unchanged
+ study design 
+\change_inserted 193499690 1747464989
+exercise 
+\change_unchanged
+that 
+\change_inserted 193499690 1747464934
+evaluates the effects of sample size,
  sex/age composition of sampled animals,
- and study duration can increase the chances of project success.
- The pairwise comparison framework whereby samples are compared to one another and tested for kinship relationships leads to analytical results for the expected number of kin pairs and expected variance given the number of samples (and associated covariates),
+ precision of covariate measurements,
+ study duration,
+ etc,
+ while taking into 
+\change_unchanged
+account
+\change_deleted 193499690 1747464626
+s
+\change_unchanged
+ 
+\change_inserted 193499690 1747464631
+the 
+\change_deleted 193499690 1747464632
+for 
+\change_unchanged
+species
+\change_inserted 193499690 1747464633
+'
+\change_unchanged
+ life history,
+ ecology,
+ and physiology
+\change_deleted 193499690 1747464939
+ while evaluating effects of sample size,
+ sex/age composition of sampled animals,
+ and study duration can increase the chances of project
+\change_inserted 193499690 1747464939
+.
+
+\change_unchanged
+ success
+\change_inserted 193499690 1747464651
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747465114
+not 
+\begin_inset Quotes eld
+\end_inset
+
+can
+\begin_inset Quotes erd
+\end_inset
+
+ but 
+\begin_inset Quotes eld
+\end_inset
+
+will
+\begin_inset Quotes erd
+\end_inset
+
+ increase chance of success,
+ compared to the usual pi
+\begin_inset Formula $\tilde{\text{n}}$
+\end_inset
+
+ata...
+ of 
+\begin_inset Quotes eld
+\end_inset
+
+design
+\begin_inset Quotes erd
+\end_inset
+
+ in ecology..!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
+ The pairwise comparison framework
+\change_deleted 193499690 1747464749
+ whereby samples are compared to one another and tested for kinship relationships
+\change_unchanged
+ leads to analytical results for the expected number of kin pairs and 
+\change_inserted 193499690 1747465037
+the parameter-estimation
+\change_deleted 193499690 1747465023
+expected
+\change_unchanged
+ variance
+\change_inserted 193499690 1747464755
+,
+
+\change_unchanged
+ given the number of samples 
+\change_deleted 193499690 1747464758
+(
+\change_unchanged
+and associated covariates
+\change_deleted 193499690 1747464760
+)
+\change_unchanged
+,
  so that simulation is not essential.
  Nevertheless,
- simulation can be used to evaluate kinship probabilities and design setup.
+ simulation can be use
+\change_deleted 193499690 1747465140
+d
+\change_inserted 193499690 1747465144
+ful for checking 
+\change_deleted 193499690 1747465146
+ to evaluate 
+\change_unchanged
+kinship probabilit
+\change_inserted 193499690 1747465166
+y formulae,
+ robustness to model simplifications,
+ 
+\change_deleted 193499690 1747465148
+ies
+\change_unchanged
+ and design setup.
  
 \end_layout
 
 \begin_layout Standard
 In this study,
- we perform and verify CKMR calculations using a case study on the Pacific walrus (
+ we 
+\change_inserted 193499690 1747465186
+demonstrate
+\change_deleted 193499690 1747465187
+perform and verify 
+\change_inserted 193499690 1747465203
+ 
+\change_unchanged
+CKMR 
+\change_inserted 193499690 1747465189
+design 
+\change_unchanged
+calculations 
+\change_deleted 193499690 1747465192
+using a case study on 
+\change_inserted 193499690 1747465193
+for 
+\change_unchanged
+the Pacific walrus (
 \emph on
 Odobenus rosmarus divergens
 \emph default
 ;
  hereafter,
- walrus) to demonstrate the process of CKMR study design and the utility of CKMR.
- Our goal was to understand how different possible demographic and design scenarios would impact precision of resulting estimates of abundance,
+ walrus)
+\change_inserted 193499690 1747465340
+,
+
+\change_unchanged
+ to 
+\change_inserted 193499690 1747465343
+show 
+\change_deleted 193499690 1747465344
+demonstrate 
+\change_unchanged
+the 
+\change_inserted 193499690 1747465347
+design 
+\change_unchanged
+process 
+\change_deleted 193499690 1747465349
+of CKMR study design 
+\change_unchanged
+and the utility of CKMR.
+ Our goal was to understand how different possible demographic 
+\change_inserted 193499690 1747465389
+scenarios 
+\change_unchanged
+and design 
+\change_inserted 193499690 1747465385
+choices
+\change_deleted 193499690 1747465385
+scenarios 
+\change_unchanged
+would impact precision of 
+\change_deleted 193499690 1747465403
+resulting 
+\change_unchanged
+estimates of abundance,
  adult female survival,
  and adult juvenile survival.
- In most CKMR applications to date,
+ 
+\change_inserted 193499690 1747465540
+In addition,
+ ...
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747469740
+rebecca's sentences for rest of para;
+ 
+\begin_inset Quotes eld
+\end_inset
+
+self
+\begin_inset Quotes erd
+\end_inset
+
+ should be in quotes when it's an additional kinship type.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ 
+\change_unchanged
+In most CKMR applications to date,
  self-recaptures were unlikely or impossible (e.g.,
  when sampling is lethal).
  
@@ -295,18 +602,51 @@ literal "false"
  Here,
  we extend traditional CKMR to include IMR as an additional kinship type,
  whereby pairwise genetic comparisons can show that two samples are from the same animal.
- We explore these design scenarios using IMR alone versus a combined CKMR and IMR (ICKMR) approach,
+ We explore these design scenarios using IMR alone versus a combined 
+\change_inserted 193499690 1747465486
+individual-and-close-kin mark-recapture 
+\change_deleted 193499690 1747465488
+CKMR and IMR 
+\change_unchanged
+(ICKMR) approach,
  and we find that the latter can be used to reduce the amount of survey effort required for adequate monitoring.
  
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 193499690 1747465613
+Because...
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747465617
+as per Rebecca
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 193499690 1747465629
 In the rest of this Introduction,
- we provide background on walrus biology and surveys.
+ we provide
+\change_unchanged
+ background on walrus biology and surveys.
  In Methods,
  we describe our walrus population dynamics model,
  derive walrus-appropriate kinship probability formulae,
- and show how to analytically calculate expected variances that might come from different survey designs.
+ and show how to analytically calculate expected variances 
+\change_deleted 193499690 1747465596
+that might come from
+\change_inserted 193499690 1747465597
+under
+\change_unchanged
+ different survey designs.
  We also outline the simulation we used to test our ICKMR model.
  The Results section shows how different survey designs are likely to perform (e.g.,
  IMR with\SpecialChar breakableslash
@@ -316,11 +656,47 @@ without CKMR).
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 193499690 1747465649
+Pacific 
+\change_unchanged
 Walrus biology and background
 \end_layout
 
 \begin_layout Standard
-The walrus is a gregarious,
+The 
+\change_inserted 193499690 1747465658
+Pacific 
+\change_unchanged
+walrus
+\change_inserted 193499690 1747465662
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747465701
+I know we are just saying 
+\begin_inset Quotes eld
+\end_inset
+
+walrus
+\begin_inset Quotes erd
+\end_inset
+
+ generally,
+ and that the Intro already says so,
+ but the context in this sentence and subheading is different!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ is a gregarious,
  ice-associated pinniped inhabiting continental shelf waters of the Bering and Chukchi seas.
  During winter (when sea ice forms south of the Bering Strait) virtually all walruses occupy the Bering Sea 
 \begin_inset CommandInset citation
@@ -394,6 +770,101 @@ literal "false"
 
 .
  
+\change_inserted 193499690 1747697673
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747730494
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747697690
+Lifespan,
+ maturity missing
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747730495
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747731316
+Need to say:
+ walrus can be aged from their tusks.
+ That's obviously not a goer for a live-release biopsy survey,
+ but it permits calibration and we expect DNAge to be pretty good (eg Robeck),
+ to maybe 10% of truth for most samples (so that juveniles are accurate).
+ [this is central to our thinking in rest of MS]
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747466046
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747731380
+Rebecca suggests deleting the next 3 paras.
+ They are a bit long-winded,
+ but I would prefer to keep 
+\emph on
+something...
+ 
+\emph default
+otherwise,
+ the readership might legitimately wonder 
+\emph on
+why
+\emph default
+ on earth anyone is bothering to count walrus with biopsies!
+ I know it's considered rude to ask that in ecology,
+ but I am a fisheries guy...
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 193499690 1747467816
+Pacific walrus have been heavily exploited in the the past,
+ are considered vulnerable to climate change and other anthropogenic impacts in future,
+ and are still subject to appreciable subsistence harvest (ref**).
+ Sustainable management requires estimates of absolute abundance that have reasonable precision,
+ but this is a hard species to count.
+ Despite extensive experience and careful planning,
+ aerial surveys have proved challenging for logistic and geopolitical reasons,
+ delivering at best very imprecise estimates,
+ and ship-based mark-recapture appears to be the only effective option.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -509,7 +980,13 @@ literal "false"
 \begin_layout Standard
 In 2013,
  the U.S.
- Fish and Wildlife Service (FWS) initiated a genetic IMR project to estimate walrus abundance and demographic rates 
+ Fish and Wildlife Service (FWS) 
+\change_inserted 193499690 1747467410
+began
+\change_deleted 193499690 1747467409
+initiated
+\change_unchanged
+ a genetic IMR project to estimate walrus abundance and demographic rates 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "beatty_panmixia_2020,beatty_estimating_2022"
@@ -518,8 +995,14 @@ literal "false"
 \end_inset
 
 .
- Under this approach,
- genetic 
+ 
+\change_deleted 193499690 1747467420
+Under this approach,
+ g
+\change_inserted 193499690 1747467421
+G
+\change_unchanged
+enetic 
 \begin_inset Quotes eld
 \end_inset
 
@@ -535,9 +1018,37 @@ literal "false"
 
 \end_inset
 
- provided a major advantage over traditional marking techniques because walruses are extremely difficult to handle physically.
- In each of five years of research cruises,
- biologists attempted to collect biopsies from a representative sample of walruses.
+ 
+\change_deleted 193499690 1747467447
+provided a major advantage over
+\change_inserted 193499690 1747467743
+is far preferable to
+\change_unchanged
+ traditional marking techniques because walruses are extremely difficult to handle physically.
+ In 
+\change_deleted 193499690 1747467873
+each of 
+\change_unchanged
+five 
+\change_inserted 193499690 1747467863
+summers
+\change_deleted 193499690 1747467865
+years
+\change_unchanged
+ of research cruises,
+ biologists 
+\change_inserted 193499690 1747467909
+tried
+\change_deleted 193499690 1747467908
+attempted
+\change_unchanged
+ to 
+\change_deleted 193499690 1747467917
+collect biopsies from
+\change_inserted 193499690 1747467919
+biopsy
+\change_unchanged
+ a representative sample of walruses.
  In 2013,
  2014,
  and 2016,
@@ -561,8 +1072,35 @@ literal "false"
 
 \end_inset
 
+
+\change_inserted 193499690 1747467947
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 193499690 1747467991
+Well,
+ that's arguable...
+ I'd say those are the classes that *can* be sampled,
+ logisticaslly!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
- Further methods for the IMR study are detailed by 
+ Further 
+\change_inserted 193499690 1747468011
+details are given in 
+\change_deleted 193499690 1747468003
+methods for the IMR study are detailed by
+\change_unchanged
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "beatty_panmixia_2020"
@@ -582,7 +1120,21 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Data analysis from the first generation of walrus research cruises (2013–2017) used a Cormack-Jolly-Seber multievent model to estimate survival rates,
+Data analysis from the 
+\change_deleted 193499690 1747468025
+first generation of
+\change_inserted 193499690 1747468028
+2013–2017
+\change_unchanged
+ 
+\change_deleted 193499690 1747468041
+walrus research 
+\change_unchanged
+cruises
+\change_deleted 193499690 1747468044
+ (2013–2017)
+\change_unchanged
+ used a Cormack-Jolly-Seber multievent model to estimate survival rates,
  and a Horvitz-Thompson-like estimator to obtain population size.
  The total abundance estimate of 257,000 had a 95% credible interval (CrI) of 171,000–366,000 (CV=0.19;
  
@@ -594,14 +1146,32 @@ literal "false"
 \end_inset
 
 ).
- Although the precision of the abundance estimate from the IMR study was much improved over the 2006 aerial survey,
+ Although 
+\change_inserted 193499690 1747468179
+this was much more precise than historical estimates from surveys (eg Speckman**),
+\change_deleted 193499690 1747468088
+the precision of the abundance estimate from the IMR study was much improved over the 2006 aerial survey
+\change_unchanged
+,
  the IMR study required extensive investment of human and financial resources.
- A more cost-effective approach is needed to assess the walrus population on a regular interval.
+ 
+\change_deleted 193499690 1747468228
+A more cost-effective approach is needed to assess the walrus population on a regular interval.
  As mentioned above,
  biopsy samples also contain information about kin relationships,
  which,
  through CKMR,
- can substantially augment the information content of genetic IMR without increasing sampling effort.
+ can substantially 
+\change_inserted 193499690 1747468294
+Here we explore ICKMR as a way to substantially increase 
+\change_deleted 193499690 1747468266
+augment 
+\change_unchanged
+the information content of 
+\change_deleted 193499690 1747468271
+genetic 
+\change_unchanged
+IMR without increasing sampling effort.
  [1574 words]
 \end_layout
 
