@@ -28,45 +28,53 @@ cvdf <- na.omit(filter(design_df, Value == "CV")) %>%
   mutate(L = factor(L, levels=c("L1", "L3"), labels=c("No", "Yes")))
 
 
+sedf <- na.omit(filter(design_df, Value == "SE")) %>%
+  select(ID, CKMR, Value, D, L, S, fadsurv, fjusurv, ppn_breedy) %>%
+  pivot_longer(cols = c(fadsurv, fjusurv, ppn_breedy), names_to = "Par", 
+               values_to = "SE") %>%
+  mutate(CKMR = as.factor(CKMR)) %>%
+  mutate(L = factor(L, levels=c("L1", "L3"), labels=c("No", "Yes")))
+
+
 ### REsULTS TEXT
-# mean decrease in CV on fadsurv with CKMR
-cvdf %>% filter(Par == "fadsurv") %>% 
-  pivot_wider(names_from = CKMR, values_from = CV) %>%
+# mean decrease in SE on fadsurv with CKMR
+sedf %>% filter(Par == "fadsurv") %>% 
+  pivot_wider(names_from = CKMR, values_from = SE) %>%
   mutate(Gain = Yes - No) %>%
   summarize(round(mean(Gain), digits = 2))
 
 # mean expected CVs under different demo scenarios
-cvdf %>% filter(Par == "fadsurv") %>% 
+sedf %>% filter(Par == "fadsurv") %>% 
   group_by(D) %>% 
-  summarize(Mean = round(mean(CV), digits = 2), 
-            Min = round(min(CV), digits = 2), 
-            Max = round(max(CV), digits = 2))
+  summarize(Mean = round(mean(SE), digits = 2), 
+            Min = round(min(SE), digits = 2), 
+            Max = round(max(SE), digits = 2))
 
 # mean decrease in fjusurv with CKMR
-cvdf %>% filter(Par == "fjusurv") %>% 
-  pivot_wider(names_from = CKMR, values_from = CV) %>%
+sedf %>% filter(Par == "fjusurv") %>% 
+  pivot_wider(names_from = CKMR, values_from = SE) %>%
   mutate(Gain = Yes - No) %>%
   summarize(round(mean(Gain), digits = 2))
 
-# mean expected CVs under different demo scenarios
-cvdf %>% filter(Par == "fjusurv") %>% 
+# mean expected SEs under different demo scenarios
+sedf %>% filter(Par == "fjusurv") %>% 
   group_by(D) %>% 
-  summarize(Mean = round(mean(CV), digits = 2), 
-            Min = round(min(CV), digits = 2), 
-            Max = round(max(CV), digits = 2))
+  summarize(Mean = round(mean(SE), digits = 2), 
+            Min = round(min(SE), digits = 2), 
+            Max = round(max(SE), digits = 2))
 
 # mean decrease in ppnbreedy with CKMR
-cvdf %>% filter(Par == "ppn_breedy") %>% 
-  pivot_wider(names_from = CKMR, values_from = CV) %>%
+sedf %>% filter(Par == "ppn_breedy") %>% 
+  pivot_wider(names_from = CKMR, values_from = SE) %>%
   mutate(Gain = Yes - No) %>%
   summarize(round(mean(Gain), digits = 2))
 
 # mean expected CVs under different demo scenarios
-cvdf %>% filter(Par == "ppn_breedy") %>% 
-  group_by(D) %>% 
-  summarize(Mean = round(mean(CV), digits = 2), 
-            Min = round(min(CV), digits = 2), 
-            Max = round(max(CV), digits = 2))
+sedf %>% filter(Par == "ppn_breedy") %>% 
+#  group_by(D) %>% 
+  summarize(Mean = round(mean(SE), digits = 2), 
+            Min = round(min(SE), digits = 2), 
+            Max = round(max(SE), digits = 2))
 
 #####
 
@@ -96,7 +104,7 @@ cvdf %>% filter(Par == "fadsurv") %>%
 
 # Appendices
 
-lhappendix <- na.omit(filter(design_df, Value == "CV")) %>%
+lhappendix <- na.omit(filter(design_df, Value == "SE")) %>%
   select(D, L, S, CKMR, fadsurv, fjusurv, ppn_breedy) %>%
   mutate(L = factor(L, levels=c("L3", "L1"), labels=c("Yes", "No"))) %>%
   rename("Lethal Samples" = L, "Sampling Scenario" = S,

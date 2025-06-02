@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/docs/genetics/alaska-2017/walrus/ms/
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children no
@@ -76,7 +76,7 @@
 \papersides 1
 \paperpagestyle default
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content true
@@ -85,7 +85,6 @@
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
-\author 193499690 "mvb"
 \end_header
 
 \begin_body
@@ -107,217 +106,59 @@ Discussion
 We developed an ICKMR study design,
  with walrus as a case study,
  as an example for other researchers embarking on this evolving type of study.
- 
-\end_layout
-
-\begin_layout Standard
-We investigated whether using CKMR could improve expected precision in estimates of adult female walrus population size.
+ We investigated whether using CKMR could improve expected precision in estimates of adult female walrus population size.
  To do this,
  we developed a CKMR model with individual recaptures as a kin type,
- in addition to 
-\change_inserted 193499690 1747743156
-parent
-\change_deleted 193499690 1747743162
-mother
-\change_unchanged
--offspring and half-sibling pairs.
- 
-\change_deleted 193499690 1747743175
-In our model development process,
- w
-\change_inserted 193499690 1747743177
-W
-\change_unchanged
-e made simplifying assumptions 
-\change_inserted 193499690 1747743184
-for tractability
-\change_deleted 193499690 1747743188
-to make the model tractable
-\change_unchanged
-.
+ in addition to parent-offspring and half-sibling pairs.
+ We made simplifying assumptions for tractability.
  For example,
- we 
-\change_inserted 193499690 1747743232
-decided to exclude paternal kinships and not to model males at all,
+ we decided to exclude paternal kinships and not to model males at all,
  since there would be minimal useful information in the data and extra complications in the modelling;
- and we 
-\change_deleted 193499690 1747743233
-developed 
-\change_inserted 193499690 1747743235
-opted for 
-\change_unchanged
-a stage-structured (rather than age-structured) model
-\change_deleted 193499690 1747743245
-.
- The stage-structuring implies that 
-\change_inserted 193499690 1747743289
-,
- assuming unselective 
-\change_unchanged
-sampling 
-\change_inserted 193499690 1747743730
-by age within stage (which may not be particularly accurate for juveniles).
- 
-\change_deleted 193499690 1747743684
-is unselective with respect to age classes within each stage.
- In addition,
- we assumed 
-\change_inserted 193499690 1747743743
-We further assumed 
-\change_unchanged
-quasi-equilibrium population dynamics
-\change_inserted 193499690 1747743757
- across the entire period 2000–2028,
- with 
-\change_deleted 193499690 1747743696
-.
- This included 
-\change_unchanged
-a constant rate of population change
-\change_deleted 193499690 1747743704
-,
-
-\change_unchanged
- 
-\change_deleted 193499690 1747743702
-demographic rates
-\change_unchanged
- and
-\change_inserted 193499690 1747743711
- stable
-\change_unchanged
- age composition
-\change_inserted 193499690 1747743762
-.
-
-\change_deleted 193499690 1747743765
- from 2000-2028,
-
-\change_unchanged
- 
-\change_inserted 193499690 1747743799
-This is certainly a 
-\change_deleted 193499690 1747743800
-which are 
-\change_unchanged
-simplification
-\change_deleted 193499690 1747743802
-s
-\change_unchanged
- during at least part of the time frame (Taylor et al.
+ and we opted for a stage-structured (rather than age-structured) model,
+ assuming unselective sampling by age within stage (which may not be particularly accurate for juveniles).
+ In future,
+ it may be worthwhile to develop a fully age-structured version of the model,
+ which would simplify the kinship probabilities for the self-recapture data.
+ We further assumed quasi-equilibrium population dynamics across the period 2000–2028,
+ with a constant rate of population change and stable age composition.
+ This is a simplification during at least part of the time frame (Taylor et al.
  2018).
  Nevertheless,
- 
-\change_deleted 193499690 1747743816
-with the large sample sizes in this study,
-\change_inserted 193499690 1747743816
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747743827
-I don't think sample size is relevant,
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- 
-\change_inserted 193499690 1747743888
-given that our general purpose was to investigate sample size requirements
-\change_deleted 193499690 1747743895
-and the need for general targets for design purposes
-\change_unchanged
-,
+ given that our general purpose was to investigate sample size requirements,
  we believe our simplifications were reasonable.
-
-\change_inserted 193499690 1747743325
- That said,
- the initial 
-\change_deleted 193499690 1747743325
  
-\change_inserted 193499690 1747743957
-appeal of a stage-structured formulaton—
- that it simplifies population dynamics without complicating the close-kin probabilities—
- turned out to be undermined by the addition of IMR data,
- for which pairwise 
-\begin_inset Quotes eld
-\end_inset
-
-kinship
-\begin_inset Quotes erd
-\end_inset
-
- probabilities would be much simpler with a fully age-structured model.
- When the real data arrive,
- it may well be worth revising the model to accommodate full age structure and changing age composition over time.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 The walrus project was initially planned as an IMR project with five years of total survey effort between 2013 and 2017 and another five years planned between 2023 and 2027.
- We found that expected CVs on adult female abundance were 
-\change_inserted 193499690 1747743428
-substantially and 
-\change_unchanged
-consistently
-\change_deleted 193499690 1747743425
- 
-\change_inserted 193499690 1747743429
- 
-\change_unchanged
-lower when using ICKMR than when using IMR.
+ Since the 2023 survey went ahead,
+ we considered that year as fixed in our design scenarios.
+ We found that expected CVs on adult female abundance were substantially (>30%) and consistently lower when using ICKMR than when using IMR.
  Our results indicated that by adding CKMR,
- sufficient precision (defined as a CV of 0.2) in estimates of adult female population size (with planned sample sizes per year of 1600) could be achieved with 1.75 years of total future survey effort (i.e.
- 2800 new samples)
-\change_inserted 193499690 1747743495
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747743498
-as opposed to..?
-\change_unchanged
-
-\end_layout
+ a CV of 0.1 on estimates of adult female population size (with planned sample sizes per year of 1600) could be achieved with 1.75 years of total future (post-2017) survey effort (i.e.
+ 2800 new samples) whereas IMR alone would require
+\lang english
+ at least 3.25 years
+\lang british
+ of total future effort (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:effVcv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-
-\change_unchanged
-.
+).
  Since this expected CV applies to adult females only,
  decision makers may wish to set a lower target CV;
  for example,
- with a target CV of 0.1,
- four additional years of future survey effort would be required
-\change_inserted 193499690 1747743456
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747743474
-With IMR or with ICKMR?
- We want a dramatic and clear difference here!
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-.
+ with a target CV of 0.05,
+ an additional 4 years of future survey effort would be required with ICKMR,
+ but would not be achieveable within 5 years with IMR alone.
  Estimates of adult female and juvenile female survival,
  and of the proportion of adult females in breeding state 2 (calving),
  were also improved with the addition of CKMR.
@@ -330,87 +171,24 @@ Lethal samples can be incorporated into both IMR and CKMR analyses.
  we considered lethal samples as a potential replacement for some live samples.
  Partial substitution of lethal samples for non-lethal (biopsy) samples resulted in similar precision on abundance estimates.
  In previous years,
- 50 samples per year were collected from harvested animals by the US Fish and Wildlife Service Walrus Harvest Monitoring and Reporting Program (WHMP).
+ 50 samples per year were collected from harvested animals by the FWS WHMP.
  However,
- the total harvest in Alaska is estimated to number ~4,210 walruses per year (mean for 2016-2020;
- USFWS,
- 2023).
- Approximately 400 harvested samples would be needed to reduce each cruise by one week or 1600 samples would be needed to remove the need for an entire cruise
-\change_inserted 193499690 1747743535
-.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747743558
-I don't think 
-\begin_inset Quotes eld
-\end_inset
-
-however
-\begin_inset Quotes erd
-\end_inset
-
- is needed here,
- and it gets massively overused in papers!
-\change_unchanged
-
-\end_layout
+ the total harvest in Alaska is estimated to number ~4,210 walruses per year ( 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "mean for 2016-2020;"
+key "noauthor_pacific_2023"
+literal "false"
 
 \end_inset
 
-
-\change_deleted 193499690 1747743526
-;
- however,
- w
-\change_inserted 193499690 1747743526
-W
-\change_unchanged
-e did not investigate the impact of using exclusively harvested samples in
-\change_inserted 193499690 1747744000
- place of 
-\change_deleted 193499690 1747744001
- one or multiple 
-\change_unchanged
-survey
-\change_inserted 193499690 1747744005
-(s)
-\change_deleted 193499690 1747744007
- years
-\change_unchanged
-.
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747744012
-Lethal samples might be just as good in the short term (and in general I am pro using lethal stuff),
- but in the long term 
-\begin_inset Quotes eld
-\end_inset
-
-it depends
-\begin_inset Quotes erd
-\end_inset
-
-.
- You are losing the possibility of future information about survival from either self or offspring recaptures.
- Worth noting...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Using samples from harvested walruses in combination with non-lethal samples collected from wild animals during research cruises can improve cost efficiency by reducing the need for extended at-sea operations,
+).
+ Approximately 400 harvested samples would be needed to reduce each cruise by one week or 1600 samples would be needed to remove the need for an entire cruise.
+ We did not investigate the impact of using exclusively harvested samples in place of one or more survey years.
+ In the longer term,
+ using exclusively lethal samples could lead to lower precision in estimates of abundance,
+ since lethal samples cannot go on to be self recaptures or future parents.
+ Using samples from harvested walruses in combination with non-lethal samples collected from wild animals during research cruises can improve cost efficiency by reducing the need for extended at-sea operations,
  thereby lowering logistical expenses associated with vessel charters and personnel time.
  Additionally,
  partial reliance on harvested samples mitigates disturbance to live walruses by decreasing the need for direct interactions with animals in the wild.
@@ -420,19 +198,9 @@ Using samples from harvested walruses in combination with non-lethal samples col
  Furthermore,
  the ongoing contribution of the WHMP to walrus abundance estimation provides a strong justification for maintaining the program,
  ensuring that robust population assessments continue to inform conservation and management decisions.
-\change_inserted 193499690 1747744083
-
-\end_layout
-
-\begin_layout Subsubsection
-
-\change_inserted 193499690 1747744105
-Age data and epigenetics
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1747745153
 The results presented here all assume that age is accurately measured for each sample,
  using a methylation-based 
 \begin_inset Quotes eld
@@ -442,7 +210,7 @@ epigenetic clock
 \begin_inset Quotes erd
 \end_inset
 
- .
+.
  Although epigenetic age has been shown to work fairly well in a variety of species,
  including walrus as in 
 \begin_inset CommandInset citation
@@ -455,35 +223,10 @@ literal "false"
 ,
  and further calibration studies are ongoing to improve cost and precision,
  it is not perfectly precise.
- Indeed,
- it would be far from surprising to find a CV of,
- say,
- 10% for walrus.
- What impact will this have on ICKMR precision for walrus?
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1747747184
-Failure to allow for any ageing error in CKMR will certainly lead to bias;
+ Failure to allow for any ageing error in CKMR will certainly lead to bias;
  for example,
  the birth-gap between XHSPs will be systematically overestimated,
- so that mortality rates will be underestimated
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747747201
-I'm just going to leave it at that,
- and see whether any reviewer is begging for more detail...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-.
+ so that mortality rates will be underestimated.
  However,
  as long as the error variance of estimated age is known,
  it is possible to allow for ageing error within the CKMR probability formulas,
@@ -511,194 +254,28 @@ literal "false"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1747747105
-We have in fact implemented all the necessary code for walrus,
- and we expect to use it when the real data arrive (and when ongoing calibration studies are ready),
- but we opted not to include ageing error in our design calculations (i.e.,
- to assume there is no error).
- We do yet know how big the errors will be,
- but based on recent studies such as 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Weber2024DNAgeray"
-literal "false"
-
-\end_inset
-
-,
- we do not expect them to be as bad as in the two papers previously cited;
- since we already have the code,
- design calculations can be re-run easily enough when better estimates of ageing error are available.
+ We expect to include ageing error in our ICKMR model when data are available,
+ but we opted not to include it in our design calculations (i.e.,
+ we assumed that there is no error),
+ because we do not yet know how large the errors will be.
+ Design calculations can be re-run easily enough when better estimates of ageing error are available.
  For that purpose,
  it would also be preferable to move to a fully-age-structured model,
  rather than stage-structured.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 193499690 1747747003
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747747148
-I could say more here,
- eg it matters more for younger samples and less when sampling is non-lethal,
- but partly it would be speculation and things I've only recently thought of,
- and it would take up a lot of words...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1747745869
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747745208
-Yet another PhD-reviewy-type-paper is Newediuk et al 2025.
- There's a lot of these...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Simplifying assumptions – DNA age
-\end_layout
-
-\begin_layout Standard
-Remind reader why age is so important
-\change_inserted 193499690 1747744080
-
-\end_layout
-
-\begin_layout Standard
-Answer question reader might be asking:
- what happens if we don’t have age or if our age information is very imprecise?
-\end_layout
-
-\begin_layout Standard
-How would an epigenetic age estimate with low precision impact analysis?
-\end_layout
-
-\begin_layout Standard
-How would an epigenetic age estimate with high precision impact analysis?
-\end_layout
-
-\begin_layout Standard
-At what point can we just use epigenetic age point estimates and ignore uncertainty?
-\end_layout
-
-\begin_layout Standard
-Does existing CKMR literature do this already?
- I think the answer is yes.
-\end_layout
-
-\begin_layout Standard
-Our ICKMR model relies on accurate age estimates for sampled animals.
- We did not include age uncertainty in the current model,
- but it could be added.
- Need some info here about DNAge and how we expect it to affect precision.
-\end_layout
-
-\begin_layout Standard
-Note that expected CVs are 
-\begin_inset Quotes eld
-\end_inset
-
-optimistic
-\begin_inset Quotes erd
-\end_inset
-
- in that they assume that age is known perfectly
-\end_layout
-
-\begin_layout Standard
 CKMR is a major advance in population ecology,
  and this paper provides a significant step towards fully leveraging this new method.
- We are the first to demonstrate how CKMR can be combined with IMR into a unified model.
-\change_inserted 193499690 1747745667
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747745702
-\begin_inset Quotes eld
-\end_inset
-
-Well actually...
-\begin_inset Quotes erd
-\end_inset
-
- I'm sure I've mentioned this before,
- but there's an old IWC paper that suggests basically this same thing,
- tho restricted to POPs +IMR.
- Citation here,
- and paper attached (I haven't re-reead it recently).
- So we should not be too firsty about this MS...
- Not sure how best to handle.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1747745676
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington2014abw-ckmr"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 193499690 1747744586
- 
-\change_inserted 193499690 1747744244
-We demonstrate 
-\change_deleted 193499690 1747744049
-Our method improves 
-\change_inserted 193499690 1747744244
-substantially improved 
-\change_unchanged
-precision in estimates of population size and demographic parameters compared to IMR alone.
+ We demonstrate how CKMR can be combined with IMR into a unified model and lead to substantially improved precision in estimates of population size and demographic parameters compared to IMR alone.
  We provide an example of ICKMR study design,
  including model development,
  model checking,
  and design calculations,
  and show how simulated data can be used to evaluate different proposed survey designs.
  While we used walrus as a motivating example,
- we intend our work to provide a roadmap to other researchers considering ICKMR as a tool to estimate population parameters across a range of taxa.
- [847 words]
+ we expect that ICKMR will be a useful tool for estimating population parameters of interest across a range of taxa.
+ [1081 words]
 \end_layout
 
 \end_body

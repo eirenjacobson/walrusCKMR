@@ -39,10 +39,12 @@ alldf <- left_join(estdf, sedf, by = c("ID", "CKMR", "D", "L", "S", "Year")) %>%
 # mean decrease in CV on Nfad w/ w/o CKMR, by Demo
 cvdf %>% 
   pivot_wider(names_from = CKMR, values_from = CV) %>%
-  mutate(Difference = Yes - No) %>%
+  mutate(Difference = (Yes - No)/No) %>%
   mutate(Dval = substr(ID, 1, 2)) %>%
   group_by(Dval) %>%
-  summarize(MeanD = mean(Difference)) %>%
+  summarize(MeanD = round(mean(Difference), digits = 2), 
+            Min = round(min(Difference), digits = 2), 
+            Max = round(max(Difference), digits = 2)) %>%
   mutate(MeanD = round(MeanD, digits = 2))
 
 # check mean gain in CV with lethal
@@ -57,6 +59,13 @@ cvdf %>%
 
 ###
 
+cvdf %>% 
+  select(-ID) %>%
+  pivot_wider(names_from = L, values_from = CV) %>%
+  mutate(Difference = `500` - `0`) %>%
+  #  group_by(interaction(D, CKMR)) %>%
+  group_by(CKMR) %>%
+  summarize(MeanD = round(mean(Difference), digits = 4))
 
 
 
@@ -79,9 +88,9 @@ sampling_names <- list(
   '8'="+ 75% '25-'28")
 
 demo_names <- list(
-  '1' = "Stationary Population",
-  '2' = "Decreasing Population",
-  '3' = "Increasing Population"
+  'S1' = "Stationary Population",
+  'S2' = "Decreasing Population",
+  'S3' = "Increasing Population"
 )
 
 plot_labeller <- function(variable,value){
@@ -92,15 +101,26 @@ plot_labeller <- function(variable,value){
   }
 }
 
-pal <- pnw_palette("Starfish", 2)
+sub.df <- cvdf %>%
+  mutate(Group = factor(paste0(L, CKMR), levels = c("0No", "0Yes", "500No", "500Yes"))) %>%
+  mutate(S2 = S)
 
 ggplot() +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
-  geom_point(data = cvdf, aes(x=Year, y = CV, color = L, shape = CKMR))+
-  facet_grid(D~S, labeller = plot_labeller) +
-  labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV # Adult Females") +
+  geom_hline(yintercept = 0.1, linetype = "dotted", color = "grey") +
+    geom_point(data = filter(sub.df, L == 0), aes(x=as.numeric(Year)-0.25, y = CV, shape = Group, color = Group))+
+  geom_point(data = filter(sub.df, L == 500), aes(x=as.numeric(Year)+0.25, y = CV, shape = Group, color = Group))+
+    facet_grid(D~S, labeller = plot_labeller) +
+  labs(colour = "CKMR", shape="Lethal Samples", 
+       x = "Year", y="Expected CV # Adult Females") +
   theme_bw() +
-  scale_color_manual(values = c("#105b58", "#ba7999")) +
+  scale_x_continuous(breaks = c(2015, 2020, 2025))+
+  scale_color_manual(name = NULL,
+                     labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
+                     values = c(c("#000000", "#000000"), c("#000000", "#000000"))) +
+  scale_shape_manual(name = NULL,
+                     labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
+                     values = c(2, 1, 17, 19))+
   theme(axis.text.x = element_text(angle = -70,vjust = 0.3, hjust=0)) +
   theme(legend.position = "bottom")
 
@@ -135,17 +155,21 @@ sub.df <- cvdf %>%
 
 ggplot() +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
-  geom_point(data = sub.df, 
-                           aes(x=Year, y = CV, color = Group, shape = Group, group = Group))+
+  geom_hline(yintercept = 0.1, linetype = "dotted", color = "grey") +
+  geom_point(data = filter(sub.df, L == 0), size = 2, 
+                           aes(x=as.numeric(Year)-.25, y = CV, color = Group, shape = Group, group = Group))+
+  geom_point(data = filter(sub.df, L == 500), size = 2,
+             aes(x=as.numeric(Year)+.25, y = CV, color = Group, shape = Group, group = Group))+
   facet_wrap(S2~S, labeller = plot_labeller, nrow = 1) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV # Adult Females") +
   theme(axis.text.x = element_text(angle = -70,vjust = 0.3, hjust=0)) +
+  scale_x_continuous(name = "Year", breaks = c(2015, 2020, 2025))+
   scale_colour_manual(name = NULL,
                       labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
-                      values = c(c("#ba7999", "#ba7999"), c("#105b58", "#105b58"))) +   
+                      values = c(c("#000000", "#000000"), c("#000000", "#000000"))) +   
   scale_shape_manual(name = NULL,
                      labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
-                     values = c(19, 17, 19, 17))+
+                     values = c(2, 1, 17, 19))+
 #  theme(legend.position = "bottom") +
   ylim(c(0, NA))+
   theme_bw()
@@ -184,14 +208,17 @@ cveffort <- cvdf %>%
   
 
 ggplot(filter(cveffort, D == "D1" & Year == 2025)) +
-  geom_hline(yintercept = 0.2, linetype = "dashed", color = "grey") +
-  geom_point(aes(x=Effort, y = CV, color = Group, shape = Group, group = Group)) +
+  geom_hline(yintercept = 0.2, linetype = "dotdash", color = "grey") +
+  geom_hline(yintercept = 0.1, linetype = "dashed", color = "grey") +
+  geom_hline(yintercept = 0.05, linetype = "dotted", color = "grey") +
+  
+    geom_point(aes(x=Effort, y = CV, color = Group, shape = Group, group = Group), size = 2) +
   scale_colour_manual(name = NULL,
                       labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
-                      values = c(c("#ba7999", "#ba7999"), c("#105b58", "#105b58"))) +   
+                      values = c(c("#000000", "#000000"), c("#000000", "#000000"))) +   
   scale_shape_manual(name = NULL,
                      labels = c("IMR w/o Lethal", "ICKMR w/o Lethal", "IMR w/ Lethal", "ICKMR w/ Lethal"),
-                     values = c(19, 17, 19, 17))+
+                     values = c(2, 1, 17, 19))+
 #  facet_grid(D~Year, labeller = plot_labeller) +
   labs(colour = "Lethal Samples", shape="CKMR", y="Expected CV") +
   ylab("Expected CV for # Adult Females in 2025")+

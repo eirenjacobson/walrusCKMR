@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/docs/genetics/alaska-2017/walrus/ms/
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -82,7 +82,7 @@ InStar
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -91,7 +91,6 @@ InStar
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
-\author 193499690 "mvb"
 \end_header
 
 \begin_body
@@ -106,269 +105,6 @@ RESULTS
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-Demographic parameters
-\change_inserted 193499690 1747741435
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1747741438
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747741555
-These aren't the headline results.
- Wouldn't be better to lead off with abundance,
- which is the thing of main interest?
- (Some of my Q's here are answered in the abund section anyway.) Among the non-abund pars,
- survival is most important,
- but it's simply hard to estimate it really well when it's this high.
- 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The simulated values of adult female survival and post-senescent adult female survival (Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:demo-pars"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-) resulted in effective survival from age 6-37 of 0.96,
- 0.95,
- and 0.96 for stationary,
- decreasing,
- and increasing populations,
- respectively.
- 
-\change_inserted 193499690 1747740895
-When estimated with ICKMR,
- 
-\change_unchanged
-he 
-\change_deleted 193499690 1747740902
-mean expected
-\change_inserted 193499690 1747741298
-expected 
-\change_deleted 193499690 1747740902
- CVs
-\change_inserted 193499690 1747740851
-!!
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747740883
-For survival rates,
- CV is probably not a good measure;
- rather just go with SE.
- 
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- were 0.01 (range 0-0.02)
-\change_inserted 193499690 1747740926
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747741326
-Is a range helpful here?
- What's the range across,
- and what causes the differences?
- I would've thought (admittedly not hard) that a single number should suffice,
- and would be clearer.
- Mind you,
- it might need an extra DP for sruvival.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-,
- 0.01 (range 0.01-0.03),
- and 0.02 (0.01-0.03) for stationary,
- decreasing,
- and increasing populations respectively.
- The expected CVs on adult female survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in 
-\change_deleted 193499690 1747741012
-CV
-\change_inserted 193499690 1747741014
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747741028
-CV -> SE
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_deleted 193499690 1747741029
- 
-\change_unchanged
-= 0.01).
- 
-\end_layout
-
-\begin_layout Standard
-The simulated values of juvenile female survival from age 1-5 were 0.9,
- 0.85,
- and 0.925 (Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:demo-pars"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-).
- The mean expected CVs on juvenile female survival were 0.03 (range 0.02-0.05),
- 0.04 (range 0.03-0.07),
- and 0.05 (range 0.03-0.07) for stationary,
- decreasing,
- and increasing populations respectively.
- Again,
- the expected CVs on juvenile survival were always lower when ICKMR was used than when IMR alone was applied (mean decrease in CV = 0.01).
- 
-\change_inserted 193499690 1747741043
-sIMILAR COMMENT
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-Across all demographic and sampling scenarios,
- the simulated proportion of adult females in breeding state 2 (calving) was 0.26.
- The mean expected CVs on the proportion 
-\change_inserted 193499690 1747741587
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747741637
-Again,
- CV on proportion is iffy—
- SE probably better.
- Consider a proportion of 0.05,
- which you could equally well think of as a propportion of 0.95 the other way—
- would have completely different CV for a minor redefition.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-of adult females in breeding state 2 were 0.31 (range 0.05-0.69
-\change_inserted 193499690 1747741077
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747741090
-Why are the ranges so big now?
- What are they ranges across..?
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-),
- 0.45 (range (0.07-1),
- and 0.53 (range 0.08-1.19) for stationary,
- decreasing,
- and increasing populations,
- respectively.
- The expected CVs on the proportion of adult females in breeding state 2 varied greatly depending on both demographic and sampling scenario,
- but were notably lower when ICKMR was used compared with IMR (mean decrease in CV = 0.71).
- 
-\end_layout
-
-\begin_layout Standard
-See Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:LH_Expected-CVs"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- for expected CVs of life history parameters across all demographic and sampling scenarios with and without the substitution of lethal samples and use of ICKMR.
-\change_inserted 193499690 1747741067
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 193499690 1747741069
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742347
-Some comment on why the *precision* depends on the underlying pop dyn scenario.
- Is it cozza different numbers of samples?
- Or..?
- If this section came after the abundance one,
- then I guess that would already be answered.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -400,42 +136,22 @@ status open
 
 \begin_layout Plain Layout
 Expected CV of adult female abundance (vertical axis) in different years (horizontal axis) under different sampling scenarios (panel columns) for a simulated stationary population.
- Circular points represent expected CVs from IMR alone,
- while triangular points show expected CVs with ICKMR.
- The inclusion of lethal samples is indicated by green (lethal samples substituted) or purple (no lethal samples).
- The horizontal dashed line at CV = 0.2 represents a decision-making threshold.
+ For clarity,
+ points have been jittered horizontally.
+ Triangular points represent expected CVs from IMR alone,
+ while circular points show expected CVs with ICKMR.
+ The inclusion of lethal samples is indicated by filled (lethal samples substituted) or open (no lethal samples) points.
+ The grey horizontal dot-dashed,
+ dashed,
+ and dotted lines at CV = 0.2,
+ 0.1,
+ and 0.05 respectively represent decision-making thresholds.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:stationaryCV"
 
 \end_inset
 
-
-\change_inserted 193499690 1747741865
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742326
-You won't like this comment,
- but I really find it hard to read this figure.
- The dots and triangles are similar in shape and hue,
- and I think one is often covering up another one.
- If I squint they all look the same.
- Could you eg use open-symbols and closed-symbols,
- plus offsetting horizontally either the IMR vs ICKMR or the lethal vs non-lethal?.(former probably clearer).
- The next figure works slightly better because the separation is bigger and the overall pattern is clearer,
- but the various symbols remain pretty hard to differentiate.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -485,8 +201,13 @@ status open
 
 \begin_layout Plain Layout
 Total future survey effort (in number of years,
- horizontal axis) versus expected CV for adult female abundance in 2025 with IMR (circular points) or with ICKMR (triangular points) and with (green) and without (purple) the substitution of lethal samples for a simulated stationary population.
- The horizontal dashed line at CV = 0.2 is a decision-making threshold.
+ which may be a combination of calendar years of effort and fractional effort per year,
+ horizontal axis) versus expected CV for adult female abundance in 2025 with IMR (triangular points) or with ICKMR (circular points) and with (filled) and without (open) the substitution of lethal samples for a simulated stationary population.
+ The horizontal dot-dashed,
+ dashed,
+ and dotted lines at CV = 0.2,
+ 0.1,
+ and 0.05 respectively represent decision-making thresholds.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:effVcv"
@@ -518,25 +239,7 @@ Effort v CV in 2025 for stationary pop
 
 \begin_layout Standard
 Across all sampling scenarios,
- 
-\change_deleted 193499690 1747742242
-the application of 
-\change_unchanged
-ICKMR 
-\change_deleted 193499690 1747742254
-resulted in higher expected precision in
-\change_inserted 193499690 1747742258
-gave substantially more precise
-\change_unchanged
- abundance estimates 
-\change_deleted 193499690 1747742264
-compared to the application of
-\change_inserted 193499690 1747742264
-than 
-\change_deleted 193499690 1747742266
- 
-\change_unchanged
-IMR alone (Fig.
+ ICKMR gave substantially more precise abundance estimates than IMR alone (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -561,14 +264,12 @@ nolink "false"
 \end_inset
 
 ).
- The mean decrease in CV on adult female abundance in paired scenarios without and with CKMR was 4% for a stationary population,
+ The mean decrease in CV on adult female abundance in paired scenarios with IMR and ICKMR was 4% for a stationary population,
  7% for a decreasing population,
- and 8% for an increasing population
-\change_inserted 193499690 1747742435
-,
- which is large in the context of CVs of 5–30%
-\change_unchanged
-.
+ and 8% for an increasing population.
+ These represent decreases of 44%,
+ 49%,
+ and 47% respectively.
  See Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -580,40 +281,7 @@ nolink "false"
 
 \end_inset
 
- for 
-\change_deleted 193499690 1747741218
-expected
-\change_inserted 193499690 1747741240
-expected?
-
-\change_unchanged
- CVs 
-\change_inserted 193499690 1747742471
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742492
-can you just say 
-\begin_inset Quotes eld
-\end_inset
-
-for the full set of abundance CVs
-\begin_inset Quotes erd
-\end_inset
-
-?
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-of adult female abundance across all demographic and sampling scenarios with and without the substitution of lethal samples and use of CKMR.
+ for expected CVs of adult female abundance across all demographic and sampling scenarios with and without the substitution of lethal samples and use of CKMR.
 \end_layout
 
 \begin_layout Standard
@@ -628,85 +296,18 @@ nolink "false"
 
 \end_inset
 
-) affected expected precision
-\change_deleted 193499690 1747742455
- of simulated survey designs
-\change_unchanged
-.
- A declining population led to smaller population size during the target inference years 
-\change_inserted 193499690 1747742529
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742555
-Tautology!!!
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-(2015-2025).
- 
-\change_inserted 193499690 1747742594
-With a declining population,
- there is less competition to be the mother of any given sample,
- 
-\change_deleted 193499690 1747742596
-As 
-\change_inserted 193499690 1747742596
-and 
-\change_deleted 193499690 1747742598
-a result,
-
-\change_unchanged
- the number of kin pairs 
-\change_inserted 193499690 1747742601
-is higher
-\change_deleted 193499690 1747742602
-increased
-\change_unchanged
-,
+) affected expected precision.
+ With a declining population and smaller resulting population size during target inference years,
+ there is less competition to be the kin of any given sample,
+ therefore the number of kin pairs is higher,
  reducing the expected CV for a given sample size.
- 
-\change_inserted 193499690 1747742614
-The opposite happens with an increasing population.
-\change_deleted 193499690 1747742616
-Conversely,
- with an increasing population size,
- the number of kin pairs resulting from a set number of samples was lower,
- and therefore the expected CV was higher.
-
-\change_unchanged
- 
+ The opposite happens with an increasing population.
 \end_layout
 
 \begin_layout Standard
-The simulated sampling scenarios resulted in between 1.75 and 5 years of total future survey effort (where total future survey effort is a combination of years of effort and effort per year,
- and where 5 years of future survey effort over 5 years was the original plan for IMR
-\change_inserted 193499690 1747742642
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742650
-this is a bit confusing
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-;
+The simulated sampling scenarios resulted in between 1.75 and 5 years of total future (2023-2027) survey effort (where total future survey effort is a combination of years of effort and effort per year,
+ which may be fractional,
+ and where 5 years of future survey effort over 5 years was the original plan for IMR;
  Fig.
  
 \begin_inset CommandInset ref
@@ -720,26 +321,7 @@ nolink "false"
 \end_inset
 
 ).
- 
-\change_inserted 193499690 1747742842
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742867
-...
- and I agree with Rebecca that the fractional-yaer thing warrants an explanation (or reminder!).
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-In general,
+ In general,
  expected CVs on adult female abundance decreased with increasing number of future sampling years (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -752,36 +334,7 @@ nolink "false"
 \end_inset
 
 ).
- 
-\change_inserted 193499690 1747742655
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742927
-does that mean for the same *total* amount of sampling?
- I Or...
- Coz if it was just that 
-\begin_inset Quotes eld
-\end_inset
-
-when we increased the sample size,
- the CV went down
-\begin_inset Quotes erd
-\end_inset
-
- then that's not necssary to report.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-For a simulated stationary population and with a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
+ For a simulated stationary population and with a target CV of 0.2 (similar to CV = 0.19 from the IMR analysis in 
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "beatty_estimating_2022"
@@ -790,8 +343,19 @@ literal "false"
 \end_inset
 
 ) on estimates of adult female abundance in 2025,
- sufficient precision with IMR could be achieved with 1.75-2 years of future survey effort,
- while with ICKMR sufficient precision could be achieved with less than 1.75 years of total future survey effort (Fig.
+ sufficient precision was achieved in almost all sampling scenarios with and without ICKMR and the substitution of lethal samples (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:stationaryCV"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -804,45 +368,100 @@ nolink "false"
 \end_inset
 
 ).
+ With a target CV of 0.1,
+ ICKMR could achieve sufficient precision with 1.75 years of total future survey effort,
+ while IMR alone would require at least 3.25 years of total future survey effort.
+ With a target CV of 0.05,
+ none of the sampling scenarios resulted in sufficient precision when IMR alone was used.
+ With ICKMR,
+ CV < 0.05 could be achieved with 4 or more years of total future survey effort.
  
-\change_inserted 193499690 1747741690
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747742799
-That is a bit of an underwhelming way of putting it...
- Given that ICKMR nearly a*halves* the CV in any given year,
- from Fig 3.
- So it might only take half as long to reach a given CV,
- or something like that.
- One problem is that a nominal target of 20% CV (which aint' that great TBH) is just too easy.
- But the *general* point here,
- not the walrussy one,
- is that you are probably halving the CV for the same amount of effort.
- (of course it won't be half in general.) Something more dramatic seems necessary...
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 The simulated substitution of 500 lethal samples per sampling year did not change expected precision in abundance estimates (the mean difference with versus without lethal samples was 0% across all demographic and sampling scenarios).
- This suggests that lethal samples are approximately equally valuable for 
-\change_inserted 193499690 1747742732
-walrus 
-\change_unchanged
-ICKMR,
+ This suggests that lethal samples are approximately equally valuable for walrus ICKMR,
  and the substitution of lethal samples for live biopsy samples could reduce required cruise length (500 samples = approx.
  1/3 of samples expected during a 4-week cruise).
+ 
+\end_layout
+
+\begin_layout Subsection
+Demographic parameters
+\end_layout
+
+\begin_layout Standard
+The simulated values of adult female survival and post-senescent adult female survival (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) resulted in effective survival from age 6-37 of 0.96,
+ 0.95,
+ and 0.96 for stationary,
+ decreasing,
+ and increasing populations,
+ respectively.
+ Depending on demographic scenario,
+ sampling scenario,
+ and substitution of lethal samples,
+ the expected SE on adult female survival ranged from 0 to 0.03.
+ When estimated with ICKMR,
+ the expected SE on adult female survival were always lower than when IMR alone was applied (mean decrease in SE = 0.01).
+ 
+\end_layout
+
+\begin_layout Standard
+The simulated values of juvenile female survival from age 1-5 were 0.9,
+ 0.85,
+ and 0.925 (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:demo-pars"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Across demographic scenarios,
+ sampling scenarios,
+ and the substitution of lethal samples,
+ the expected SE on juvenile female survival ranged from 0.02 to 0.06.
+ The mean expected decrease in SE with ICKMR was 0.01.
+ 
+\end_layout
+
+\begin_layout Standard
+Across all demographic and sampling scenarios,
+ the simulated proportion of adult females in breeding state 2 (calving) was 0.26.
+ The mean expected SEs on the proportion of adult females in breeding state 2 across demographic,
+ sampling and lethality scenarios was 0.11 (range 0.01-0.31).
+ The expected SEs on the proportion of adult females in breeding state 2 were notably lower when ICKMR was used compared with IMR (mean decrease in SE = 0.19).
+ 
+\end_layout
+
+\begin_layout Standard
+See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:LH_Expected-CVs"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ for expected CVs of life history parameters across all demographic and sampling scenarios with and without the substitution of lethal samples and use of ICKMR.
  [810 words]
 \end_layout
 

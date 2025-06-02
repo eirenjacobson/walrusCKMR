@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin D:/docs/genetics/alaska-2017/walrus/ms/
+\origin unavailable
 \textclass article
 \use_default_options false
 \begin_modules
@@ -91,7 +91,7 @@ InStar
 \papersides 1
 \paperpagestyle plain
 \tablestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -100,7 +100,6 @@ InStar
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
-\author 193499690 "mvb"
 \end_header
 
 \begin_body
@@ -253,7 +252,7 @@ DeclareFieldFormat*{note}{}
 \end_layout
 
 \begin_layout Title
-Combining individual and close-kin mark-recapture to design an effective survey for Pacific walrus 
+Combining individual and close-kin mark-recapture to design an effective wildlife population survey
 \end_layout
 
 \begin_layout Author
@@ -476,16 +475,20 @@ The findings and conclusions in this article are those of the authors and do not
 Data availability
 \end_layout
 
+\begin_layout Standard
+Code to reproduce the analyses presented in this manuscript is available at github.com/eirenjacobson/walrusCKMR.
+\end_layout
+
 \begin_layout Subsection*
 Conflict of Interest statement
 \end_layout
 
-\begin_layout Subsection*
-Author contribution statements
+\begin_layout Standard
+The authors declare no conflicts of interest.
 \end_layout
 
 \begin_layout Subsection*
-Statement on inclusion (optional)
+Author contribution statements
 \end_layout
 
 \begin_layout Standard
@@ -504,45 +507,8 @@ CKMR is a promising approach for assessing population size of species which have
  
 \emph default
 We develop the ICKMR model and test it using simulated datasets,
- then use 
-\change_inserted 193499690 1747464031
-properties of the
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 193499690 1747464043
-\begin_inset Quotes eld
-\end_inset
-
-pseudo
-\begin_inset Quotes erd
-\end_inset
-
- will scare people unnecessarily!
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_deleted 193499690 1747464019
-information from the pseudo-
-\change_unchanged
-likelihood to investigate the expected precision in estimates of abundance 
-\change_deleted 193499690 1747469586
-with different proposed
-\change_inserted 193499690 1747469588
-under various
-\change_unchanged
- survey designs.
- The advantages of 
-\change_inserted 193499690 1747464053
-I
-\change_unchanged
-CKMR over IMR include an increased effective sample size (since each individual tags not only itself,
+ then use properties of the likelihood to investigate the expected precision in estimates of abundance under various survey designs.
+ The advantages of ICKMR over IMR include an increased effective sample size (since each individual tags not only itself,
  but also its parents,
  siblings,
  and offspring) and additional insights into demographic quantities of interest.
@@ -555,7 +521,7 @@ CKMR over IMR include an increased effective sample size (since each individual 
  and with ICKMR,
  fewer years of future sampling can be conducted to obtain sufficient precision in estimates of adult female walrus abundance.
  This work demonstrates the utility of combining IMR with CKMR and is applicable across a variety of taxa.
- [198/200]
+ [197/200]
 \end_layout
 
 \begin_layout Standard

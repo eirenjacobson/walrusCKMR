@@ -163,7 +163,8 @@ reasonably well
 \begin_inset Formula $227\pm2\sqrt{227}$
 \end_inset
 
- or about [195,255].
+ or about [195,
+ 255].
  Clearly,
  the expected total needs to be fairly large for this to have much power,
  so it might be useful to increase the simulated sample size for checking purposes.
@@ -372,10 +373,8 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
  RoI is the rate of increase of the population,
  lg_fadsurv is the logit of adult female survival,
  diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
- lpsi1 is the (log?
- or logit?) probability of breeding on a two-year interval,
- lpsi2 is the (log?
- or logit?) probability of breeding on a three-or-greater year interval.
+ lpsi1 is the logit probability of breeding on a two-year interval,
+ lpsi2 logit probability of breeding on a three-or-greater year interval.
 \end_layout
 
 \end_inset
@@ -746,10 +745,8 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
  RoI is the rate of increase of the population,
  lg_fadsurv is the logit of adult female survival,
  diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
- lpsi1 is the (log?
- or logit?) probability of breeding on a two-year interval,
- lpsi2 is the (log?
- or logit?) probability of breeding on a three-or-greater year interval.
+ lpsi1 is the logit probability of breeding on a two-year interval,
+ lpsi2 is the logit probability of breeding on a three-or-greater year interval.
 \end_layout
 
 \end_inset
