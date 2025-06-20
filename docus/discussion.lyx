@@ -173,7 +173,7 @@ Lethal samples can be incorporated into both IMR and CKMR analyses.
  In previous years,
  50 samples per year were collected from harvested animals by the FWS WHMP.
  However,
- the total harvest in Alaska is estimated to number ~4,210 walruses per year ( 
+ the total harvest in Alaska is estimated to number ~4,210 walruses per year 
 \begin_inset CommandInset citation
 LatexCommand citep
 before "mean for 2016-2020;"
@@ -182,7 +182,7 @@ literal "false"
 
 \end_inset
 
-).
+.
  Approximately 400 harvested samples would be needed to reduce each cruise by one week or 1600 samples would be needed to remove the need for an entire cruise.
  We did not investigate the impact of using exclusively harvested samples in place of one or more survey years.
  In the longer term,
@@ -242,6 +242,9 @@ literal "false"
 
  followed this approach for school shark,
  using (substantially inaccurate) vertebral ages rather than epigenetic clocks.
+ In the case of ICKMR,
+ the information from recaptured individuals will also be helpful in resolving ages,
+ since the interval between sampling will be known.
  Nevertheless,
  in severe cases uncertainty about age can drastically limit the ability to gain information from CKMR,
  even when the number of kin-pairs found is high and the model is adjusted properly,
@@ -275,7 +278,6 @@ CKMR is a major advance in population ecology,
  and show how simulated data can be used to evaluate different proposed survey designs.
  While we used walrus as a motivating example,
  we expect that ICKMR will be a useful tool for estimating population parameters of interest across a range of taxa.
- [1081 words]
 \end_layout
 
 \end_body

@@ -259,7 +259,7 @@ N\left(y+t,a+t\right)\equiv N\left(y,a\right)\Phi\left(t,a\right).\label{eq:cons
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -491,7 +491,7 @@ because there is only probability
 \begin_inset Formula $s$
 \end_inset
 
- elsewhere in this document.) 
+ elsewhere in this document.)
 \end_layout
 
 \begin_layout Plain Layout
@@ -669,7 +669,6 @@ In some situations,
  and then re-inserted in a second iteration of estimation),
  the offence would often be small.
  That said:
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -708,6 +707,10 @@ lethal-sample
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
 Additional notes on males
 \begin_inset CommandInset label
 LatexCommand label
@@ -749,7 +752,7 @@ literal "false"
 \begin_layout Standard
 There will still be plenty of cross-cohort paternal HSPs (XpHSPs) in our samples,
  but the unknown persistent variability again ruins the picture.
- The only male adults that are visible thru XpHSPs are the ones that are breeding successfully,
+ The only male adults that are visible through XpHSPs are the ones that are breeding successfully,
  and in the absence of any independent information on which ones those are (e.g.
  size composition in fish,
  linked to empirical evidence of size-fecundity relationship) then there is no way of relating the number of successful breeders to overall male abundance.
@@ -787,6 +790,80 @@ While there might be some biological insights to be gained from inspection of ma
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Further HSP complications 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Further-HSP-complications"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second issue with all second-order kin (e.g.,
+ HSP),
+ is that pairwise-kinship statistics are not currently powerful enough to completely distinguish them all from a few 
+\begin_inset Quotes eld
+\end_inset
+
+lucky
+\begin_inset Quotes erd
+\end_inset
+
+ third-order kin such as Great-Grandparent-Grandchild.
+ To handle this without bias,
+ the best approach is set a threshold for the statistic that should almost completely exclude false-positives from third-order kin,
+ then to estimate empirically the proportion of true second-order kin that will be lost below the threshold (i.e.,
+ the false-negative rate) based on the observed distribution of kin-pair statistics.
+ Only kin-pairs that are above the threshold will be treated as HSPs,
+ but the probability formula can be multiplied by the complement of the false-negative probability to compensate.
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hillary2018WS-CKMR"
+literal "false"
+
+\end_inset
+
+ for more details.
+ The false-negative rate depends both on the species and the genotyping method (in particular,
+ the number of loci) and cannot be predicted in advance.
+ However,
+ experience suggests 15% is usually a safe upper limit.
+\end_layout
+
+\begin_layout Standard
+Determining that a pair is HSP does not differentiate between mHSPs (maternal;
+ shared mother) and pHSPs (paternal;
+ shared father).
+ This can be determined by genotyping the mitochondrial DNA (mtDNA;
+ always inherited from the mother only) of known HSPs.
+ If the genotypes are different,
+ the descent must be paternal;
+ if the same,
+ descent is probably maternal,
+ but could arise by chance in a few paternal-HSP cases.
+ However,
+ in our experience,
+ except for very small populations (hundreds of adults),
+ mtDNA diversity has always been high enough that shared-mtDNA HSPs might as well be treated as definite mHSPs.
+ We assume as much here.
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -961,83 +1038,6 @@ N_{y,\text{J}} & =N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\te
 \end_inset
 
 
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Further HSP complications 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Further-HSP-complications"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The second issue with all second-order kin (e.g.,
- HSP),
- is that pairwise-kinship statistics are not currently powerful enough to completely distinguish them all from a few 
-\begin_inset Quotes eld
-\end_inset
-
-lucky
-\begin_inset Quotes erd
-\end_inset
-
- third-order kin such as Great-Grandparent-Grandchild.
- To handle this without bias,
- the best approach is set a threshold for the statistic that should almost completely exclude false-positives from third-order kin,
- then to estimate empirically the proportion of true second-order kin that will be lost below the threshold (i.e.,
- the false-negative rate) based on the observed distribution of kin-pair statistics.
- Only kin-pairs that are above the threshold will be treated as HSPs,
- but the probability formula can be multiplied by the complement of the false-negative probability to compensate.
- See 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bravington_close-kin_2016"
-literal "false"
-
-\end_inset
-
- or 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Hillary2018WS-CKMR"
-literal "false"
-
-\end_inset
-
- for more details.
- The false-negative rate depends both on the species and the genotyping method (in particular,
- the number of loci) and cannot be predicted in advance.
- However,
- experience suggests 15% is usually a safe upper limit.
-\end_layout
-
-\begin_layout Standard
-Determining that a pair is HSP does not differentiate between mHSPs (maternal;
- shared mother) and pHSPs (paternal;
- shared father).
- This can be determined by genotyping the mitochondrial DNA (mtDNA;
- always inherited from the mother only) of known HSPs.
- If the genotypes are different,
- the descent must be paternal;
- if the same,
- descent is probably maternal,
- but could arise by chance in a few paternal-HSP cases.
- However,
- in our experience,
- except for very small populations (hundreds of adults),
- mtDNA diversity has always been high enough that shared-mtDNA HSPs might as well be treated as definite mHSPs.
- We assume as much here.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1671,6 +1671,147 @@ I think...
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Expected information from a single Poisson observation 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Expected-information-from"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose the random variable 
+\begin_inset Formula $W$
+\end_inset
+
+ follows a Poisson distribution with mean 
+\begin_inset Formula $p\left(\theta\right)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a vector of unknown parameters.
+ Then,
+ up to an additive constant,
+ the log-likelihood 
+\begin_inset Formula $\Lambda\left(W\right)$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{gather}
+\Lambda\left(W\right)=-p\left(\theta\right)+W\log p\left(\theta\right)\label{eq:sbapx1}
+\end{gather}
+
+\end_inset
+
+and the score function is 
+\begin_inset Formula 
+\begin{gather}
+\frac{d\Lambda}{d\theta}=-\frac{dp}{d\theta}+\frac{W}{p}\frac{dp}{d\theta}=\frac{dp}{d\theta}\left(\frac{W}{p}-1\right)\label{eq:sbapx2}
+\end{gather}
+
+\end_inset
+
+The expected Fisher Information about the 
+\begin_inset Formula $i$
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th
+\end_layout
+
+\end_inset
+
+ components of 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ defined as 
+\begin_inset Formula $\text{FI}_{ij}\triangleq\mathbb{E}_{W}\left[\frac{d\Lambda}{d\theta_{i}}\frac{d\Lambda}{d\theta_{j}}\right]$
+\end_inset
+
+,
+ is 
+\begin_inset Formula 
+\begin{gather}
+\text{FI}_{ij}=\mathbb{E}_{W}\left[\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\left(\frac{W}{p}-1\right)^{2}\right]\nonumber \\
+=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\frac{1}{p^{2}}\mathbb{E}\left[\left(W-p\right)^{2}\right]\nonumber \\
+=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\frac{1}{p^{2}}\mathbb{V}\left[W\right]\nonumber \\
+=\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\label{eq:sbapx3}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By the chain rule,
+ we have 
+\begin_inset Formula 
+\begin{gather}
+\frac{d\sqrt{p}}{d\theta}=\frac{1}{2\sqrt{p}}\frac{dp}{d\theta}\label{eq:sbapx4}
+\end{gather}
+
+\end_inset
+
+Substituting into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sbapx3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+),
+ we arrive at the desired result for the entire Fisher Information matrix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+\text{FI}=4\frac{d\sqrt{p}}{d\theta}\frac{d\sqrt{p}}{d\theta}^{\top}\label{eq:sbapx5}
+\end{gather}
 
 \end_inset
 

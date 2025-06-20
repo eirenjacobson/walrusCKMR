@@ -514,14 +514,13 @@ We develop the ICKMR model and test it using simulated datasets,
  and offspring) and additional insights into demographic quantities of interest.
  Our modelling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We found that expected CVs of the ICKMR estimates of adult female abundance,
+ We found that expected precision of the ICKMR estimates of adult female abundance,
  adult female survival,
  juvenile female survival,
- and proportion of breeding females are lower than those expected from IMR alone,
+ and proportion of breeding females are higher than those expected from IMR alone,
  and with ICKMR,
  fewer years of future sampling can be conducted to obtain sufficient precision in estimates of adult female walrus abundance.
  This work demonstrates the utility of combining IMR with CKMR and is applicable across a variety of taxa.
- [197/200]
 \end_layout
 
 \begin_layout Standard

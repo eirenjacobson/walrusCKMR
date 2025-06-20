@@ -309,7 +309,7 @@ literal "false"
 
 \end_inset
 
-extended CKMR to include IMR as an additional kinship type,
+ extended CKMR to include IMR as an additional kinship type,
  whereby pairwise genetic comparisons can show that two samples are from the same animal.
  They found that the expected CV in estimates of abundance decreased from approximately 30% with IMR alone to approximately 20% with CKMR.
  Here,
@@ -421,7 +421,7 @@ literal "false"
 \end_inset
 
 .
- Maximum walrus lifespan is expected to be approximately 40 years 
+ Maximum walrus lifespan is approximately 40 years 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "fay_ecology_1982"
@@ -501,7 +501,7 @@ literal "false"
 \begin_layout Standard
 Scientists have attempted to ascertain walrus population size since at least 1880 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand citep
 key "fay_managing_1989"
 literal "false"
 
@@ -510,9 +510,7 @@ literal "false"
 ,
  and until very recently,
  unsuccessfully.
- The most concerted effort was the 1975-2006 range-wide aerial surveys conducted collaboratively by the U.S.A.
- and the U.S.S.R.
- and,
+ The most concerted effort was the 1975-2006 range-wide aerial surveys conducted collaboratively by the USA and the USSR and,
  later,
  the Russian Federation.
  However,
@@ -649,7 +647,6 @@ literal "false"
 ,
  the IMR study required extensive investment of human and financial resources.
  Here we explore ICKMR as a way to substantially increase the information content of IMR without increasing sampling effort.
- [1624 words]
 \end_layout
 
 \end_body

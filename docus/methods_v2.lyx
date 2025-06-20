@@ -195,7 +195,7 @@ First,
 We decided to entirely ignore paternal HSPs and father-offspring pairs,
  and indeed not to model male adults at all,
  essentially because of irresolvable confounding between adult male abundance and persistent variability in breeding success (which is likely given lek-based breeding;
- see 
+ see Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:leks"
@@ -212,7 +212,7 @@ nolink "false"
  Similarly,
  we did not consider full-thiatic pairs (FTPs).
  Grandparent-grandchild pairs (GGPs) are difficult to distinguish from HSPs,
- but we assume that they would be rare in our survey sample and could be excluded (see 
+ but we assume that they would be rare in our survey sample and could be excluded (see Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Further-HSP-complications"
@@ -236,6 +236,8 @@ nolink "false"
  are still used as potential offspring or XmHSPs (i.e.
  they mark their mothers),
  but not as potential SPs or fathers.
+ For model development and design,
+ we assume that all kinship types are detected accurately.
 \end_layout
 
 \begin_layout Subsubsection
@@ -413,20 +415,18 @@ skip-breeding
 \end_inset
 
 ,
- taking gaps of one or years between births.
- Skip-breeding can have some impact on kinship probabilities,
- although the effects are not enormous and can often be ignored.
- The rationale for ignoring it is as follows:
- even if a female is only reproductively active in half the years and so has zero probability of being a mother in the rest,
- in the years when she is breeding she only has to compete against half the females to be the mother of any particular sample,
- so she then has twice the chance.
- Therefore,
- to zeroth-order the effects of skip-breeding cancel out across even and odd years.
- However,
- a more detailed analysis (see Appendix) shows that there can be some bias in XHSP probabilities if skip-breeding is ignored,
- because of adult mortality.
+ taking gaps of one or more years between births.
+ This intermittent breeding can cause bias in parameter estimates if not included in the CKMR model 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "waples_close-kin_2022,swenson_accounting_2024"
+literal "false"
+
+\end_inset
+
+.
  Since XHSPs will be important for walrus,
- we decided to avoid any risk of bias by including a sub-model for skip-breeding,
+ we decided to include a sub-model for skip-breeding,
  with parameters to be estimated from the CKMR data.
 \end_layout
 
@@ -858,6 +858,14 @@ nolink "false"
 \begin_inset Formula $\bar{\beta}_{2}$
 \end_inset
 
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "caswell_matrix_2001"
+literal "false"
+
+\end_inset
+
 .
  Second,
  we defined fecundity as a function of age,
@@ -895,7 +903,7 @@ Kinship probabilities
 \end_layout
 
 \begin_layout Standard
-Having resolved our population dynamics model,
+Having formulated our population dynamics model,
  we now quantify the probability of relatedness between individuals.
  These probabilities will be used in the pairwise comparison terms summed in the pseudo-log-likelihood.
  The kinship probabilities are linked to the population dynamics model by shared parameters.
@@ -910,9 +918,18 @@ Having resolved our population dynamics model,
 
 \begin_layout Standard
 To establish demographic kinship probabilities between two sampled individuals,
- we apply the principle of effective relative reproductive output (ERRO).
+ we apply the principle of effective relative reproductive output 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "ERRO;"
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+.
  For example,
- the probability that a given adult female sample is the parent of an independently sampled offspring is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
+ the probability that a given adult female is the parent of an independently sampled offspring is the ratio of that adult's expected fecundity to the total fecundity of all parents at the time the offspring was born.
  We denote the kinship for individuals 
 \begin_inset Formula $i$
 \end_inset
@@ -931,7 +948,7 @@ To establish demographic kinship probabilities between two sampled individuals,
  SP,
  or unrelated pair (UP).
  In the case of MOPs and XmHSPs,
- we ensure that only one sample from each individual is used (so 
+ we ensure that only one sample (the last) from each individual is used (so 
 \begin_inset Quotes eld
 \end_inset
 
@@ -948,7 +965,7 @@ individual
 \end_inset
 
  are interchangeable terms),
- whereas for SPs we consier the frist and last sample from one individual (in which case,
+ whereas for SPs we consider the first and last sample from one individual (in which case,
  
 \begin_inset Quotes eld
 \end_inset
@@ -1417,7 +1434,7 @@ If
 
 
 \emph default
- may not have reach reproductive maturity by 
+ may not have reached reproductive maturity by 
 \begin_inset Formula $b_{j}$
 \end_inset
 
@@ -1715,7 +1732,8 @@ second-order
  though,
  grandparent-grandchild pairs (GGPs) become more prevalent.
  To mitigate this issue,
- we restricted the range of birth gaps considered in the model to those where GGPs are very rare (i.e.,
+ we restricted the range of birth gaps considered in the model to those where GGPs are very rare (or indeed impossible in our simulated data;
+ i.e.,
  below twice the age at maturity).
 \end_layout
 
@@ -1737,7 +1755,7 @@ Our stage-structured model simplifies population dynamics,
  we assume selectivity varies only by stage (adult/juvenile),
  not by age within stage.
  We only consider female samples for self-recapture,
- since males are prone to "permanent emigration" 
+ since males are prone to permanent emigration 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "beatty_estimating_2022"
@@ -2084,7 +2102,16 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The statistical basis is given in **Skaug&Bravington(Arxiv2025notyetout)**.
+The statistical basis is given in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bravington_close-kin_2016"
+literal "false"
+
+\end_inset
+
+,
+ section 4.
  Following standard statistical practice,
  we approximate the parameter variance using the inverse of the (pseudo) Fisher Information 
 \begin_inset Formula $H\left(\boldsymbol{\theta}_{0}\right)$
@@ -2124,7 +2151,18 @@ matrix
 
 .
  Further,
- **Skaug&Bravington(Arxiv2025notyetout)** show that for Poisson random variables such as 
+ Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Expected-information-from"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ show that for Poisson random variables such as 
 \begin_inset Formula $w_{ijk}$
 \end_inset
 
@@ -2392,7 +2430,7 @@ founders
 \end_inset
 
  and do not have mothers or fathers.
- The age and sex structure of the initial population is determined by survival rates used in the simulation (Table
+ The age and sex structure of the initial population is determined by survival and fecundity rates used in the simulation (Table
 \begin_inset space ~
 \end_inset
 
@@ -4864,7 +4902,7 @@ nolink "false"
 
 ).
  The population dynamics model in the simulations is close (but not identical) to the ICKMR model,
- since the simulation includes senescence and a definite maximum age;
+ since the simulation includes a definite maximum age;
  whereas,
  the ICKMR model does not.
  We checked each of the simulated datasets against the ICKMR model for:
@@ -4876,7 +4914,7 @@ nolink "false"
  unbiasedness of the log-likelihood derivatives at the true parameter values,
  and parameter bias.
  These comparisons enabled us to evaluate whether the simulation and ICKMR models were consistent and whether simplifications made in the ICKMR model were acceptable.
- See Appendix Section 
+ See Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Model-checking"
@@ -4887,7 +4925,7 @@ nolink "false"
 
 \end_inset
 
-for details.
+ for details.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4962,7 +5000,7 @@ literal "false"
 \end_inset
 
 .
- WHMP collects demographic data and biological samples from harvest animals.
+ WHMP collects demographic data and biological samples from harvested animals.
  To assess the relative value of samples from harvested animals (versus biopsy samples from live individuals),
  we simulated each scenario without (L1) and with (L2) the substitution of 500 live biopsy samples with 500 lethal samples in sampling years 2023-2028.
  
@@ -4975,7 +5013,7 @@ With three demographic scenarios,
  this resulted in a total of 48 simulated datasets from which to evaluate survey design.
  Given the relatively large population size and large number of samples,
  we did not expect key properties of simulated datasets to differ substantially due to random variation.
- This was confirmed by model checking (see 
+ This was confirmed by model checking (see Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Model-checking"
@@ -5000,12 +5038,12 @@ literal "false"
 \end_inset
 
  achieved a CV of 0.19 on adult female abundance in a five-year IMR study.
- We compared the estimated CVs for adult female abundance derived from IMR and ICKMR models to precision benchmarks of CV = 0.20,
+ With this result in mind,
+ we compared the estimated CVs for adult female abundance derived from IMR and ICKMR models to precision benchmarks of CV = 0.20,
  CV = 0.10 (representing a 50% reduction in CV),
  and CV = 0.05 (representing a 75% reduction in CV).
  Thus,
  we evaluated performance of our IMR and ICKMR models relative to performance of an IMR model with sampling effort over five years (2013-2017).
- [5066 words]
 \end_layout
 
 \end_body
