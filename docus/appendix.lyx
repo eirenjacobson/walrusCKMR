@@ -1360,7 +1360,7 @@ literal "false"
 \begin_layout Standard
 \begin_inset Branch NFN
 inverted 0
-status open
+status collapsed
 
 \begin_layout Section
 Adjustments for non-sparse sampling
@@ -2103,6 +2103,24 @@ tableset(LH_expected_CVs,
 
 \lang american
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{table}{3}
+\end_layout
+
 \end_inset
 
 
