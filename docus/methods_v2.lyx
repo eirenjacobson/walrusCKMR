@@ -1637,17 +1637,17 @@ Let
 \end_inset
 
  is 
-\begin_inset Formula $p^{\left[t\right]}$
+\begin_inset Formula $\mathbf{p}^{\left[t\right]}$
 \end_inset
 
 .
  Then 
-\begin_inset Formula $p^{\left[t+1\right]}=\Psi p^{\left[t\right]}$
+\begin_inset Formula $\mathbf{p}^{\left[t+1\right]}=\Psi\mathbf{p}^{\left[t\right]}$
 \end_inset
 
 .
  Now define 
-\begin_inset Formula $p^{\left[0\right]}=\left(0,1,0\right)^{\top}$
+\begin_inset Formula $\mathbf{p}^{\left[0\right]}=\left(0,1,0\right)^{\top}$
 \end_inset
 
 which is the three-element probability vector of 
@@ -1687,19 +1687,15 @@ which is the three-element probability vector of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{k\ell}=\text{XmHSP}|b_{k},b_{\ell},\theta\right]\nonumber \\
-=\mathbb{P}\left[K_{\ell m}=\text{MOP}|B_{m}\left(b_{k}\right)=\text{S2},m\text{ alive at }b_{k}+1,b_{\ell},\theta\right]\nonumber \\
-=\frac{\Phi\left(b_{l}-b_{k}\right)\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
+\mathbb{P}\left[K_{kl}=\text{XmHSP}|b_{k},b_{l},\theta\right]\nonumber \\
+=\mathbb{P}\left[K_{lm}=\text{MOP}|B_{m}\left(b_{k}\right)=\text{S2},m\text{ alive at }b_{k}+1,b_{l},\theta\right]\nonumber \\
+=\frac{\Phi\left(b_{l}-b_{k}\right)\left[\Psi^{b_{l}-b_{k}}\mathbf{p}^{\left[0\right]}\right]_{2}}{N_{b_{l},\text{A}}\bar{\beta}_{2}}\label{eq:xmhsp}
 \end{gather}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
-\begin_inset Formula $\left[\Psi^{b_{l}-b_{k}}p^{\left[0\right]}\right]_{2}$
+\begin_inset Formula $\left[\Psi^{b_{l}-b_{k}}\mathbf{p}^{\left[0\right]}\right]_{2}$
 \end_inset
 
  is the second element of the vector,

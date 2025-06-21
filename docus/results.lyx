@@ -252,7 +252,7 @@ nolink "false"
 \end_inset
 
 ).
- This was also true across demographic scenarios (see 
+ This was also true across demographic scenarios (see Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:N_Expected-CV"

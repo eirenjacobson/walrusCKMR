@@ -140,6 +140,35 @@ Alph{section}}
 numberwithin{equation}{section}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{table}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+thetable}{A
+\backslash
+arabic{table}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+numberwithin{equation}{table}
+\end_layout
+
 \end_inset
 
 
@@ -1142,8 +1171,8 @@ nolink "false"
 \begin_layout Plain Layout
 \begin_inset Formula 
 \begin{gather}
-\mathbb{P}\left[K_{k\ell}=\text{XmHSP}\vert\tilde{a}_{k},y_{k},\tilde{a}_{\ell},y_{\ell},\theta\right]=\nonumber \\
-\sum_{b_{k},b_{\ell}}\mathbb{P}\left[b_{k}|\tilde{a}_{k}y_{k}\right]\mathbb{P}\left[b_{\ell}|\tilde{a}_{\ell}y_{\ell}\right]\left[K_{k\ell}=\text{XmHSP}\vert b_{k},b_{\ell},\theta\right]\label{eq:hsp-agerr}
+\mathbb{P}\left[K_{kl}=\text{XmHSP}\vert\tilde{a}_{k},y_{k},\tilde{a}_{l},y_{l},\theta\right]=\nonumber \\
+\sum_{b_{k},b_{l}}\mathbb{P}\left[b_{k}|\tilde{a}_{k}y_{k}\right]\mathbb{P}\left[b_{l}|\tilde{a}_{l}y_{l}\right]\left[K_{kl}=\text{XmHSP}\vert b_{k},b_{l},\theta\right]\label{eq:hsp-agerr}
 \end{gather}
 
 \end_inset
