@@ -136,7 +136,7 @@ In Preamble
 
 \begin_layout In Preamble
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -185,6 +185,11 @@ usetikzlibrary{arrows,automata,positioning,arrows.meta}
 
 \begin_layout Plain Layout
 
+% handle issues with encoding
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
 usepackage[utf8]{inputenc}
@@ -202,6 +207,32 @@ DeclareUnicodeCharacter{202A}{!!!FIX ME!!!}
 
 \backslash
 DeclareUnicodeCharacter{202C}{!!!FIX ME!!!}
+\end_layout
+
+\begin_layout Plain Layout
+
+% table-related stuff
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage{longtable}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+usepackage{booktabs}
 \end_layout
 
 \begin_layout Plain Layout
