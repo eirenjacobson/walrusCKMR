@@ -705,11 +705,11 @@ too simple to be useful
 \end_inset
 
  will by definition satisfy the equation 
-\begin_inset Formula $\left.d\Lambda/d\boldsymbol{\theta}\right\vert _{\hat{\boldsymbol{\theta}}}=0$
+\begin_inset Formula $\left.d\Lambda\left(W\right)\left(W\right)/d\boldsymbol{\theta}\right\vert _{\hat{\boldsymbol{\theta}}}=0$
 \end_inset
 
  (where 
-\begin_inset Formula $\Lambda=\Lambda\left(\boldsymbol{\theta};w\right)$
+\begin_inset Formula $\Lambda\left(W\right)\left(W\right)=\Lambda\left(W\right)\left(W\right)\left(\boldsymbol{\theta};w\right)$
 \end_inset
 
 ,
@@ -724,8 +724,8 @@ too simple to be useful
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-0=\left.\frac{d\Lambda}{d\boldsymbol{\theta}}\right\vert _{\hat{\boldsymbol{\theta}}}\approx\left.\frac{d\Lambda}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}+\left(\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}_{0}\right)\left.\frac{d^{2}\Lambda}{d\boldsymbol{\theta}^{2}}\right\vert _{\boldsymbol{\theta}_{0}}\nonumber \\
-\implies\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}_{0}\approx-\left[\left.\frac{d\Lambda^{2}}{d\boldsymbol{\theta}^{2}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{-1}\left.\frac{d\Lambda}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\label{eq:bias-approx}
+0=\left.\frac{d\Lambda\left(W\right)\left(W\right)}{d\boldsymbol{\theta}}\right\vert _{\hat{\boldsymbol{\theta}}}\approx\left.\frac{d\Lambda\left(W\right)\left(W\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}+\left(\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}_{0}\right)\left.\frac{d^{2}\Lambda\left(W\right)\left(W\right)}{d\boldsymbol{\theta}^{2}}\right\vert _{\boldsymbol{\theta}_{0}}\nonumber \\
+\implies\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}_{0}\approx-\left[\left.\frac{d\Lambda\left(W\right)\left(W\right)^{2}}{d\boldsymbol{\theta}^{2}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{-1}\left.\frac{d\Lambda\left(W\right)\left(W\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\label{eq:bias-approx}
 \end{gather}
 
 \end_inset
@@ -742,7 +742,7 @@ expected
  and which of course does not vary from one simulation to the next.
  Thus,
  the only quantity that has to be calculated per simulated dataset is 
-\begin_inset Formula $\left.d\Lambda/d\boldsymbol{\theta}\right\vert _{\boldsymbol{\theta}_{0}}$
+\begin_inset Formula $\left.d\Lambda\left(W\right)\left(W\right)/d\boldsymbol{\theta}\right\vert _{\boldsymbol{\theta}_{0}}$
 \end_inset
 
 ,
@@ -793,7 +793,7 @@ th
 \end_inset
 
  component of 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\boldsymbol{\theta}$
 \end_inset
 
 ) is below its sampling variability—

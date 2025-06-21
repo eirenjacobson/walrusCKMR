@@ -1733,12 +1733,12 @@ Suppose the random variable
 \end_inset
 
  follows a Poisson distribution with mean 
-\begin_inset Formula $p\left(\theta\right)$
+\begin_inset Formula $m\left(\boldsymbol{\theta}\right)$
 \end_inset
 
 ,
  where 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\boldsymbol{\theta}$
 \end_inset
 
  is a vector of unknown parameters.
@@ -1751,7 +1751,7 @@ Suppose the random variable
  is
 \begin_inset Formula 
 \begin{gather}
-\Lambda\left(W\right)=-p\left(\theta\right)+W\log p\left(\theta\right)\label{eq:sbapx1}
+\Lambda\left(W\right)=-m\left(\boldsymbol{\theta}\right)+W\log m\left(\boldsymbol{\theta}\right)\label{eq:sbapx1}
 \end{gather}
 
 \end_inset
@@ -1759,7 +1759,7 @@ Suppose the random variable
 and the score function is 
 \begin_inset Formula 
 \begin{gather}
-\frac{d\Lambda}{d\theta}=-\frac{dp}{d\theta}+\frac{W}{p}\frac{dp}{d\theta}=\frac{dp}{d\theta}\left(\frac{W}{p}-1\right)\label{eq:sbapx2}
+\frac{d\Lambda\left(W\right)}{d\boldsymbol{\theta}}=-\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}+\frac{W}{m\left(\boldsymbol{\theta}\right)}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}=\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\left(\frac{W}{m\left(\boldsymbol{\theta}\right)}-1\right)\label{eq:sbapx2}
 \end{gather}
 
 \end_inset
@@ -1791,23 +1791,26 @@ th
 \end_inset
 
  components of 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\boldsymbol{\theta}$
 \end_inset
 
 ,
  defined as 
-\begin_inset Formula $\text{FI}_{ij}\triangleq\mathbb{E}_{W}\left[\frac{d\Lambda}{d\theta_{i}}\frac{d\Lambda}{d\theta_{j}}\right]$
+\begin_inset Formula $\text{FI}_{ij}\triangleq\mathbb{E}_{W}\left[\frac{d\Lambda\left(W\right)}{d\boldsymbol{\theta}_{i}}\frac{d\Lambda\left(W\right)}{d\boldsymbol{\theta}_{j}}\right]$
 \end_inset
 
 ,
  is 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\begin{gather}
-\text{FI}_{ij}=\mathbb{E}_{W}\left[\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\left(\frac{W}{p}-1\right)^{2}\right]\nonumber \\
-=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\frac{1}{p^{2}}\mathbb{E}\left[\left(W-p\right)^{2}\right]\nonumber \\
-=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\frac{1}{p^{2}}\mathbb{V}\left[W\right]\nonumber \\
-=\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\label{eq:sbapx3}
-\end{gather}
+\begin{align}
+\text{FI}_{ij} & =\mathbb{E}_{W}\left[\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\left(\frac{W}{m\left(\boldsymbol{\theta}\right)}-1\right)^{2}\right]\nonumber \\
+ & =\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{1}{m\left(\boldsymbol{\theta}\right)^{2}}\mathbb{E}\left[\left(W-m\left(\boldsymbol{\theta}\right)\right)^{2}\right]\nonumber \\
+ & =\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{1}{m\left(\boldsymbol{\theta}\right)^{2}}\mathbb{V}\left[W\right]\nonumber \\
+ & =\left(\frac{1}{\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\right)\left(\frac{1}{\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\right)\label{eq:sbapx3}
+\end{align}
 
 \end_inset
 
@@ -1819,14 +1822,14 @@ By the chain rule,
  we have 
 \begin_inset Formula 
 \begin{gather}
-\frac{d\sqrt{p}}{d\theta}=\frac{1}{2\sqrt{p}}\frac{dp}{d\theta}\label{eq:sbapx4}
+\frac{d\sqrt{m\left(\boldsymbol{\theta}\right)}}{d\boldsymbol{\theta}}=\frac{1}{2\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\label{eq:sbapx4}
 \end{gather}
 
 \end_inset
 
-Substituting into (
+Substituting into 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:sbapx3"
 plural "false"
 caps "false"
@@ -1835,14 +1838,14 @@ nolink "false"
 
 \end_inset
 
-),
+,
  we arrive at the desired result for the entire Fisher Information matrix:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-\text{FI}=4\frac{d\sqrt{p}}{d\theta}\frac{d\sqrt{p}}{d\theta}^{\top}\label{eq:sbapx5}
+\text{FI}=4\frac{d\sqrt{m\left(\boldsymbol{\theta}\right)}}{d\boldsymbol{\theta}}\frac{d\sqrt{m\left(\boldsymbol{\theta}\right)}}{d\boldsymbol{\theta}}^{\top}\label{eq:sbapx5}
 \end{gather}
 
 \end_inset

@@ -1846,13 +1846,13 @@ nolink "false"
 \begin_layout Standard
 \begin_inset Formula 
 \[
-N_{y,\text{J}}=N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\text{J}}}\left(\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{5}-1\right),
+N_{y,\text{J}}=N_{y,\text{A}}\frac{\Lambda\left(W\right)-\phi_{\text{A}}}{\Lambda\left(W\right)-\phi_{\text{J}}}\left(\left(\frac{\Lambda\left(W\right)}{\phi_{\text{J}}}\right)^{5}-1\right),
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\lambda=e^{r}$
+\begin_inset Formula $\Lambda\left(W\right)=e^{r}$
 \end_inset
 
  is the relative annual population growth rate.
@@ -2124,7 +2124,7 @@ literal "false"
 ,
  which are taken from the simulation).
  As 
-\begin_inset Formula $\Lambda$
+\begin_inset Formula $\Lambda\left(W\right)$
 \end_inset
 
  is a sum of individual comparison terms,
