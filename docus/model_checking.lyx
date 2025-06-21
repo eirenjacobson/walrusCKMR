@@ -369,12 +369,32 @@ status open
 
 \begin_layout Plain Layout
 Mean and variance of the derivative of the pseudo-log-likelihood at the true parameter values for model parameters across 50 simulated datasets.
- log_Nfad_y0 is the log number of adult females in 2015,
- RoI is the rate of increase of the population,
- lg_fadsurv is the logit of adult female survival,
+ 
+\begin_inset Formula $\log_{e}N_{2015,A}$
+\end_inset
+
+ is the log number of adult females in 2015,
+ 
+\begin_inset Formula $r$
+\end_inset
+
+ is the rate of increase of the population,
+ 
+\begin_inset Formula $\text{logit}\phi_{\text{A}}$
+\end_inset
+
+ is the logit of adult female survival,
  diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
- lpsi1 is the logit probability of breeding on a two-year interval,
- lpsi2 logit probability of breeding on a three-or-greater year interval.
+ 
+\begin_inset Formula $\text{logit}\psi_{\text{1}}$
+\end_inset
+
+ is the logit probability of breeding on a two-year interval,
+ 
+\begin_inset Formula $\text{logit}\psi_{2}$
+\end_inset
+
+ logit probability of breeding on a three-or-greater year interval.
 \end_layout
 
 \end_inset
@@ -407,7 +427,10 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 \begin_inset Text
 
 \begin_layout Plain Layout
-log_Nfad_y0
+\begin_inset Formula $\log_{e}N_{2015,A}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -416,7 +439,10 @@ log_Nfad_y0
 \begin_inset Text
 
 \begin_layout Plain Layout
-RoI
+\begin_inset Formula $r$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -425,7 +451,10 @@ RoI
 \begin_inset Text
 
 \begin_layout Plain Layout
-lgt_fadsurv
+\begin_inset Formula $\text{logit}\phi_{\text{A}}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -443,7 +472,10 @@ diff_lgt_fadsurv
 \begin_inset Text
 
 \begin_layout Plain Layout
-lpsi1
+\begin_inset Formula $\text{logit}\psi_{\text{1}}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -452,7 +484,10 @@ lpsi1
 \begin_inset Text
 
 \begin_layout Plain Layout
-lpsi2
+\begin_inset Formula $\text{logit}\psi_{2}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -621,7 +656,7 @@ too simple to be useful
 
 ,
  so it is worth checking whether the simpler formulation is going to run into serious trouble.
- Simulated datasets can be used to estimate approximate bias in a slightly-mis-specified CKMR model,
+ Simulated datasets can be used to estimate approximate bias in a slightly misspecified CKMR model,
  again without needing to do any estimation.
  The idea is to approximate the MLE for each dataset,
  based only on calculations using the true parameter value for the simulations.
@@ -741,12 +776,32 @@ status open
 
 \begin_layout Plain Layout
 Mean absolute bias and bias relative to SD for model parameters across 50 simulated datasets.
- log_Nfad_y0 is the log number of adult females in 2015,
- RoI is the rate of increase of the population,
- lg_fadsurv is the logit of adult female survival,
+ 
+\begin_inset Formula $\log_{e}N_{2015,A}$
+\end_inset
+
+ is the log number of adult females in 2015,
+ 
+\begin_inset Formula $r$
+\end_inset
+
+ is the rate of increase of the population,
+ 
+\begin_inset Formula $\text{logit}\phi_{\text{A}}$
+\end_inset
+
+ is the logit of adult female survival,
  diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
- lpsi1 is the logit probability of breeding on a two-year interval,
- lpsi2 is the logit probability of breeding on a three-or-greater year interval.
+ 
+\begin_inset Formula $\text{logit}\psi_{\text{1}}$
+\end_inset
+
+ is the logit probability of breeding on a two-year interval,
+ 
+\begin_inset Formula $\text{logit}\psi_{\text{2}}$
+\end_inset
+
+ is the logit probability of breeding on a three-or-greater year interval.
 \end_layout
 
 \end_inset
@@ -779,7 +834,10 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 \begin_inset Text
 
 \begin_layout Plain Layout
-log_Nfad_y0
+\begin_inset Formula $\log_{e}N_{2015,A}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -788,7 +846,10 @@ log_Nfad_y0
 \begin_inset Text
 
 \begin_layout Plain Layout
-RoI
+\begin_inset Formula $r$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -797,7 +858,10 @@ RoI
 \begin_inset Text
 
 \begin_layout Plain Layout
-lgt_fadsurv
+\begin_inset Formula $\text{logit}\phi_{\text{A}}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -815,7 +879,10 @@ diff_lgt_fadsurv
 \begin_inset Text
 
 \begin_layout Plain Layout
-lpsi1
+\begin_inset Formula $\text{logit}\psi_{\text{1}}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -824,7 +891,10 @@ lpsi1
 \begin_inset Text
 
 \begin_layout Plain Layout
-lpsi2
+\begin_inset Formula $\text{logit}\psi_{2}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
