@@ -354,6 +354,28 @@ unbiased estimating equation
  including maximum-likelihood.
  If UEE does not hold,
  then by definition there is a mismatch between simulation and model.
+ Results are shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:mv-logL-deriv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Note that we can only produce results on the link scale (i.e.,
+ 
+\begin_inset Formula $\log_{e}$
+\end_inset
+
+ or 
+\begin_inset Formula $\text{logit}$
+\end_inset
+
+) as only in this case is the Hessian guaranteed to be positive definite.
 \end_layout
 
 \begin_layout Standard
@@ -384,7 +406,15 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 \end_inset
 
  is the logit of adult female survival,
- diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
+ 
+\begin_inset Formula $\text{logit(}\phi_{\text{A}}-\phi_{\text{J}})$
+\end_inset
+
+ is the logit difference between adult and juvenile female survival (since we estimated the difference parameter 
+\begin_inset Formula $\phi_{\Delta\text{J}}=\phi_{\text{A}}-\phi_{J}$
+\end_inset
+
+ rather than separate adult and juvenile survival parameters),
  
 \begin_inset Formula $\text{logit}\psi_{\text{1}}$
 \end_inset
@@ -395,6 +425,13 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 \end_inset
 
  logit probability of breeding on a three-or-greater year interval.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:mv-logL-deriv"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -414,7 +451,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -423,7 +460,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -435,7 +472,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -447,7 +484,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -459,16 +496,19 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-diff_lgt_fadsurv
+\begin_inset Formula $\text{logit(}\phi_{\text{A}}-\phi_{\text{J}})$
+\end_inset
+
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -480,7 +520,7 @@ diff_lgt_fadsurv
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -559,7 +599,7 @@ Mean
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -568,7 +608,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -577,7 +617,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -586,7 +626,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -595,7 +635,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -604,7 +644,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -613,7 +653,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -765,7 +805,29 @@ th
 
 —
  then there is little reason to worry about bias for that particular parameter.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:mean-bias-sims"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ show the results for our model.
+ Again,
+ note that we can only produce results on the link scale (i.e.,
  
+\begin_inset Formula $\log_{e}$
+\end_inset
+
+ or 
+\begin_inset Formula $\text{logit}$
+\end_inset
+
+) as only in this case is the Hessian guaranteed to be positive definite.
 \end_layout
 
 \begin_layout Standard
@@ -797,10 +859,14 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
  is the logit of adult female survival,
  
-\begin_inset Formula $\text{logit(}N_{2025,A}/N_{2015,A}-1)$
+\begin_inset Formula $\text{logit(}\phi_{\text{A}}-\phi_{\text{J}})$
 \end_inset
 
- is the logit ratio of adult female abundance between 2015 and 2025,
+ is the logit difference between adult and juvenile female survival (since we estimated the parameter 
+\begin_inset Formula $\phi_{\Delta\text{J}}=\phi_{\text{A}}-\phi_{J}$
+\end_inset
+
+ rather than separate adult and juvenile survival parameters),
  
 \begin_inset Formula $\text{logit}\psi_{\text{1}}$
 \end_inset
@@ -811,6 +877,13 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 \end_inset
 
  is the logit probability of breeding on a three-or-greater year interval.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:mean-bias-sims"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -830,7 +903,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -839,11 +912,11 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\log_{e}N_{2015,A}$
+\begin_inset Formula $\log_{e}N_{\text{2015,A}}$
 \end_inset
 
 
@@ -851,7 +924,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -863,7 +936,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -875,11 +948,11 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\text{logit(}N_{2025,A}/N_{2015,A}-1)$
+\begin_inset Formula $\text{logit(}\phi_{\text{A}}-\phi_{\text{J}})$
 \end_inset
 
 
@@ -887,7 +960,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -899,7 +972,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1043,7 +1116,7 @@ Bias relative to SD
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1053,7 +1126,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1062,7 +1135,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1071,7 +1144,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1080,7 +1153,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1089,7 +1162,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1098,7 +1171,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
