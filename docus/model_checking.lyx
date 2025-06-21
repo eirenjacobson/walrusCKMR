@@ -796,7 +796,11 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 \end_inset
 
  is the logit of adult female survival,
- diff_lgt_fadsurv is the logit difference of adult female survival between 2015 and 2025,
+ 
+\begin_inset Formula $\text{logit(}N_{2025,A}/N_{2015,A}-1)$
+\end_inset
+
+ is the logit ratio of adult female abundance between 2015 and 2025,
  
 \begin_inset Formula $\text{logit}\psi_{\text{1}}$
 \end_inset
@@ -875,7 +879,10 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 \begin_inset Text
 
 \begin_layout Plain Layout
-diff_lgt_fadsurv
+\begin_inset Formula $\text{logit(}N_{2025,A}/N_{2015,A}-1)$
+\end_inset
+
+
 \end_layout
 
 \end_inset
