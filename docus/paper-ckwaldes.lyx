@@ -507,7 +507,18 @@ Data availability
 \end_layout
 
 \begin_layout Standard
-Code to reproduce the analyses presented in this manuscript is available at github.com/eirenjacobson/walrusCKMR.
+Code to reproduce the analyses presented in this manuscript is available at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.github.com/eirenjacobson/walrusCKMR
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
