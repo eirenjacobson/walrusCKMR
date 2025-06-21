@@ -1914,6 +1914,21 @@ status open
 Expected SEs on adult female survival,
  juvenile female survival,
  and the proportion of adult females in breeding state 2 under different demographic and sampling scenarios with and without the use of lethal samples and CKMR.
+ 
+\begin_inset Formula $\hat{\phi_{A}}$
+\end_inset
+
+ is estimated adult female survival,
+ 
+\begin_inset Formula $\hat{\phi_{J}}$
+\end_inset
+
+ is estimated juvenile female survival and 
+\begin_inset Formula $\hat{\psi_{2}}$
+\end_inset
+
+ is the probability of being pregnant every 2 years.
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:LH_Expected-CVs"
@@ -2138,10 +2153,18 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Expected CV on adult female population size in 2015,
+Expected coefficient of variation (CV) on adult female population size in 2015,
  2020,
  and 2025 with different demographic and sampling scenarios and with and without the use of lethal samples and CKMR.
  
+\begin_inset Formula $\hat{N}_{y,\text{A}}$
+\end_inset
+
+ is the estimate of adult female abundance in year 
+\begin_inset Formula $y$
+\end_inset
+
+.
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:N_Expected-CV"

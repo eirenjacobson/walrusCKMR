@@ -12,7 +12,7 @@ LH_expected_CVs <- read.csv("../results/lhappendix.csv") %>%
 
 
 LHcoln <- c("Sampling Scenario", "Demographic Scenario", "Lethal Samples",
-            "CKMR", "$\\phi_A$", "$\\phi_J$", "$\\psi_2$")
+            "CKMR", "$\\hat{\\phi}_A$", "$\\hat{\\phi}_J$", "$\\hat{\\psi}_2$")
 
 
 
@@ -24,7 +24,8 @@ N_expected_CVs <- read.csv("../results/Nappendix.csv") %>%
          X2015.Adult.Females, X2020.Adult.Females, X2025.Adult.Females)
 
 Ncoln <- c("Sampling Scenario", "Demographic Scenario", "Lethal Samples",
-          "CKMR", "$N_{2015,A}$", "$N_{2020,A}$", "$N_{2025,A}$")
+          "CKMR", paste0("$\\text{CV}( \\hat{N}_{",
+                        c(2015,2020,2025),",\\text{A}})$"))
 
 
 
