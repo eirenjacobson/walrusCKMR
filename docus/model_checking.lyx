@@ -176,13 +176,13 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../figures/ObsVExpKinPairs_wBounds.png
 	lyxscale 50
-	scale 80
+	scale 60
 
 \end_inset
 
@@ -238,13 +238,13 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../figures/ObsVExp_MatAge.png
 	lyxscale 50
-	scale 80
+	scale 50
 
 \end_inset
 
@@ -295,7 +295,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -328,7 +328,7 @@ Histogram of p-values representing the probability of observing a number of kin 
 
 \begin_layout Itemize
 Looking at the mean and variance of the derivative of the pseudo-log-likelihood at the true parameter values 
-\begin_inset Formula $\theta_{0}$
+\begin_inset Formula $\boldsymbol{\theta}_{0}$
 \end_inset
 
  (something which can be calculated fairly quickly by numerical differentiation).
@@ -414,7 +414,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -423,7 +423,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -435,7 +435,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -447,7 +447,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -459,7 +459,7 @@ Mean and variance of the derivative of the pseudo-log-likelihood at the true par
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -468,7 +468,7 @@ diff_lgt_fadsurv
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -480,7 +480,7 @@ diff_lgt_fadsurv
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -494,7 +494,7 @@ diff_lgt_fadsurv
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -503,7 +503,7 @@ Mean
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -512,7 +512,7 @@ Mean
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -521,7 +521,7 @@ Mean
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -530,7 +530,7 @@ Mean
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -539,7 +539,7 @@ Mean
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -548,7 +548,7 @@ Mean
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -559,7 +559,7 @@ Mean
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -568,7 +568,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -577,7 +577,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -586,7 +586,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -595,7 +595,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -604,7 +604,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -613,7 +613,7 @@ Variance
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -661,16 +661,21 @@ too simple to be useful
  The idea is to approximate the MLE for each dataset,
  based only on calculations using the true parameter value for the simulations.
  The MLE 
-\begin_inset Formula $\hat{\theta}$
+\begin_inset Formula $\hat{\boldsymbol{\theta}}$
 \end_inset
 
  will by definition satisfy the equation 
-\begin_inset Formula $\left.d\Lambda/d\theta\right\vert _{\hat{\theta}}=0$
+\begin_inset Formula $\left.d\Lambda/d\boldsymbol{\theta}\right\vert _{\hat{\boldsymbol{\theta}}}=0$
+\end_inset
+
+ (where 
+\begin_inset Formula $\Lambda=\Lambda\left(\boldsymbol{\theta};w\right)$
 \end_inset
 
 ,
+ dropping arguments for compactness),
  and we can take a first-order Taylor expansion around the true value 
-\begin_inset Formula $\theta_{0}$
+\begin_inset Formula $\boldsymbol{\theta}_{0}$
 \end_inset
 
  to give
@@ -679,8 +684,8 @@ too simple to be useful
 \begin_layout Standard
 \begin_inset Formula 
 \begin{gather}
-0=\left.\frac{d\Lambda}{d\theta}\right\vert _{\hat{\theta}}\approx\left.\frac{d\Lambda}{d\theta}\right\vert _{\theta_{0}}+\left(\hat{\theta}-\theta_{0}\right)\left.\frac{d^{2}\Lambda}{d\theta^{2}}\right\vert _{\theta_{0}}\nonumber \\
-\implies\hat{\theta}-\theta_{0}\approx-\left[\left.\frac{d\Lambda^{2}}{d\theta^{2}}\right\vert _{\theta_{0}}\right]^{-1}\left.\frac{d\Lambda}{d\theta}\right\vert _{\theta_{0}}\label{eq:bias-approx}
+0=\left.\frac{d\Lambda}{d\boldsymbol{\theta}}\right\vert _{\hat{\boldsymbol{\theta}}}\approx\left.\frac{d\Lambda}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}+\left(\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}_{0}\right)\left.\frac{d^{2}\Lambda}{d\boldsymbol{\theta}^{2}}\right\vert _{\boldsymbol{\theta}_{0}}\nonumber \\
+\implies\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}_{0}\approx-\left[\left.\frac{d\Lambda^{2}}{d\boldsymbol{\theta}^{2}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{-1}\left.\frac{d\Lambda}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\label{eq:bias-approx}
 \end{gather}
 
 \end_inset
@@ -697,7 +702,7 @@ expected
  and which of course does not vary from one simulation to the next.
  Thus,
  the only quantity that has to be calculated per simulated dataset is 
-\begin_inset Formula $\left.d\Lambda/d\theta\right\vert _{\theta_{0}}$
+\begin_inset Formula $\left.d\Lambda/d\boldsymbol{\theta}\right\vert _{\boldsymbol{\theta}_{0}}$
 \end_inset
 
 ,
@@ -721,7 +726,7 @@ nolink "false"
  provided that it does not imply substantial bias on the parameter scale.
  In particular,
  if the estimated bias for the 
-\begin_inset Formula $r$
+\begin_inset Formula $j$
 \end_inset
 
 
@@ -735,7 +740,7 @@ th
 
  parameter (i.e.
  
-\begin_inset Formula $r$
+\begin_inset Formula $j$
 \end_inset
 
 
@@ -755,7 +760,7 @@ th
  say,
  if bias is less than 1 standard deviation,
  computed from the square-root of the diagonal of the inverse Hessian or 
-\begin_inset Formula $\sqrt{H^{-1}\left(r,r\right)}$
+\begin_inset Formula $\sqrt{H^{-1}\left(j,j\right)}$
 \end_inset
 
 —
@@ -821,7 +826,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -830,7 +835,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -842,7 +847,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -854,7 +859,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -866,7 +871,7 @@ Mean absolute bias and bias relative to SD for model parameters across 50 simula
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -875,7 +880,7 @@ diff_lgt_fadsurv
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -887,7 +892,7 @@ diff_lgt_fadsurv
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -901,7 +906,7 @@ diff_lgt_fadsurv
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -910,7 +915,7 @@ Absolute bias
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -919,7 +924,7 @@ Absolute bias
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -928,7 +933,7 @@ Absolute bias
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -937,7 +942,7 @@ Absolute bias
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -946,7 +951,7 @@ Absolute bias
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -955,7 +960,7 @@ Absolute bias
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -966,7 +971,7 @@ Absolute bias
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -975,7 +980,7 @@ Bias relative to SD
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -984,7 +989,7 @@ Bias relative to SD
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -993,7 +998,7 @@ Bias relative to SD
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1002,7 +1007,7 @@ Bias relative to SD
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1011,7 +1016,7 @@ Bias relative to SD
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1020,7 +1025,7 @@ Bias relative to SD
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1031,7 +1036,7 @@ Bias relative to SD
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1041,7 +1046,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1050,7 +1055,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1059,7 +1064,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1068,7 +1073,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1077,7 +1082,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1086,7 +1091,7 @@ Bias relative to SD (w/ exp.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
