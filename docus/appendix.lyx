@@ -167,9 +167,28 @@ arabic{table}}
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
-numberwithin{equation}{table}
+setcounter{figure}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+thefigure}{A
+\backslash
+arabic{figure}}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
