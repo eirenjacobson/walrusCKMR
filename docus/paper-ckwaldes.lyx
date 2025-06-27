@@ -147,7 +147,7 @@ status open
 
 %
 \backslash
-journal{Methods in Ecology and Evolution}
+journal{Ecology Statistical Innovations}
 \end_layout
 
 \begin_layout Plain Layout
@@ -287,6 +287,8 @@ Combining individual and close-kin mark-recapture to design an effective wildlif
 \end_layout
 
 \begin_layout Author
+
+\size normal
 Eiren K.
  Jacobson
 \begin_inset script superscript
@@ -369,6 +371,7 @@ Irina S.
 \end_layout
 
 \begin_layout Address
+\paragraph_spacing single
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -384,6 +387,7 @@ Irina S.
 \end_layout
 
 \begin_layout Address
+\paragraph_spacing single
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -398,6 +402,7 @@ Irina S.
 \end_layout
 
 \begin_layout Address
+\paragraph_spacing single
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -451,7 +456,7 @@ Irina S.
 
 \end_inset
 
- 165 Perth Road,
+ Independent Researcher,
  Dundee,
  Scotland
 \end_layout
@@ -485,29 +490,38 @@ Corresponding author email:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
+\noindent
+\align block
 
-
-\end_layout
-
-\begin_layout Subsection*
-Acknowledgments
-\end_layout
-
-\begin_layout Standard
-The findings and conclusions in this article are those of the authors and do not necessarily represent the views of the FWS.
- Any use of trade,
- product or firm names is for descriptive purposes only and does not imply endorsement by the United States Government.
+\series bold
+Journal
+\series default
  
-\end_layout
-
-\begin_layout Subsection*
-Data availability
+\series bold
+Name
+\series default
+:
+ Ecology
 \end_layout
 
 \begin_layout Standard
-Code to reproduce the analyses presented in this manuscript is available at 
+\noindent
+
+\series bold
+Manuscript Type
+\series default
+:
+ Statistical Innovations Article
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Open Research Statement
+\series default
+:
+ Code to reproduce the analyses presented in this manuscript is available at 
 \begin_inset Flex URL
 status open
 
@@ -521,38 +535,31 @@ https://www.github.com/eirenjacobson/walrusCKMR
 .
 \end_layout
 
-\begin_layout Subsection*
-Conflict of Interest statement
-\end_layout
-
 \begin_layout Standard
-The authors declare no conflicts of interest.
-\end_layout
+\noindent
 
-\begin_layout Subsection*
-Author contribution statements
-\end_layout
-
-\begin_layout Standard
-Using the CREDIT taxonomy per 
-\begin_inset Flex URL
+\series bold
+Keywords
+\series default
+:
+ close-kin mark-recapture,
+ individual genetic mark-recapture,
+ survey design,
+ walrus 
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-https://casrai.org/credit/#roles
+A list in alphabetical order not exceeding eight words or short phrases.
 \end_layout
 
 \end_inset
 
-.
+ 
 \end_layout
 
-\begin_layout Standard
-DLM contributed to Conceptualization,
- Project Administration,
- Software,
- Supervision and Writing – Review & Editing.
+\begin_layout Verbatim
+
 \end_layout
 
 \begin_layout Standard
@@ -585,25 +592,6 @@ We develop the ICKMR model and test it using simulated datasets,
  and with ICKMR,
  fewer years of future sampling can be conducted to obtain sufficient precision in estimates of adult female walrus abundance.
  This work demonstrates the utility of combining IMR with CKMR and is applicable across a variety of taxa.
-\end_layout
-
-\begin_layout Standard
-Keywords:
- close-kin mark-recapture,
- individual genetic mark-recapture,
- survey design,
- walrus 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-A list in alphabetical order not exceeding eight words or short phrases.
- 
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
@@ -682,6 +670,101 @@ LatexCommand input
 filename "discussion.lyx"
 literal "false"
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+Funding was provided by the USGS Science Support Partnership program.
+ The findings and conclusions in this article are those of the authors and do not necessarily represent the views of the U.S.
+ Fish and Wildlife Service.
+ Any use of trade,
+ product or firm names is for descriptive purposes only and does not imply endorsement by the United States Government.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Author contributions
+\end_layout
+
+\begin_layout Standard
+Conceptualization:
+ EKJ,
+ MVB,
+ RLT,
+ IST,
+ DLM,
+ WSB.
+ Data curation:
+ EKJ.
+ Formal analysis:
+ EKJ,
+ MVB.
+ Funding acquisition:
+ RLT,
+ IST,
+ WSB.
+ Investigation:
+ EKJ,
+ MVB.
+ Methodology:
+ EKJ,
+ MVB.
+ Project administration:
+ EKJ,
+ DLM,
+ WSB.
+ Software:
+ EKJ,
+ MVB,
+ DLM.
+ Supervision:
+ EKJ,
+ DLM,
+ WSB.
+ Validation:
+ EKJ,
+ MVB,
+ RLT.
+ Visualization:
+ EKJ,
+ MVB.
+ Writing – original draft:
+ EKJ,
+ MVB,
+ RLT.
+ Writing – review & editing:
+ EKJ,
+ MVB,
+ RLT,
+ IST,
+ DLM,
+ WSB.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Conflict of interest statement
+\end_layout
+
+\begin_layout Standard
+The authors declare no conflicts of interest.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 

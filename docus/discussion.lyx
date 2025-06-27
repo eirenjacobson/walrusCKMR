@@ -121,8 +121,15 @@ We developed an ICKMR study design,
  which would simplify the kinship probabilities for the self-recapture data.
  We further assumed quasi-equilibrium population dynamics across the period 2000–2028,
  with a constant rate of population change and stable age composition.
- This is a simplification during at least part of the time frame (Taylor et al.
- 2018).
+ This is a simplification during at least part of the time frame 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+.
  Nevertheless,
  given that our general purpose was to investigate sample size requirements,
  we believe our simplifications were reasonable.
@@ -158,7 +165,7 @@ nolink "false"
  for example,
  with a target CV of 0.05,
  an additional 4 years of future survey effort would be required with ICKMR,
- but would not be achieveable within 5 years with IMR alone.
+ but would not be achievable within 5 years with IMR alone.
  Estimates of adult female and juvenile female survival,
  and of the proportion of adult females in breeding state 2 (calving),
  were also improved with the addition of CKMR.
@@ -187,7 +194,7 @@ literal "false"
  We did not investigate the impact of using exclusively harvested samples in place of one or more survey years.
  In the longer term,
  using exclusively lethal samples could lead to lower precision in estimates of abundance,
- since lethal samples cannot go on to be self recaptures or future parents.
+ since lethal samples cannot go on to be self-recaptures or future parents.
  Using samples from harvested walruses in combination with non-lethal samples collected from wild animals during research cruises can improve cost efficiency by reducing the need for extended at-sea operations,
  thereby lowering logistical expenses associated with vessel charters and personnel time.
  Additionally,
@@ -212,7 +219,7 @@ epigenetic clock
 
 .
  Although epigenetic age has been shown to work fairly well in a variety of species,
- including walrus as in 
+ including walruses as in 
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "Robeck2023DNAgepinni"
@@ -231,7 +238,15 @@ literal "false"
  as long as the error variance of estimated age is known,
  it is possible to allow for ageing error within the CKMR probability formulas,
  using weighted sums over kinship probabilities at different true ages.
- This should eliminate bias,
+ This should eliminate bias 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "petersma_age_2024"
+literal "false"
+
+\end_inset
+
+,
  and 
 \begin_inset CommandInset citation
 LatexCommand citet

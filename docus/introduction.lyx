@@ -265,7 +265,15 @@ The success of CKMR depends on whether the data collected contain enough close-k
  etc.,
  while taking into account the species' life history,
  ecology,
- and physiology.
+ and physiology 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "seveque_sources_2024,petersma_age_2024,merriell_assessing_2024,swenson_accounting_2024,waples_close-kin_2022"
+literal "false"
+
+\end_inset
+
+.
  The pairwise comparison framework leads to analytical results for the expected number of kin pairs and the parameter-estimation variance,
  given the number of samples and associated covariates,
  so that simulation is not essential for study design.
@@ -334,7 +342,7 @@ without CKMR).
 \end_layout
 
 \begin_layout Subsection
-Pacific Walrus biology and background
+Pacific walrus biology and background
 \end_layout
 
 \begin_layout Standard
@@ -411,8 +419,8 @@ literal "false"
 \end_inset
 
 .
- Female walrus may have their first calf at 6 years of age;
- male walrus do not reach sexual maturity until 15 years of age 
+ Female walruses may have their first calf at 6 years of age;
+ male walruses do not reach sexual maturity until 15 years of age 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "fay_odobenus_1985"
@@ -430,7 +438,7 @@ literal "false"
 \end_inset
 
 .
- Walrus can be aged from their teeth 
+ Walruses can be aged from their teeth 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kryukova2014method"
@@ -484,7 +492,7 @@ literal "false"
  and indigenous peoples and management agencies need information on the status of the walrus population to manage these harvests sustainably.
  Furthermore,
  in the United States,
- the Marine Mammal Protection Act (MMPA) requires a determination of potential biological removal for walrus,
+ the Marine Mammal Protection Act (MMPA) requires a determination of potential biological removal for walruses,
  which,
  in turn,
  requires a precise abundance estimate 

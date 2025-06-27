@@ -131,9 +131,9 @@ setcounter{section}{0}
 \backslash
 renewcommand{
 \backslash
-thesection}{
+thesection}{S
 \backslash
-Alph{section}}
+arabic{section}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -160,7 +160,9 @@ setcounter{table}{0}
 \backslash
 renewcommand{
 \backslash
-thetable}{A
+thetable}{S
+\backslash
+arabic{section}.
 \backslash
 arabic{table}}
 \end_layout
@@ -182,7 +184,9 @@ setcounter{figure}{0}
 \backslash
 renewcommand{
 \backslash
-thefigure}{A
+thefigure}{S
+\backslash
+arabic{section}.
 \backslash
 arabic{figure}}
 \end_layout

@@ -208,7 +208,7 @@ nolink "false"
 
  for more details).
  We did not include within-cohort half-sibling pairs (HSPs) or full-sibling pairs (FSPs),
- because walrus have a litter size of one and female walrus are unlikely to repeatedly mate with the same male.
+ because walruses have a litter size of one and female walruses are unlikely to repeatedly mate with the same male.
  Similarly,
  we did not consider full-thiatic pairs (FTPs).
  Grandparent-grandchild pairs (GGPs) are difficult to distinguish from HSPs,
@@ -404,7 +404,7 @@ name "subsec:The-breeding-cycle"
 \end_layout
 
 \begin_layout Standard
-Female walrus,
+Female walruses,
  like many other animals,
  exhibit 
 \begin_inset Quotes eld
@@ -418,20 +418,20 @@ skip-breeding
  taking gaps of one or more years between births.
  This intermittent breeding can cause bias in parameter estimates if not included in the CKMR model 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "waples_close-kin_2022,swenson_accounting_2024"
 literal "false"
 
 \end_inset
 
 .
- Since XHSPs will be important for walrus,
+ Since XHSPs will be important for walruses,
  we decided to include a sub-model for skip-breeding,
  with parameters to be estimated from the CKMR data.
 \end_layout
 
 \begin_layout Standard
-Walrus have a litter size of one,
+Walruses have a litter size of one,
  and due to a 14-15 month gestation,
  they cannot give birth in consecutive years 
 \begin_inset CommandInset citation
@@ -782,12 +782,12 @@ end{tikzpicture}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Directed cyclic graph showing the breeding cycle for walrus as represented in our Markov model.
+Directed cyclic graph showing the breeding cycle for walruses as represented in our Markov model.
  Nodes show the states (pregnant,
  with young-of-the-year (YOTY),
  or quiescent) and edges give transition probabilities between those states.
  On average,
- female walrus reach sexual maturity (age of first ovulation) at age 4,
+ female walruses reach sexual maturity (age of first ovulation) at age 4,
  so females enter the graph at the quiescent node.
  On the right is the transition matrix,
  
@@ -907,7 +907,7 @@ Having formulated our population dynamics model,
  we now quantify the probability of relatedness between individuals.
  These probabilities will be used in the pairwise comparison terms summed in the pseudo-log-likelihood.
  The kinship probabilities are linked to the population dynamics model by shared parameters.
- For walrus,
+ For walruses,
  we considered three types of kinship:
  mother-offspring pair (MOP),
  cross-cohort maternal half-sibling pair (XmHSP),
@@ -1146,7 +1146,8 @@ j
 \begin_inset Formula $a_{b}$
 \end_inset
 
- = 6);
+ = 6;
+ note this is conservative since most walruses are independent from their mothers from age 2-3);
 \end_layout
 
 \begin_layout Itemize
@@ -1208,9 +1209,9 @@ must
 ).
  The MOP probability is
 \begin_inset Formula 
-\[
-\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}
-\]
+\begin{equation}
+\mathbb{P}\left[K_{ij}=\text{MOP}\vert a_{i},y_{i},b_{j},L_{i}=0,\boldsymbol{\theta}\right]=\frac{R_{i}(b_{j}\vert y_{i},a_{i})}{R^{+}(b_{j})}\label{eq:}
+\end{equation}
 
 \end_inset
 
@@ -1289,9 +1290,9 @@ For the numerator,
 
 :
 \begin_inset Formula 
-\[
-R_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(b_{j}-y_{i},a_{i}\right)\mathbb{P}\left[B\left(a_{i}+b_{j}-y_{i}\right)=2\right],
-\]
+\begin{equation}
+R_{i}\left(b_{j}\vert y_{i},a_{i}\right)=\Phi\left(b_{j}-y_{i},a_{i}\right)\mathbb{P}\left[B\left(a_{i}+b_{j}-y_{i}\right)=2\right],\label{eq:-7}
+\end{equation}
 
 \end_inset
 
@@ -1491,7 +1492,7 @@ To find probabilities of cross-cohort maternal half-sibling pairs (XmHSPs),
 \begin_inset Formula $b_{k}\neq b_{l}$
 \end_inset
 
- (since walrus give birth to a single offspring at a time);
+ (since walruses give birth to a single offspring at a time);
 \end_layout
 
 \begin_layout Itemize
@@ -1585,10 +1586,15 @@ If we call
 \end_inset
 
  survives until 
-\begin_inset Formula $b_{l}$
+\begin_inset Formula $b_{l}+1$
 \end_inset
 
-;
+,
+ since we know 
+\begin_inset Formula $l$
+\end_inset
+
+ survived to be sampled at 1+ years of age;
 \end_layout
 
 \begin_layout Enumerate
@@ -1766,7 +1772,7 @@ literal "false"
 \begin_layout Standard
 To compute stage-structured self-recapture probabilities in a manner analogous to kin capture probabilities,
  we retain only the first and last capture of each individual.
- This is a reasonable approximation for walrus because the self-recapture rate is relatively low.
+ This is a reasonable approximation for walruses because the self-recapture rate is relatively low.
  We condition on age of the first sample but 
 \emph on
 not
@@ -1840,14 +1846,14 @@ nolink "false"
 
 \end_inset
 
- that for walrus:
+ that for walruses:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-N_{y,\text{J}}=N_{y,\text{A}}\frac{\Lambda\left(W\right)-\phi_{\text{A}}}{\Lambda\left(W\right)-\phi_{\text{J}}}\left(\left(\frac{\Lambda\left(W\right)}{\phi_{\text{J}}}\right)^{5}-1\right),
-\]
+\begin{equation}
+N_{y,\text{J}}=N_{y,\text{A}}\frac{\Lambda\left(W\right)-\phi_{\text{A}}}{\Lambda\left(W\right)-\phi_{\text{J}}}\left(\left(\frac{\Lambda\left(W\right)}{\phi_{\text{J}}}\right)^{5}-1\right),\label{eq:-1}
+\end{equation}
 
 \end_inset
 
@@ -2016,10 +2022,10 @@ nolink "false"
 
 :
 \begin_inset Formula 
-\begin{align*}
-w_{ijk} & \sim\text{Poisson}(p_{ijk}(\boldsymbol{\theta}))\\
-L(\boldsymbol{\theta};w) & =C\prod_{i<j;k\in\mathcal{K}}e^{-p_{ijk}\left(\boldsymbol{\theta}\right)}p_{ijk}\left(\boldsymbol{\theta}\right)^{w_{ijk}},
-\end{align*}
+\begin{align}
+w_{ijk} & \sim\text{Poisson}(p_{ijk}(\boldsymbol{\theta}))\nonumber \\
+L(\boldsymbol{\theta};w) & =C\prod_{i<j;k\in\mathcal{K}}e^{-p_{ijk}\left(\boldsymbol{\theta}\right)}p_{ijk}\left(\boldsymbol{\theta}\right)^{w_{ijk}},\label{eq:-2}
+\end{align}
 
 \end_inset
 
@@ -2059,9 +2065,9 @@ impossible
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\log_{e}L\left(\boldsymbol{\theta};w\right)=\Lambda\left(\boldsymbol{\theta};w\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} .
-\]
+\begin{equation}
+\log_{e}L\left(\boldsymbol{\theta};w\right)=\Lambda\left(\boldsymbol{\theta};w\right)=C+\sum_{i<j;k\in\mathcal{K}}\left\{ -p_{ijk}\left(\boldsymbol{\theta}\right)+w_{ijk}\log_{e}p_{ijk}\left(\boldsymbol{\theta}\right)\right\} .\label{eq:-3}
+\end{equation}
 
 \end_inset
 
@@ -2168,9 +2174,9 @@ nolink "false"
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}_{0}\right)\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}_{0}\right)^{\top}\qquad\text{where }\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)=\frac{d\sqrt{p_{ijk}\left(\boldsymbol{\theta}\right)}}{d\boldsymbol{\theta}}.
-\]
+\begin{equation}
+h_{ijk}\left(\boldsymbol{\theta}_{0}\right)=4\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}_{0}\right)\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}_{0}\right)^{\top}\qquad\text{where }\boldsymbol{\Delta}_{ijk}\left(\boldsymbol{\theta}\right)=\frac{d\sqrt{p_{ijk}\left(\boldsymbol{\theta}\right)}}{d\boldsymbol{\theta}}.\label{eq:-4}
+\end{equation}
 
 \end_inset
 
@@ -2207,9 +2213,9 @@ We now group across pairs with identical covariate values.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{gather*}
-H\left(\boldsymbol{m}_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1},\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}\left(\mathbb{I}\left(\mathbf{z}_{1}<\mathbf{z}_{2}\right)+\frac{1}{2}\mathbb{I}\left(\mathbf{z}_{1}=\mathbf{z}_{2}\right)\right)m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h_{\mathbf{z}_{1}\mathbf{z}_{2}k}\left(\boldsymbol{\theta}_{0}\right),
-\end{gather*}
+\begin{gather}
+H\left(\boldsymbol{m}_{\mathcal{Z}};\boldsymbol{\theta}_{0}\right)=\sum_{\mathbf{z}_{1},\mathbf{z}_{2}\in\mathcal{Z};k\in\mathcal{K}}\left(\mathbb{I}\left(\mathbf{z}_{1}<\mathbf{z}_{2}\right)+\frac{1}{2}\mathbb{I}\left(\mathbf{z}_{1}=\mathbf{z}_{2}\right)\right)m\left(\mathbf{z}_{1}\right)m\left(\mathbf{z}_{2}\right)h_{\mathbf{z}_{1}\mathbf{z}_{2}k}\left(\boldsymbol{\theta}_{0}\right),\label{eq:-5}
+\end{gather}
 
 \end_inset
 
@@ -2276,9 +2282,9 @@ We then invert matrix
 ,
  can then be approximated by the delta method:
 \begin_inset Formula 
-\[
-\mathbb{V}\left[g\left(\boldsymbol{\theta}\right);\boldsymbol{m}_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right]\approx\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]V\left(\boldsymbol{m}_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right)\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{\top}.
-\]
+\begin{equation}
+\mathbb{V}\left[g\left(\boldsymbol{\theta}\right);\boldsymbol{m}_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right]\approx\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]V\left(\boldsymbol{m}_{\mathcal{Z}},\boldsymbol{\theta}_{0}\right)\left[\left.\frac{dg\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}}\right\vert _{\boldsymbol{\theta}_{0}}\right]^{\top}.\label{eq:-6}
+\end{equation}
 
 \end_inset
 
