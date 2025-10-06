@@ -172,12 +172,10 @@ literal "false"
  as inferred from genotypes,
  to estimate abundance and demographic parameters.
  CKMR provides additional flexibility compared to IMR because it is not essential to recapture individuals,
- so that only lethal samples (e.g.,
+ so that lethal samples (e.g.,
  from sampling,
  harvest,
- or natural mortality),
- only non-lethal samples,
- or both lethal and non-lethal samples can be used.
+ or natural mortality) and/or non-lethal samples can be used.
  As of 2025,
  most CKMR projects have focused on commercial fish (e.g.,
  
@@ -222,7 +220,7 @@ tags
 
  itself and its parents.
  For a given sample size,
- a large population will have fewer 
+ a large population is expected to have fewer 
 \begin_inset Quotes eld
 \end_inset
 
@@ -258,7 +256,7 @@ unrelated
 
 \begin_layout Standard
 The success of CKMR depends on whether the data collected contain enough close-kin pairs to yield useful precision in parameter estimates.
- The chance of success is greatly increased by study design exercise that evaluates the effects of sample size,
+ The chance of success is greatly increased by a study design exercise that evaluates the effects of sample size,
  sex and age composition of sampled animals,
  precision of covariate measurements,
  study duration,

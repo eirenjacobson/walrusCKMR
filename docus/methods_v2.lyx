@@ -306,15 +306,35 @@ The parameters to be estimated were:
 \begin_inset Formula $\phi_{\text{J}}$
 \end_inset
 
-),
- and that offspring survival from age 1 onwards was independent of its mother's survival.
+).
+ Since weaning occurs between 1 and 2 years of age 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fay_ecology_1982"
+literal "false"
+
+\end_inset
+
+,
+ and most adult female mortality occurs during the subsistence harvest in the spring,
+ when 1-yr-old walruses are nearly 2,
+ we assumed that offspring survival from age 1 onwards was independent of its mother’s survival.
+ This is consistent with 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "taylor_demography_2018"
+literal "false"
+
+\end_inset
+
+.
  Our model assumed that adult female abundance increased or decreased exponentially over the period covered by the population dynamics,
  which we set at 2000–2028.
  The model needs to cover all birth-dates of samples that are used as potential offspring,
  XmHSPs,
  or SPs;
  choosing a lower limit of 2000 thus discards a few samples,
- but is advisable because there was more intense harvesting prior to that and large changes in abundance
+ but is advisable because there was more intense harvesting prior to that and large changes in abundance 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "taylor_demography_2015,taylor_demography_2018"
@@ -322,7 +342,7 @@ literal "false"
 
 \end_inset
 
-),
+,
  so that age composition becomes hard to model.
  Thus,
  adult female abundance in year 
@@ -918,7 +938,7 @@ Having formulated our population dynamics model,
 
 \begin_layout Standard
 To establish demographic kinship probabilities between two sampled individuals,
- we apply the principle of effective relative reproductive output 
+ we apply the principle of expected relative reproductive output 
 \begin_inset CommandInset citation
 LatexCommand citep
 before "ERRO;"
@@ -964,7 +984,10 @@ individual
 \begin_inset Quotes erd
 \end_inset
 
- are interchangeable terms),
+ are interchangeable terms).
+ We use the last sample to maximize the probability of having captured a relative,
+ since the older the individual,
+ the more offspring it is likely to have had and those offspring are more likely to have been sampled.
  whereas for SPs we consider the first and last sample from one individual (in which case,
  
 \begin_inset Quotes eld
@@ -983,6 +1006,7 @@ individual
 \end_inset
 
  have different meanings).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1146,15 +1170,34 @@ j
 \begin_inset Formula $a_{b}$
 \end_inset
 
- = 6;
- note this is conservative since most walruses are independent from their mothers from age 2-3);
+ = 6);
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $b_{j}\geqslant2000$
 \end_inset
 
- (population dynamics starts at year 2000).
+ (birth year must be greater than or equal to 2000,
+ since population dynamics starts at year 2000).
+\end_layout
+
+\begin_layout Standard
+It has previously been reported that walrus calves may accompany their mothers until age 3 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "beatty_panmixia_2020"
+literal "false"
+
+\end_inset
+
+.
+ To be conservative,
+ we do not compare potential offspring to potential mothers sampled in the same year unless the potential offspring is at least 6 years old,
+ at which point it would be an adult and definitely independent from its mother.
+ We allow comparisons of possible offspring and possible mothers sampled in different years,
+ regardless of age,
+ because we assume that the sampling events are independent.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1499,7 +1542,8 @@ To find probabilities of cross-cohort maternal half-sibling pairs (XmHSPs),
 \begin_inset Formula $b_{k}\geqslant2000$
 \end_inset
 
- (population dynamics starts at 2000).
+ (birth year must be greater than or equal to 2000,
+ since population dynamics starts at 2000).
 \end_layout
 
 \begin_layout Standard
@@ -1564,7 +1608,7 @@ If we call
 
 
 \emph default
- would not have (through its dependency on its mother) and would not have been sampled.
+ would not have survived (through its dependency on its mother) and would not have been sampled.
  In order for 
 \emph on
 
@@ -1730,13 +1774,13 @@ second-order
  hence cannot be identified directly and unambiguously.
  Fortunately,
  HSPs are demographically by far the most common when the birth-gap used for comparing samples is short.
- When the birth-gap approaches twice the age-of-maturity,
+ When the birth-gap approaches twice the age-of-first-birth,
  though,
  grandparent-grandchild pairs (GGPs) become more prevalent.
  To mitigate this issue,
  we restricted the range of birth gaps considered in the model to those where GGPs are very rare (or indeed impossible in our simulated data;
  i.e.,
- below twice the age at maturity).
+ below twice the age of first birth plus two years).
 \end_layout
 
 \begin_layout Paragraph
@@ -1784,7 +1828,10 @@ not
 \end_inset
 
 ).
- If the first sample would have reached the right developmental stage (i.e.,
+ This is necessary because our model is stage- rather than age-structured.
+ If,
+ based on age of the first sample and time elapsed between sampling events,
+ the first sample would have reached the developmental stage of the second sample (i.e.,
  the two could be the same animal),
  then we assume it is equally likely to be 
 \emph on
@@ -2301,7 +2348,7 @@ We then invert matrix
 The realized adult sample size (about 1,100 per year for 2013-2017 and 2023,
  or 6,600 total to date) is large enough relative to adult female abundance (~70,000;
  effectively more because of turnover during the years modelled) that ~5–10% of samples are self/kin-recaptures.
- This means that a comparable proportion of pairwise comparisons have predictable outcomes based on the results of other comparisons,
+ This means that a considerable proportion of pairwise comparisons have predictable outcomes based on the results of other comparisons,
  breaking independence.
  The 
 \begin_inset Quotes eld

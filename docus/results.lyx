@@ -264,7 +264,7 @@ nolink "false"
 \end_inset
 
 ).
- The mean decrease in CV on adult female abundance in paired scenarios with IMR and ICKMR was 4% for a stationary population,
+ The mean absolute decrease in CV on adult female abundance in paired scenarios with IMR and ICKMR was 4% for a stationary population,
  7% for a decreasing population,
  and 8% for an increasing population.
  These represent decreases of 44%,
