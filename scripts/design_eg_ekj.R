@@ -4,10 +4,8 @@
 # ptru, Vpar, denv (which contains sample size info)
 # and various functions
 
-
-
 compdesign[d, l, s, "Yes", "Yes", , "Est"] <- as.numeric(interesting_stuff(ptru, lglk_with_data))
-design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$Value == "Est",7:13] <- as.list(interesting_stuff(ptru, lglk_with_data))
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$SelfP == "Yes" & design_df$Value == "Est",8:14] <- as.list(interesting_stuff(ptru, lglk_with_data))
 
 # Need a SS scenario
 denv <- environment( lglk_with_data)
@@ -21,7 +19,7 @@ basic0 <- doades(
 )
 
 compdesign[d,l,s,"Yes", "Yes", ,"SE"] <- as.numeric(basic0)
-design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$Value == "SE",7:13] <- as.list(basic0)
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$SelfP == "Yes" & design_df$Value == "SE",8:14] <- as.list(basic0)
 
 basic0_noCK <- doades( 
   m_SYEL_0,          # could be anything
@@ -32,15 +30,30 @@ basic0_noCK <- doades(
 )
 
 compdesign[d,l,s,"No", "Yes", ,"SE"]  <- as.numeric(basic0_noCK)
-design_df[design_df$ID == TEST_CASE & design_df$CKMR == "No" & design_df$Value == "SE",7:13] <- as.list(basic0_noCK)
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "No" & design_df$SelfP == "Yes" & design_df$Value == "SE",8:14] <- as.list(basic0_noCK)
+
+basic0_noSelfP <- doades( 
+  m_SYEL_0,          # could be anything
+  Hbits,             # *assume* this p'tic Hbits matches this lglk_with_data
+  interesting_stuff, # look at function code
+  lglk_with_data,
+  comp_wts= c(selfP=0.01)
+)
+
+compdesign[d,l,s,"Yes", "No", ,"SE"]  <- as.numeric(basic0_noCK)
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$SelfP == "No" & design_df$Value == "SE",8:14] <- as.list(basic0_noCK)
+
 
 tout <- round(compdesign[d,l,s,,"Yes",,"SE"], digits = 2)
 
 write.csv( tout, file=paste0("results/compdesign_D", d, "_L", l, "_S", s, ".csv"))
 
-cvs_yes <- as.numeric(compdesign[d, l, s, "Yes", "Yes",, "SE"])/as.numeric(compdesign[d, l, s, "Yes", "Yes",, "Est"])
-cvs_no <- as.numeric(compdesign[d, l, s, "No", "Yes",, "SE"])/as.numeric(compdesign[d, l, s, "Yes", "Yes",, "Est"])
-design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$Value == "CV",7:13] <- as.list(cvs_yes)
-design_df[design_df$ID == TEST_CASE & design_df$CKMR == "No" & design_df$Value == "CV",7:13] <- as.list(cvs_no)
+# cvs_ckmr_selfp
+cvs_yes_yes <- as.numeric(compdesign[d, l, s, "Yes", "Yes",, "SE"])/as.numeric(compdesign[d, l, s, "Yes", "Yes",, "Est"])
+cvs_no_yes <- as.numeric(compdesign[d, l, s, "No", "Yes",, "SE"])/as.numeric(compdesign[d, l, s, "Yes", "Yes",, "Est"])
+cvs_yes_no <- as.numeric(compdesign[d, l, s, "Yes", "No",, "SE"])/as.numeric(compdesign[d, l, s, "Yes", "No",, "Est"])
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$SelfP == "Yes" & design_df$Value == "CV",8:14] <- as.list(cvs_yes_yes)
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "No" & design_df$SelfP == "Yes" & design_df$Value == "CV",8:14] <- as.list(cvs_no_yes)
+design_df[design_df$ID == TEST_CASE & design_df$CKMR == "Yes" & design_df$SelfP == "No" & design_df$Value == "CV",8:14] <- as.list(cvs_yes_no)
 
 

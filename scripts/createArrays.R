@@ -17,7 +17,9 @@ for (i in 1:length(IDs)){
 }
 
 design_df <- expand_grid(cbind(factor(IDs), scenarios), 
-                         CKMR = factor(c("Yes", "No")), Value = factor(c("TRUE", "Est", "SE", "CV")),
+                         CKMR = factor(c("Yes", "No")), 
+                         SelfP = c("Yes", "No"),
+                         Value = factor(c("TRUE", "Est", "SE", "CV")),
                          Nfad_2015 = 0, Nfad_2020 = 0, Nfad_2025 = 0, 
                          fadsurv = 0, fjusurv = 0, ppn_breedy = 0, 
                          rel_ad_15_25 = 0)
