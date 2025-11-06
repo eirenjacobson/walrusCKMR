@@ -39,7 +39,8 @@
     # dropping "s" for plural
     # I should know better than to write stuff like this...
     whicho <- match( sub( 's$', '', sprintf( '_%s', names( comp_wts))),
-        sub( '^[^_]*(_[^_s]+)_.*', '\\1', names( Hbits$DSP)), 0)
+#        sub( '^[^_]*(_[^_s]+)_.*', '\\1', names( Hbits$DSP)), 0)
+         sub( '^DSP(_.+)_.+', '\\1', names( Hbits$DSP)), 0)
     if( !all( whicho>0)){
 stop( sprintf( "Don't understand which comp to weight: %s", 
         paste( names( comp_wts)[ whicho==0], collapse=', ')))}
