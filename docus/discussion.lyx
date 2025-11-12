@@ -175,7 +175,8 @@ nolink "false"
 \begin_layout Standard
 Lethal samples can be incorporated into both IMR and CKMR analyses.
  In this study,
- we considered lethal samples as a potential replacement for some live samples.
+ we considered lethal samples as a potential replacement for some live samples,
+ and assumed that lethal and non-lethal samples were similar in terms of ERRO.
  Partial substitution of lethal samples for non-lethal (biopsy) samples resulted in similar precision on abundance estimates.
  In previous years,
  50 samples per year were collected from harvested animals by the FWS WHMP.
@@ -191,7 +192,11 @@ literal "false"
 
 .
  Approximately 400 harvested samples would be needed to reduce each cruise by one week or 1600 samples would be needed to remove the need for an entire cruise.
- We did not investigate the impact of using exclusively harvested samples in place of one or more survey years.
+ We did not investigate the impact of using exclusively harvested samples in place of one or more survey years,
+ nor did we investigate the potential consequences of hunter preferences (e.g.,
+ if hunters preferentially target large adult females,
+ and those females tend to be more fecund,
+ the ERRO of lethal and non-lethal samples may not be the same).
  In the longer term,
  using exclusively lethal samples could lead to lower precision in estimates of abundance,
  since lethal samples cannot go on to be self-recaptures or future parents.
@@ -201,6 +206,8 @@ literal "false"
  partial reliance on harvested samples mitigates disturbance to live walruses by decreasing the need for direct interactions with animals in the wild.
  This approach also strengthens collaboration with Alaska Native hunters and co-management partners,
  fostering cooperative research efforts that align with subsistence practices and local ecological knowledge.
+ For example,
+ further work could be done in collaboration with the WHMP to better understand hunter preferences and to incorporate these into the CKMR model.
  Such partnerships are essential for long-term monitoring and effective management of the species.
  Furthermore,
  the ongoing contribution of the WHMP to walrus abundance estimation provides a strong justification for maintaining the program,
@@ -272,7 +279,8 @@ literal "false"
 \end_inset
 
 .
- We expect to include ageing error in our ICKMR model when data are available,
+ We expect to include ageing error in our ICKMR model when data are available and expect that doing so will reduce precision compared to having hypothetical perfect age information.
+ The loss of precision can be investigated through our design framework,
  but we opted not to include it in our design calculations (i.e.,
  we assumed that there is no error),
  because we do not yet know how large the errors will be.
@@ -284,45 +292,47 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-We also assume that walrus juvenile survival is independent from the mother's survival from age 1.
- If this is not accurate,
- and calves are dependent for 2 or more years,
- then survival would be overestimated,
- which would lead to 
-\begin_inset Quotes eld
+While most animals are theoretically good candidates for CKMR,
+ the practical considerations of sampling mean that it would not be sensible to apply CKMR to some species and populations.
+ CKMR tends to work best for relatively large,
+ well-mixed populations,
+ where sampling is sparse and therefore approximate independence of samples is reasonable (see 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "bravington_close-kin_2016"
+literal "false"
+
 \end_inset
 
-too many
-\begin_inset Quotes erd
-\end_inset
-
- surviving juveniles,
- an underestimate of the probability of kinship,
- and ultimately an overestimate of abundance.
- This underscores the need for accurate,
- detailed information about the life-history of the species of interest.
+for additional details).
+ Design exercises like the one presented here can help quantify the effort needed,
+ which can then be costed and the value considered.
 \end_layout
 
 \begin_layout Standard
-Most animals are theoretically good candidates for CKMR,
- except semelparous species,
- and some pathological cases mentioned in Bravington et al.
- 2016.
- However,
- the practical considerations of sampling mean that in practice,
- it would not be sensible to apply CKMR to some species and populations.
- Design exercise can help quantify the effort needed,
- which can then be costed and the value considered.
- Some chat here about what types of populations will and won't work for CKMR.
- Talk about how for walrus,
- we had to consider non-independence of mother-calf pairs.
- Works best for relatively large,
- well-mixed populations.
- With e.g.,
- family groups,
- groups would need to be sampled independently and only one sample from each group used in comparisons,
- which might make it difficult to collect sufficient samples in practice.
- 
+There are situations where naively using all possible pairwise comparisons in a simple CKMR model will give biased results due to family structure in the sampling.
+ With family groups,
+ groups need to be sampled independently and only one sample from each group used in comparisons,
+ which might make it difficult to collect sufficient samples in some cases (e.g.,
+ wolves,
+ killer whales).
+ For more amenable cases where it's just an issue of family members needing enough time to separate,
+ the simplest prescription is to avoid doing comparisons between animals that are caught close enough in space and/or time to have an inflated chance of being family members.
+ This has been done for school shark,
+ form persistent schools that may contain siblings;
+ the models don't use comparisons between samples from the same month and region 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "thomson_close_2020"
+literal "false"
+
+\end_inset
+
+.
+ Here,
+ for walrus,
+ we did not compare possible offspring and mothers sampled in the same year unless the age of the potential offspring was at least the age of first birth.
+ These examples underscore the need to work closely with biologists to incorporate accurate information about the life-history of the species of interest in CKMR model development.
 \end_layout
 
 \begin_layout Standard

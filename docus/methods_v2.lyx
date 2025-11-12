@@ -985,7 +985,7 @@ individual
 \end_inset
 
  are interchangeable terms).
- We use the last sample to maximize the probability of having captured a relative,
+ We use the last sample for pairwise comparisons to maximize the probability of having captured a relative,
  since the older the individual,
  the more offspring it is likely to have had and those offspring are more likely to have been sampled.
  whereas for SPs we consider the first and last sample from one individual (in which case,
@@ -1817,7 +1817,11 @@ literal "false"
 To compute stage-structured self-recapture probabilities in a manner analogous to kin capture probabilities,
  we retain only the first and last capture of each individual.
  This is a reasonable approximation for walruses because the self-recapture rate is relatively low.
- We condition on age of the first sample but 
+ We condition on age of the first sample 
+\begin_inset Formula $(a_{1})$
+\end_inset
+
+ but 
 \emph on
 not
 \emph default
@@ -1829,16 +1833,81 @@ not
 
 ).
  This is necessary because our model is stage- rather than age-structured.
- If,
- based on age of the first sample and time elapsed between sampling events,
- the first sample would have reached the developmental stage of the second sample (i.e.,
+ If 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $d\left(a\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is a function that maps age to developmental stage,
+ then we restrict our comparisons to pairs of samples collected in years 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{2}$
+\end_inset
+
+ where:
+\begin_inset Formula 
+\[
+d\left(a_{1}+\left(y_{2}-y_{1}\right)\right)=d_{2}
+\]
+
+\end_inset
+
+If,
+ based on age of the first sample 
+\begin_inset Formula $(a_{1})$
+\end_inset
+
+ and time elapsed between sampling events 
+\begin_inset Formula $(y_{2}-y_{1})$
+\end_inset
+
+ the first sample would have reached the developmental stage of the second sample (
+\begin_inset Formula $d_{2}$
+\end_inset
+
+;
+ i.e.,
  the two could be the same animal),
  then we assume it is equally likely to be 
 \emph on
 any
 \emph default
  of the females in that developmental stage in that year.
- Therefore,
+ 
+\end_layout
+
+\begin_layout Standard
+Therefore,
  the probability that the first sample is the same individual as the second sample is the reciprocal of the developmental stage abundance.
  Additionally,
  we account for survival over the intervening years.

@@ -324,21 +324,6 @@ literal "false"
  
 \end_layout
 
-\begin_layout Standard
-Because CKMR methods are species- and situation-specific,
- we conclude the introduction with background on walrus biology and surveys.
- In Methods,
- we describe our population dynamics model,
- derive appropriate kinship probability formulae,
- and show how to analytically calculate expected variances under different survey designs.
- We also outline the simulation we used to test our ICKMR model.
- The Results section shows how different survey designs are likely to perform (e.g.,
- IMR with\SpecialChar breakableslash
-without CKMR).
- In the Discussion,
- we summarize our conclusions for walrus surveys and mention modeling simplifications made for design purposes that we may reconsider when working with real data.
-\end_layout
-
 \begin_layout Subsection
 Pacific walrus biology and background
 \end_layout
