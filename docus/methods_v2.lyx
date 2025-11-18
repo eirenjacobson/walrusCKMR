@@ -328,6 +328,19 @@ literal "false"
 \end_inset
 
 .
+ Note that while we assume that offspring survival is independent from age 1,
+ we do not assume that sampling is independent until age 6 (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Mother-offspring-pairs-(MOPs)"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
  Our model assumed that adult female abundance increased or decreased exponentially over the period covered by the population dynamics,
  which we set at 2000–2028.
  The model needs to cover all birth-dates of samples that are used as potential offspring,
@@ -985,28 +998,19 @@ individual
 \end_inset
 
  are interchangeable terms).
- We use the last sample for pairwise comparisons to maximize the probability of having captured a relative,
- since the older the individual,
- the more offspring it is likely to have had and those offspring are more likely to have been sampled.
- whereas for SPs we consider the first and last sample from one individual (in which case,
- 
-\begin_inset Quotes eld
-\end_inset
-
-sample
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-individual
-\begin_inset Quotes erd
-\end_inset
-
- have different meanings).
- 
+ When individuals were sampled more than once,
+ we use the last sample for MOP and XmHSP com-parisons,
+ since we can then be certain that the individual was alive until the time of the last sample,
+ and so,
+ conditional on age,
+ could have produced offspring at least up until that time.
+ In addition,
+ us-ing only the last sample improves precision in estimates of survival,
+ since,
+ again,
+ the individual defi-nitely survived to age at last sample.
+ For SPs we consider the first and last sample from each indi-vidual (in which case,
+ “sample” and “individual” have different meanings) to maximize the interval over which we can be certain that the individual was alive.
 \end_layout
 
 \begin_layout Standard
@@ -1034,34 +1038,64 @@ We use the following notation:
 
 .
  As noted above,
- we only consider female abundance,
- so throughout,
+ we only estimate adult female abundance.
+ However,
+ we use notation that could be adopted in models that estimate both juvenile and adult female abundance.
+ In our notation,
  
-\begin_inset Formula $N$
+\begin_inset Formula $N_{y,\text{{A}}}$
 \end_inset
 
- refers to females only.
- When female abundance is considered for a given year (
-\begin_inset Formula $y$
+ refers to adult female abundance in year y.
+ We include the 
+\begin_inset Formula $\text{{A}}$
 \end_inset
 
-) and development stage (
-\begin_inset Formula $d=\text{A}$
+ subscript for clarity throughout the manuscript.
+ In our derivation of juvenile female abundance (Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Deriv-Njy"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- or 
-\begin_inset Formula $\text{J}$
+),
+ we simply change the second subscript to 
+\begin_inset Formula $\text{{J}}$
 \end_inset
 
-,
- for adult or juvenile,
- respectively),
- it is written with two arguments,
+ for juvenile,
  
-\begin_inset Formula $N_{y,d}$
+\begin_inset Formula $N_{y,\text{{J}}}$
 \end_inset
 
 .
+ Thus,
+ we generalize this notation to 
+\begin_inset Formula $N_{y,d}$
+\end_inset
+
+ where 
+\begin_inset Formula $y$
+\end_inset
+
+ denotes year and 
+\begin_inset Formula $d$
+\end_inset
+
+ denotes developmental stage (
+\begin_inset Formula $\text{{A}}$
+\end_inset
+
+ = adult or 
+\begin_inset Formula $\text{{J}}$
+\end_inset
+
+ = juvenile).
  We define the binary variable 
 \begin_inset Formula $L$
 \end_inset
@@ -1119,6 +1153,13 @@ literal "false"
 
 \begin_layout Paragraph
 Mother-offspring pairs (MOPs)
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Mother-offspring-pairs-(MOPs)"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1182,7 +1223,7 @@ j
 \end_layout
 
 \begin_layout Standard
-It has previously been reported that walrus calves may accompany their mothers until age 3 
+Walruses may accompany their mothers until age 3 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "beatty_panmixia_2020"
@@ -1192,9 +1233,19 @@ literal "false"
 
 .
  To be conservative,
- we do not compare potential offspring to potential mothers sampled in the same year unless the potential offspring is at least 6 years old,
- at which point it would be an adult and definitely independent from its mother.
- We allow comparisons of possible offspring and possible mothers sampled in different years,
+ we do not compare potential offspring that are juveniles (
+\begin_inset Formula $\leq$
+\end_inset
+
+ 5 years old) to potential mothers sampled in the same year.
+ However,
+ we compare potential offspring that are adults (
+\begin_inset Formula $\geq$
+\end_inset
+
+ 6 years old) to potential mothers sampled in the same year.
+ Furthermore,
+ we compare all potential offspring to all potential mothers sampled in different years,
  regardless of age,
  because we assume that the sampling events are independent.
  
@@ -1787,7 +1838,7 @@ second-order
 Self-recaptures (SPs)
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:selfPs"
+name "par:selfPs"
 
 \end_inset
 
@@ -1903,11 +1954,7 @@ If,
 any
 \emph default
  of the females in that developmental stage in that year.
- 
-\end_layout
-
-\begin_layout Standard
-Therefore,
+ Therefore,
  the probability that the first sample is the same individual as the second sample is the reciprocal of the developmental stage abundance.
  Additionally,
  we account for survival over the intervening years.
@@ -1940,6 +1987,26 @@ where
 \end_inset
 
 .
+ The survival term 
+\begin_inset Formula $\Phi(y_{2}-y_{1},a_{1})$
+\end_inset
+
+ represents the probability of survival for 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ years as defined in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Mother-offspring-pairs-(MOPs)"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
  We also condition on the first sample being non-lethal (since the individual was subsequently recaptured).
  To obtain 
 \begin_inset Formula $N_{y_{2},d_{2}}$
@@ -1968,7 +2035,7 @@ nolink "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-N_{y,\text{J}}=N_{y,\text{A}}\frac{\Lambda\left(W\right)-\phi_{\text{A}}}{\Lambda\left(W\right)-\phi_{\text{J}}}\left(\left(\frac{\Lambda\left(W\right)}{\phi_{\text{J}}}\right)^{5}-1\right),\label{eq:-1}
+N_{y,\text{J}}=N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\text{J}}}\left(\left(\frac{\lambda}{\phi_{\text{J}}}\right)^{5}-1\right),\label{eq:-1}
 \end{equation}
 
 \end_inset
@@ -2212,7 +2279,7 @@ literal "false"
 
 5).
  These calculations are adaptations of standard methods used to find the statistical information (i.e.,
- derivatives) from the (pseudo-)likelihood,
+ derivatives) from the pseudo-log-likelihood,
  combined with enumerating the pairwise comparisons that would be available per covariate combination (which are limited here to:
  age or stage,
  sample year,

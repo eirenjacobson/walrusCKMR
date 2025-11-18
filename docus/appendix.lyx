@@ -237,7 +237,7 @@ do we actually want to keep this?
 As discussed in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:selfPs"
+reference "par:selfPs"
 plural "false"
 caps "false"
 noprefix "false"

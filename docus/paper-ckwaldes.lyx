@@ -570,28 +570,43 @@ A list in alphabetical order not exceeding eight words or short phrases.
 \end_layout
 
 \begin_layout Abstract
-CKMR is a promising approach for assessing population size of species which have been difficult to survey using more traditional methods.
+Close-kin mark-recapture (CKMR) is a promising approach for assessing population size of species which have been difficult to survey using more traditional methods.
  Here,
- we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and provide an example of study design for Pacific walrus 
-\emph on
-(Odobenus rosmarus divergens).
- 
-\emph default
-We develop the ICKMR model and test it using simulated datasets,
- then use properties of the likelihood to investigate the expected precision in estimates of abundance under various survey designs.
- The advantages of ICKMR over IMR include an increased effective sample size (since each individual tags not only itself,
+ we combine individual and close-kin mark-recapture in a single modelling framework (ICKMR) and provide an example of study design using this approach for Pacific walrus 
+\shape italic
+(Odobenus rosmarus divergens)
+\shape default
+.
+ We develop the ICKMR model and test it using simulated datasets,
+ then use properties of the pseudo-likelihood to investigate the expected precision in estimates of abundance with different proposed survey designs.
+ Our motivating example,
+ the Pacific walrus,
+ is an ice-associated marine mammal found in the Bering and Chukchi seas,
+ where it is an important resource for indigenous peoples.
+ Walrus abundance declined in the late 20th century,
+ and it is currently a species of conservation concern due to potential impacts of climate change,
+ particularly the loss of sea ice.
+ To reduce uncertainty in population size estimates,
+ researchers undertook an individual genetic mark-recapture (IMR) sampling campaign from 2013-2017 and collected tissue samples from over 8,000 individuals.
+ Another campaign of a similar scale is ongoing (2023-2027).
+ While sample collection was designed for individual mark-recapture (IMR),
+ advances in CKMR methods and associated molecular techniques mean that these samples could also be suitable for CKMR.
+ The advantages of CKMR over IMR include an increased effective sample size (since each individual tags not only itself,
  but also its parents,
  siblings,
  and offspring) and additional insights into demographic quantities of interest.
- Our modelling approach includes special considerations for walrus life-history,
+ To make best use of genetic samples,
+ we combine IMR with CKMR and investigate whether different sampling strategies can increase precision in estimates of abundance.
+ Our modeling approach includes special considerations for walrus life-history,
  including a multi-year inter-birth interval.
- We found that expected precision of the ICKMR estimates of adult female abundance,
+ We found that expected CVs of the ICKMR estimates of abundance,
  adult female survival,
  juvenile female survival,
- and proportion of breeding females are higher than those expected from IMR alone,
+ and proportion of breeding females are lower than those expected from IMR alone,
  and with ICKMR,
- fewer years of future sampling can be conducted to obtain sufficient precision in estimates of adult female walrus abundance.
- This work demonstrates the utility of combining IMR with CKMR and is applicable across a variety of taxa.
+ fewer years of future sampling can be conducted to obtain sufficient precision in estimates of abundance.
+ This work demonstrates the utility of ICKMR and will be applicable across a variety of taxa.
+ 
 \end_layout
 
 \begin_layout Standard
