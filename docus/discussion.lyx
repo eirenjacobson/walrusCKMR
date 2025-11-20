@@ -304,7 +304,7 @@ literal "false"
 
 \end_inset
 
-for additional details).
+ for additional details).
  Design exercises like the one presented here can help quantify the effort needed,
  which can then be costed and the value considered.
 \end_layout
@@ -319,8 +319,8 @@ There are situations where naively using all possible pairwise comparisons in a 
  For more amenable cases where it's just an issue of family members needing enough time to separate,
  the simplest prescription is to avoid doing comparisons between animals that are caught close enough in space and/or time to have an inflated chance of being family members.
  This has been done for school shark,
- form persistent schools that may contain siblings;
- the models don't use comparisons between samples from the same month and region 
+ which form persistent schools that may contain siblings;
+ the CKMR models don't use comparisons between samples from the same month and region 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "thomson_close_2020"
