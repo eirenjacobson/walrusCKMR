@@ -2041,7 +2041,7 @@ N_{y,\text{J}}=N_{y,\text{A}}\frac{\lambda-\phi_{\text{A}}}{\lambda-\phi_{\text{
 \end_inset
 
 where 
-\begin_inset Formula $\Lambda\left(W\right)=e^{r}$
+\begin_inset Formula $\lambda=e^{r}$
 \end_inset
 
  is the relative annual population growth rate.
