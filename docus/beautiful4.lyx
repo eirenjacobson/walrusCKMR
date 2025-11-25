@@ -212,10 +212,11 @@ th
  is 
 \begin_inset Formula 
 \begin{gather}
-\text{FI}_{ij}=\mathbb{E}_{W}\left[\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\left(\frac{W}{p}-1\right)^{2}\right]\nonumber \\
-=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\frac{1}{p^{2}}\mathbb{E}\left[\left(W-p\right)^{2}\right]\nonumber \\
-=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{i}}\frac{1}{p^{2}}\mathbb{V}\left[W\right]\nonumber \\
-=\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\label{eq:sbapx3}
+\text{FI}_{ij}=\mathbb{E}_{W}\left[\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{j}}\left(\frac{W}{p}-1\right)^{2}\right]\nonumber \\
+=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{j}}\frac{1}{p^{2}}\mathbb{E}\left[\left(W-p\right)^{2}\right]\nonumber \\
+=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{j}}\frac{1}{p^{2}}\mathbb{V}\left[W\right]\nonumber \\
+=\frac{dp}{d\theta_{i}}\frac{dp}{d\theta_{j}}\frac{1}{p}\\
+=\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{i}}\right)\left(\frac{1}{\sqrt{p}}\frac{dp}{d\theta_{j}}\right)\label{eq:sbapx3}
 \end{gather}
 
 \end_inset
