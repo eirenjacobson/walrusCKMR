@@ -1829,10 +1829,10 @@ th
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\text{FI}_{ij} & =\mathbb{E}_{W}\left[\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\left(\frac{W}{m\left(\boldsymbol{\theta}\right)}-1\right)^{2}\right]\nonumber \\
- & =\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{1}{m\left(\boldsymbol{\theta}\right)^{2}}\mathbb{E}\left[\left(W-m\left(\boldsymbol{\theta}\right)\right)^{2}\right]\nonumber \\
- & =\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{1}{m\left(\boldsymbol{\theta}\right)^{2}}\mathbb{V}\left[W\right]\nonumber \\
- & =\left(\frac{1}{\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\right)\left(\frac{1}{\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\right)\label{eq:sbapx3}
+\text{FI}_{ij} & =\mathbb{E}_{W}\left[\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{j}}\left(\frac{W}{m\left(\boldsymbol{\theta}\right)}-1\right)^{2}\right]\nonumber \\
+ & =\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{j}}\frac{1}{m\left(\boldsymbol{\theta}\right)^{2}}\mathbb{E}\left[\left(W-m\left(\boldsymbol{\theta}\right)\right)^{2}\right]\nonumber \\
+ & =\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{j}}\frac{1}{m\left(\boldsymbol{\theta}\right)^{2}}\mathbb{V}\left[W\right]\nonumber \\
+ & =\left(\frac{1}{\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{i}}\right)\left(\frac{1}{\sqrt{m\left(\boldsymbol{\theta}\right)}}\frac{dm\left(\boldsymbol{\theta}\right)}{d\boldsymbol{\theta}_{j}}\right)\label{eq:sbapx3}
 \end{align}
 
 \end_inset

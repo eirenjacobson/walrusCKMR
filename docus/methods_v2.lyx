@@ -999,17 +999,17 @@ individual
 
  are interchangeable terms).
  When individuals were sampled more than once,
- we use the last sample for MOP and XmHSP com-parisons,
+ we use the last sample for MOP and XmHSP comparisons,
  since we can then be certain that the individual was alive until the time of the last sample,
  and so,
  conditional on age,
  could have produced offspring at least up until that time.
  In addition,
- us-ing only the last sample improves precision in estimates of survival,
+ using only the last sample improves precision in estimates of survival,
  since,
  again,
- the individual defi-nitely survived to age at last sample.
- For SPs we consider the first and last sample from each indi-vidual (in which case,
+ the individual definitely survived to age at last sample.
+ For SPs we consider the first and last sample from each individual (in which case,
  “sample” and “individual” have different meanings) to maximize the interval over which we can be certain that the individual was alive.
 \end_layout
 

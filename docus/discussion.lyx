@@ -292,11 +292,31 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-While most animals are theoretically good candidates for CKMR,
+The basic assumptions of CKMR are that each animal had one mother and one father,
+ and that the types of close-kin used in the model (generally first- and/or second-order) can be reliably identified genetically.
+ While most vertebrates meet these requirements,
  the practical considerations of sampling mean that it would not be sensible to apply CKMR to some species and populations.
+ Design exercises like the one presented here can help quantify the effort needed to achieve sufficient precision in quantities of interest using CKMR,
+ which can then be costed and the value considered.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Because CKMR is a very flexible modeling framework,
+ and because sampling can be done in so many different ways,
+ it is almost impossible to make absolute pronouncements about a species' suitability for CKMR,
+ except in relation to some particular sampling scheme.
+ 
+\lang british
+For example,
+ lethal sampling of persistent family groups,
+ as in wolves or killer whales,
+ would be unlikely to yield useful results.
  CKMR tends to work best for relatively large,
  well-mixed populations,
- where sampling is sparse and therefore approximate independence of samples is reasonable (see 
+ where sampling is sparse and therefore approximate independence of comparisons is reasonable (see 
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "bravington_close-kin_2016"
@@ -305,33 +325,51 @@ literal "false"
 \end_inset
 
  for additional details).
- Design exercises like the one presented here can help quantify the effort needed,
- which can then be costed and the value considered.
-\end_layout
 
-\begin_layout Standard
-There are situations where naively using all possible pairwise comparisons in a simple CKMR model will give biased results due to family structure in the sampling.
- With family groups,
- groups need to be sampled independently and only one sample from each group used in comparisons,
- which might make it difficult to collect sufficient samples in some cases (e.g.,
- wolves,
- killer whales).
- For more amenable cases where it's just an issue of family members needing enough time to separate,
- the simplest prescription is to avoid doing comparisons between animals that are caught close enough in space and/or time to have an inflated chance of being family members.
- This has been done for school shark,
- which form persistent schools that may contain siblings;
- the CKMR models don't use comparisons between samples from the same month and region 
+\lang english
+ For any pairwise comparison used in the model,
+ there should be no unmodeled correlation between sampling probability and reproduction,
+ or between the event of an individual's being sampled and its expected number of sampled close-kin.
+
+\lang british
+ 
+\lang english
+Sometimes this can be achieved by excluding certain pairwise comparisons from the model (e.g.,
+ between animals sampled close together in space and time,
+ as for school shark in 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "thomson_close_2020"
+LatexCommand citealp
+key "thomson2020shs-final-rev"
 literal "false"
 
 \end_inset
 
-.
+);
+ sometimes by building a more elaborate model that conditions on covariates like place and time of sampling,
+ thus avoiding the 
+\begin_inset Quotes eld
+\end_inset
+
+unmodeled
+\begin_inset Quotes erd
+\end_inset
+
+ issue.
+
+\lang british
  Here,
- for walrus,
- we did not compare possible offspring and mothers sampled in the same year unless the age of the potential offspring was at least the age of first birth.
+ for walruses,
+ 
+\lang english
+we assumed that if a mother is sampled,
+ any accompanying offspring are likely nearby and therefore have increased sampling probability,
+ which would violate the condition above.
+
+\lang british
+ Therefore,
+ we did not compare possible offspring and mothers sampled in the same year unless the potential offspring was definitely not accompanying its mother;
+ i.e.,
+ the age of the potential offspring was at least the age of first birth.
  These examples underscore the need to work closely with biologists to incorporate accurate information about the life-history of the species of interest in CKMR model development.
 \end_layout
 
