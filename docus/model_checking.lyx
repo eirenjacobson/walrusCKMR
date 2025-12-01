@@ -390,7 +390,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Mean and variance of the derivative of the pseudo-log-likelihood at the true parameter values for model parameters across 50 simulated datasets.
+Mean and standard deviation of the derivative of the pseudo-log-likelihood at the true parameter values for model parameters across 50 simulated datasets.
  
 \begin_inset Formula $\log_{e}N_{2015,A}$
 \end_inset
@@ -603,7 +603,7 @@ Mean
 \begin_inset Text
 
 \begin_layout Plain Layout
-Variance
+Standard deviation
 \end_layout
 
 \end_inset
@@ -612,7 +612,7 @@ Variance
 \begin_inset Text
 
 \begin_layout Plain Layout
-708
+26.61
 \end_layout
 
 \end_inset
@@ -621,7 +621,7 @@ Variance
 \begin_inset Text
 
 \begin_layout Plain Layout
-46591
+215.85
 \end_layout
 
 \end_inset
@@ -630,7 +630,7 @@ Variance
 \begin_inset Text
 
 \begin_layout Plain Layout
-171
+13.10
 \end_layout
 
 \end_inset
@@ -639,7 +639,7 @@ Variance
 \begin_inset Text
 
 \begin_layout Plain Layout
-28.60
+5.35
 \end_layout
 
 \end_inset
@@ -648,7 +648,7 @@ Variance
 \begin_inset Text
 
 \begin_layout Plain Layout
-12.20
+3.49
 \end_layout
 
 \end_inset
@@ -657,7 +657,7 @@ Variance
 \begin_inset Text
 
 \begin_layout Plain Layout
-19.90
+4.46
 \end_layout
 
 \end_inset
@@ -1055,8 +1055,7 @@ Absolute bias
 \begin_inset Text
 
 \begin_layout Plain Layout
-Approx.
- parameter bias relative to SD
+Bias relative to SD
 \end_layout
 
 \end_inset
@@ -1065,7 +1064,7 @@ Approx.
 \begin_inset Text
 
 \begin_layout Plain Layout
--0.330
+0.086
 \end_layout
 
 \end_inset
@@ -1074,7 +1073,7 @@ Approx.
 \begin_inset Text
 
 \begin_layout Plain Layout
--0.750
+0.166
 \end_layout
 
 \end_inset
@@ -1083,7 +1082,7 @@ Approx.
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.105
+0.455
 \end_layout
 
 \end_inset
@@ -1092,7 +1091,7 @@ Approx.
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.042
+-1.73
 \end_layout
 
 \end_inset
@@ -1101,7 +1100,7 @@ Approx.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.353
+-0.393
 \end_layout
 
 \end_inset
@@ -1110,7 +1109,7 @@ Approx.
 \begin_inset Text
 
 \begin_layout Plain Layout
--0.032
+-0.154
 \end_layout
 
 \end_inset
